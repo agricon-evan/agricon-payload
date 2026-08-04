@@ -1,0 +1,62 @@
+{
+  "nav": {
+    "products": "Продукция",
+    "solutions": "Решения",
+    "tradeSupport": "Торговая поддержка",
+    "caseStudies": "Кейсы",
+    "blog": "Блог",
+    "about": "О нас"
+  },
+  "cta": {
+    "getQuote": "Запросить цену",
+    "chatWhatsApp": "Написать в WhatsApp",
+    "viewDetails": "Подробнее",
+    "requestQuote": "Запросить цену",
+    "viewAll": "Смотреть все",
+    "learnMore": "Узнать больше",
+    "contactUs": "Связаться с нами",
+    "subscribe": "Подписаться",
+    "backToTop": "Наверх"
+  },
+  "footer": {
+    "brandDescription": "Оборудование для птицеводства и животноводства. Надёжное оборудование для коммерческих ферм по всему миру.",
+    "email": "",
+    "phone": "",
+    "copyright": "Agricon. Оборудование для птицеводства и животноводства.",
+    "columns": {
+      "products": "Продукция",
+      "solutions": "Решения",
+      "company": "Компания",
+      "support": "Поддержка"
+    },
+    "links": {
+      "poultrySolutions": "Птицеводство",
+      "livestockSolutions": "Животноводство",
+      "feedProcessing": "Производство кормов",
+      "farmInfrastructure": "Инфраструктура ферм",
+      "viewAllProducts": "Вся продукция",
+      "poultryFarmSetup": "Оборудование для птицефабрик",
+      "livestockFarmSetup": "Оборудование для ферм",
+      "feedProcessingSetup": "Линии по производству кормов",
+      "tradeSupport": "Торговая поддержка",
+      "aboutAgricon": "О компании Agricon",
+      "caseStudies": "Кейсы",
+      "blog": "Блог",
+      "distributors": "Дистрибьюторы",
+      "contact": "Контакты",
+      "faq": "Вопросы и ответы",
+      "technicalSupport": "Техническая поддержка",
+      "privacyPolicy": "Политика конфиденциальности",
+      "termsOfService": "Условия использования"
+    }
+  },
+  "home": {},
+  "aria": {
+    "toggleNavigation": "Переключить навигацию",
+    "switchToLightMode": "Переключить на светлый режим",
+    "switchToDarkMode": "Переключить на тёмный режим",
+    "backToTop": "Наверх",
+    "chatOnWhatsApp": "Написать в WhatsApp",
+    "switchLanguage": "Переключить язык"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "breadcrumb": {
+    "home": "Home",
+    "support": "Support",
+    "faq": "FAQ"
+  },
+  "hero": {
+    "title": "Frequently Asked Questions",
+    "description": "Find answers to common questions about our products, shipping, installation, payment terms, and trade support."
+  },
+  "allCategory": "All",
+  "noQuestions": "No questions found in this category.",
+  "relatedSupport": {
+    "title": "Additional Support Resources",
+    "items": {
+      "documentation": {
+        "title": "Product Documentation",
+        "description": "Access installation guides, technical specifications, and product catalogs for all Agricon equipment.",
+        "href": "/support#download-center"
+      },
+      "videoTutorials": {
+        "title": "Video Tutorials",
+        "description": "Watch step-by-step installation and maintenance videos for cage systems, feeding equipment, and more.",
+        "href": "/support#video-tutorials"
+      },
+      "contactSupport": {
+        "title": "Contact Support",
+        "description": "Connect with our technical team via email, phone, or WhatsApp for personalized assistance.",
+        "href": "/contact"
+      }
+    }
+  },
+  "cta": {
+    "title": "Still Have Questions?",
+    "description": "Send us your question and our team will review it using the contact details you provide.",
+    "contactUs": "Contact Us",
+    "chatWhatsApp": "Chat on WhatsApp"
+  },
+  "learnMore": "Learn More →"
+}

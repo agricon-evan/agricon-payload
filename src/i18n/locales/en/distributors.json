@@ -1,0 +1,118 @@
+{
+  "breadcrumb": {
+    "home": "Home",
+    "distributors": "Distribution Partnership"
+  },
+  "hero": {
+    "badge": "Partnership Application",
+    "title": "Apply for Distribution Partnership Review",
+    "description": "Submit your company profile for partnership review. Territory, pricing, branding, training, support, and warranty arrangements are valid only when confirmed in writing.",
+    "applyNow": "Submit Company Profile"
+  },
+  "benefits": {
+    "title": "Partnership Discussion Topics",
+    "description": "The following areas may be discussed during due diligence. They are not commitments until included in an approved written agreement.",
+    "items": {
+      "territory": {
+        "title": "Market Scope Review",
+        "description": "Proposed territory and channel scope are reviewed against product fit, compliance requirements, and existing agreements. No exclusivity applies unless confirmed in a signed agreement."
+      },
+      "marketing": {
+        "title": "Approved Commercial Materials",
+        "description": "Current catalogs, specifications, brand assets, and quotation information may be provided according to the approved cooperation scope and availability."
+      },
+      "training": {
+        "title": "Technical Coordination",
+        "description": "Product training, installation guidance, escalation responsibilities, and service boundaries are defined for the relevant partner agreement and project."
+      }
+    }
+  },
+  "requirements": {
+    "title": "Information We Review",
+    "description": "Applications are reviewed using verifiable company, market, compliance, sales, and service information.",
+    "idealProfile": "Application Review Information",
+    "items": [
+      "Verifiable company registration and responsible contact details",
+      "Relevant market, agricultural, industrial, or equipment experience",
+      "Ability to handle customer inquiries and maintain accurate product information",
+      "Applicable import, tax, licensing, and compliance capability",
+      "A transparent market and service plan for the proposed territory",
+      "Disclosure of warehouse, showroom, installation, or service resources where relevant",
+      "Agreement to due diligence and written commercial terms before representing Agricon"
+    ]
+  },
+  "regions": {
+    "title": "Market Coverage",
+    "description": "Applications may be considered from different markets, subject to compliance, product fit, existing agreements, and written approval.",
+    "items": {
+      "availability": {
+        "name": "Market Availability",
+        "countries": "Applications may be submitted from any market. Availability depends on trade compliance, product fit, existing agreements, service capability, and written approval."
+      }
+    }
+  },
+  "support": {
+    "title": "Possible Cooperation Scope",
+    "description": "The exact cooperation scope is agreed case by case. Website descriptions do not create inventory, territory, marketing, training, warranty, or service obligations.",
+    "items": {
+      "inventory": {
+        "title": "Product & Pricing Information",
+        "description": "Approved product data, quotation terms, minimum order quantities, and availability are provided for the specific opportunity and may change before written confirmation."
+      },
+      "salesTraining": {
+        "title": "Onboarding Scope",
+        "description": "Any sales, product, installation, or service training is defined by the approved onboarding plan and written partner agreement."
+      },
+      "coBranding": {
+        "title": "Brand Use",
+        "description": "Logos, catalogs, campaign materials, and public claims may be used only in their approved form and within the written authorization granted to the partner."
+      },
+      "warranty": {
+        "title": "Warranty & Service Coordination",
+        "description": "Warranty scope, spare-parts responsibilities, escalation paths, and response arrangements apply only as stated in the applicable product and partner agreements."
+      }
+    }
+  },
+  "applicationForm": {
+    "title": "Submit a Partnership Application",
+    "description": "Complete the form for review. Response timing depends on the information provided, market, and current review capacity.",
+    "companyName": "Company Name *",
+    "companyPlaceholder": "Registered company name",
+    "contactName": "Contact Name *",
+    "contactPlaceholder": "Responsible contact",
+    "email": "Business Email *",
+    "emailPlaceholder": "name@company.com",
+    "phone": "Phone *",
+    "phonePlaceholder": "Include country code",
+    "country": "Country / Market *",
+    "countryPlaceholder": "Country or market",
+    "businessType": "Business Type *",
+    "interestedCategories": "Product Categories of Interest *",
+    "introduction": "Company Profile",
+    "introductionPlaceholder": "Describe your company, market, relevant experience, sales and service capabilities, and proposed cooperation scope.",
+    "submit": "Submit Application",
+    "submitting": "Submitting...",
+    "errorGeneric": "Failed to submit the application. Please try again.",
+    "errorNetwork": "Network error. Please check your connection and try again."
+  },
+  "success": {
+    "title": "Application Submitted",
+    "description": "Thank you for submitting your company profile. Submission does not create an appointment, exclusivity, pricing right, or other commercial commitment."
+  },
+  "businessTypes": [
+    "Agricultural Equipment Dealer",
+    "Farm Supply Business",
+    "Industrial Equipment Business",
+    "Installation or Service Provider",
+    "Import / Export Trading Company",
+    "Other"
+  ],
+  "categories": [
+    "Poultry Housing Equipment",
+    "Feeding Systems",
+    "Livestock Housing & Fencing",
+    "Feed Processing Equipment",
+    "Ventilation & Climate Equipment",
+    "Manure Management Equipment"
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "nav": {
+    "products": "Products",
+    "solutions": "Solutions",
+    "tradeSupport": "Trade Support",
+    "caseStudies": "Case Studies",
+    "blog": "Blog",
+    "about": "About"
+  },
+  "cta": {
+    "getQuote": "Get Quote",
+    "chatWhatsApp": "Chat on WhatsApp",
+    "viewDetails": "View Details",
+    "requestQuote": "Request Quote",
+    "viewAll": "View All",
+    "learnMore": "Learn More",
+    "contactUs": "Contact Us",
+    "subscribe": "Subscribe",
+    "backToTop": "Back to top"
+  },
+  "footer": {
+    "brandDescription": "Poultry & Livestock Equipment Solutions. Durable, export-ready equipment for commercial farms worldwide.",
+    "email": "",
+    "phone": "",
+    "copyright": "Agricon. Poultry & Livestock Equipment Solutions.",
+    "columns": {
+      "products": "Products",
+      "solutions": "Solutions",
+      "company": "Company",
+      "support": "Support"
+    },
+    "links": {
+      "poultrySolutions": "Poultry Solutions",
+      "livestockSolutions": "Livestock Solutions",
+      "feedProcessing": "Feed Processing",
+      "farmInfrastructure": "Farm Infrastructure",
+      "viewAllProducts": "View All Products",
+      "poultryFarmSetup": "Poultry Farm Setup",
+      "livestockFarmSetup": "Livestock Farm Setup",
+      "feedProcessingSetup": "Feed Processing Setup",
+      "tradeSupport": "Trade Support",
+      "aboutAgricon": "About Agricon",
+      "caseStudies": "Case Studies",
+      "blog": "Blog",
+      "distributors": "Distributors",
+      "contact": "Contact",
+      "faq": "FAQ",
+      "technicalSupport": "Technical Support",
+      "privacyPolicy": "Privacy Policy",
+      "termsOfService": "Terms of Service"
+    }
+  },
+  "home": {},
+  "aria": {
+    "toggleNavigation": "Toggle navigation",
+    "switchToLightMode": "Switch to light mode",
+    "switchToDarkMode": "Switch to dark mode",
+    "backToTop": "Back to top",
+    "chatOnWhatsApp": "Chat on WhatsApp",
+    "switchLanguage": "Switch language"
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "nav": {
+    "products": "المنتجات",
+    "solutions": "الحلول",
+    "tradeSupport": "دعم التجارة",
+    "caseStudies": "دراسات الحالة",
+    "blog": "المدونة",
+    "about": "من نحن"
+  },
+  "cta": {
+    "getQuote": "اطلب عرض سعر",
+    "chatWhatsApp": "تحدث عبر واتساب",
+    "viewDetails": "عرض التفاصيل",
+    "requestQuote": "طلب عرض سعر",
+    "viewAll": "عرض الكل",
+    "learnMore": "اعرف المزيد",
+    "contactUs": "اتصل بنا",
+    "subscribe": "اشترك",
+    "backToTop": "العودة للأعلى"
+  },
+  "footer": {
+    "brandDescription": "حلول معدات الدواجن والثروة الحيوانية. معدات متينة جاهزة للتصدير للمزارع التجارية حول العالم.",
+    "email": "",
+    "phone": "",
+    "copyright": "Agricon. حلول معدات الدواجن والثروة الحيوانية.",
+    "columns": {
+      "products": "المنتجات",
+      "solutions": "الحلول",
+      "company": "الشركة",
+      "support": "الدعم"
+    },
+    "links": {
+      "poultrySolutions": "حلول الدواجن",
+      "livestockSolutions": "حلول الثروة الحيوانية",
+      "feedProcessing": "تصنيع الأعلاف",
+      "farmInfrastructure": "البنية التحتية للمزرعة",
+      "viewAllProducts": "جميع المنتجات",
+      "poultryFarmSetup": "הקמת مزرعة دواجن",
+      "livestockFarmSetup": "הקמת مزرعة مواشي",
+      "feedProcessingSetup": "خط إنتاج الأعلاف",
+      "tradeSupport": "دعم التجارة",
+      "aboutAgricon": "عن Agricon",
+      "caseStudies": "دراسات الحالة",
+      "blog": "المدونة",
+      "distributors": "الموزعون",
+      "contact": "اتصل بنا",
+      "faq": "الأسئلة الشائعة",
+      "technicalSupport": "الدعم الفني",
+      "privacyPolicy": "سياسة الخصوصية",
+      "termsOfService": "شروط الخدمة"
+    }
+  },
+  "home": {},
+  "aria": {
+    "toggleNavigation": "تبديل التنقل",
+    "switchToLightMode": "التبديل إلى الوضع الفاتح",
+    "switchToDarkMode": "التبديل إلى الوضع الداكن",
+    "backToTop": "العودة للأعلى",
+    "chatOnWhatsApp": "تحدث عبر واتساب",
+    "switchLanguage": "تغيير اللغة"
+  }
+}

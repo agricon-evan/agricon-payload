@@ -1,0 +1,62 @@
+{
+  "nav": {
+    "products": "Bidhaa",
+    "solutions": "Suluhisho",
+    "tradeSupport": "Msaada wa Biashara",
+    "caseStudies": "Mafunzo ya Kesi",
+    "blog": "Blogu",
+    "about": "Kuhusu"
+  },
+  "cta": {
+    "getQuote": "Omba Bei",
+    "chatWhatsApp": "Ongea kwenye WhatsApp",
+    "viewDetails": "Angalia Maelezo",
+    "requestQuote": "Omba Bei",
+    "viewAll": "Angalia Zote",
+    "learnMore": "Soma Zaidi",
+    "contactUs": "Wasiliana Nasi",
+    "subscribe": "Jiandikishe",
+    "backToTop": "Rudi Juu"
+  },
+  "footer": {
+    "brandDescription": "Suluhisho za vifaa vya ufugaji wa kuku na mifugo. Vifaa vya kudumu vinavyoweza kusafirishwa kwa mashamba ya kibiashara duniani kote.",
+    "email": "",
+    "phone": "",
+    "copyright": "Agricon. Suluhisho za vifaa vya ufugaji wa kuku na mifugo.",
+    "columns": {
+      "products": "Bidhaa",
+      "solutions": "Suluhisho",
+      "company": "Kampuni",
+      "support": "Usaidizi"
+    },
+    "links": {
+      "poultrySolutions": "Suluhisho za Kuku",
+      "livestockSolutions": "Suluhisho za Mifugo",
+      "feedProcessing": "Uzalishaji wa Chakula",
+      "farmInfrastructure": "Miundombinu ya Shamba",
+      "viewAllProducts": "Bidhaa Zote",
+      "poultryFarmSetup": "Uanzishaji wa Shamba la Kuku",
+      "livestockFarmSetup": "Uanzishaji wa Shamba la Mifugo",
+      "feedProcessingSetup": "Kiwanda cha Chakula",
+      "tradeSupport": "Msaada wa Biashara",
+      "aboutAgricon": "Kuhusu Agricon",
+      "caseStudies": "Mafunzo ya Kesi",
+      "blog": "Blogu",
+      "distributors": "Wasambazaji",
+      "contact": "Wasiliana",
+      "faq": "Maswali Yanayoulizwa Mara kwa Mara",
+      "technicalSupport": "Usaidizi wa Kiufundi",
+      "privacyPolicy": "Sera ya Faragha",
+      "termsOfService": "Masharti ya Huduma"
+    }
+  },
+  "home": {},
+  "aria": {
+    "toggleNavigation": "Geuza urambazaji",
+    "switchToLightMode": "Badilisha hadi mwonekano mwepesi",
+    "switchToDarkMode": "Badilisha hadi mwonekano mweusi",
+    "backToTop": "Rudi juu",
+    "chatOnWhatsApp": "Ongea kwenye WhatsApp",
+    "switchLanguage": "Badilisha lugha"
+  }
+}

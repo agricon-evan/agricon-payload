@@ -1,0 +1,20 @@
+{
+  "breadcrumb": { "blog": "Blogue" },
+  "hero": {
+    "title": "Centre de connaissances Agricon",
+    "description": "Avis d'experts sur l'elevage de volailles, les equipements pour le betail et l'agriculture commerciale pour les marches emergents.",
+    "ctaBrowseProducts": "Voir les produits",
+    "ctaContactUs": "Nous contacter"
+  },
+  "categories": ["Tous", "Conseils agricoles", "Guides d'achat", "Etudes de cas", "Actualites du secteur"],
+  "featuredArticle": "Article en vedette",
+  "latestArticles": "Derniers articles",
+  "readMore": "Lire la suite",
+  "newsletter": {
+    "title": "Restez informe",
+    "description": "Recevez les derniers conseils agricoles, guides d'equipements et analyses de marche dans votre boite de reception chaque semaine.",
+    "emailPlaceholder": "Entrez votre adresse e-mail",
+    "submit": "S'abonner",
+    "disclaimer": "Pas de spam. Desabonnement a tout moment. Rejoignez plus de 2 400 agriculteurs."
+  }
+}

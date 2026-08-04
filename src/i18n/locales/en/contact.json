@@ -1,0 +1,115 @@
+{
+  "breadcrumb": {
+    "home": "Home",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Contact Us",
+    "description": "Get in touch with our team for product inquiries, pricing, technical support, or partnership opportunities."
+  },
+  "contactMethods": {
+    "email": {
+      "title": "Email",
+      "description": "Send your inquiry using the published email address. Response timing depends on business hours and request complexity.",
+      "actionText": "Send Email"
+    },
+    "phone": {
+      "title": "Phone",
+      "description": "Available Monday to Saturday, 8:00 AM - 6:00 PM (GMT+8).",
+      "actionText": "Call Now"
+    },
+    "whatsapp": {
+      "title": "WhatsApp",
+      "description": "Quick responses for product inquiries, pricing, and order updates.",
+      "actionText": "Chat Now"
+    }
+  },
+  "inquiryForm": {
+    "title": "Send Us Your Inquiry",
+    "description": "Complete the form below. The team will review the requirements and contact you using the details provided.",
+    "companyName": "Company Name",
+    "contactName": "Contact Name",
+    "emailAddress": "Email Address",
+    "country": "Country",
+    "selectCountry": "Select your country",
+    "interestedProducts": "Interested Products",
+    "selectProductsHint": "Select all products you are interested in:",
+    "message": "Message",
+    "messagePlaceholder": "Tell us about your project requirements, expected quantities, or any questions you have...",
+    "submit": "Submit Inquiry",
+    "submitting": "Submitting...",
+    "errorGeneric": "Something went wrong. Please try again or contact us directly.",
+    "errorNetwork": "Network error. Please try again or contact us via WhatsApp."
+  },
+  "success": {
+    "title": "Inquiry Submitted Successfully",
+    "description": "Thank you. Your inquiry has been submitted for technical and commercial review.",
+    "browseProducts": "Browse Products"
+  },
+  "whatsappPrompt": {
+    "title": "Prefer to Chat Directly?",
+    "description": "Send us a WhatsApp message for quick responses on product availability, pricing, and order status. We typically reply within minutes during business hours.",
+    "openChat": "Open WhatsApp Chat"
+  },
+  "responseInfo": {
+    "title": "What to Expect",
+    "items": {
+      "response": {
+        "title": "24-Hour Response",
+        "description": "Each inquiry is reviewed according to its technical and commercial requirements."
+      },
+      "consultation": {
+        "title": "Requirements Review",
+        "description": "Get expert advice on equipment selection and farm layout planning at no cost."
+      },
+      "quotation": {
+        "title": "Detailed Quotation",
+        "description": "Receive a comprehensive quotation with pricing, specifications, and shipping details."
+      }
+    }
+  },
+  "countries": [
+    "Nigeria",
+    "Kenya",
+    "Tanzania",
+    "South Africa",
+    "Ghana",
+    "Ethiopia",
+    "Uganda",
+    "Vietnam",
+    "Philippines",
+    "Indonesia",
+    "Thailand",
+    "Myanmar",
+    "Cambodia",
+    "Brazil",
+    "Colombia",
+    "Peru",
+    "Ecuador",
+    "Argentina",
+    "India",
+    "Pakistan",
+    "Bangladesh",
+    "Egypt",
+    "Sudan",
+    "Other"
+  ],
+  "productOptions": [
+    "H-Type Layer Cage",
+    "A-Type Layer Cage",
+    "Broiler Cage",
+    "Chick Cage",
+    "Automatic Feeding System",
+    "Egg Collection System",
+    "Manure Removal System",
+    "Ventilation Fan",
+    "Cooling Pad",
+    "Feed Pellet Machine",
+    "Feed Mixer",
+    "Grinding Machine",
+    "Green House",
+    "Farm Fence",
+    "Cattle Panel",
+    "Other"
+  ]
+}

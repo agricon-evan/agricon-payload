@@ -1,0 +1,26 @@
+{
+  "title": "Recherche",
+  "placeholder": "Rechercher des produits, solutions, articles de blog...",
+  "tabs": {
+    "all": "Tous",
+    "product": "Produits",
+    "solution": "Solutions",
+    "blog": "Blogue",
+    "caseStudy": "Etudes de cas"
+  },
+  "badges": {
+    "product": "Produit",
+    "solution": "Solution",
+    "blog": "Blogue",
+    "caseStudy": "Etude de cas"
+  },
+  "noResults": {
+    "title": "Aucun resultat trouve",
+    "description": "Nous n'avons rien trouve correspondant a \"{query}\". Essayez des mots-cles differents ou parcourez nos categories.",
+    "ctaBrowseProducts": "Voir les produits",
+    "ctaContactUs": "Nous contacter"
+  },
+  "sidebar": {
+    "title": "Liens recommandes"
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "breadcrumb": {
+    "solutions": "Suluhisho"
+  },
+  "hero": {
+    "title": "Suluhisho kamili za kilimo",
+    "description": "Vifurushi kamili vya vifaa vilivyoundwa, vilivyosanidiwa na kusaidiwa kwa mashamba ya biashara katika Afrika, Kusini mwa Asia na Amerika Kusini.",
+    "ctaGetSolution": "Pata suluhisho maalum",
+    "ctaBrowseProducts": "Vinjari bidhaa"
+  },
+  "categories": {
+    "title": "Kategoria zetu za suluhisho",
+    "description": "Kutoka vifaa vya mtu binafsi hadi miradi kamili ya mashamba, tunatoa suluhisho zilizounganishwa zinazofaa kiwango cha shamba lako na hali za ndani."
+  },
+  "whyChoose": {
+    "title": "Kwa nini chose suluhisho kamili",
+    "description": "Vifurushi vilivyounganishwa vya vifaa vinaondoa matatizo ya ushirikiano na kuhakikisha kila kipengele kinafanya kazi pamoja bila matatizo.",
+    "cards": [
+      {
+        "title": "Imetengenezwa mapema kwa eneo lako",
+        "description": "Kila suluhisho linaundwa kwa kuzingatia hali ya hewa ya ndani, miundombinu inayopatikana na hali za soko. Hakuna miundo ya jumla."
+      },
+      {
+        "title": "Uwajibikaji wa chanzo kimoja",
+        "description": "Mtoaji mmoja kwa vifaa vyote, dhamana moja, mwasiliani mmoja wa msaada. Hakuna taabu ya kusawazisha kati ya watoa huduma wengi."
+      },
+      {
+        "title": "Imethibitishwa katika nchi 30+",
+        "description": "Zaidi ya uunganishaji 5,000 katika Afrika, Kusini mwa Asia na Amerika Kusini. Suluhisho zetu zimethibitishwa katika hali halisi unazofanya kazi."
+      }
+    ]
+  },
+  "comparison": {
+    "title": "Vifaa vya jadi dhidi ya vifaa vya kisasa",
+    "description": "Ona faida zinazoweza kupimwa za kuboresha kutoka mbinu za kilimo za jadi hadi mifumo ya kisasa ya vifaa ya Agricon.",
+    "headers": [
+      "Kipimo",
+      "Jadi",
+      "Kisasa (Agricon)",
+      "Faida"
+    ],
+    "rows": [
+      {
+        "feature": "Uwekezaji wa awali",
+        "traditional": "Chini",
+        "modern": "Ya Wastani-Idle",
+        "advantage": "Gharama za awali zaidi, lakini kurejesa mara 3x haraka"
+      },
+      {
+        "feature": "Uwezo wa kuku kwa m2",
+        "traditional": "5-7 kuku",
+        "modern": "12-20 kuku",
+        "advantage": "Matumizi ya nafasi mara 3x bora"
+      },
+      {
+        "feature": "Uwiano wa uongofu wa chakula",
+        "traditional": "2.5-3.0",
+        "modern": "1.8-2.2",
+        "advantage": "Kuokoa gharama za chakula kwa 25%"
+      },
+      {
+        "feature": "Kazi inayohitajika",
+        "traditional": "Nyingi (ya mkono)",
+        "modern": "Chache (iliyoendeshwa kiotomatiki)",
+        "advantage": "Uwezekano wa kupunguza kazi kulingana na usanidi"
+      },
+      {
+        "feature": "Kiwango cha uvunjaji wa mayai",
+        "traditional": "3-5%",
+        "modern": "<0.5%",
+        "advantage": "Upunguzaji wa hasara mara 5-10"
+      },
+      {
+        "feature": "Kiwango cha vifo",
+        "traditional": "8-15%",
+        "modern": "3-5%",
+        "advantage": "Kundi lenye afya bora zaidi"
+      },
+      {
+        "feature": "Udhibiti wa magonjwa",
+        "traditional": "Ngumu",
+        "modern": "Rahisi (iliyolindwa kibiolojia)",
+        "advantage": "Utofautishaji na usafi bora"
+      }
+    ]
+  },
+  "caseStudies": {
+    "title": "Mifano",
+    "description": "Matokeo ya kweli kutoka mashamba yaliyochagua suluhisho kamili za Agricon."
+  },
+  "process": {
+    "title": "Tunavyofanya kazi nawe",
+    "description": "Kutoka ushauri wa kwanza hadi msaada wa baada ya usakinishaji, timu yetu inakuongoza katika kila hatua ya kuboresha shamba lako.",
+    "steps": [
+      {
+        "step": "01",
+        "title": "Ushauri",
+        "desc": "Shiriki malengo yako, bajeti na maelezo ya eneo na wataalamu wetu."
+      },
+      {
+        "step": "02",
+        "title": "Muundo",
+        "desc": "Tunaunda mpangilio na mpango wa vifaa maalum kwa shamba lako."
+      },
+      {
+        "step": "03",
+        "title": "Utoaji",
+        "desc": "Ufungaji wa viwango vya usafirishaji, usimamizi wa usafirishaji na nyaraka."
+      },
+      {
+        "step": "04",
+        "title": "Msaada",
+        "desc": "Mwongozo wa usakinishaji, mafunzo na msaada wa kiufundi Endelevu."
+      }
+    ],
+    "cta": "Anza mradi wako leo"
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "nav": {
+    "products": "Produits",
+    "solutions": "Solutions",
+    "tradeSupport": "Support commercial",
+    "caseStudies": "Études de cas",
+    "blog": "Blog",
+    "about": "À propos"
+  },
+  "cta": {
+    "getQuote": "Demander un devis",
+    "chatWhatsApp": "Chatter sur WhatsApp",
+    "viewDetails": "Voir les détails",
+    "requestQuote": "Demander un devis",
+    "viewAll": "Voir tout",
+    "learnMore": "En savoir plus",
+    "contactUs": "Contactez-nous",
+    "subscribe": "S'abonner",
+    "backToTop": "Retour en haut"
+  },
+  "footer": {
+    "brandDescription": "Solutions d'équipements avicoles et d'élevage. Équipement durable prêt à l'export pour les fermes commerciales du monde entier.",
+    "email": "",
+    "phone": "",
+    "copyright": "Agricon. Solutions d'équipements avicoles et d'élevage.",
+    "columns": {
+      "products": "Produits",
+      "solutions": "Solutions",
+      "company": "Entreprise",
+      "support": "Support"
+    },
+    "links": {
+      "poultrySolutions": "Solutions avicoles",
+      "livestockSolutions": "Solutions élevage",
+      "feedProcessing": "Production d'aliments",
+      "farmInfrastructure": "Infrastructure agricole",
+      "viewAllProducts": "Tous les produits",
+      "poultryFarmSetup": "Installation avicole",
+      "livestockFarmSetup": "Installation élevage",
+      "feedProcessingSetup": "Ligne de production d'aliments",
+      "tradeSupport": "Support commercial",
+      "aboutAgricon": "À propos d'Agricon",
+      "caseStudies": "Études de cas",
+      "blog": "Blog",
+      "distributors": "Distributeurs",
+      "contact": "Contact",
+      "faq": "FAQ",
+      "technicalSupport": "Support technique",
+      "privacyPolicy": "Confidentialité",
+      "termsOfService": "Conditions"
+    }
+  },
+  "home": {},
+  "aria": {
+    "toggleNavigation": "Basculer la navigation",
+    "switchToLightMode": "Passer au mode clair",
+    "switchToDarkMode": "Passer au mode sombre",
+    "backToTop": "Retour en haut",
+    "chatOnWhatsApp": "Chatter sur WhatsApp",
+    "switchLanguage": "Changer de langue"
+  }
+}
