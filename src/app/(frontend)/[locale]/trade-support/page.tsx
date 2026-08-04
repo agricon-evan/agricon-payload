@@ -75,6 +75,29 @@ export default async function TradeSupportPage({ params }: Props) {
         </div>
       </section>
 
+      <section className="max-w-4xl mx-auto px-6 py-16 md:py-24">
+        <Reveal>
+          <SectionHeading eyebrow="Export & Trade Support" title="From Order Confirmation to International Shipment" description="AGRICON coordinates packing, loading, documentation and delivery support for overseas buyers — so your order arrives exactly as confirmed." />
+        </Reveal>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-5 mt-10">
+          {[
+            { title: 'Order Confirmation', desc: 'All specifications, quantities and shipping requirements are reviewed and confirmed with the customer.' },
+            { title: 'Export Packing', desc: 'Products are securely packed and clearly labeled for international transportation.' },
+            { title: 'Container Loading', desc: 'Loading plans are organized based on product size and order volume to maximize space and stability.' },
+            { title: 'Shipping Support', desc: 'All necessary documents and final shipment arrangements are coordinated before dispatch.' },
+            { title: 'Delivery Support', desc: 'Shipment coordination from factory preparation to dispatch, including mixed-category orders.' },
+          ].map((s, i) => (
+            <Reveal key={s.title} delay={i * 70} className="h-full">
+              <div className="card card-hover p-5 h-full">
+                <span className="text-xs font-bold text-[var(--color-primary)] tabular-nums">{String(i + 1).padStart(2, '0')}</span>
+                <h3 className="mt-2 text-sm font-semibold text-[var(--color-text)]">{s.title}</h3>
+                <p className="mt-2 text-xs text-[var(--color-text-secondary)] leading-relaxed">{s.desc}</p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
       <section className="bg-[var(--color-surface-alt)] py-16 md:py-24">
         <div className="max-w-4xl mx-auto px-6">
           <Reveal>

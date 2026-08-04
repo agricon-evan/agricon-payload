@@ -6,6 +6,7 @@ import PageHero from '@/components/PageHero'
 import CtaSection from '@/components/CtaSection'
 import Reveal from '@/components/ui/Reveal'
 import Icon from '@/components/ui/Icon'
+import { subcategoryImages } from '@/lib/images'
 
 interface Props {
   params: Promise<{ locale: string; category: string; subcategory: string }>

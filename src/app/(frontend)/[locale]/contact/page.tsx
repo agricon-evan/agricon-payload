@@ -1,5 +1,6 @@
 import type { Locale } from '@/i18n/config'
 import { getTranslations } from '@/i18n/config'
+import { getSiteSettings } from '@/lib/payload'
 import ContactForm from '@/components/ContactForm'
 
 interface Props {
@@ -10,9 +11,17 @@ export default async function ContactPage({ params }: Props) {
   const { locale } = await params
   const t = getTranslations(locale as Locale, 'contact')
   const tHome = getTranslations(locale as Locale, 'home')
+  const settings = await getSiteSettings()
 
   const methods = (t.contactMethods || {}) as Record<string, { title: string; description: string }>
   const responseItems = (t.responseInfo?.items ?? {}) as Record<string, { title: string; description: string }>
+
+  // Override contact methods with real data from SiteSettings (from company catalog)
+  const realMethods = {
+    email: { title: methods.email?.title || 'Email', description: settings?.contactEmail || methods.email?.description || '' },
+    phone: { title: methods.phone?.title || 'Phone', description: settings?.contactPhone || methods.phone?.description || '' },
+    whatsapp: { title: methods.whatsapp?.title || 'WhatsApp', description: settings?.whatsappNumber || methods.whatsapp?.description || '' },
+  }
 
   return (
     <>
@@ -31,7 +40,7 @@ export default async function ContactPage({ params }: Props) {
       <section className="max-w-7xl mx-auto px-6 py-12 md:py-16">
         <ContactForm
           locale={locale}
-          contactMethods={methods}
+          contactMethods={realMethods}
           inquiryLabels={{
             title: t.inquiryForm?.title || 'Send Us Your Inquiry',
             description: t.inquiryForm?.description || '',

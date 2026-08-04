@@ -5,6 +5,7 @@ import PageHero from '@/components/PageHero'
 import CtaSection from '@/components/CtaSection'
 import Reveal from '@/components/ui/Reveal'
 import Icon from '@/components/ui/Icon'
+import { caseStudyImages } from '@/lib/images'
 
 interface Props {
   params: Promise<{ locale: string }>
@@ -43,7 +44,9 @@ export default async function CaseStudiesPage({ params }: Props) {
               <Reveal key={cs.id} delay={(i % 3) * 80} className="h-full">
                 <a href={`${lp}/case-studies/${cs.slug}`} className="card card-hover h-full block">
                   <div className="aspect-video bg-[var(--color-muted)] flex items-center justify-center icon-zoom overflow-hidden">
-                    {cs.image && typeof cs.image === 'object' && cs.image.url ? (
+                    {caseStudyImages[cs.slug] ? (
+                      <img src={caseStudyImages[cs.slug]} alt={cs.title} className="w-full h-full object-cover" loading="lazy" />
+                    ) : cs.image && typeof cs.image === 'object' && cs.image.url ? (
                       <img src={cs.image.url} alt={cs.title} className="w-full h-full object-cover" loading="lazy" />
                     ) : (
                       <Icon name="compass" size={32} className="text-[var(--color-text-secondary)]/30" />

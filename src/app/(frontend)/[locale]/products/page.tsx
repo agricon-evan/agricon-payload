@@ -5,6 +5,7 @@ import PageHero from '@/components/PageHero'
 import CtaSection from '@/components/CtaSection'
 import Reveal from '@/components/ui/Reveal'
 import Icon from '@/components/ui/Icon'
+import { categoryImages } from '@/lib/images'
 
 interface Props {
   params: Promise<{ locale: string }>
@@ -55,6 +56,8 @@ export default async function ProductsPage({ params }: Props) {
                   <div className="aspect-[16/9] bg-[var(--color-muted)] flex items-center justify-center icon-zoom overflow-hidden">
                     {cat.image && typeof cat.image === 'object' && cat.image.url ? (
                       <img src={cat.image.url} alt={cat.name} className="w-full h-full object-cover" loading="lazy" />
+                    ) : categoryImages[cat.slug] ? (
+                      <img src={categoryImages[cat.slug]} alt={cat.name} className="w-full h-full object-cover" loading="lazy" />
                     ) : (
                       <Icon name="box" size={36} className="text-[var(--color-text-secondary)]/30" />
                     )}

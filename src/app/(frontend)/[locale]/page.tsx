@@ -24,7 +24,7 @@ export default async function HomePage({ params }: Props) {
       {/* ── HERO — flat, refined, mobile-first ── */}
       <section className="relative min-h-[70vh] md:min-h-[80vh] flex items-center justify-center bg-[var(--color-primary-dark)] text-white overflow-hidden">
         <div className="absolute inset-0">
-          <img src="/images/home-hero.png" alt="" className="w-full h-full object-cover opacity-15" />
+          <img src="https://images.unsplash.com/photo-1516253593875-bd7ba052b1b1?w=1600&h=900&fit=crop&q=80" alt="" className="w-full h-full object-cover opacity-20" loading="eager" />
           <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-primary-dark)]/95 via-[var(--color-primary-dark)]/80 to-black/70" />
         </div>
 

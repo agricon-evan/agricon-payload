@@ -6,6 +6,7 @@ import PageHero from '@/components/PageHero'
 import CtaSection from '@/components/CtaSection'
 import Reveal from '@/components/ui/Reveal'
 import Icon from '@/components/ui/Icon'
+import { subcategoryImages } from '@/lib/images'
 
 interface Props {
   params: Promise<{ locale: string; category: string }>
@@ -78,6 +79,8 @@ export default async function CategoryPage({ params }: Props) {
                   <div className="aspect-[16/9] bg-[var(--color-muted)] flex items-center justify-center overflow-hidden">
                     {sub.image && typeof sub.image === 'object' && sub.image.url ? (
                       <img src={sub.image.url} alt={sub.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+                    ) : subcategoryImages[sub.slug] ? (
+                      <img src={subcategoryImages[sub.slug]} alt={sub.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
                     ) : (
                       <Icon name="layers" size={36} className="text-[var(--color-text-secondary)]/25" />
                     )}

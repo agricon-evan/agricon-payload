@@ -42,6 +42,7 @@ export const getProducts = cache(async (locale: string = 'en'): Promise<Product[
     locale: locale as LocaleArg,
     depth: 1,
     sort: '-createdAt',
+    limit: 100,
   })
   return docs as unknown as Product[]
 })
@@ -53,6 +54,7 @@ export const getCategories = cache(async (locale: string = 'en'): Promise<Catego
     locale: locale as LocaleArg,
     depth: 1,
     sort: 'sortOrder',
+    limit: 100,
   })
   return docs as unknown as Category[]
 })
@@ -64,6 +66,7 @@ export const getSubcategories = cache(async (locale: string = 'en'): Promise<Sub
     locale: locale as LocaleArg,
     depth: 1,
     sort: 'sortOrder',
+    limit: 100,
   })
   return docs as unknown as Subcategory[]
 })
@@ -75,6 +78,7 @@ export const getSolutions = cache(async (locale: string = 'en'): Promise<Solutio
     locale: locale as LocaleArg,
     depth: 1,
     sort: 'sortOrder',
+    limit: 100,
   })
   return docs as unknown as Solution[]
 })
@@ -100,6 +104,7 @@ export const getCaseStudies = cache(async (locale: string = 'en'): Promise<CaseS
     depth: 1,
     sort: 'sortOrder',
     where: { published: { equals: true } },
+    limit: 100,
   })
   return docs as unknown as CaseStudy[]
 })
@@ -112,6 +117,7 @@ export const getFAQs = cache(async (locale: string = 'en'): Promise<Faq[]> => {
     depth: 1,
     sort: 'sortOrder',
     where: { published: { equals: true } },
+    limit: 100,
   })
   return docs as unknown as Faq[]
 })
