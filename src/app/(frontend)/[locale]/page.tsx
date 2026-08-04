@@ -79,7 +79,7 @@ export default async function HomePage({ params }: Props) {
         </div>
       </section>
 
-      <StatsSection />
+      <StatsSection locale={locale as Locale} />
       <ProductCategories locale={locale as Locale} />
       <ValueCalculated />
       <SolutionsSection locale={locale as Locale} />

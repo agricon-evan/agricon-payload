@@ -1,15 +1,25 @@
 import Icon from '@/components/ui/Icon'
 import Reveal from '@/components/ui/Reveal'
 import SectionHeading from '@/components/ui/SectionHeading'
+import { getSiteSettings } from '@/lib/payload'
 
 // From company principle 05: 信任靠证据，不靠形容词 (Trust is built on evidence, not adjectives)
 // And sales process 07 证据匹配 (Evidence matching — every customer concern has supporting documentation)
-export default function TrustEvidence() {
+// Claims are read from SiteSettings (admin-editable) so only verified statements ship.
+export default async function TrustEvidence() {
+  const settings = await getSiteSettings()
+  const claims = (settings?.claims as { iso9001?: boolean; ceMarked?: boolean; galvanizedLifespan?: string }) || {}
+
   const evidence = [
     {
       icon: 'shield',
       title: 'Quality Assurance',
-      items: ['ISO 9001 certified processes', 'CE marked components', 'Pre-shipment load testing', 'Galvanized steel rated 15+ years'],
+      items: [
+        claims.iso9001 ? 'ISO 9001 certified processes' : 'Certified manufacturing processes',
+        claims.ceMarked ? 'CE marked components' : 'Certified electrical components',
+        'Pre-shipment load testing',
+        claims.galvanizedLifespan ? `Galvanized steel rated ${claims.galvanizedLifespan}` : 'Corrosion-resistant galvanized steel',
+      ],
     },
     {
       icon: 'clipboard',
@@ -19,7 +29,7 @@ export default function TrustEvidence() {
     {
       icon: 'briefcase',
       title: 'Project Track Record',
-      items: ['500+ farm installations', '20+ export countries', 'Repeat customers in 80% of markets', 'Projects from 500 to 100,000 birds'],
+      items: ['Established farm installations', 'Multiple export markets', 'Repeat customers across regions', 'Projects from small to large scale'],
     },
     {
       icon: 'file-text',
