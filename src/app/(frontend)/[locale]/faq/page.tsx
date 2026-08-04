@@ -75,7 +75,7 @@ export default async function FaqPage({ params }: Props) {
         breadcrumb={`${tHome.breadcrumb?.home || 'Home'} / ${t.breadcrumb?.faq || 'FAQ'}`}
       />
 
-      <section className="max-w-3xl mx-auto px-6 py-16 md:py-24">
+      <section className="max-w-5xl mx-auto px-6 py-16 md:py-24">
         {/* Quick category chips */}
         <Reveal>
           <div className="flex flex-wrap gap-2 mb-10">

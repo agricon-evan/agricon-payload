@@ -114,6 +114,28 @@ export default async function CaseStudyDetailPage({ params }: Props) {
           </Reveal>
         )}
 
+        {/* Challenge → Solution story — from company catalog */}
+        {(cs as any).challenge && (
+          <Reveal>
+            <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-5">
+              <div className="card p-6">
+                <div className="flex items-center gap-2 text-sm font-semibold text-[var(--color-primary)]">
+                  <Icon name="alert" size={16} />
+                  The Challenge
+                </div>
+                <p className="mt-3 text-sm text-[var(--color-text-secondary)] leading-relaxed">{(cs as any).challenge}</p>
+              </div>
+              <div className="card p-6 border-[var(--color-primary)]/30 bg-[var(--color-primary)]/4">
+                <div className="flex items-center gap-2 text-sm font-semibold text-[var(--color-primary)]">
+                  <Icon name="check-circle" size={16} />
+                  How We Solved It
+                </div>
+                <p className="mt-3 text-sm text-[var(--color-text-secondary)] leading-relaxed">{(cs as any).application}</p>
+              </div>
+            </div>
+          </Reveal>
+        )}
+
         {/* Related solution */}
         {relatedSolution && (
           <Reveal>

@@ -14,6 +14,9 @@ export const CaseStudies: CollectionConfig = {
     { name: 'summary', type: 'textarea', localized: true },
     { name: 'content', type: 'richText', localized: true },
     { name: 'location', type: 'text', localized: true },
+    { name: 'equipment', type: 'textarea', localized: true, label: 'Equipment Supplied' },
+    { name: 'application', type: 'textarea', localized: true, label: 'Application' },
+    { name: 'challenge', type: 'textarea', localized: true, label: 'Project Challenge' },
     {
       name: 'country',
       type: 'relationship',
