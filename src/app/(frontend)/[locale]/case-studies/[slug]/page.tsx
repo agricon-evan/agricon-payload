@@ -14,7 +14,7 @@ export const dynamic = 'force-dynamic'
 export default async function CaseStudyDetailPage({ params }: Props) {
   const { locale, slug } = await params
   const cases = await getCaseStudies(locale)
-  const cs = cases.find((c: any) => c.slug === slug) as any
+  const cs = cases.find((c) => c.slug === slug)
 
   if (!cs) {
     return (

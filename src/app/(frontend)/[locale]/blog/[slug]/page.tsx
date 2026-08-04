@@ -12,7 +12,7 @@ export const dynamic = 'force-dynamic'
 export default async function BlogPostPage({ params }: Props) {
   const { locale, slug } = await params
   const posts = await getBlogPosts(locale)
-  const post = posts.find((p: any) => p.slug === slug) as any
+  const post = posts.find((p) => p.slug === slug)
 
   if (!post) {
     return (

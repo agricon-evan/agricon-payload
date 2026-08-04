@@ -15,6 +15,7 @@ interface SearchPageProps {
   contactCta: string
 }
 
+interface PayloadDoc { id: string; name?: string; title?: string; description?: string; slug?: string; images?: { image?: { url?: string } }[]; subcategory?: { slug?: string; category?: { slug?: string } } }
 interface SearchResult {
   id: string; title: string; description: string; url: string; type: string; image?: string
 }
@@ -37,15 +38,15 @@ function SearchContent(props: SearchPageProps) {
       const prodRes = await fetch(`/api/products?limit=10&locale=${locale}&where[name][contains]=${encodeURIComponent(kw)}`, { credentials: 'include' })
       if (prodRes.ok) {
         const prodData = await prodRes.json()
-        ;(prodData.docs || []).forEach((p: any) => {
+        ;(prodData.docs || []).forEach((p: PayloadDoc) => {
           const sub = p.subcategory; const cat = sub?.category
-          hits.push({ id: p.id, title: p.name, description: p.description || '', url: `/${locale}/products/${cat?.slug || ''}/${sub?.slug || ''}/${p.slug}`, type: 'Product', image: p.images?.[0]?.image?.url })
+          hits.push({ id: p.id, title: p.name || '', description: p.description || '', url: `/${locale}/products/${cat?.slug || ''}/${sub?.slug || ''}/${p.slug || ''}`, type: 'Product', image: p.images?.[0]?.image?.url })
         })
       }
       const solRes = await fetch(`/api/solutions?limit=5&locale=${locale}&where[name][contains]=${encodeURIComponent(kw)}`, { credentials: 'include' })
       if (solRes.ok) {
         const solData = await solRes.json()
-        ;(solData.docs || []).forEach((s: any) => hits.push({ id: s.id, title: s.name, description: s.description || '', url: `/${locale}/solutions/${s.slug}`, type: 'Solution' }))
+        ;(solData.docs || []).forEach((s: PayloadDoc) => hits.push({ id: s.id, title: s.name || '', description: s.description || '', url: `/${locale}/solutions/${s.slug || ''}`, type: 'Solution' }))
       }
       setResults(hits.slice(0, 20))
     } catch { setResults([]) } finally { setLoading(false) }

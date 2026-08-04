@@ -29,6 +29,7 @@ export function localizedPath(p: string, locale: Locale): string {
 }
 
 // Inline translations to avoid Node.js dependencies
+// eslint-disable-next-line @typescript-eslint/no-explicit-any -- dynamic nested translation structure
 const translations: Record<Locale, Record<string, any>> = {
   en: {
     common: {
@@ -686,6 +687,7 @@ const translations: Record<Locale, Record<string, any>> = {
   },
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any -- dynamic nested translation structure
 const jsonTranslations: Record<string, Record<string, any>> = {
   "en": {
     "common": {
@@ -1525,6 +1527,8 @@ const jsonTranslations: Record<string, Record<string, any>> = {
 };
 
 // getTranslations merges: JSON files (page-specific) + inline translations (common UI)
+// eslint-disable-next-line @typescript-eslint/no-explicit-any -- dynamic translation access
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function getTranslations(locale: Locale, namespace: string): Record<string, any> {
   const jsonData = jsonTranslations[locale]?.[namespace] ?? {};
   const inlineData = translations[locale]?.[namespace] ?? {};
@@ -1539,6 +1543,7 @@ export function getTranslations(locale: Locale, namespace: string): Record<strin
 }
 
 // Flatten a nested translation object into dot-notation keys: { a: { b: 'x' } } -> { 'a.b': 'x' }
+// eslint-disable-next-line @typescript-eslint/no-explicit-any -- recursive flattening
 export function flattenTranslations(obj: Record<string, any>, prefix = ''): Record<string, string> {
   const result: Record<string, string> = {};
   for (const [key, value] of Object.entries(obj)) {

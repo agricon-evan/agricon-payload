@@ -8,16 +8,35 @@ interface Props {
   locale: Locale
 }
 
+// Unified display shape — maps both CMS posts and placeholders into one structure
+interface NewsItem {
+  title: string
+  excerpt: string
+  date: string
+  slug: string
+  coverUrl: string | null
+}
+
 export default async function LatestNews({ locale }: Props) {
   const posts = await getBlogPosts(locale)
   const lp = locale === 'en' ? '' : `/${locale}`
 
-  const placeholders = [
-    { title: 'How to Choose the Right Layer Cage System', excerpt: 'A-type vs H-type vs manure-belt: capacity, cost and climate considerations for your poultry house.', date: '2026', slug: '' },
-    { title: '5 Key Factors for Incubation Success', excerpt: 'Temperature, humidity, turning, ventilation and sanitation — the science behind hatch rate.', date: '2026', slug: '' },
-    { title: 'Designing a Profitable Broiler House', excerpt: 'Stocking density, ventilation and feeding automation that maximize your return per square meter.', date: '2026', slug: '' },
+  // Map CMS posts to the unified shape
+  const cmsItems: NewsItem[] = posts.map((p: any) => ({
+    title: p.title || '',
+    excerpt: p.excerpt || p.subtitle || '',
+    date: p.createdAt ? new Date(p.createdAt).getFullYear().toString() : '2026',
+    slug: p.slug || '',
+    coverUrl: typeof p.coverImage === 'object' && p.coverImage?.url ? p.coverImage.url : null,
+  }))
+
+  const placeholders: NewsItem[] = [
+    { title: 'How to Choose the Right Layer Cage System', excerpt: 'A-type vs H-type vs manure-belt: capacity, cost and climate considerations for your poultry house.', date: '2026', slug: '', coverUrl: null },
+    { title: '5 Key Factors for Incubation Success', excerpt: 'Temperature, humidity, turning, ventilation and sanitation — the science behind hatch rate.', date: '2026', slug: '', coverUrl: null },
+    { title: 'Designing a Profitable Broiler House', excerpt: 'Stocking density, ventilation and feeding automation that maximize your return per square meter.', date: '2026', slug: '', coverUrl: null },
   ]
-  const items = posts.length > 0 ? posts : placeholders
+
+  const items = cmsItems.length > 0 ? cmsItems : placeholders
 
   return (
     <section className="max-w-7xl mx-auto px-6 py-16 md:py-24">
@@ -34,22 +53,20 @@ export default async function LatestNews({ locale }: Props) {
         </div>
       </Reveal>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
-        {items.map((p: any, i: number) => (
-          <Reveal key={p.id || i} delay={i * 100} className="h-full">
+        {items.map((p, i) => (
+          <Reveal key={i} delay={i * 100} className="h-full">
             <article className="card card-hover h-full flex flex-col">
               <div className="aspect-video bg-[var(--color-muted)] flex items-center justify-center icon-zoom overflow-hidden">
-                {p.coverImage && typeof p.coverImage === 'object' && p.coverImage.url ? (
-                  <img src={p.coverImage.url} alt={p.title} className="w-full h-full object-cover" loading="lazy" />
+                {p.coverUrl ? (
+                  <img src={p.coverUrl} alt={p.title} className="w-full h-full object-cover" loading="lazy" />
                 ) : (
                   <Icon name="file-text" size={36} className="text-[var(--color-text-secondary)]/30" />
                 )}
               </div>
               <div className="p-6 flex flex-col flex-1">
-                <p className="text-xs text-[var(--color-text-secondary)]">{p.date || '2026'}</p>
+                <p className="text-xs text-[var(--color-text-secondary)]">{p.date}</p>
                 <h3 className="mt-2 text-[var(--color-text)] flex-1">{p.title}</h3>
-                {p.subtitle || p.excerpt ? (
-                  <p className="mt-2 text-sm text-[var(--color-text-secondary)] line-clamp-2 leading-relaxed">{p.subtitle || p.excerpt}</p>
-                ) : null}
+                <p className="mt-2 text-sm text-[var(--color-text-secondary)] line-clamp-2 leading-relaxed">{p.excerpt}</p>
                 {p.slug && (
                   <Link href={`${lp}/blog/${p.slug}`} className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--color-primary)]">
                     Read more

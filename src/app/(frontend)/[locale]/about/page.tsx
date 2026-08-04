@@ -16,6 +16,7 @@ export default async function AboutPage({ params }: Props) {
   const t = getTranslations(locale as Locale, 'common')
   const tHome = getTranslations(locale as Locale, 'home')
   const settings = await getSiteSettings()
+  const stats = (settings?.stats ?? {}) as { countriesServed?: string; farmProjects?: string; yearsInBusiness?: string; equipmentModels?: string }
 
   const milestones = [
     { year: '2010', title: 'Founded', desc: 'Agricon established as a poultry equipment manufacturer in China, focused on export markets.' },
@@ -119,10 +120,10 @@ export default async function AboutPage({ params }: Props) {
       <section className="bg-[var(--color-primary-dark)] text-white py-12 md:py-16">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           {[
-            { num: (settings?.stats as any)?.countriesServed || '20+', label: 'Countries Served' },
-            { num: (settings?.stats as any)?.farmProjects || '100+', label: 'Projects Delivered' },
-            { num: (settings?.stats as any)?.yearsInBusiness || '10+', label: 'Years in Business' },
-            { num: (settings?.stats as any)?.equipmentModels || '200+', label: 'Equipment Models' },
+            { num: stats.countriesServed || '20+', label: 'Countries Served' },
+            { num: stats.farmProjects || '100+', label: 'Projects Delivered' },
+            { num: stats.yearsInBusiness || '10+', label: 'Years in Business' },
+            { num: stats.equipmentModels || '200+', label: 'Equipment Models' },
           ].map((s, i) => (
             <div key={s.label} className={`reveal reveal-fade-up stagger-${i + 1}`}>
               <div className="stat-num">{s.num}</div>

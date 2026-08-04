@@ -50,7 +50,7 @@ export default async function FaqPage({ params }: Props) {
           </Reveal>
         ) : (
           <div className="space-y-4">
-            {faqs.map((faq: any, i: number) => (
+            {faqs.map((faq, i) => (
               <Reveal key={faq.id} delay={(i % 5) * 60}>
                 <details className="group card overflow-hidden">
                   <summary className="flex items-center justify-between gap-4 px-5 py-4 font-medium text-[var(--color-text)] cursor-pointer min-h-[48px] list-none tap-target">
@@ -71,9 +71,9 @@ export default async function FaqPage({ params }: Props) {
             <h2 className="text-xl font-bold text-[var(--color-text)] mb-6">{t.relatedSupport?.title || 'Additional Support Resources'}</h2>
           </Reveal>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            {Object.entries(supportItems).map(([key, item]: [string, any], i: number) => (
+            {Object.entries(supportItems).map(([key, item]: [string, { title: string; description: string }], i: number) => (
               <Reveal key={key} delay={i * 80} className="h-full">
-                <a href={`/${locale}${item.href || ''}`} className="card card-hover p-5 h-full block">
+                <a href={`/${locale}$`} className="card card-hover p-5 h-full block">
                   <div className="w-9 h-9 rounded-md bg-[var(--color-primary)]/8 text-[var(--color-primary)] flex items-center justify-center mb-3">
                     <Icon name={supportIcon[i] || 'file'} size={18} />
                   </div>

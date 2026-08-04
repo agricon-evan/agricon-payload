@@ -39,7 +39,7 @@ export default async function BlogPage({ params }: Props) {
           </Reveal>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
-            {posts.map((post: any, i: number) => (
+            {posts.map((post, i) => (
               <Reveal key={post.id} delay={(i % 3) * 80} className="h-full">
                 <a href={`${lp}/blog/${post.slug}`} className="card card-hover h-full block">
                   <div className="aspect-video bg-[var(--color-muted)] flex items-center justify-center icon-zoom overflow-hidden">
@@ -50,7 +50,7 @@ export default async function BlogPage({ params }: Props) {
                     )}
                   </div>
                   <div className="p-6">
-                    <p className="text-xs text-[var(--color-text-secondary)]">{post.date || new Date(post.createdAt).toLocaleDateString()}</p>
+                    <p className="text-xs text-[var(--color-text-secondary)]">{post.createdAt ? new Date(post.createdAt).getFullYear() : '2026'}</p>
                     <h2 className="mt-2 text-[var(--color-text)]">{post.title}</h2>
                     {post.excerpt && <p className="mt-2 text-sm text-[var(--color-text-secondary)] line-clamp-2 leading-relaxed">{post.excerpt}</p>}
                   </div>

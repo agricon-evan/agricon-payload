@@ -39,7 +39,7 @@ export default async function CaseStudiesPage({ params }: Props) {
           </Reveal>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
-            {cases.map((cs: any, i: number) => (
+            {cases.map((cs, i) => (
               <Reveal key={cs.id} delay={(i % 3) * 80} className="h-full">
                 <a href={`${lp}/case-studies/${cs.slug}`} className="card card-hover h-full block">
                   <div className="aspect-video bg-[var(--color-muted)] flex items-center justify-center icon-zoom overflow-hidden">

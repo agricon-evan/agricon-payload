@@ -4,6 +4,7 @@ import { getSolutions } from '@/lib/payload'
 import CtaSection from '@/components/CtaSection'
 import Reveal from '@/components/ui/Reveal'
 import Icon from '@/components/ui/Icon'
+import type { Product } from '@/payload-types'
 
 interface Props {
   params: Promise<{ locale: string; slug: string }>
@@ -15,7 +16,7 @@ export default async function SolutionDetailPage({ params }: Props) {
   const { locale, slug } = await params
   const t = getTranslations(locale as Locale, 'productDetail')
   const solutions = await getSolutions(locale)
-  const solution = solutions.find((s: any) => s.slug === slug)
+  const solution = solutions.find((s) => s.slug === slug)
 
   if (!solution) {
     return (
@@ -29,7 +30,7 @@ export default async function SolutionDetailPage({ params }: Props) {
     )
   }
 
-  const s = solution as any
+  const s = solution
 
   return (
     <>
@@ -44,11 +45,11 @@ export default async function SolutionDetailPage({ params }: Props) {
           <div className="mt-10">
             <h2 className="text-lg font-semibold mb-4 text-[var(--color-text)]">Key Features</h2>
             <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
-              {(s.features as any[]).map((f: any, i: number) => (
+              {(s.features).map((f, i) => (
                 <Reveal key={i} delay={(i % 2) * 60}>
                   <li className="flex items-start gap-3 p-4 card">
                     <Icon name="check" size={16} className="text-[var(--color-primary)] mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-[var(--color-text-secondary)] leading-relaxed">{f.feature || f}</span>
+                    <span className="text-sm text-[var(--color-text-secondary)] leading-relaxed">{typeof f === 'object' && f !== null ? (f.feature ?? '') : (typeof f === 'string' ? f : '')}</span>
                   </li>
                 </Reveal>
               ))}
@@ -60,10 +61,13 @@ export default async function SolutionDetailPage({ params }: Props) {
           <div className="mt-12">
             <h2 className="text-lg font-semibold mb-4 text-[var(--color-text)]">{t.relatedProducts || 'Related Products'}</h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {(s.products as any[]).map((p: any, i: number) => (
+              {(s.products as Array<Product | number>)
+                .filter((p): p is Product => typeof p === 'object' && p !== null)
+                .slice(0, 4)
+                .map((p, i) => (
                 <Reveal key={p.id} delay={i * 60} className="h-full">
                   <a
-                    href={`/${locale}/products/${p.subcategory?.category?.slug || ''}/${p.subcategory?.slug || ''}/${p.slug}`}
+                    href={`/${locale}/products/${typeof p.subcategory === 'object' && p.subcategory ? (p.subcategory as any)?.category?.slug || '' : ''}/${typeof p.subcategory === 'object' && p.subcategory ? (p.subcategory as any)?.slug || '' : ''}/${p.slug}`}
                     className="card card-hover p-4 text-center h-full block"
                   >
                     <div className="w-9 h-9 rounded-md bg-[var(--color-primary)]/8 text-[var(--color-primary)] flex items-center justify-center mx-auto mb-2.5">

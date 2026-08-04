@@ -49,7 +49,7 @@ export default async function ProductsPage({ params }: Props) {
           </Reveal>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
-            {categories.map((cat: any, i: number) => (
+            {categories.map((cat, i) => (
               <Reveal key={cat.id} delay={(i % 3) * 80} className="h-full">
                 <a href={`${lp}/products/${cat.slug}`} className="card card-hover h-full block group">
                   <div className="aspect-[16/9] bg-[var(--color-muted)] flex items-center justify-center icon-zoom overflow-hidden">

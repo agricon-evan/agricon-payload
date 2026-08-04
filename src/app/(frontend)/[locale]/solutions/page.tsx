@@ -46,7 +46,7 @@ export default async function SolutionsPage({ params }: Props) {
           </Reveal>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
-            {solutions.map((s: any, i: number) => (
+            {solutions.map((s, i) => (
               <Reveal key={s.id} delay={(i % 2) * 80} className="h-full">
                 <a href={`${lp}/solutions/${s.slug}`} className="card card-hover p-6 md:p-8 h-full block group">
                   <div className="w-11 h-11 rounded-md bg-[var(--color-primary)]/8 text-[var(--color-primary)] flex items-center justify-center mb-5 transition-colors group-hover:bg-[var(--color-primary)] group-hover:text-white">

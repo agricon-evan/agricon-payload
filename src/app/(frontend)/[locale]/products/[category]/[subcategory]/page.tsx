@@ -16,8 +16,8 @@ export const dynamic = 'force-dynamic'
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, subcategory } = await params
   const subs = await getSubcategories(locale)
-  const sub = subs.find((s: any) => s.slug === subcategory)
-  return { title: (sub as any)?.name || subcategory, description: (sub as any)?.description || '' }
+  const sub = subs.find((s) => s.slug === subcategory)
+  return { title: (sub)?.name || subcategory, description: (sub)?.description || '' }
 }
 
 export default async function SubcategoryPage({ params }: Props) {
@@ -26,12 +26,13 @@ export default async function SubcategoryPage({ params }: Props) {
   const tHome = getTranslations(locale as Locale, 'home')
   const products = await getProducts(locale)
   const subs = await getSubcategories(locale)
-  const sub = subs.find((s: any) => s.slug === subSlug) as any
+  const sub = subs.find((s) => s.slug === subSlug)
   const cat = sub?.category
-  const catSlugFromCat = cat?.slug || catSlug
+  const catObj = typeof cat === 'object' && cat !== null ? cat : null
+  const catSlugFromCat = catObj?.slug || catSlug
   const lp = locale === 'en' ? '' : `/${locale}`
 
-  const subProducts = products.filter((p: any) => {
+  const subProducts = products.filter((p) => {
     const s = p.subcategory
     return typeof s === 'object' && s?.slug === subSlug
   })
@@ -52,8 +53,8 @@ export default async function SubcategoryPage({ params }: Props) {
     <>
       <PageHero
         title={sub.name}
-        description={sub.description}
-        breadcrumb={`${tHome.breadcrumb?.home || 'Home'} / ${t.nav?.products || 'Products'} / ${cat?.name || catSlug} / ${sub.name}`}
+        description={sub.description ?? undefined}
+        breadcrumb={`${tHome.breadcrumb?.home || 'Home'} / ${t.nav?.products || 'Products'} / ${catObj?.name || catSlug} / ${sub.name}`}
       />
       <section className="max-w-7xl mx-auto px-6 py-16 md:py-24">
         {subProducts.length === 0 ? (
@@ -74,7 +75,7 @@ export default async function SubcategoryPage({ params }: Props) {
           </Reveal>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
-            {subProducts.map((p: any, i: number) => (
+            {subProducts.map((p, i) => (
               <Reveal key={p.id} delay={(i % 3) * 80} className="h-full">
                 <a href={`${lp}/products/${catSlugFromCat}/${subSlug}/${p.slug}`} className="card card-hover h-full block group">
                   <div className="aspect-[4/3] bg-[var(--color-muted)] flex items-center justify-center overflow-hidden">

@@ -189,7 +189,7 @@ export default function ContactForm(props: ContactFormProps) {
           <div className="card p-6">
             <h3 className="font-semibold text-[var(--color-text)] mb-4">{responseLabel}</h3>
             <ul className="space-y-4">
-              {responseInfo.items.map((item: any, i: number) => (
+              {responseInfo.items.map((item: { title?: string; description?: string }, i: number) => (
                 <li key={i} className="flex items-start gap-3">
                   <span className="w-7 h-7 rounded-full bg-[var(--color-primary)]/10 text-[var(--color-primary)] flex items-center justify-center flex-shrink-0 font-semibold text-xs tabular-nums">{['1', '2', '3'][i]}</span>
                   <div>

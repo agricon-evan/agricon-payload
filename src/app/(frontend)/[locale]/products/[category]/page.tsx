@@ -16,7 +16,7 @@ export const dynamic = 'force-dynamic'
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, category } = await params
   const categories = await getCategories(locale)
-  const cat = categories.find((c: any) => c.slug === category)
+  const cat = categories.find((c) => c.slug === category)
   return { title: cat?.name || category, description: cat?.description || '' }
 }
 
@@ -26,10 +26,10 @@ export default async function CategoryPage({ params }: Props) {
   const tHome = getTranslations(locale as Locale, 'home')
   const categories = await getCategories(locale)
   const subcategories = await getSubcategories(locale)
-  const cat = categories.find((c: any) => c.slug === catSlug)
+  const cat = categories.find((c) => c.slug === catSlug)
   const lp = locale === 'en' ? '' : `/${locale}`
 
-  const subs = subcategories.filter((s: any) => {
+  const subs = subcategories.filter((s) => {
     const c = s.category
     return typeof c === 'object' && c?.slug === catSlug
   })
@@ -49,9 +49,9 @@ export default async function CategoryPage({ params }: Props) {
   return (
     <>
       <PageHero
-        title={(cat as any).name}
-        description={(cat as any).description}
-        breadcrumb={`${tHome.breadcrumb?.home || 'Home'} / ${t.nav?.products || 'Products'} / ${(cat as any).name}`}
+        title={cat?.name || catSlug}
+        description={cat?.description ?? undefined}
+        breadcrumb={`${tHome.breadcrumb?.home || 'Home'} / ${t.nav?.products || 'Products'} / ${cat?.name || catSlug}`}
       />
       <section className="max-w-7xl mx-auto px-6 py-16 md:py-24">
         {subs.length === 0 ? (
@@ -72,7 +72,7 @@ export default async function CategoryPage({ params }: Props) {
           </Reveal>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
-            {subs.map((sub: any, i: number) => (
+            {subs.map((sub, i) => (
               <Reveal key={sub.id} delay={(i % 3) * 80} className="h-full">
                 <a href={`${lp}/products/${catSlug}/${sub.slug}`} className="card card-hover h-full block group">
                   <div className="aspect-[16/9] bg-[var(--color-muted)] flex items-center justify-center overflow-hidden">

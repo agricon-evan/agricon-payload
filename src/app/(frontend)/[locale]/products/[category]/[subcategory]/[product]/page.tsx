@@ -15,7 +15,7 @@ export default async function ProductDetailPage({ params }: Props) {
   const { locale, product: productSlug } = await params
   const t = getTranslations(locale as Locale, 'productDetail')
   const products = await getProducts(locale)
-  const product = products.find((p: any) => p.slug === productSlug)
+  const product = products.find((p) => p.slug === productSlug)
 
   if (!product) {
     return (
@@ -29,7 +29,7 @@ export default async function ProductDetailPage({ params }: Props) {
     )
   }
 
-  const p = product as any
+  const p = product
   const images = p.images || []
   const specs = p.specs || []
   const features = p.features || []
@@ -50,7 +50,7 @@ export default async function ProductDetailPage({ params }: Props) {
             </div>
             {images.length > 1 && (
               <div className="grid grid-cols-4 gap-3 mt-3">
-                {images.slice(0, 4).map((img: any, i: number) => (
+                {images.slice(0, 4).map((img, i) => (
                   <div key={i} className="aspect-square rounded-md bg-[var(--color-muted)] overflow-hidden">
                     {img.image && typeof img.image === 'object' && img.image.url ? (
                       <img src={img.image.url} alt="" className="w-full h-full object-cover" />
@@ -91,7 +91,7 @@ export default async function ProductDetailPage({ params }: Props) {
                     {t.keySpecifications || 'Key Specifications'}
                   </h2>
                   <dl className="divide-y divide-[var(--color-border)]">
-                    {specs.slice(0, 6).map((s: any, i: number) => (
+                    {specs.slice(0, 6).map((s, i) => (
                       <div key={i} className="flex justify-between gap-4 px-5 py-3">
                         <dt className="text-sm text-[var(--color-text-secondary)]">{s.label}</dt>
                         <dd className="text-sm font-medium text-[var(--color-text)] text-right">{s.value}</dd>
@@ -105,10 +105,10 @@ export default async function ProductDetailPage({ params }: Props) {
                 <div>
                   <h2 className="font-semibold text-lg mb-3 text-[var(--color-text)]">{t.tabs?.overview || 'Features'}</h2>
                   <ul className="space-y-2.5">
-                    {features.map((f: any, i: number) => (
+                    {features.map((f, i) => (
                       <li key={i} className="flex items-start gap-2.5 text-sm text-[var(--color-text-secondary)]">
                         <Icon name="check" size={15} className="text-[var(--color-primary)] mt-0.5 flex-shrink-0" />
-                        <span className="leading-relaxed">{f.feature || f}</span>
+                        <span className="leading-relaxed">{typeof f === 'object' ? (f.feature ?? '') : f}</span>
                       </li>
                     ))}
                   </ul>
