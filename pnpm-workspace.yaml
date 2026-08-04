@@ -1,0 +1,8 @@
+# pnpm 11: allow native/build dependencies to run install scripts
+# Required for esbuild (Next.js/Turbopack), sharp (image processing),
+# bufferutil/utf-8-validate (websocket), etc.
+allowBuilds:
+  bufferutil: true
+  esbuild: true
+  sharp: true
+  utf-8-validate: true

@@ -32,6 +32,26 @@ const securityHeaders = [
     key: 'Permissions-Policy',
     value: 'camera=(), microphone=(), geolocation=(), payment=(), usb=()',
   },
+  // Content-Security-Policy
+  // NOTE: 'unsafe-inline' / 'unsafe-eval' are required because the Payload
+  // admin panel relies on inline scripts. Tighten (e.g. add nonces) only after
+  // verifying the admin UI still works with a stricter policy.
+  {
+    key: 'Content-Security-Policy',
+    value: [
+      "default-src 'self'",
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
+      "style-src 'self' 'unsafe-inline'",
+      "img-src 'self' data: blob: https:",
+      "font-src 'self' data:",
+      "connect-src 'self'",
+      "frame-ancestors 'none'",
+      "base-uri 'self'",
+      "form-action 'self'",
+      "object-src 'none'",
+      "upgrade-insecure-requests",
+    ].join('; '),
+  },
 ]
 
 const nextConfig: NextConfig = {

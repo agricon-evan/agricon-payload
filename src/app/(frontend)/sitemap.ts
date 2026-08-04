@@ -2,7 +2,7 @@ import type { MetadataRoute } from 'next'
 import { locales } from '@/i18n/config'
 import { getPayloadClient } from '@/lib/payload'
 
-const SITE_URL = 'https://www.agricon.com'
+const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.agricon.com').replace(/\/$/, '')
 
 const staticRoutes = [
   '/products', '/solutions', '/contact', '/about',
