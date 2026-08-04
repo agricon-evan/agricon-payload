@@ -52,7 +52,7 @@ src/
 ## 本地开发
 
 ```bash
-# 前置：Node.js >= 22（.nvmrc = 22）
+# 前置：Node.js >= 20（推荐 22 LTS）
 
 npm install
 npm run dev

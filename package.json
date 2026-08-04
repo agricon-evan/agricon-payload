@@ -19,7 +19,7 @@
     "test:int": "cross-env NODE_OPTIONS=--no-deprecation vitest run --config ./vitest.config.mts"
   },
   "dependencies": {
-    "@payloadcms/db-sqlite": "^3.82.1",
+    "@payloadcms/db-sqlite": "3.82.1",
     "@payloadcms/db-vercel-postgres": "3.82.1",
     "@payloadcms/next": "3.82.1",
     "@payloadcms/richtext-lexical": "3.82.1",
@@ -51,9 +51,8 @@
     "vite-tsconfig-paths": "6.0.5",
     "vitest": "4.1.6"
   },
-  "packageManager": "pnpm@10.33.0",
   "engines": {
-    "node": ">=24.15.0"
+    "node": ">=20"
   },
   "pnpm": {
     "onlyBuiltDependencies": [

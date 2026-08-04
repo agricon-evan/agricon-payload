@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Agricon 项目健康检查报告</title>
+<style>
+  :root{
+    --bg:#f7f8fa; --card:#ffffff; --ink:#1f2937; --muted:#6b7280;
+    --ok:#16a34a; --okbg:#ecfdf5; --warn:#d97706; --warnbg:#fffbeb;
+    --bad:#dc2626; --badbg:#fef2f2; --line:#e5e7eb; --accent:#2563eb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.6;padding:32px}
+  .wrap{max-width:960px;margin:0 auto}
+  h1{font-size:24px;margin:0 0 4px}
+  .sub{color:var(--muted);font-size:13px;margin-bottom:24px}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:28px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px}
+  .card .n{font-size:30px;font-weight:700}
+  .card .l{color:var(--muted);font-size:13px}
+  .card.ok .n{color:var(--ok)} .card.warn .n{color:var(--warn)} .card.bad .n{color:var(--bad)}
+  section{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;margin-bottom:20px}
+  section h2{font-size:17px;margin:0 0 14px;display:flex;align-items:center;gap:8px}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--muted);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.04em}
+  .pill{display:inline-block;padding:2px 10px;border-radius:999px;font-size:12px;font-weight:600}
+  .p-ok{background:var(--okbg);color:var(--ok)}
+  .p-warn{background:var(--warnbg);color:var(--warn)}
+  .p-bad{background:var(--badbg);color:var(--bad)}
+  .p-info{background:#eff6ff;color:var(--accent)}
+  .lvl{font-weight:700}
+  .lvl.p0{color:var(--bad)} .lvl.p1{color:var(--warn)} .lvl.p2{color:var(--muted)}
+  code{background:#f3f4f6;padding:1px 6px;border-radius:6px;font-size:12.5px}
+  ul{margin:8px 0 0;padding-left:20px} li{margin:6px 0}
+  .note{color:var(--muted);font-size:12.5px;margin-top:10px}
+  .tag{font-size:11px;color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:1px 7px;margin-right:6px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Agricon 项目健康检查报告</h1>
+  <div class="sub">Payload CMS 3.82 + Next.js 16 (App Router) · 检查时间 2026-08-04 · 工作区 D:\agricon-payload</div>
+
+  <div class="cards">
+    <div class="card ok"><div class="n">3</div><div class="l">核心门禁通过 (Lint / TS / Build)</div></div>
+    <div class="card warn"><div class="n">2</div><div class="l">部分通过 (Vitest 薄 / 审计未跑)</div></div>
+    <div class="card bad"><div class="n">2</div><div class="l">高风险未解决 (E2E / 依赖管理)</div></div>
+  </div>
+
+  <section>
+    <h2>✅ 检查明细</h2>
+    <table>
+      <thead><tr><th>检查项</th><th>结果</th><th>关键数据</th></tr></thead>
+      <tbody>
+        <tr><td>ESLint 静态分析</td><td><span class="pill p-ok">通过</span></td><td>0 错误 / <b>107 警告</b>（exit 0）</td></tr>
+        <tr><td>TypeScript 类型检查</td><td><span class="pill p-ok">通过</span></td><td>0 错误（tsc --noEmit）</td></tr>
+        <tr><td>Next.js 生产构建</td><td><span class="pill p-ok">通过</span></td><td>exit 0，耗时 2m38s，6 语言静态+SSG+动态路由，无警告</td></tr>
+        <tr><td>Vitest 集成测试</td><td><span class="pill p-warn">部分</span></td><td>exit 0（31s），但仅 <b>1 个用例</b>（users 查询），覆盖极薄</td></tr>
+        <tr><td>Playwright E2E</td><td><span class="pill p-bad">失败</span></td><td>exit 1：2 失败（浏览器缺失）+ 2 未运行；frontend 用例断言过时</td></tr>
+        <tr><td>依赖漏洞扫描</td><td><span class="pill p-info">未执行</span></td><td>npm audit 因 npmmirror 镜像未实现 security 端点失败</td></tr>
+        <tr><td>Git 工作区</td><td><span class="pill p-ok">通过</span></td><td>无未提交改动；.gitignore 正确忽略 .env / *.db / payload-types.ts</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>🔴 问题清单（按优先级）</h2>
+    <table>
+      <thead><tr><th>级别</th><th>问题</th><th>影响 / 建议</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="lvl p0">P0</span></td>
+          <td>E2E 测试失效且内容过时</td>
+          <td>Playwright Chromium 未安装 → <code>npm run test:e2e</code> 直接失败；<code>frontend.e2e.spec.ts</code> 断言默认模板（Payload Blank Template / Welcome to your new project），而首页实为 Agricon 家禽畜牧设备站（已验证）。<br><b>建议：</b><code>npx playwright install chromium</code> 并重写 E2E 断言以匹配真实站点，或暂时从 CI 门禁排除。</td>
+        </tr>
+        <tr>
+          <td><span class="lvl p0">P0</span></td>
+          <td>依赖管理器错配</td>
+          <td><code>package.json</code> 声明 <code>packageManager: pnpm@10.33.0</code> 且脚本全用 <code>pnpm run</code>，但仓库仅有 <code>package-lock.json</code>，缺 <code>pnpm-lock.yaml</code> → 可重现构建存疑。<br><b>建议：</b>统一为 pnpm（<code>pnpm install</code> 生成 lockfile）或改用 npm 并移除 packageManager 字段。</td>
+        </tr>
+        <tr>
+          <td><span class="lvl p1">P1</span></td>
+          <td>Payload 依赖版本不统一</td>
+          <td><code>@payloadcms/db-sqlite</code> 用 <code>^3.82.1</code>（caret），其余 payload 包均精确锁 <code>3.82.1</code>。Payload 生态要求同版本，caret 可能漂移致运行时不兼容。<br><b>建议：</b>锁定为 <code>3.82.1</code>。</td>
+        </tr>
+        <tr>
+          <td><span class="lvl p1">P1</span></td>
+          <td>缺少 <code>.env.example</code></td>
+          <td>协作者不知需哪些环境变量（PAYLOAD_SECRET / DATABASE_URI / POSTGRES_URL / BLOB_READ_WRITE_TOKEN）。<br><b>建议：</b>添加带占位符的 <code>.env.example</code>。</td>
+        </tr>
+        <tr>
+          <td><span class="lvl p1">P1</span></td>
+          <td>未配置安全响应头</td>
+          <td><code>next.config.ts</code> 无 CSP / HSTS / X-Frame-Options / Referrer-Policy。<br><b>建议：</b>添加 <code>async headers()</code> 安全头。</td>
+        </tr>
+        <tr>
+          <td><span class="lvl p2">P2</span></td>
+          <td>107 个 Lint 警告</td>
+          <td>77 <code>any</code> 类型 / 18 未使用变量 / 11 <code>&lt;img&gt;</code>（建议换 next/image 优化 LCP）。不阻断但影响类型安全与性能。</td>
+        </tr>
+        <tr>
+          <td><span class="lvl p2">P2</span></td>
+          <td>测试覆盖薄</td>
+          <td>仅 1 个集成用例，无组件/页面/API 实质测试，质量门禁形同虚设。</td>
+        </tr>
+        <tr>
+          <td><span class="lvl p2">P2</span></td>
+          <td>文档与配置不一致</td>
+          <td>README 写 Node ≥22 / <code>npm</code>，实际 <code>engines ≥24.15.0</code> / <code>pnpm</code>。</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="note">信息项：依赖漏洞扫描因私有镜像源限制未能运行，建议用官方 registry 执行 <code>npm audit</code> 或 <code>pnpm audit</code> 评估已知漏洞。</div>
+  </section>
+
+  <section>
+    <h2>🛠 建议修复命令</h2>
+    <ul>
+      <li><span class="tag">P0</span><code>pnpm install</code> → 生成 <code>pnpm-lock.yaml</code>，统一依赖管理</li>
+      <li><span class="tag">P0</span><code>npx playwright install chromium</code> → 安装 E2E 浏览器</li>
+      <li><span class="tag">P1</span><code>pnpm add @payloadcms/db-sqlite@3.82.1</code> → 去除 caret，锁定版本</li>
+      <li><span class="tag">P1</span>新增 <code>.env.example</code>，列出四项环境变量占位符</li>
+      <li><span class="tag">P1</span>在 <code>next.config.ts</code> 增加 <code>headers()</code> 安全头配置</li>
+      <li><span class="tag">P2</span>扩充 Vitest 用例（组件/页面/API），重写 E2E 断言</li>
+    </ul>
+  </section>
+</div>
+</body>
+</html>

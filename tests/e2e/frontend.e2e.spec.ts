@@ -1,20 +1,70 @@
-import { test, expect, Page } from '@playwright/test'
+import { test, expect } from '@playwright/test'
 
-test.describe('Frontend', () => {
-  let page: Page
+// E2E tests for the Agricon website (real site assertions)
+test.describe('Agricon Frontend', () => {
+  test('homepage renders brand and hero', async ({ page }) => {
+    await page.goto('/en')
 
-  test.beforeAll(async ({ browser }, testInfo) => {
-    const context = await browser.newContext()
-    page = await context.newPage()
+    // Brand title present
+    await expect(page).toHaveTitle(/Agricon/)
+
+    // Hero heading
+    const hero = page.getByRole('heading', { level: 1 }).first()
+    await expect(hero).toContainText('Farm Equipment Built')
+
+    // Primary CTA
+    await expect(page.getByRole('link', { name: /Explore Products/i }).first()).toBeVisible()
+
+    // Key sections render
+    await expect(page.getByText('Why Agricon').first()).toBeVisible()
   })
 
-  test('can go on homepage', async ({ page }) => {
-    await page.goto('http://localhost:3000')
+  test('homepage sections render', async ({ page }) => {
+    await page.goto('/en')
 
-    await expect(page).toHaveTitle(/Payload Blank Template/)
+    // Stats band
+    await expect(page.getByText('Countries Served').first()).toBeVisible()
 
-    const heading = page.locator('h1').first()
+    // Products & Solutions sections
+    await expect(page.getByText('Complete Farm Equipment Lines').first()).toBeVisible()
+    await expect(page.getByText('Turnkey Farm Solutions').first()).toBeVisible()
 
-    await expect(heading).toHaveText('Welcome to your new project.')
+    // Trust evidence section
+    await expect(page.getByText(/We Prove What We Claim/i).first()).toBeVisible()
+  })
+
+  test('products page works', async ({ page }) => {
+    await page.goto('/en/products')
+
+    // Page renders (either categories or empty state)
+    await expect(page).toHaveTitle(/Products|Agricon/)
+    await expect(page.getByRole('heading', { level: 1 }).first()).toBeVisible()
+  })
+
+  test('contact page has inquiry form', async ({ page }) => {
+    await page.goto('/en/contact')
+
+    // Inquiry form present
+    await expect(page.getByRole('heading', { name: /Send Us Your Inquiry/i }).first()).toBeVisible()
+    await expect(page.getByRole('button', { name: /Submit Inquiry/i })).toBeVisible()
+  })
+
+  test('language switcher navigates to /ru', async ({ page }) => {
+    await page.goto('/en')
+
+    // Language dropdown opens and Russian locale works
+    await page.getByRole('button', { name: /Switch language/i }).click()
+    await page.getByRole('link', { name: 'Русский' }).click()
+
+    // Russian homepage loads
+    await page.waitForURL('**/ru')
+    await expect(page.getByText('Продукция').first()).toBeVisible()
+  })
+
+  test('unknown page returns 404', async ({ page }) => {
+    const res = await page.goto('/en/this-page-does-not-exist')
+    // 404 status (may be soft 404 in App Router, so check the 404 content)
+    await expect(page.getByRole('heading', { name: '404' }).first()).toBeVisible()
+    expect(res?.status()).toBeGreaterThanOrEqual(404)
   })
 })
