@@ -23,7 +23,7 @@ src/payload-types.ts
 backups/
 media/
 alibaba-extract/
-public/catalog/alibaba/
+
 scripts/__pycache__/
 
 # Saved page snapshots
