@@ -70,9 +70,24 @@ export default async function ProductDetailPage({ params }: Props) {
   const features = (p.features || [])
     .map((feature) => typeof feature === 'object' ? feature.feature || '' : feature)
     .filter(Boolean)
+  // 有意义的标签:过滤掉品牌占位(Agricon…)、导入标记(alibaba-…)、
+  // 与产品名重复的、以及超长噪音文本
+  const nameLower = (p.name || '').toLowerCase()
   const tags = (p.tags || [])
-    .map((tag) => typeof tag === 'object' ? tag.tag || '' : tag)
-    .filter(Boolean)
+    .map((tag) => typeof tag === 'object' ? (tag.tag || '') : String(tag))
+    .map((t) => t.trim())
+    .filter((t) => {
+      if (!t) return false
+      const lower = t.toLowerCase()
+      if (lower.startsWith('alibaba-')) return false
+      if (lower.includes('agricon')) return false
+      if (lower === nameLower) return false
+      if (t.length > 40) return false
+      return true
+    })
+    // 去重、保留顺序
+    .filter((t, i, arr) => arr.indexOf(t) === i)
+    .slice(0, 4)
 
   // Product downloads (PDF datasheets, manuals, drawings, …)
   const downloads = (p.downloads || [])
@@ -125,11 +140,9 @@ export default async function ProductDetailPage({ params }: Props) {
               </p>
 
               <div className="flex flex-wrap gap-2 mt-5">
-                {tags.slice(0, 4).map((tag, index) => (
+                {tags.map((tag, index) => (
                   <span key={`${tag}-${index}`} className="px-3 py-1.5 text-xs font-medium text-[var(--color-primary)] bg-[var(--color-primary)]/8 rounded-xs">{tag}</span>
                 ))}
-                {p.price && <span className="px-3 py-1.5 text-xs font-semibold text-[var(--color-primary)] bg-[var(--color-primary)]/8 rounded-xs">Price: {p.price}</span>}
-                {p.moq && <span className="px-3 py-1.5 text-xs font-semibold text-[var(--color-primary)] bg-[var(--color-primary)]/8 rounded-xs">MOQ: {p.moq}</span>}
               </div>
 
               <div className="mt-7 flex flex-col sm:flex-row gap-3">

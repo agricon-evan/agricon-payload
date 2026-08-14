@@ -65,8 +65,7 @@ export default async function FeaturedProducts({ locale }: { locale: Locale }) {
               <div className="p-6">
                 <h3 className="text-[var(--color-text)] group-hover:text-[var(--color-primary)] transition-colors leading-snug">{p.name}</h3>
                 <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mt-3 text-sm text-[var(--color-text-secondary)]">
-                  {p.price && <span className="font-semibold text-[var(--color-primary)]">{p.price}</span>}
-                  {p.moq && <span>{p.moq}</span>}
+                  <span className="inline-flex items-center gap-1.5 text-xs font-medium text-[var(--color-primary)] bg-[var(--color-primary)]/8 px-2.5 py-1 rounded-xs">Export-ready</span>
                 </div>
                 <span className="inline-flex items-center gap-1.5 mt-4 text-sm font-semibold text-[var(--color-primary)]">
                   View Details
