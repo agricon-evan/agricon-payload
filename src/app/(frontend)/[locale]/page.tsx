@@ -11,6 +11,7 @@ import TrustEvidence from '@/components/home/TrustEvidence'
 import ValueCalculated from '@/components/home/ValueCalculated'
 import Icon from '@/components/ui/Icon'
 import Reveal from '@/components/ui/Reveal'
+import MediaImage from '@/components/ui/MediaImage'
 
 interface Props {
   params: Promise<{ locale: string }>
@@ -21,61 +22,66 @@ export default async function HomePage({ params }: Props) {
 
   return (
     <>
-      {/* ── HERO — flat, refined, mobile-first ── */}
-      <section className="relative min-h-[70vh] md:min-h-[80vh] flex items-center justify-center bg-[var(--color-primary-dark)] text-white overflow-hidden">
+      {/* ── HERO — {component.cover-hero}: full-bleed photo + brand-green overlay ── */}
+      <section className="hero-standard relative overflow-hidden bg-[var(--color-surface-brand)] text-white">
         <div className="absolute inset-0">
-          <img src="https://images.unsplash.com/photo-1516253593875-bd7ba052b1b1?w=1600&h=900&fit=crop&q=80" alt="" className="w-full h-full object-cover opacity-20" loading="eager" />
-          <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-primary-dark)]/95 via-[var(--color-primary-dark)]/80 to-black/70" />
+          <MediaImage
+            src="/images/home-hero-agricon.png"
+            alt="Commercial farm with modern agricultural equipment"
+            width={1920}
+            height={1080}
+            priority
+            className="w-full h-full object-cover object-bottom"
+          />
+          <div className="absolute inset-0 photo-overlay-green" />
         </div>
-
-        <div className="relative max-w-4xl px-6 py-24 md:py-32 text-center">
-          <Reveal>
-            <span className="inline-block text-xs md:text-sm font-semibold uppercase tracking-[0.2em] text-white/80 bg-white/10 px-4 py-2 rounded-full border border-white/15">
-              Poultry &amp; Livestock Equipment Manufacturer
-            </span>
-          </Reveal>
-          <Reveal delay={100}>
-            <h1 className="mt-6 text-3xl sm:text-5xl md:text-6xl font-bold leading-[1.1] tracking-tight">
-              Farm Equipment Built
-              <br />
-              <span className="text-[var(--color-primary-light)]">for Growth</span>
-            </h1>
-          </Reveal>
-          <Reveal delay={200}>
-            <p className="mt-6 text-base md:text-lg opacity-85 max-w-2xl mx-auto leading-relaxed">
-              From egg incubation to feed processing — durable, export-ready equipment with full project support for commercial farms worldwide.
-            </p>
-          </Reveal>
-          <Reveal delay={300}>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-              <a
-                href={`/${locale}/products`}
-                className="inline-flex items-center justify-center gap-2 px-8 md:px-10 py-4 bg-[var(--color-accent)] text-white font-semibold rounded-md min-h-[48px] press tap-target text-base md:text-lg transition-colors hover:brightness-110"
-              >
-                Explore Products
-                <Icon name="arrow-right" size={18} />
-              </a>
-              <a
-                href={`/${locale}/contact`}
-                className="inline-flex items-center justify-center px-8 md:px-10 py-4 border border-white/30 text-white font-semibold rounded-md min-h-[48px] press tap-target text-base md:text-lg transition-colors hover:bg-white/10"
-              >
-                Get a Free Quote
-              </a>
-            </div>
-          </Reveal>
-          <Reveal delay={400}>
-            <div className="flex flex-wrap justify-center gap-x-7 gap-y-2.5 mt-10 text-xs md:text-sm text-white/60">
-              <span className="flex items-center gap-2">
-                <Icon name="shield" size={15} /> ISO 9001 Certified
-              </span>
-              <span className="flex items-center gap-2">
-                <Icon name="globe" size={15} /> 20+ Export Countries
-              </span>
-              <span className="flex items-center gap-2">
-                <Icon name="award" size={15} /> 15-Year Durability
-              </span>
-            </div>
-          </Reveal>
+        <div className="hero-standard-content relative max-w-7xl mx-auto px-6 pt-20 pb-16 md:pt-28 md:pb-24 lg:pt-36 lg:pb-32">
+          <div className="max-w-3xl">
+            <Reveal>
+              <span className="eyebrow !text-[var(--color-accent-soft)] mb-5">Farm systems, engineered for growth</span>
+            </Reveal>
+            <Reveal delay={100}>
+              <h1 className="mt-5 text-4xl sm:text-5xl md:text-6xl lg:text-[4.25rem] font-bold leading-[1.02] tracking-[-0.02em] text-white">
+                Farm Equipment Built
+                <br />
+                <span className="split-accent !text-[var(--color-accent)]">for Growth</span>
+              </h1>
+            </Reveal>
+            <Reveal delay={200}>
+              <span className="block w-14 h-[3px] bg-[var(--color-accent)] mt-6" aria-hidden="true" />
+              <p className="mt-6 text-base md:text-lg text-white/85 max-w-xl leading-relaxed">
+                Practical equipment solutions for farms, importers, distributors and agricultural projects worldwide.
+              </p>
+            </Reveal>
+            <Reveal delay={300}>
+              <div className="flex flex-col sm:flex-row gap-3 mt-9">
+                <a
+                  href={`/${locale}/products`}
+                  className="inline-flex items-center justify-center gap-2 px-7 py-4 bg-white text-[var(--color-primary)] font-semibold rounded-sm min-h-[50px] press tap-target text-base transition-all hover:bg-white/90"
+                >
+                  Explore Products
+                  <Icon name="arrow-right" size={18} className="text-[var(--color-accent)]" />
+                </a>
+                <a
+                  href={`/${locale}/contact`}
+                  className="inline-flex items-center justify-center px-7 py-4 border border-white/40 text-white font-semibold rounded-sm min-h-[50px] press tap-target text-base transition-all hover:bg-white/10"
+                >
+                  Get a Free Quote
+                </a>
+              </div>
+            </Reveal>
+            {/* Bottom service labels separated by orange rules — {component.cover-hero} */}
+            <Reveal delay={400}>
+              <div className="flex flex-wrap items-center gap-x-5 gap-y-3 mt-11 pt-5 border-t border-white/25">
+                {['10+ Product Categories', '30+ Export Markets', '500+ Container Shipments'].map((label, i) => (
+                  <span key={label} className="flex items-center gap-5 text-xs md:text-sm font-medium text-white/90">
+                    {i > 0 && <span className="w-px h-4 bg-[var(--color-accent)]" aria-hidden="true" />}
+                    {label}
+                  </span>
+                ))}
+              </div>
+            </Reveal>
+          </div>
         </div>
       </section>
 
@@ -90,29 +96,31 @@ export default async function HomePage({ params }: Props) {
       <Testimonials />
       <LatestNews locale={locale as Locale} />
 
-      {/* ── Final CTA ── */}
-      <section className="bg-[var(--color-primary)] text-white py-16 md:py-24 px-6">
-        <div className="max-w-3xl mx-auto text-center">
+      {/* ── Final CTA — flat brand-green panel with orange rule ── */}
+      <section className="relative bg-[var(--color-surface-brand)] text-white py-20 md:py-28 px-6">
+        <div className="relative max-w-3xl mx-auto text-center">
           <Reveal>
-            <h2 className="text-2xl md:text-4xl font-bold tracking-tight">Ready to Build Your Farm?</h2>
+            <h2 className="split-color-title text-3xl md:text-5xl font-bold tracking-[-0.015em] text-white">
+              Ready to Build <span className="split-accent !text-[var(--color-accent)]">Your Farm?</span>
+            </h2>
           </Reveal>
           <Reveal delay={100}>
-            <p className="mt-4 text-base md:text-lg opacity-85 max-w-xl mx-auto leading-relaxed">
+            <p className="mt-5 text-base md:text-lg text-white/80 max-w-xl mx-auto leading-relaxed">
               Get a customized quotation with shipping to your port — our engineers will design the optimal layout for your facility.
             </p>
           </Reveal>
           <Reveal delay={200}>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mt-9">
               <a
                 href={`/${locale}/contact`}
-                className="inline-flex items-center justify-center gap-2 px-10 py-4 bg-[var(--color-accent)] text-white font-bold rounded-md min-h-[52px] press tap-target text-lg transition-colors hover:brightness-110"
+                className="inline-flex items-center justify-center gap-2 px-10 py-4 bg-white text-[var(--color-primary)] font-bold rounded-sm min-h-[52px] press tap-target text-lg transition-all hover:bg-white/90"
               >
                 Request a Quote
-                <Icon name="arrow-right" size={18} />
+                <Icon name="arrow-right" size={18} className="text-[var(--color-accent)]" />
               </a>
               <a
                 href={`/${locale}/case-studies`}
-                className="inline-flex items-center justify-center px-10 py-4 border border-white/30 text-white font-semibold rounded-md min-h-[52px] press tap-target text-lg transition-colors hover:bg-white/10"
+                className="inline-flex items-center justify-center px-10 py-4 border border-white/30 text-white font-semibold rounded-sm min-h-[52px] press tap-target text-lg transition-all hover:bg-white/10"
               >
                 See Case Studies
               </a>

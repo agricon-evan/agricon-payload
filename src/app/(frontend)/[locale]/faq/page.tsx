@@ -4,6 +4,7 @@ import { getFAQs } from '@/lib/payload'
 import PageHero from '@/components/PageHero'
 import Reveal from '@/components/ui/Reveal'
 import Icon from '@/components/ui/Icon'
+import { RichText } from '@payloadcms/richtext-lexical/react'
 import Link from 'next/link'
 
 interface Props {
@@ -17,7 +18,7 @@ export default async function FaqPage({ params }: Props) {
   const t = getTranslations(locale as Locale, 'faq')
   const tHome = getTranslations(locale as Locale, 'home')
   const faqs = await getFAQs(locale)
-  const lp = locale === 'en' ? '' : `/${locale}`
+  const lp = `/${locale}`
 
   const supportItems = (t.relatedSupport?.items ?? {}) as Record<string, { title: string; description: string }>
   const supportLinks: Record<string, string> = {
@@ -73,13 +74,14 @@ export default async function FaqPage({ params }: Props) {
         title={t.hero?.title || 'FAQ'}
         description={t.hero?.description || 'Answers to the questions buyers ask us most — from MOQ and shipping to quality control and support.'}
         breadcrumb={`${tHome.breadcrumb?.home || 'Home'} / ${t.breadcrumb?.faq || 'FAQ'}`}
+        image="/images/heroes/farm-field.jpg"
       />
 
       <section className="max-w-5xl mx-auto px-6 py-16 md:py-24">
         {/* Quick category chips */}
         <Reveal>
           <div className="flex flex-wrap gap-2 mb-10">
-            {['Ordering & MOQ', 'Shipping & Export', 'Quality Control', 'Farm Projects', 'Distributors', 'After-sales'].map((chip, i) => (
+            {['Ordering & MOQ', 'Shipping & Export', 'Quality Control', 'Farm Projects', 'Distributors', 'After-sales'].map((chip) => (
               <a key={chip} href={`${lp}/contact`} className="px-4 py-2 rounded-full border border-[var(--color-border)] text-sm font-medium text-[var(--color-text-secondary)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] transition-colors tap-target">
                 {chip}
               </a>
@@ -90,14 +92,14 @@ export default async function FaqPage({ params }: Props) {
         {/* FAQ accordion */}
         <div className="space-y-4">
           {displayFaqs.map((faq, i) => (
-            <Reveal key={(faq as any).id || faq.question} delay={(i % 5) * 60}>
+            <Reveal key={'id' in faq ? faq.id : faq.question} delay={(i % 5) * 60}>
               <details className="group card overflow-hidden" open={i === 0}>
                 <summary className="flex items-center justify-between gap-4 px-5 py-4 font-medium text-[var(--color-text)] cursor-pointer min-h-[48px] list-none tap-target">
                   <span className="leading-snug">{faq.question}</span>
                   <Icon name="plus" size={18} className="text-[var(--color-primary)] flex-shrink-0 transition-transform group-open:rotate-45" />
                 </summary>
                 <div className="px-5 pb-5 text-sm text-[var(--color-text-secondary)] leading-relaxed">
-                  {typeof faq.answer === 'string' ? faq.answer : ''}
+                  {typeof faq.answer === 'string' ? faq.answer : <RichText data={faq.answer} />}
                 </div>
               </details>
             </Reveal>
@@ -137,7 +139,7 @@ export default async function FaqPage({ params }: Props) {
             </p>
             <Link
               href={`/${locale}/contact`}
-              className="inline-flex items-center justify-center gap-2 mt-6 px-8 py-3.5 bg-[var(--color-accent)] text-white font-semibold rounded-md min-h-[48px] press tap-target transition-colors hover:brightness-110"
+              className="inline-flex items-center justify-center gap-2 mt-6 px-8 py-3.5 bg-white text-[var(--color-primary)] font-semibold rounded-sm min-h-[48px] press tap-target transition-colors hover:bg-white/90"
             >
               {t.cta?.contactUs || 'Contact Us'}
               <Icon name="arrow-right" size={16} />

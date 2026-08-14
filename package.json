@@ -7,6 +7,7 @@
   "packageManager": "pnpm@11.20.0",
   "scripts": {
     "build": "cross-env NODE_OPTIONS=--no-deprecation next build",
+    "catalog:import": "cross-env NODE_OPTIONS=--no-deprecation tsx scripts/import-catalog-products.ts",
     "vercel-build": "cross-env NODE_OPTIONS=--no-deprecation payload migrate && cross-env NODE_OPTIONS=--no-deprecation next build",
     "ci": "payload migrate && pnpm build",
     "dev": "cross-env NODE_OPTIONS=--no-deprecation next dev",

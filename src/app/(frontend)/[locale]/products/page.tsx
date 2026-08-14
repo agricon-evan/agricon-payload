@@ -6,6 +6,7 @@ import CtaSection from '@/components/CtaSection'
 import Reveal from '@/components/ui/Reveal'
 import Icon from '@/components/ui/Icon'
 import { categoryImages } from '@/lib/images'
+import MediaImage from '@/components/ui/MediaImage'
 
 interface Props {
   params: Promise<{ locale: string }>
@@ -18,7 +19,14 @@ export default async function ProductsPage({ params }: Props) {
   const t = getTranslations(locale as Locale, 'common')
   const tHome = getTranslations(locale as Locale, 'home')
   const categories = await getCategories(locale)
-  const lp = locale === 'en' ? '' : `/${locale}`
+  const lp = `/${locale}`
+  const fallbackCategories = [
+    { id: 'poultry', slug: '', name: 'Poultry Equipment', description: 'Layer cages, broiler systems, feeding, drinking and climate control for efficient poultry houses.', image: null },
+    { id: 'livestock', slug: '', name: 'Livestock Equipment', description: 'Practical systems for cattle, pig and sheep farms — built for hygiene, safety and daily throughput.', image: null },
+    { id: 'feed', slug: '', name: 'Feed Processing', description: 'Grinding, mixing, pelleting and bagging lines designed around your target capacity.', image: null },
+    { id: 'infrastructure', slug: '', name: 'Farm Infrastructure', description: 'Ventilation, water, fencing and supporting equipment that keeps your operation moving.', image: null },
+  ]
+  const displayCategories = categories.length > 0 ? categories : fallbackCategories
 
   return (
     <>
@@ -26,54 +34,36 @@ export default async function ProductsPage({ params }: Props) {
         title={t.nav?.products || 'Products'}
         description={t.footer?.brandDescription || 'Durable, export-ready farm equipment'}
         breadcrumb={`${tHome.breadcrumb?.home || 'Home'} / ${t.nav?.products || 'Products'}`}
+        image="/images/heroes/farm-machinery.jpg"
       />
 
       <section className="max-w-7xl mx-auto px-6 py-16 md:py-24">
-        {categories.length === 0 ? (
-          <Reveal>
-            <div className="text-center py-16">
-              <div className="w-14 h-14 rounded-md bg-[var(--color-primary)]/8 text-[var(--color-primary)] flex items-center justify-center mx-auto mb-5">
-                <Icon name="box" size={26} />
-              </div>
-              <h2 className="text-xl font-bold text-[var(--color-text)]">Products Coming Soon</h2>
-              <p className="mt-3 text-[var(--color-text-secondary)] max-w-md mx-auto">
-                Our product catalog is being updated. Please check back soon or contact us for current offerings.
-              </p>
-              <a
-                href={`/${locale}/contact`}
-                className="inline-flex items-center justify-center gap-2 mt-6 px-8 py-3.5 bg-[var(--color-primary)] text-white font-semibold rounded-md min-h-[48px] press tap-target transition-colors hover:bg-[var(--color-primary-dark)]"
-              >
-                {t.cta?.getQuote || 'Contact Us'}
-                <Icon name="arrow-right" size={16} />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+          {displayCategories.map((cat, i) => (
+            <Reveal key={cat.id} delay={(i % 3) * 80} className="h-full">
+              <a href={cat.slug ? `${lp}/products/${cat.slug}` : `/${locale}/contact`} className="card card-hover h-full block group overflow-hidden">
+                <div className="relative aspect-[16/9] bg-[var(--color-muted)] flex items-center justify-center icon-zoom overflow-hidden">
+                  {cat.image && typeof cat.image === 'object' && cat.image.url ? (
+                    <MediaImage src={cat.image.url} alt={cat.name} width={800} height={450} className="w-full h-full object-cover" loading="lazy" />
+                  ) : categoryImages[cat.slug] ? (
+                    <MediaImage src={categoryImages[cat.slug]} alt={cat.name} width={800} height={450} className="w-full h-full object-cover" loading="lazy" />
+                  ) : (
+                    <Icon name="box" size={36} className="text-[var(--color-text-secondary)]/30" />
+                  )}
+                  <div className="absolute inset-0 bg-black/40" />
+                  <span className="absolute bottom-4 left-5 text-xs font-semibold uppercase tracking-[0.14em] text-white/85">Equipment line</span>
+                </div>
+                <div className="p-6">
+                  <div className="flex items-center justify-between gap-3">
+                    <h2 className="text-[var(--color-text)] group-hover:text-[var(--color-primary)] transition-colors">{cat.name}</h2>
+                    <span className="w-8 h-8 shrink-0 aspect-square rounded-full border border-[var(--color-border)] flex items-center justify-center text-[var(--color-primary)] group-hover:bg-[var(--color-primary)] group-hover:text-white transition-colors">↗</span>
+                  </div>
+                  {cat.description && <p className="mt-2 text-sm text-[var(--color-text-secondary)] line-clamp-2 leading-relaxed">{cat.description}</p>}
+                </div>
               </a>
-            </div>
-          </Reveal>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
-            {categories.map((cat, i) => (
-              <Reveal key={cat.id} delay={(i % 3) * 80} className="h-full">
-                <a href={`${lp}/products/${cat.slug}`} className="card card-hover h-full block group">
-                  <div className="aspect-[16/9] bg-[var(--color-muted)] flex items-center justify-center icon-zoom overflow-hidden">
-                    {cat.image && typeof cat.image === 'object' && cat.image.url ? (
-                      <img src={cat.image.url} alt={cat.name} className="w-full h-full object-cover" loading="lazy" />
-                    ) : categoryImages[cat.slug] ? (
-                      <img src={categoryImages[cat.slug]} alt={cat.name} className="w-full h-full object-cover" loading="lazy" />
-                    ) : (
-                      <Icon name="box" size={36} className="text-[var(--color-text-secondary)]/30" />
-                    )}
-                  </div>
-                  <div className="p-6">
-                    <div className="flex items-center justify-between">
-                      <h2 className="text-[var(--color-text)] group-hover:text-[var(--color-primary)] transition-colors">{cat.name}</h2>
-                      <Icon name="arrow-right" size={16} className="text-[var(--color-primary)] opacity-0 group-hover:opacity-100 transition-opacity" />
-                    </div>
-                    {cat.description && <p className="mt-2 text-sm text-[var(--color-text-secondary)] line-clamp-2 leading-relaxed">{cat.description}</p>}
-                  </div>
-                </a>
-              </Reveal>
-            ))}
-          </div>
-        )}
+            </Reveal>
+          ))}
+        </div>
       </section>
 
       <CtaSection locale={locale as Locale} />

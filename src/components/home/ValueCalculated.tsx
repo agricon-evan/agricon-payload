@@ -9,29 +9,29 @@ export default function ValueCalculated() {
   const calculators = [
     {
       icon: 'trending-down',
-      title: 'Lower Operating Cost',
+      title: 'Portfolio Breadth',
       items: [
-        { label: 'Feed conversion improved', value: 'up to 8%' },
-        { label: 'Labor cost reduction', value: '30–40%' },
-        { label: 'Energy per bird saved', value: 'up to 15%' },
+        { label: 'Product categories', value: '10+' },
+        { label: 'Product options', value: '100+' },
+        { label: 'Supply model', value: 'Integrated' },
       ],
     },
     {
       icon: 'zap',
-      title: 'Higher Output',
+      title: 'Global Delivery',
       items: [
-        { label: 'Hatch rate improvement', value: '+6–9%' },
-        { label: 'Egg collection efficiency', value: '99%' },
-        { label: 'House capacity per m²', value: '+35%' },
+        { label: 'Export markets', value: '30+' },
+        { label: 'Container shipments', value: '500+' },
+        { label: 'Delivery support', value: 'End-to-end' },
       ],
     },
     {
       icon: 'shield',
-      title: 'Less Risk & Downtime',
+      title: 'Project Fit',
       items: [
-        { label: 'Galvanized steel lifespan', value: '15+ years' },
-        { label: 'On-time delivery rate', value: '98%' },
-        { label: 'Spare parts availability', value: '95% in stock' },
+        { label: 'Selection basis', value: 'Farm type' },
+        { label: 'Capacity and site', value: 'Matched' },
+        { label: 'Supply window', value: 'One partner' },
       ],
     },
   ]
@@ -41,7 +41,7 @@ export default function ValueCalculated() {
       <Reveal>
         <SectionHeading
           eyebrow="Value, Calculated"
-          title="We Don't Say Quality. We Show Numbers."
+          title={<>We Don&apos;t Say Quality. We <span className="split-accent">Show Numbers.</span></>}
           description="Every claim we make is backed by a measurable outcome on your farm — because trust is built with evidence, not adjectives."
         />
       </Reveal>
@@ -67,7 +67,7 @@ export default function ValueCalculated() {
       </div>
       <Reveal delay={200}>
         <p className="mt-8 text-center text-sm text-[var(--color-text-secondary)] max-w-2xl mx-auto">
-          Figures based on typical results across our 500+ installations. Your actual results depend on farm conditions, management, and local climate — we will calculate expected outcomes for your specific project during consultation.
+          The figures describe the scope of the Agricon catalog. Final equipment selection depends on farm type, capacity, site conditions, operation requirements and budget — our team matches the package to the project.
         </p>
       </Reveal>
     </section>

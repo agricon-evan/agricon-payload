@@ -1,50 +1,67 @@
-// Unsplash 无版权图片配置（无图时的 fallback）
-// 所有图片来自 Unsplash（https://unsplash.com）免费使用
+// Images selected from the company product catalog. Unsplash remains the final fallback
+// for content that has not yet received a CMS or catalog image.
 
 export const categoryImages: Record<string, string> = {
-  "poultry-equipment": "https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=800&h=600&fit=crop",
-  "livestock-equipment": "https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?w=800&h=600&fit=crop",
-  "aquaculture-equipment": "https://images.unsplash.com/photo-1580437602927-2f43e9f2c499?w=800&h=600&fit=crop",
-  "agriculture-machinery": "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=800&h=600&fit=crop",
-  "breeding-house-equipment": "https://images.unsplash.com/photo-1500595046743-cd271d694d30?w=800&h=600&fit=crop",
-  "slaughter-equipment": "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=800&h=600&fit=crop",
-  "farming-tools": "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&h=600&fit=crop",
-  "farming-vehicles": "https://images.unsplash.com/photo-1592837099284-fb86e40eb4ea?w=800&h=600&fit=crop",
-  "wire-mesh-fencing": "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&h=600&fit=crop",
-  "other-machines": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&h=600&fit=crop",
+  "poultry-equipment": "/catalog/categories/poultry-equipment.jpg",
+  "livestock-equipment": "/catalog/categories/livestock-equipment.jpg",
+  "aquaculture-equipment": "/catalog/categories/aquaculture-equipment.jpg",
+  "agriculture-machinery": "/catalog/categories/agriculture-machinery.jpg",
+  "breeding-house-equipment": "/catalog/categories/breeding-house-equipment.jpg",
+  "slaughter-equipment": "/catalog/categories/slaughter-equipment.jpg",
+  "farming-tools": "/catalog/categories/farming-tools.jpg",
+  "farming-vehicles": "/catalog/categories/farming-vehicles.jpg",
+  "wire-mesh-fencing": "/catalog/categories/wire-mesh-fencing.jpg",
+  "other-machines": "/catalog/categories/other-machines.jpg",
 }
 
 export const subcategoryImages: Record<string, string> = {
-  "layer-cage": "https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=600&h=400&fit=crop",
-  "broiler-cage": "https://images.unsplash.com/photo-1593125623959-7208a3d7b7a4?w=600&h=400&fit=crop",
-  "hatcher-equipment": "https://images.unsplash.com/photo-1596627062348-685e5d2a0c40?w=600&h=400&fit=crop",
-  "farm-fence": "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&h=400&fit=crop",
-  "cattle-panels": "https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?w=600&h=400&fit=crop",
-  "water-pump": "https://images.unsplash.com/photo-1580437602927-2f43e9f2c499?w=600&h=400&fit=crop",
-  "pellet-machine": "https://images.unsplash.com/photo-1530268729831-9b083728a87e?w=600&h=400&fit=crop",
-  "exhaust-fan": "https://images.unsplash.com/photo-1500595046743-cd271d694d30?w=600&h=400&fit=crop",
-  "plucker-machine": "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=600&h=400&fit=crop",
-  "tractor": "https://images.unsplash.com/photo-1592837099284-fb86e40eb4ea?w=600&h=400&fit=crop",
-  "welded-wire-mesh": "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&h=400&fit=crop",
+  "layer-cage": "/catalog/products/layer-cage.jpg",
+  "broiler-cage": "/catalog/products/broiler-cage.jpg",
+  "hatcher-equipment": "/catalog/products/hatcher-equipment.jpg",
+  "farm-fence": "/catalog/products/farm-fence.jpg",
+  "cattle-panels": "/catalog/products/cattle-panels.jpg",
+  "water-pump": "/catalog/products/water-pump.jpg",
+  "pellet-machine": "/catalog/products/pellet-machine.jpg",
+  "exhaust-fan": "/catalog/products/exhaust-fan.jpg",
+  "plucker-machine": "/catalog/products/plucker-machine.jpg",
+  "tractor": "/catalog/products/tractor.jpg",
+  "welded-wire-mesh": "/catalog/products/welded-wire-mesh.jpg"
 }
 
 export const caseStudyImages: Record<string, string> = {
-  "kenya-layer-farm": "https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=800&h=500&fit=crop",
-  "tanzania-layer-farm": "https://images.unsplash.com/photo-1593125623959-7208a3d7b7a4?w=800&h=500&fit=crop",
-  "indonesia-goat-pen": "https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?w=800&h=500&fit=crop",
-  "africa-cattle-fence": "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&h=500&fit=crop",
-  "ghana-feed-mill": "https://images.unsplash.com/photo-1530268729831-9b083728a87e?w=800&h=500&fit=crop",
-  "nigeria-feed-production": "https://images.unsplash.com/photo-1530268729831-9b083728a87e?w=800&h=500&fit=crop",
-  "ecuador-greenhouse": "https://images.unsplash.com/photo-1500595046743-cd271d694d30?w=800&h=500&fit=crop",
-  "tanzania-ventilation": "https://images.unsplash.com/photo-1500595046743-cd271d694d30?w=800&h=500&fit=crop",
-  "philippines-fish-cage": "https://images.unsplash.com/photo-1580437602927-2f43e9f2c499?w=800&h=500&fit=crop",
-  "se-asia-farm-machines": "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=800&h=500&fit=crop",
-  "sa-crop-farming": "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=800&h=500&fit=crop",
+  "kenya-layer-farm": "/catalog/cases/kenya-layer-farm.jpg",
+  "tanzania-layer-farm": "/catalog/cases/tanzania-layer-farm.jpg",
+  "indonesia-goat-pen": "/catalog/cases/indonesia-goat-pen.jpg",
+  "africa-cattle-fence": "/catalog/cases/africa-cattle-fence.jpg",
+  "ghana-feed-mill": "/catalog/cases/ghana-feed-mill.jpg",
+  "nigeria-feed-production": "/catalog/cases/nigeria-feed-production.jpg",
+  "ecuador-greenhouse": "/catalog/cases/ecuador-greenhouse.jpg",
+  "tanzania-ventilation": "/catalog/cases/tanzania-ventilation.jpg",
+  "philippines-fish-cage": "/catalog/cases/philippines-fish-cage.jpg",
+  "fish-farm-equipment": "/catalog/cases/fish-farm-equipment.jpg",
+  "se-asia-farm-machines": "/catalog/cases/se-asia-farm-machines.jpg",
+  "sa-crop-farming": "/catalog/cases/sa-crop-farming.jpg",
 }
 
-export const heroFallback = "https://images.unsplash.com/photo-1516253593875-bd7ba052b1b1?w=1400&h=700&fit=crop"
+export const heroFallback = "/images/heroes/farm-landscape.jpg"
 
 export function getImageUrl(slug: string, type: 'category' | 'subcategory' | 'case-study' = 'category'): string {
   const map = type === 'category' ? categoryImages : type === 'subcategory' ? subcategoryImages : caseStudyImages
   return map[slug] || heroFallback
+}
+
+// Full image galleries per case study (from the AGRICON catalog)
+export const caseStudyGalleries: Record<string, string[]> = {
+  "africa-cattle-fence": ["/catalog/cases/africa-cattle-fence.jpg", "/catalog/cases/africa-cattle-fence-2.jpg", "/catalog/cases/africa-cattle-fence-3.jpg", "/catalog/cases/africa-cattle-fence-4.jpg"],
+  "ecuador-greenhouse": ["/catalog/cases/ecuador-greenhouse.jpg", "/catalog/cases/ecuador-greenhouse-2.jpg", "/catalog/cases/ecuador-greenhouse-3.jpg", "/catalog/cases/ecuador-greenhouse-4.jpg"],
+  "ghana-feed-mill": ["/catalog/cases/ghana-feed-mill.jpg", "/catalog/cases/ghana-feed-mill-2.jpg", "/catalog/cases/ghana-feed-mill-3.jpg", "/catalog/cases/ghana-feed-mill-4.jpg"],
+  "indonesia-goat-pen": ["/catalog/cases/indonesia-goat-pen.jpg", "/catalog/cases/indonesia-goat-pen-2.jpg", "/catalog/cases/indonesia-goat-pen-3.jpg", "/catalog/cases/indonesia-goat-pen-4.jpg"],
+  "kenya-layer-farm": ["/catalog/cases/kenya-layer-farm.jpg", "/catalog/cases/kenya-layer-farm-2.jpg", "/catalog/cases/kenya-layer-farm-3.jpg", "/catalog/cases/kenya-layer-farm-4.jpg"],
+  "nigeria-feed-production": ["/catalog/cases/nigeria-feed-production.jpg", "/catalog/cases/nigeria-feed-production-2.jpg", "/catalog/cases/nigeria-feed-production-3.jpg", "/catalog/cases/nigeria-feed-production-4.jpg"],
+  "philippines-fish-cage": ["/catalog/cases/philippines-fish-cage.jpg", "/catalog/cases/philippines-fish-cage-2.jpg", "/catalog/cases/philippines-fish-cage-3.jpg", "/catalog/cases/philippines-fish-cage-4.jpg"],
+  "fish-farm-equipment": ["/catalog/cases/fish-farm-equipment.jpg", "/catalog/cases/fish-farm-equipment-2.jpg", "/catalog/cases/fish-farm-equipment-3.jpg", "/catalog/cases/fish-farm-equipment-4.jpg"],
+  "sa-crop-farming": ["/catalog/cases/sa-crop-farming.jpg", "/catalog/cases/sa-crop-farming-2.jpg", "/catalog/cases/sa-crop-farming-3.jpg", "/catalog/cases/sa-crop-farming-4.jpg"],
+  "se-asia-farm-machines": ["/catalog/cases/se-asia-farm-machines.jpg", "/catalog/cases/se-asia-farm-machines-2.jpg", "/catalog/cases/se-asia-farm-machines-3.jpg", "/catalog/cases/se-asia-farm-machines-4.jpg"],
+  "tanzania-layer-farm": ["/catalog/cases/tanzania-layer-farm.jpg", "/catalog/cases/tanzania-layer-farm-2.jpg", "/catalog/cases/tanzania-layer-farm-3.jpg", "/catalog/cases/tanzania-layer-farm-4.jpg"],
+  "tanzania-ventilation": ["/catalog/cases/tanzania-ventilation.jpg", "/catalog/cases/tanzania-ventilation-2.jpg", "/catalog/cases/tanzania-ventilation-3.jpg", "/catalog/cases/tanzania-ventilation-4.jpg"]
 }

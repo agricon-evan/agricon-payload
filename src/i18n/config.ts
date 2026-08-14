@@ -38,6 +38,7 @@ const translations: Record<Locale, Record<string, any>> = {
         solutions: "Solutions",
         tradeSupport: "Trade Support",
         caseStudies: "Case Studies",
+        videos: "Videos",
         blog: "Blog",
         about: "About",
       },
@@ -68,6 +69,7 @@ const translations: Record<Locale, Record<string, any>> = {
           tradeSupport: "Trade Support",
           aboutAgricon: "About Agricon",
           caseStudies: "Case Studies",
+          videos: "Videos",
           blog: "Blog",
           distributors: "Distributors",
           contact: "Contact",
@@ -90,6 +92,10 @@ const translations: Record<Locale, Record<string, any>> = {
         chatOnWhatsApp: "Chat on WhatsApp",
         switchLanguage: "Switch language",
       },
+      meta: {
+        siteTitle: "Agricon - Poultry & Livestock Equipment Solutions",
+        siteDescription: "Poultry & Livestock Equipment Solutions",
+      },
     },
     privacy: {
       breadcrumb: { home: "Home", privacy: "Privacy Policy" },
@@ -105,6 +111,19 @@ const translations: Record<Locale, Record<string, any>> = {
       breadcrumb: { home: "Home", search: "Search" },
       hero: { title: "Search", description: "Search Agricon products, solutions, and resources." },
       placeholder: "Search products, solutions, and resources...",
+    },
+    videos: {
+      breadcrumb: { home: "Home", videos: "Videos" },
+      hero: {
+        title: "Video Library",
+        description: "See Agricon equipment in action — installation walkthroughs, farm projects, product demonstrations and manufacturing insights.",
+      },
+      watchOnYoutube: "Watch on YouTube",
+      watchOnTiktok: "Watch on TikTok",
+      noVideos: "Videos are being prepared. Please check back soon or contact us for a product demonstration.",
+      ctaTitle: "Want a Live Demonstration?",
+      ctaDescription: "Contact our team to arrange a live video call or send you recorded demonstrations of specific equipment.",
+      ctaButton: "Request a Demo",
     },
     productDetail: {
       breadcrumb: { home: "Home", products: "Products" },
@@ -147,6 +166,7 @@ const translations: Record<Locale, Record<string, any>> = {
         solutions: "Решения",
         tradeSupport: "Торговая поддержка",
         caseStudies: "Кейсы",
+        videos: "Видео",
         blog: "Блог",
         about: "О нас",
       },
@@ -177,6 +197,7 @@ const translations: Record<Locale, Record<string, any>> = {
           tradeSupport: "Торговая поддержка",
           aboutAgricon: "О компании Agricon",
           caseStudies: "Кейсы",
+          videos: "Видео",
           blog: "Блог",
           distributors: "Дистрибьюторы",
           contact: "Контакты",
@@ -199,6 +220,10 @@ const translations: Record<Locale, Record<string, any>> = {
         chatOnWhatsApp: "Чат в WhatsApp",
         switchLanguage: "Переключить язык",
       },
+      meta: {
+        siteTitle: "Agricon - Оборудование для птицеводства и животноводства",
+        siteDescription: "Оборудование для птицеводства и животноводства",
+      },
     },
     privacy: {
       breadcrumb: { home: "Главная", privacy: "Политика конфиденциальности" },
@@ -214,6 +239,19 @@ const translations: Record<Locale, Record<string, any>> = {
       breadcrumb: { home: "Главная", search: "Поиск" },
       hero: { title: "Поиск", description: "Поиск продуктов, решений и ресурсов Agricon." },
       placeholder: "Поиск продуктов, решений и ресурсов...",
+    },
+    videos: {
+      breadcrumb: { home: "Главная", videos: "Видео" },
+      hero: {
+        title: "Видеотека",
+        description: "Оборудование Agricon в действии — монтаж, фермерские проекты, демонстрации продукции и производство.",
+      },
+      watchOnYoutube: "Смотреть на YouTube",
+      watchOnTiktok: "Смотреть в TikTok",
+      noVideos: "Видео готовятся. Загляните позже или свяжитесь с нами для демонстрации продукции.",
+      ctaTitle: "Нужна живая демонстрация?",
+      ctaDescription: "Свяжитесь с нашей командой, чтобы организовать видеозвонок или записанные демонстрации оборудования.",
+      ctaButton: "Запросить демонстрацию",
     },
     productDetail: {
       breadcrumb: { home: "Главная", products: "Продукция" },
@@ -256,6 +294,7 @@ const translations: Record<Locale, Record<string, any>> = {
         solutions: "Solutions",
         tradeSupport: "Support commercial",
         caseStudies: "Études de cas",
+        videos: "Vidéos",
         blog: "Blog",
         about: "À propos",
       },
@@ -286,6 +325,7 @@ const translations: Record<Locale, Record<string, any>> = {
           tradeSupport: "Support commercial",
           aboutAgricon: "À propos d'Agricon",
           caseStudies: "Études de cas",
+          videos: "Vidéos",
           blog: "Blog",
           distributors: "Distributeurs",
           contact: "Contact",
@@ -308,6 +348,10 @@ const translations: Record<Locale, Record<string, any>> = {
         chatOnWhatsApp: "Chatter sur WhatsApp",
         switchLanguage: "Changer de langue",
       },
+      meta: {
+        siteTitle: "Agricon - Solutions d'équipements avicoles et d'élevage",
+        siteDescription: "Solutions d'équipements avicoles et d'élevage",
+      },
     },
     privacy: {
       breadcrumb: { home: "Accueil", privacy: "Politique de confidentialité" },
@@ -323,6 +367,19 @@ const translations: Record<Locale, Record<string, any>> = {
       breadcrumb: { home: "Accueil", search: "Rechercher" },
       hero: { title: "Rechercher", description: "Recherchez des produits, solutions et ressources Agricon." },
       placeholder: "Rechercher des produits, solutions et ressources...",
+    },
+    videos: {
+      breadcrumb: { home: "Accueil", videos: "Vidéos" },
+      hero: {
+        title: "Vidéothèque",
+        description: "Voyez l'équipement Agricon en action — installations, projets agricoles, démonstrations produits et fabrication.",
+      },
+      watchOnYoutube: "Regarder sur YouTube",
+      watchOnTiktok: "Regarder sur TikTok",
+      noVideos: "Les vidéos sont en préparation. Revenez bientôt ou contactez-nous pour une démonstration.",
+      ctaTitle: "Besoin d'une démonstration en direct ?",
+      ctaDescription: "Contactez notre équipe pour organiser un appel vidéo ou des démonstrations enregistrées d'équipements spécifiques.",
+      ctaButton: "Demander une démo",
     },
     productDetail: {
       breadcrumb: { home: "Accueil", products: "Produits" },
@@ -365,6 +422,7 @@ const translations: Record<Locale, Record<string, any>> = {
         solutions: "Soluciones",
         tradeSupport: "Soporte comercial",
         caseStudies: "Casos de éxito",
+        videos: "Videos",
         blog: "Blog",
         about: "Nosotros",
       },
@@ -395,6 +453,7 @@ const translations: Record<Locale, Record<string, any>> = {
           tradeSupport: "Soporte comercial",
           aboutAgricon: "Sobre Agricon",
           caseStudies: "Casos de éxito",
+          videos: "Videos",
           blog: "Blog",
           distributors: "Distribuidores",
           contact: "Contacto",
@@ -417,6 +476,10 @@ const translations: Record<Locale, Record<string, any>> = {
         chatOnWhatsApp: "Chatear por WhatsApp",
         switchLanguage: "Cambiar idioma",
       },
+      meta: {
+        siteTitle: "Agricon - Soluciones de equipos avícolas y ganaderos",
+        siteDescription: "Soluciones de equipos avícolas y ganaderos",
+      },
     },
     privacy: {
       breadcrumb: { home: "Inicio", privacy: "Política de privacidad" },
@@ -432,6 +495,19 @@ const translations: Record<Locale, Record<string, any>> = {
       breadcrumb: { home: "Inicio", search: "Buscar" },
       hero: { title: "Buscar", description: "Busque productos, soluciones y recursos de Agricon." },
       placeholder: "Buscar productos, soluciones y recursos...",
+    },
+    videos: {
+      breadcrumb: { home: "Inicio", videos: "Videos" },
+      hero: {
+        title: "Videoteca",
+        description: "Vea el equipo Agricon en acción — instalaciones, proyectos agrícolas, demostraciones de productos y fabricación.",
+      },
+      watchOnYoutube: "Ver en YouTube",
+      watchOnTiktok: "Ver en TikTok",
+      noVideos: "Los videos están en preparación. Vuelva pronto o contáctenos para una demostración.",
+      ctaTitle: "¿Necesita una demostración en vivo?",
+      ctaDescription: "Contáctenos para organizar una videollamada o enviarle demostraciones grabadas de equipos específicos.",
+      ctaButton: "Solicitar una demo",
     },
     productDetail: {
       breadcrumb: { home: "Inicio", products: "Productos" },
@@ -474,6 +550,7 @@ const translations: Record<Locale, Record<string, any>> = {
         solutions: "Suluhisho",
         tradeSupport: "Msaada wa Biashara",
         caseStudies: "Mafunzo ya Kesi",
+        videos: "Video",
         blog: "Blogu",
         about: "Kuhusu",
       },
@@ -504,6 +581,7 @@ const translations: Record<Locale, Record<string, any>> = {
           tradeSupport: "Msaada wa Biashara",
           aboutAgricon: "Kuhusu Agricon",
           caseStudies: "Mafunzo ya Kesi",
+          videos: "Video",
           blog: "Blogu",
           distributors: "Wasambazaji",
           contact: "Wasiliana",
@@ -526,6 +604,10 @@ const translations: Record<Locale, Record<string, any>> = {
         chatOnWhatsApp: "Ongea kwenye WhatsApp",
         switchLanguage: "Badilisha lugha",
       },
+      meta: {
+        siteTitle: "Agricon - Suluhisho za vifaa vya ufugaji wa kuku na mifugo",
+        siteDescription: "Suluhisho za vifaa vya ufugaji wa kuku na mifugo",
+      },
     },
     privacy: {
       breadcrumb: { home: "Nyumbani", privacy: "Sera ya Faragha" },
@@ -541,6 +623,19 @@ const translations: Record<Locale, Record<string, any>> = {
       breadcrumb: { home: "Nyumbani", search: "Tafuta" },
       hero: { title: "Tafuta", description: "Tafuta bidhaa, suluhisho, na rasilimali za Agricon." },
       placeholder: "Tafuta bidhaa, suluhisho, na rasilimali...",
+    },
+    videos: {
+      breadcrumb: { home: "Nyumbani", videos: "Video" },
+      hero: {
+        title: "Maktaba ya Video",
+        description: "Ona vifaa vya Agricon vikifanya kazi — miongozo ya ufungaji, miradi ya shambani, maonyesho ya bidhaa na utengenezaji.",
+      },
+      watchOnYoutube: "Tazama kwenye YouTube",
+      watchOnTiktok: "Tazama kwenye TikTok",
+      noVideos: "Video zinaandaliwa. Tafadhali rudi baadaye au wasiliana nasi kwa maonyesho ya bidhaa.",
+      ctaTitle: "Unahitaji Maonyesho ya Moja kwa Moja?",
+      ctaDescription: "Wasiliana na timu yetu kupanga simu ya video au kutuma maonyesho yaliyorekodiwa ya vifaa maalum.",
+      ctaButton: "Omba Maonyesho",
     },
     productDetail: {
       breadcrumb: { home: "Nyumbani", products: "Bidhaa" },
@@ -583,6 +678,7 @@ const translations: Record<Locale, Record<string, any>> = {
         solutions: "الحلول",
         tradeSupport: "دعم التجارة",
         caseStudies: "دراسات الحالة",
+        videos: "الفيديوهات",
         blog: "المدونة",
         about: "من نحن",
       },
@@ -613,6 +709,7 @@ const translations: Record<Locale, Record<string, any>> = {
           tradeSupport: "دعم التجارة",
           aboutAgricon: "عن Agricon",
           caseStudies: "دراسات الحالة",
+          videos: "الفيديوهات",
           blog: "المدونة",
           distributors: "الموزعون",
           contact: "اتصل بنا",
@@ -635,6 +732,10 @@ const translations: Record<Locale, Record<string, any>> = {
         chatOnWhatsApp: "تحدث عبر واتساب",
         switchLanguage: "تغيير اللغة",
       },
+      meta: {
+        siteTitle: "Agricon - حلول معدات الدواجن والثروة الحيوانية",
+        siteDescription: "حلول معدات الدواجن والثروة الحيوانية",
+      },
     },
     privacy: {
       breadcrumb: { home: "الرئيسية", privacy: "سياسة الخصوصية" },
@@ -650,6 +751,19 @@ const translations: Record<Locale, Record<string, any>> = {
       breadcrumb: { home: "الرئيسية", search: "بحث" },
       hero: { title: "بحث", description: "ابحث عن منتجات وحلول وموارد Agricon." },
       placeholder: "ابحث عن المنتجات والحلول والموارد...",
+    },
+    videos: {
+      breadcrumb: { home: "الرئيسية", videos: "الفيديوهات" },
+      hero: {
+        title: "مكتبة الفيديو",
+        description: "شاهد معدات Agricon أثناء العمل — أدلة التركيب، مشاريع المزارع، عروض المنتجات والتصنيع.",
+      },
+      watchOnYoutube: "شاهد على يوتيوب",
+      watchOnTiktok: "شاهد على تيك توك",
+      noVideos: "يتم تجهيز الفيديوهات. يرجى العودة قريباً أو الاتصال بنا لعرض المنتجات.",
+      ctaTitle: "تريد عرضاً مباشراً؟",
+      ctaDescription: "تواصل مع فريقنا لترتيب مكالمة فيديو أو إرسال عروض مسجلة لمعدات محددة.",
+      ctaButton: "اطلب عرضاً",
     },
     productDetail: {
       breadcrumb: { home: "الرئيسية", products: "المنتجات" },
@@ -696,7 +810,8 @@ const jsonTranslations: Record<string, Record<string, any>> = {
         "solutions": "Solutions",
         "tradeSupport": "Trade Support",
         "caseStudies": "Case Studies",
-        "blog": "Blog",
+          "videos": "Videos",
+          "blog": "Blog",
         "about": "About"
       },
       "cta": {
@@ -733,6 +848,7 @@ const jsonTranslations: Record<string, Record<string, any>> = {
           "tradeSupport": "Trade Support",
           "aboutAgricon": "About Agricon",
           "caseStudies": "Case Studies",
+          "videos": "Videos",
           "blog": "Blog",
           "distributors": "Distributors",
           "contact": "Contact",
@@ -1039,7 +1155,8 @@ const jsonTranslations: Record<string, Record<string, any>> = {
         "solutions": "Soluciones",
         "tradeSupport": "Soporte comercial",
         "caseStudies": "Casos de éxito",
-        "blog": "Blog",
+          "videos": "Videos",
+          "blog": "Blog",
         "about": "Nosotros"
       },
       "cta": {
@@ -1076,6 +1193,7 @@ const jsonTranslations: Record<string, Record<string, any>> = {
           "tradeSupport": "Soporte comercial",
           "aboutAgricon": "Sobre Agricon",
           "caseStudies": "Casos de éxito",
+          "videos": "Videos",
           "blog": "Blog",
           "distributors": "Distribuidores",
           "contact": "Contacto",
@@ -1131,7 +1249,8 @@ const jsonTranslations: Record<string, Record<string, any>> = {
         "solutions": "Solutions",
         "tradeSupport": "Support commercial",
         "caseStudies": "Études de cas",
-        "blog": "Blog",
+          "videos": "Vidéos",
+          "blog": "Blog",
         "about": "À propos"
       },
       "cta": {
@@ -1168,6 +1287,7 @@ const jsonTranslations: Record<string, Record<string, any>> = {
           "tradeSupport": "Support commercial",
           "aboutAgricon": "À propos d'Agricon",
           "caseStudies": "Études de cas",
+          "videos": "Vidéos",
           "blog": "Blog",
           "distributors": "Distributeurs",
           "contact": "Contact",
@@ -1221,7 +1341,8 @@ const jsonTranslations: Record<string, Record<string, any>> = {
         "solutions": "الحلول",
         "tradeSupport": "دعم التجارة",
         "caseStudies": "دراسات الحالة",
-        "blog": "المدونة",
+          "videos": "الفيديوهات",
+          "blog": "المدونة",
         "about": "من نحن"
       },
       "cta": {
@@ -1258,6 +1379,7 @@ const jsonTranslations: Record<string, Record<string, any>> = {
           "tradeSupport": "دعم التجارة",
           "aboutAgricon": "عن Agricon",
           "caseStudies": "دراسات الحالة",
+          "videos": "الفيديوهات",
           "blog": "المدونة",
           "distributors": "الموزعون",
           "contact": "اتصل بنا",
@@ -1285,7 +1407,8 @@ const jsonTranslations: Record<string, Record<string, any>> = {
         "solutions": "Решения",
         "tradeSupport": "Торговая поддержка",
         "caseStudies": "Кейсы",
-        "blog": "Блог",
+          "videos": "Видео",
+          "blog": "Блог",
         "about": "О нас"
       },
       "cta": {
@@ -1322,6 +1445,7 @@ const jsonTranslations: Record<string, Record<string, any>> = {
           "tradeSupport": "Торговая поддержка",
           "aboutAgricon": "О компании Agricon",
           "caseStudies": "Кейсы",
+          "videos": "Видео",
           "blog": "Блог",
           "distributors": "Дистрибьюторы",
           "contact": "Контакты",
@@ -1349,7 +1473,8 @@ const jsonTranslations: Record<string, Record<string, any>> = {
         "solutions": "Suluhisho",
         "tradeSupport": "Msaada wa Biashara",
         "caseStudies": "Mafunzo ya Kesi",
-        "blog": "Blogu",
+          "videos": "Video",
+          "blog": "Blogu",
         "about": "Kuhusu"
       },
       "cta": {
@@ -1386,6 +1511,7 @@ const jsonTranslations: Record<string, Record<string, any>> = {
           "tradeSupport": "Msaada wa Biashara",
           "aboutAgricon": "Kuhusu Agricon",
           "caseStudies": "Mafunzo ya Kesi",
+          "videos": "Video",
           "blog": "Blogu",
           "distributors": "Wasambazaji",
           "contact": "Wasiliana",
@@ -1528,7 +1654,6 @@ const jsonTranslations: Record<string, Record<string, any>> = {
 
 // getTranslations merges: JSON files (page-specific) + inline translations (common UI)
 // eslint-disable-next-line @typescript-eslint/no-explicit-any -- dynamic translation access
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function getTranslations(locale: Locale, namespace: string): Record<string, any> {
   const jsonData = jsonTranslations[locale]?.[namespace] ?? {};
   const inlineData = translations[locale]?.[namespace] ?? {};

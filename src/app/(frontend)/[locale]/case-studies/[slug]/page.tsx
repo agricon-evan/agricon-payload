@@ -1,11 +1,15 @@
 import type { Locale } from '@/i18n/config'
-import { getTranslations } from '@/i18n/config'
 import { getCaseStudies, getSolutions } from '@/lib/payload'
+import { RichText } from '@payloadcms/richtext-lexical/react'
 import CtaSection from '@/components/CtaSection'
+import PageHero from '@/components/PageHero'
 import Reveal from '@/components/ui/Reveal'
 import Icon from '@/components/ui/Icon'
 import Link from 'next/link'
-import { caseStudyImages } from '@/lib/images'
+import { notFound } from 'next/navigation'
+import { caseStudyImages, caseStudyGalleries } from '@/lib/images'
+import MediaImage from '@/components/ui/MediaImage'
+import ImageGallery from '@/components/ui/ImageGallery'
 
 interface Props {
   params: Promise<{ locale: string; slug: string }>
@@ -13,145 +17,137 @@ interface Props {
 
 export const dynamic = 'force-dynamic'
 
+function countryName(country: unknown, location?: string | null): string {
+  if (country && typeof country === 'object' && 'name' in country) {
+    return String(country.name || location || '—')
+  }
+  return String(country || location || '—')
+}
+
 export default async function CaseStudyDetailPage({ params }: Props) {
   const { locale, slug } = await params
-  const t = getTranslations(locale as Locale, 'common')
   const cases = await getCaseStudies(locale)
-  const cs = cases.find((c) => c.slug === slug)
+  const cs = cases.find((item) => item.slug === slug)
   const solutions = await getSolutions(locale)
 
-  if (!cs) {
-    return (
-      <div className="max-w-7xl mx-auto px-6 py-24 text-center">
-        <h1 className="text-2xl font-bold">Case Study Not Found</h1>
-        <Link href={`/${locale}/case-studies`} className="inline-flex items-center gap-1.5 mt-4 text-[var(--color-primary)] font-semibold">
-          <Icon name="arrow-right" size={15} className="rotate-180" />
-          Back
-        </Link>
-      </div>
-    )
-  }
+  if (!cs) notFound()
 
-  // 相关解决方案（通过 relation 或 slug 匹配）
   const relatedSolution = cs.solution
-    ? solutions.find((s: any) => s.id === (typeof cs.solution === 'object' ? (cs.solution as any)?.id : cs.solution))
+    ? solutions.find((solution) => solution.id === (typeof cs.solution === 'object' && cs.solution ? cs.solution.id : cs.solution))
     : undefined
 
-  // 结构化 facts（含画册中的项目类型/设备/应用）
-  const facts = [
-    { icon: 'map-pin', label: 'Country', value: typeof cs.country === 'object' && cs.country ? (cs.country as any)?.name || cs.country : cs.country || '—' },
-    ...(cs.farmName ? [{ icon: 'building', label: 'Project Type', value: cs.farmName }] : []),
-    { icon: 'box', label: 'Equipment Supplied', value: (cs as any).equipment || 'Complete equipment package' },
-    { icon: 'check-circle', label: 'Application', value: (cs as any).application || cs.summary || '—' },
-    ...(cs.keyResult ? [{ icon: 'trending-up', label: 'Key Result', value: cs.keyResult, highlight: true }] : []),
-  ]
+  const country = countryName(cs.country, cs.location)
+  const projectType = cs.farmName || 'Agricultural equipment project'
+  const equipment = cs.equipment || 'Complete equipment package'
+  const application = cs.application || cs.summary || 'Project-based equipment supply'
+  const caseImages = (caseStudyGalleries[cs.slug] || (caseStudyImages[cs.slug] ? [caseStudyImages[cs.slug]] : []))
+    .map((src) => ({ src, alt: `${cs.title} project photo` }))
 
   return (
     <>
-      {/* Hero */}
-      <section className="bg-[var(--color-primary-dark)] text-white py-12 md:py-20 px-6">
-        <div className="max-w-7xl mx-auto">
-          <nav className="text-xs md:text-sm opacity-70 mb-3 flex items-center gap-2">
-            <Link href={`/${locale}`} className="hover:opacity-100 transition-opacity">Home</Link>
-            <span>/</span>
-            <Link href={`/${locale}/case-studies`} className="hover:opacity-100 transition-opacity">Case Studies</Link>
-            <span>/</span>
-            <span className="truncate max-w-[200px] md:max-w-none">{cs.title}</span>
-          </nav>
-          {caseStudyImages[cs.slug] && (
-            <div className="mt-6 rounded-lg overflow-hidden max-w-3xl">
-              <img src={caseStudyImages[cs.slug]} alt={cs.title} className="w-full h-48 md:h-64 object-cover" />
-            </div>
-          )}
-          <h1 className="text-2xl md:text-4xl font-bold tracking-tight mt-6">{cs.title}</h1>
-          <p className="mt-4 max-w-3xl opacity-85 text-sm md:text-base leading-relaxed">
-            {cs.subtitle || cs.summary || 'Real project, real results.'}
-          </p>
-        </div>
-      </section>
+      <PageHero
+        title={cs.title}
+        description={cs.subtitle || cs.summary || 'Real project, real results.'}
+        breadcrumb={`${locale.toUpperCase()} / Case Studies / ${cs.title}`}
+        image="/images/heroes/farm-landscape.jpg"
+      />
 
-      {/* Facts grid */}
-      <section className="max-w-7xl mx-auto px-6 py-12 md:py-16">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-          {facts.map((f, i) => (
-            <Reveal key={f.label} delay={i * 70} className="h-full">
-              <div className={`card card-hover p-6 h-full ${f.highlight ? 'border-[var(--color-primary)]/30 bg-[var(--color-primary)]/4' : ''}`}>
-                <div className="flex items-center gap-2 text-sm text-[var(--color-text-secondary)]">
-                  <Icon name={f.icon} size={16} className={f.highlight ? 'text-[var(--color-primary)]' : ''} />
-                  {f.label}
-                </div>
-                <div className={`mt-2 font-semibold leading-snug ${f.highlight ? 'text-[var(--color-primary)]' : 'text-[var(--color-text)]'}`}>{f.value}</div>
+      {/* Evidence-first case header — dominant photo + metadata column */}
+      <section className="max-w-7xl mx-auto px-6 py-14 md:py-20">
+        <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1.45fr)_minmax(300px,0.75fr)] gap-8 lg:gap-12 items-start">
+          <Reveal>
+            {caseImages.length > 0 ? (
+              <ImageGallery images={caseImages} aspect="4-3" priority />
+            ) : (
+              <div className="aspect-[4/3] rounded-lg bg-[var(--color-muted)] flex items-center justify-center">
+                <Icon name="compass" size={48} className="text-[var(--color-text-secondary)]/30" />
               </div>
-            </Reveal>
-          ))}
+            )}
+            <p className="mt-3 text-xs text-[var(--color-text-muted)] uppercase tracking-[0.1em]">Project evidence · {country}</p>
+          </Reveal>
+
+          <Reveal delay={100}>
+            <aside className="info-card rounded-lg p-6 md:p-8">
+              <span className="eyebrow">Project at a glance</span>
+              <h2 className="mt-3 text-2xl font-bold leading-tight text-[var(--color-text)]">{cs.title}</h2>
+              <dl className="metadata-pairs mt-6">
+                <div className="pair"><dt>Country / Market</dt><dd>{country}</dd></div>
+                <div className="pair"><dt>Project Type</dt><dd>{projectType}</dd></div>
+                <div className="pair"><dt>Equipment</dt><dd>{equipment}</dd></div>
+                <div className="pair"><dt>Application</dt><dd>{application}</dd></div>
+              </dl>
+              {cs.keyResult && (
+                <div className="mt-6 border-l-2 border-[var(--color-rule-orange)] pl-4">
+                  <span className="text-xs font-semibold uppercase tracking-[0.1em] text-[var(--color-primary)]">Key result</span>
+                  <p className="mt-2 text-sm font-semibold leading-relaxed text-[var(--color-text)]">{cs.keyResult}</p>
+                </div>
+              )}
+            </aside>
+          </Reveal>
         </div>
 
-        {/* Project overview */}
-        {(cs.summary || cs.content) && (
-          <div className="mt-12 max-w-3xl">
+        {/* Project story */}
+        <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-8 lg:gap-16 mt-16 md:mt-20">
+          <div>
             <Reveal>
-              <h2 className="text-xl md:text-2xl font-bold text-[var(--color-text)]">Project Overview</h2>
-              <p className="mt-4 text-base text-[var(--color-text-secondary)] leading-relaxed">{cs.summary || cs.subtitle}</p>
+              <span className="eyebrow">Project Story</span>
+              <h2 className="mt-3 text-2xl md:text-3xl font-bold text-[var(--color-text)]">The project in context</h2>
+              <span className="orange-underline mt-4" aria-hidden="true" />
+              {(cs.summary || cs.subtitle) && (
+                <p className="mt-6 text-base text-[var(--color-text-secondary)] leading-relaxed">{cs.summary || cs.subtitle}</p>
+              )}
+              {cs.content && <RichText className="mt-6 prose-agricon max-w-none" data={cs.content} />}
             </Reveal>
-            {cs.content && (
+          </div>
+
+          <div className="space-y-5">
+            {cs.challenge && (
               <Reveal>
-                <div
-                  className="mt-6 prose prose-slate max-w-none leading-relaxed text-[var(--color-text)]"
-                  dangerouslySetInnerHTML={{ __html: typeof cs.content === 'string' ? cs.content : '' }}
-                />
+                <div className="card p-6 border-l-2 border-[var(--color-accent)]">
+                  <div className="flex items-center gap-2 text-sm font-semibold text-[var(--color-primary)]">
+                    <Icon name="alert" size={16} />
+                    The Challenge
+                  </div>
+                  <p className="mt-3 text-sm text-[var(--color-text-secondary)] leading-relaxed">{cs.challenge}</p>
+                </div>
               </Reveal>
             )}
-          </div>
-        )}
-
-        {/* Equipment package — from company catalog */}
-        {(cs as any).equipment && (
-          <Reveal>
-            <div className="mt-12">
-              <h2 className="text-xl md:text-2xl font-bold text-[var(--color-text)]">Equipment Package</h2>
-              <p className="mt-4 text-base text-[var(--color-text-secondary)] leading-relaxed">{(cs as any).equipment}</p>
-            </div>
-          </Reveal>
-        )}
-
-        {/* Challenge → Solution story — from company catalog */}
-        {(cs as any).challenge && (
-          <Reveal>
-            <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-5">
-              <div className="card p-6">
-                <div className="flex items-center gap-2 text-sm font-semibold text-[var(--color-primary)]">
-                  <Icon name="alert" size={16} />
-                  The Challenge
-                </div>
-                <p className="mt-3 text-sm text-[var(--color-text-secondary)] leading-relaxed">{(cs as any).challenge}</p>
-              </div>
-              <div className="card p-6 border-[var(--color-primary)]/30 bg-[var(--color-primary)]/4">
+            <Reveal delay={80}>
+              <div className="info-card p-6">
                 <div className="flex items-center gap-2 text-sm font-semibold text-[var(--color-primary)]">
                   <Icon name="check-circle" size={16} />
-                  How We Solved It
+                  Equipment Package
                 </div>
-                <p className="mt-3 text-sm text-[var(--color-text-secondary)] leading-relaxed">{(cs as any).application}</p>
+                <p className="mt-3 text-sm text-[var(--color-text-secondary)] leading-relaxed">{equipment}</p>
               </div>
-            </div>
-          </Reveal>
-        )}
+            </Reveal>
+            <Reveal delay={160}>
+              <div className="info-card p-6">
+                <div className="flex items-center gap-2 text-sm font-semibold text-[var(--color-primary)]">
+                  <Icon name="target" size={16} />
+                  Application
+                </div>
+                <p className="mt-3 text-sm text-[var(--color-text-secondary)] leading-relaxed">{application}</p>
+              </div>
+            </Reveal>
+          </div>
+        </div>
 
         {/* Related solution */}
         {relatedSolution && (
           <Reveal>
-            <div className="mt-12 p-6 md:p-8 bg-[var(--color-surface-alt)] rounded-lg border border-[var(--color-border)]">
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            <div className="mt-16 border-t border-[var(--color-border)] pt-10">
+              <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-5">
                 <div>
-                  <div className="text-sm font-semibold text-[var(--color-primary)] uppercase tracking-wider">Related Solution</div>
-                  <h3 className="mt-1 text-lg font-bold text-[var(--color-text)]">{(relatedSolution as any).name}</h3>
-                  <p className="mt-1 text-sm text-[var(--color-text-secondary)] leading-relaxed max-w-2xl">{(relatedSolution as any).description}</p>
+                  <span className="eyebrow">Related Solution</span>
+                  <h2 className="mt-3 text-2xl font-bold text-[var(--color-text)]">{relatedSolution.name}</h2>
+                  <p className="mt-2 max-w-2xl text-sm text-[var(--color-text-secondary)] leading-relaxed">{relatedSolution.description}</p>
                 </div>
                 <Link
-                  href={`/${locale}/solutions/${(relatedSolution as any).slug}`}
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[var(--color-primary)] text-white font-semibold rounded-md min-h-[44px] tap-target shrink-0 transition-colors hover:bg-[var(--color-primary-dark)]"
+                  href={`/${locale}/solutions/${relatedSolution.slug}`}
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[var(--color-primary)] text-white font-semibold rounded-sm min-h-[44px] tap-target shrink-0 hover:bg-[var(--color-primary-dark)] transition-colors"
                 >
-                  View Solution
-                  <Icon name="arrow-right" size={15} />
+                  View Solution <Icon name="arrow-right" size={15} className="text-[var(--color-accent-soft)]" />
                 </Link>
               </div>
             </div>
@@ -159,17 +155,25 @@ export default async function CaseStudyDetailPage({ params }: Props) {
         )}
 
         {/* More case studies */}
-        <div className="mt-16">
+        <div className="mt-16 md:mt-20 border-t border-[var(--color-border)] pt-10">
           <Reveal>
-            <h2 className="text-xl md:text-2xl font-bold text-[var(--color-text)]">More Case Studies</h2>
+            <span className="eyebrow">Continue Exploring</span>
+            <h2 className="mt-3 text-2xl md:text-3xl font-bold text-[var(--color-text)]">More Case Studies</h2>
           </Reveal>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-6">
-            {cases.filter((c) => c.slug !== slug).slice(0, 3).map((c, i) => (
-              <Reveal key={c.id} delay={i * 80} className="h-full">
-                <Link href={`/${locale}/case-studies/${c.slug}`} className="card card-hover h-full block p-6">
-                  <div className="text-sm font-semibold text-[var(--color-primary)]">{typeof c.country === 'object' && c.country ? (c.country as any)?.name || '' : c.country || ''}</div>
-                  <h3 className="mt-1.5 font-semibold text-[var(--color-text)]">{c.title}</h3>
-                  <p className="mt-2 text-sm text-[var(--color-text-secondary)] line-clamp-2 leading-relaxed">{c.summary || c.subtitle}</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-7">
+            {cases.filter((item) => item.slug !== slug).slice(0, 3).map((item, index) => (
+              <Reveal key={item.id} delay={index * 70} className="h-full">
+                <Link href={`/${locale}/case-studies/${item.slug}`} className="card card-hover h-full block overflow-hidden group">
+                  {caseStudyImages[item.slug] && (
+                    <div className="aspect-[4/3] overflow-hidden bg-[var(--color-muted)]">
+                      <MediaImage src={caseStudyImages[item.slug]} alt={item.title} width={600} height={450} loading="lazy" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                    </div>
+                  )}
+                  <div className="p-5">
+                    <div className="text-xs font-semibold uppercase tracking-[0.1em] text-[var(--color-primary)]">{countryName(item.country, item.location)}</div>
+                    <h3 className="mt-2 font-semibold leading-snug text-[var(--color-text)] group-hover:text-[var(--color-primary)] transition-colors">{item.title}</h3>
+                    <p className="mt-2 text-sm text-[var(--color-text-secondary)] line-clamp-2 leading-relaxed">{item.summary || item.subtitle}</p>
+                  </div>
                 </Link>
               </Reveal>
             ))}

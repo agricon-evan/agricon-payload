@@ -7,6 +7,8 @@ import CtaSection from '@/components/CtaSection'
 import Reveal from '@/components/ui/Reveal'
 import Icon from '@/components/ui/Icon'
 import { subcategoryImages } from '@/lib/images'
+import MediaImage from '@/components/ui/MediaImage'
+import { notFound } from 'next/navigation'
 
 interface Props {
   params: Promise<{ locale: string; category: string }>
@@ -28,7 +30,7 @@ export default async function CategoryPage({ params }: Props) {
   const categories = await getCategories(locale)
   const subcategories = await getSubcategories(locale)
   const cat = categories.find((c) => c.slug === catSlug)
-  const lp = locale === 'en' ? '' : `/${locale}`
+  const lp = `/${locale}`
 
   const subs = subcategories.filter((s) => {
     const c = s.category
@@ -36,15 +38,7 @@ export default async function CategoryPage({ params }: Props) {
   })
 
   if (!cat) {
-    return (
-      <div className="max-w-7xl mx-auto px-6 py-24 text-center">
-        <h1 className="text-2xl font-bold">Category Not Found</h1>
-        <a href={`${lp}/products`} className="inline-flex items-center gap-1.5 mt-4 text-[var(--color-primary)] font-semibold">
-          <Icon name="arrow-right" size={15} className="rotate-180" />
-          All Products
-        </a>
-      </div>
-    )
+    notFound()
   }
 
   return (
@@ -53,6 +47,7 @@ export default async function CategoryPage({ params }: Props) {
         title={cat?.name || catSlug}
         description={cat?.description ?? undefined}
         breadcrumb={`${tHome.breadcrumb?.home || 'Home'} / ${t.nav?.products || 'Products'} / ${cat?.name || catSlug}`}
+        image="/images/heroes/farm-machinery.jpg"
       />
       <section className="max-w-7xl mx-auto px-6 py-16 md:py-24">
         {subs.length === 0 ? (
@@ -78,9 +73,9 @@ export default async function CategoryPage({ params }: Props) {
                 <a href={`${lp}/products/${catSlug}/${sub.slug}`} className="card card-hover h-full block group">
                   <div className="aspect-[16/9] bg-[var(--color-muted)] flex items-center justify-center overflow-hidden">
                     {sub.image && typeof sub.image === 'object' && sub.image.url ? (
-                      <img src={sub.image.url} alt={sub.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+                      <MediaImage src={sub.image.url} alt={sub.name} width={800} height={500} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
                     ) : subcategoryImages[sub.slug] ? (
-                      <img src={subcategoryImages[sub.slug]} alt={sub.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+                      <MediaImage src={subcategoryImages[sub.slug]} alt={sub.name} width={800} height={500} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
                     ) : (
                       <Icon name="layers" size={36} className="text-[var(--color-text-secondary)]/25" />
                     )}

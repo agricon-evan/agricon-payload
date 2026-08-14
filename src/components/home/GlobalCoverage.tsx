@@ -4,10 +4,10 @@ import SectionHeading from '@/components/ui/SectionHeading'
 
 export default function GlobalCoverage() {
   const regions = [
-    { icon: 'globe', title: 'Africa', sub: 'Nigeria, Kenya, Tanzania, Zambia, Ghana, Ethiopia' },
-    { icon: 'globe', title: 'Southeast Asia', sub: 'Vietnam, Philippines, Indonesia, Malaysia, Thailand' },
-    { icon: 'globe', title: 'South America', sub: 'Brazil, Peru, Colombia, Ecuador, Bolivia' },
-    { icon: 'globe', title: 'Central Asia & CIS', sub: 'Uzbekistan, Kazakhstan, Russia, Ukraine' },
+    { icon: 'building', title: 'Farm Operations', sub: 'Poultry, livestock, aquaculture and crop production equipment for daily operation.' },
+    { icon: 'layers', title: 'Processing & Supply', sub: 'Feed preparation, pelletizing, machinery and mixed-category equipment sourcing.' },
+    { icon: 'warehouse', title: 'Infrastructure', sub: 'Farm structures, ventilation, cooling, storage, fencing and environmental support.' },
+    { icon: 'globe', title: 'International Buyers', sub: 'Export coordination for farms, importers, distributors and project buyers worldwide.' },
   ]
 
   return (
@@ -16,8 +16,8 @@ export default function GlobalCoverage() {
         <Reveal>
           <SectionHeading
             eyebrow="Global Reach"
-            title="Serving Farms on Every Continent"
-            description="From single-layer houses to 100,000-bird complexes — our equipment works in any climate"
+            title={<>Supporting <span className="split-accent">Buyers Worldwide</span></>}
+            description="Practical equipment supply and export coordination for farms, importers, distributors and agricultural projects."
           />
         </Reveal>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6 mt-10">

@@ -5,8 +5,8 @@ import { getPayloadClient } from '@/lib/payload'
 const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.agricon.com').replace(/\/$/, '')
 
 const staticRoutes = [
-  '/products', '/solutions', '/contact', '/about',
-  '/case-studies', '/blog', '/faq', '/trade-support',
+  '/', '/products', '/solutions', '/contact', '/about',
+  '/case-studies', '/blog', '/videos', '/faq', '/trade-support',
   '/distributors', '/privacy', '/terms', '/search',
 ]
 
@@ -17,7 +17,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Static routes × locales
   for (const route of staticRoutes) {
     for (const locale of locales) {
-      const path = locale === 'en' ? route : `/${locale}${route}`
+      const path = route === '/' ? `/${locale}` : `/${locale}${route}`
       entries.push({ url: `${SITE_URL}${path}`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.7 })
     }
   }
@@ -32,7 +32,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       const catObj = typeof cat === 'object' && cat !== null ? cat : null
       const prodPath = `/products/${catObj?.slug || ''}/${subObj?.slug || ''}/${p.slug}`
       for (const locale of locales) {
-        const path = locale === 'en' ? prodPath : `/${locale}${prodPath}`
+        const path = `/${locale}${prodPath}`
         entries.push({ url: `${SITE_URL}${path}`, lastModified: new Date((p).updatedAt), changeFrequency: 'monthly', priority: 0.6 })
       }
     }
@@ -43,7 +43,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const { docs: posts } = await payload.find({ collection: 'blogPosts', limit: 500, where: { published: { equals: true } } })
     for (const p of posts) {
       for (const locale of locales) {
-        const path = locale === 'en' ? `/blog/${(p).slug}` : `/${locale}/blog/${(p).slug}`
+        const path = `/${locale}/blog/${(p).slug}`
         entries.push({ url: `${SITE_URL}${path}`, lastModified: new Date((p).updatedAt), changeFrequency: 'weekly', priority: 0.5 })
       }
     }
@@ -54,7 +54,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const { docs: cases } = await payload.find({ collection: 'caseStudies', limit: 500, where: { published: { equals: true } } })
     for (const cs of cases) {
       for (const locale of locales) {
-        const path = locale === 'en' ? `/case-studies/${(cs).slug}` : `/${locale}/case-studies/${(cs).slug}`
+        const path = `/${locale}/case-studies/${(cs).slug}`
         entries.push({ url: `${SITE_URL}${path}`, lastModified: new Date((cs).updatedAt), changeFrequency: 'monthly', priority: 0.5 })
       }
     }
@@ -65,7 +65,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const { docs: sols } = await payload.find({ collection: 'solutions', limit: 500 })
     for (const s of sols) {
       for (const locale of locales) {
-        const path = locale === 'en' ? `/solutions/${(s).slug}` : `/${locale}/solutions/${(s).slug}`
+        const path = `/${locale}/solutions/${(s).slug}`
         entries.push({ url: `${SITE_URL}${path}`, lastModified: new Date((s).updatedAt), changeFrequency: 'monthly', priority: 0.5 })
       }
     }

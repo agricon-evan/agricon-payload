@@ -20,7 +20,7 @@ interface ButtonProps {
 const variantClasses: Record<Variant, string> = {
   primary: 'bg-[var(--color-primary)] text-white hover:bg-[var(--color-primary-dark)]',
   secondary: 'bg-[var(--color-surface-alt)] text-[var(--color-text)] border border-[var(--color-border)] hover:border-[var(--color-primary)]',
-  accent: 'bg-[var(--color-accent)] text-white hover:brightness-110',
+  accent: 'bg-[var(--color-accent)] text-white hover:bg-[var(--color-accent-soft)]',
   outline: 'border-2 border-[var(--color-primary)] text-[var(--color-primary)] hover:bg-[var(--color-primary)]/10',
   ghost: 'text-[var(--color-primary)] hover:bg-[var(--color-primary)]/10',
   white: 'bg-white text-[var(--color-primary)] hover:bg-[var(--color-primary-light)] hover:text-white',
@@ -38,7 +38,7 @@ export function Button({
   className = '', type = 'button', disabled, fullWidth, ariaLabel,
 }: ButtonProps) {
   const classes = [
-    'inline-flex items-center justify-center gap-2 font-semibold rounded-lg touch-manipulation transition-all duration-200 hover-lift focus-visible:outline-2 focus-visible:outline-[var(--color-ring)] focus-visible:outline-offset-2 disabled:opacity-50 disabled:pointer-events-none',
+    'inline-flex items-center justify-center gap-2 font-semibold rounded-sm touch-manipulation transition-all duration-200 focus-visible:outline-2 focus-visible:outline-[var(--color-ring)] focus-visible:outline-offset-2 disabled:opacity-50 disabled:pointer-events-none',
     variantClasses[variant],
     sizeClasses[size],
     fullWidth ? 'w-full' : '',

@@ -1,0 +1,85 @@
+### Hatcher Equipment
+http://localhost:3000/en/products/poultry-equipment/hatcher-equipment
+  http://localhost:3000/en/products/poultry-equipment/hatcher-equipment/48-96-egg-digital-incubator
+  http://localhost:3000/en/products/poultry-equipment/hatcher-equipment/192-egg-incubator
+  http://localhost:3000/en/products/poultry-equipment/hatcher-equipment/industrial-hatcher-incubator
+  http://localhost:3000/en/products/poultry-equipment/hatcher-equipment/24-500-egg-automatic-incubator
+  http://localhost:3000/en/products/poultry-equipment/hatcher-equipment/mini-plastic-home-incubator
+  http://localhost:3000/en/products/poultry-equipment/hatcher-equipment/64-400-egg-smart-incubator
+### Layer Cage
+http://localhost:3000/en/products/poultry-equipment/layer-cage
+  http://localhost:3000/en/products/poultry-equipment/layer-cage/48-bird-half-set-layer-cage
+  http://localhost:3000/en/products/poultry-equipment/layer-cage/128-bird-4-tier-layer-cage
+  http://localhost:3000/en/products/poultry-equipment/layer-cage/h-type-layer-cage-96-160-birds
+  http://localhost:3000/en/products/poultry-equipment/layer-cage/h-type-layer-cage-battery-system
+### Breeding Accessories
+http://localhost:3000/en/products/poultry-equipment/breeding-accessories
+  http://localhost:3000/en/products/poultry-equipment/breeding-accessories/poultry-feeder-and-drinker-set
+  http://localhost:3000/en/products/poultry-equipment/breeding-accessories/poultry-feeding-and-watering-set
+### Broiler Cage
+http://localhost:3000/en/products/poultry-equipment/broiler-cage
+  http://localhost:3000/en/products/poultry-equipment/broiler-cage/h-frame-broiler-cage
+  http://localhost:3000/en/products/poultry-equipment/broiler-cage/automatic-h-frame-broiler-cage
+### Automatic Cage
+http://localhost:3000/en/products/poultry-equipment/automatic-cage
+  http://localhost:3000/en/products/poultry-equipment/automatic-cage/h-frame-automatic-layer-cage
+  http://localhost:3000/en/products/poultry-equipment/automatic-cage/a-type-automatic-layer-cage
+### Cage Accessories
+http://localhost:3000/en/products/poultry-equipment/cage-accessories
+  http://localhost:3000/en/products/poultry-equipment/cage-accessories/plasson-bell-drinker
+  http://localhost:3000/en/products/poultry-equipment/cage-accessories/chicken-drinking-bowl
+  http://localhost:3000/en/products/poultry-equipment/cage-accessories/poultry-nipple-drinking-cup
+  http://localhost:3000/en/products/poultry-equipment/cage-accessories/automatic-poultry-feeding-line
+  http://localhost:3000/en/products/poultry-equipment/cage-accessories/poultry-water-pressure-regulator
+### Transport Crate
+http://localhost:3000/en/products/poultry-equipment/transport-crate
+  http://localhost:3000/en/products/poultry-equipment/transport-crate/plastic-poultry-transport-crate
+### Quail Cage
+http://localhost:3000/en/products/poultry-equipment/quail-cage
+  http://localhost:3000/en/products/poultry-equipment/quail-cage/automatic-quail-cage
+### Farrow Pen
+http://localhost:3000/en/products/livestock-equipment/farrow-pen
+  http://localhost:3000/en/products/livestock-equipment/farrow-pen/farrowing-crate
+### Rabbit Cage
+http://localhost:3000/en/products/livestock-equipment/rabbit-cage
+  http://localhost:3000/en/products/livestock-equipment/rabbit-cage/h-type-rabbit-cage
+### Livestock Accessories
+http://localhost:3000/en/products/livestock-equipment/livestock-accessories
+  http://localhost:3000/en/products/livestock-equipment/livestock-accessories/plastic-animal-ear-tags
+### Gestation Crate
+http://localhost:3000/en/products/livestock-equipment/gestation-crate
+  http://localhost:3000/en/products/livestock-equipment/gestation-crate/pig-gestation-crate
+### Grass Chaff Machine
+http://localhost:3000/en/products/agriculture-machinery/grass-chaff-machine
+  http://localhost:3000/en/products/agriculture-machinery/grass-chaff-machine/small-chaff-cutter-400kg-h
+  http://localhost:3000/en/products/agriculture-machinery/grass-chaff-machine/4-8t-multi-function-chaff-cutter
+  http://localhost:3000/en/products/agriculture-machinery/grass-chaff-machine/large-chaff-cutter-5t-h
+### Pellet Machine
+http://localhost:3000/en/products/agriculture-machinery/pellet-machine
+  http://localhost:3000/en/products/agriculture-machinery/pellet-machine/agp-160-flat-die-pellet-machine
+### Grinding Machine
+http://localhost:3000/en/products/agriculture-machinery/grinding-machine
+  http://localhost:3000/en/products/agriculture-machinery/grinding-machine/toothed-disc-mill-grinder
+  http://localhost:3000/en/products/agriculture-machinery/grinding-machine/hammer-mill-grinder
+### Mixing Machine
+http://localhost:3000/en/products/agriculture-machinery/mixing-machine
+  http://localhost:3000/en/products/agriculture-machinery/mixing-machine/compact-animal-feed-mixer
+  http://localhost:3000/en/products/agriculture-machinery/mixing-machine/feed-mixing-and-grinding-machine
+### Screw Conveyor
+http://localhost:3000/en/products/agriculture-machinery/screw-conveyor
+  http://localhost:3000/en/products/agriculture-machinery/screw-conveyor/industrial-screw-conveyor-auger
+### Peanut Sheller
+http://localhost:3000/en/products/agriculture-machinery/peanut-sheller
+  http://localhost:3000/en/products/agriculture-machinery/peanut-sheller/electric-peanut-sheller
+### Threshing Machine
+http://localhost:3000/en/products/agriculture-machinery/threshing-machine
+  http://localhost:3000/en/products/agriculture-machinery/threshing-machine/diesel-threshing-machine-8hp
+  http://localhost:3000/en/products/agriculture-machinery/threshing-machine/bean-thresher-200kg-h
+  http://localhost:3000/en/products/agriculture-machinery/threshing-machine/corn-peeling-and-shelling-machine
+### Plucker Machine
+http://localhost:3000/en/products/slaughter-equipment/plucker-machine
+  http://localhost:3000/en/products/slaughter-equipment/plucker-machine/stainless-steel-chicken-plucker
+### Weed Cutter
+http://localhost:3000/en/products/farming-tools/weed-cutter
+  http://localhost:3000/en/products/farming-tools/weed-cutter/stainless-steel-bush-cutter
+  http://localhost:3000/en/products/farming-tools/weed-cutter/backpack-gasoline-brush-cutter

@@ -17,18 +17,19 @@ interface ContactFormProps {
   countries: string[]
   productOptions: string[]
   successTitle: string; successDesc: string; successBrowse: string
-  ctaGetQuote: string
   whatsappTitle: string; whatsappDesc: string; whatsappOpen: string
   responseLabel: string
-  homeLabel: string; contactLabel: string
+  whatsappNumber?: string
 }
 
 export default function ContactForm(props: ContactFormProps) {
   const {
     locale, contactMethods, inquiryLabels: t, responseInfo, countries, productOptions,
-    successTitle, successDesc, successBrowse, ctaGetQuote,
-    whatsappTitle, whatsappDesc, whatsappOpen, responseLabel, homeLabel, contactLabel,
+    successTitle, successDesc, successBrowse,
+    whatsappTitle, whatsappDesc, whatsappOpen, responseLabel, whatsappNumber,
   } = props
+
+  const whatsappDigits = whatsappNumber?.replace(/\D/g, '')
 
   const [form, setForm] = useState({
     name: '', email: '', company: '', country: '', phone: '', message: '',
@@ -178,7 +179,14 @@ export default function ContactForm(props: ContactFormProps) {
               <a href={`/${locale}/products`} className="inline-block mt-3 text-sm font-semibold underline">{successBrowse}</a>
             </div>
           )}
-          {status === 'error' && <div className="p-5 bg-red-50 border border-red-200 rounded-md text-red-700 text-sm">{error}</div>}
+          {status === 'error' && (
+            <div className="p-5 bg-[var(--color-canvas-soft)] border border-[var(--color-accent)]/40 rounded-md">
+              <p className="text-sm text-[var(--color-text)] font-medium flex items-start gap-2">
+                <Icon name="alert" size={16} className="text-[var(--color-accent)] mt-0.5 flex-shrink-0" />
+                {error}
+              </p>
+            </div>
+          )}
           <button type="submit" disabled={status === 'submitting'}
             className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 bg-[var(--color-primary)] text-white font-semibold rounded-md min-h-[52px] press tap-target disabled:opacity-50 transition-colors hover:bg-[var(--color-primary-dark)]"
           >{status === 'submitting' ? t.submitting : t.submit}{status !== 'submitting' && <Icon name="arrow-right" size={16} />}</button>
@@ -203,9 +211,11 @@ export default function ContactForm(props: ContactFormProps) {
           <div className="p-6 bg-[var(--color-primary)] text-white rounded-lg">
             <h3 className="font-semibold text-lg">{whatsappTitle}</h3>
             <p className="mt-2 text-sm opacity-85 leading-relaxed">{whatsappDesc}</p>
-            <a href="https://wa.me/00000000" target="_blank" rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 mt-4 px-6 py-3 bg-[var(--color-accent)] text-white font-semibold rounded-md min-h-[44px] tap-target transition-colors hover:brightness-110"
-            ><Icon name="whatsapp" size={16} />{whatsappOpen}</a>
+            {whatsappDigits ? (
+              <a href={`https://wa.me/${whatsappDigits}`} target="_blank" rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 mt-4 px-6 py-3 bg-[var(--color-primary)] text-white font-semibold rounded-sm min-h-[44px] tap-target transition-colors hover:bg-[var(--color-primary-dark)]"
+              ><Icon name="whatsapp" size={16} />{whatsappOpen}</a>
+            ) : null}
           </div>
         </aside>
       </div>

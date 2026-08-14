@@ -1,0 +1,2018 @@
+{
+ "categories": [
+  {
+   "_parent_id": 1,
+   "name": "Poultry Equipment",
+   "description": "Practical poultry equipment solutions for layer, broiler and chick production."
+  },
+  {
+   "_parent_id": 2,
+   "name": "Livestock Equipment",
+   "description": "Practical equipment solutions for cattle, pig, goat and rabbit farming."
+  },
+  {
+   "_parent_id": 3,
+   "name": "Aquaculture Equipment",
+   "description": "Practical equipment solutions for pond farming, cage farming and fish farm operation."
+  },
+  {
+   "_parent_id": 4,
+   "name": "Agriculture Machinery",
+   "description": "Practical machinery for feed preparation and agricultural processing."
+  },
+  {
+   "_parent_id": 5,
+   "name": "Breeding House Equipment",
+   "description": "Farm building and environmental support solutions for modern breeding projects."
+  },
+  {
+   "_parent_id": 6,
+   "name": "Slaughter Equipment",
+   "description": "Practical processing equipment for poultry and livestock slaughtering applications."
+  },
+  {
+   "_parent_id": 7,
+   "name": "Farming Tools",
+   "description": "Practical tools and accessories supporting daily farm operation and field work."
+  },
+  {
+   "_parent_id": 8,
+   "name": "Farming Vehicles",
+   "description": "Practical vehicle solutions for field work, harvesting and farm transport."
+  },
+  {
+   "_parent_id": 9,
+   "name": "Wire Mesh & Fencing",
+   "description": "Practical wire mesh and fencing solutions for farms, livestock areas and agricultural facilities."
+  },
+  {
+   "_parent_id": 10,
+   "name": "Other Machines",
+   "description": "Special agricultural machines for egg handling, processing and construction support."
+  }
+ ],
+ "subcategories": [
+  {
+   "_parent_id": 1,
+   "name": "Layer Cage",
+   "description": "For commercial egg production. Layer cage systems support organized bird housing, feeding, drinking and egg collection."
+  },
+  {
+   "_parent_id": 2,
+   "name": "Broiler Cage",
+   "description": "For meat chicken farming. Provides organized housing, feeding and drinking support for broiler production."
+  },
+  {
+   "_parent_id": 3,
+   "name": "Chick Cage",
+   "description": "For young bird rearing. Suitable housing, feeding and drinking support during early growth stage."
+  },
+  {
+   "_parent_id": 4,
+   "name": "Automatic Cage",
+   "description": "For automated poultry operation. Combines cage structures with feeding, drinking, egg collection and manure removal."
+  },
+  {
+   "_parent_id": 5,
+   "name": "Hatcher Equipment",
+   "description": "For egg hatching support. Supports incubation and chick production for hatcheries and breeding farms."
+  },
+  {
+   "_parent_id": 6,
+   "name": "Floor-Rearing Equipment",
+   "description": "For floor rearing systems. Flexible feeding and drinking arrangements for broiler, breeder and free-range projects."
+  },
+  {
+   "_parent_id": 7,
+   "name": "Cage Accessories",
+   "description": "Feeders, drinkers, trays, connectors, clips and replacement parts for poultry cage systems."
+  },
+  {
+   "_parent_id": 8,
+   "name": "Breeding Accessories",
+   "description": "Poultry feeding, drinking, brooding, handling and cleaning support products."
+  },
+  {
+   "_parent_id": 9,
+   "name": "Farm Fence",
+   "description": "For farm boundary, livestock control and area protection. Creates safer animal activity zones."
+  },
+  {
+   "_parent_id": 10,
+   "name": "Cattle Panels",
+   "description": "For cattle yards, handling areas and livestock separation. Strong modular structure."
+  },
+  {
+   "_parent_id": 11,
+   "name": "Livestock Scale",
+   "description": "For animal weighing, farm management and trading support."
+  },
+  {
+   "_parent_id": 12,
+   "name": "Farrow Pen",
+   "description": "For sow farrowing, piglet protection and nursery management."
+  },
+  {
+   "_parent_id": 13,
+   "name": "Goat Pen",
+   "description": "For goat housing, feeding and daily farm management."
+  },
+  {
+   "_parent_id": 14,
+   "name": "Rabbit Cage",
+   "description": "For rabbit breeding, feeding and organized cage management."
+  },
+  {
+   "_parent_id": 15,
+   "name": "Livestock Accessories",
+   "description": "Feeders, drinkers, gates, connectors and handling tools."
+  },
+  {
+   "_parent_id": 16,
+   "name": "Water Pump",
+   "description": "For water circulation, pond supply and drainage."
+  },
+  {
+   "_parent_id": 17,
+   "name": "Aerator",
+   "description": "For oxygen support and improved water movement in fish ponds."
+  },
+  {
+   "_parent_id": 18,
+   "name": "Fish Pond",
+   "description": "For pond farming, fish growing and aquaculture project setup."
+  },
+  {
+   "_parent_id": 19,
+   "name": "Floating Cage",
+   "description": "For organized fish farming in lakes, reservoirs or open water."
+  },
+  {
+   "_parent_id": 20,
+   "name": "Fish Net",
+   "description": "For fish capture, separation, protection and daily farm use."
+  },
+  {
+   "_parent_id": 21,
+   "name": "Aquaculture Accessories",
+   "description": "Fittings, pipes, connectors, floats and feeding tools."
+  },
+  {
+   "_parent_id": 22,
+   "name": "Pellet Machine",
+   "description": "For making animal feed pellets from mixed raw materials."
+  },
+  {
+   "_parent_id": 23,
+   "name": "Extruder Machine",
+   "description": "For producing expanded feed for fish, pets and livestock."
+  },
+  {
+   "_parent_id": 24,
+   "name": "Grinding Machine",
+   "description": "For crushing grains and raw materials before feed processing."
+  },
+  {
+   "_parent_id": 25,
+   "name": "Grass Chaff Machine",
+   "description": "For cutting grass, straw and forage into smaller feeding material."
+  },
+  {
+   "_parent_id": 26,
+   "name": "Mixing Machine",
+   "description": "For mixing feed ingredients evenly before pelletizing or feeding."
+  },
+  {
+   "_parent_id": 27,
+   "name": "Drying Machine",
+   "description": "For reducing moisture in feed, grain and agricultural materials."
+  },
+  {
+   "_parent_id": 28,
+   "name": "Rice Mill Machine",
+   "description": "For rice husking, milling and basic grain processing."
+  },
+  {
+   "_parent_id": 29,
+   "name": "Production Line",
+   "description": "For complete feed processing from grinding to finished output."
+  },
+  {
+   "_parent_id": 30,
+   "name": "Metal Structure",
+   "description": "For breeding houses, farm buildings and agricultural infrastructure support."
+  },
+  {
+   "_parent_id": 31,
+   "name": "Greenhouse",
+   "description": "For protected farming, crop growing and controlled agricultural production."
+  },
+  {
+   "_parent_id": 32,
+   "name": "Exhaust Fan",
+   "description": "For air exchange, heat removal and better house ventilation."
+  },
+  {
+   "_parent_id": 33,
+   "name": "Cooling Pad",
+   "description": "For cooling support in poultry houses, greenhouses and breeding buildings."
+  },
+  {
+   "_parent_id": 34,
+   "name": "Slatted Floor",
+   "description": "For cleaner flooring, animal separation and easier daily management."
+  },
+  {
+   "_parent_id": 35,
+   "name": "Manure Scraper",
+   "description": "For manure cleaning, waste removal and improved house hygiene."
+  },
+  {
+   "_parent_id": 36,
+   "name": "Feed Silo",
+   "description": "For bulk feed storage, feeding support and farm supply management."
+  },
+  {
+   "_parent_id": 37,
+   "name": "Environment Controller",
+   "description": "For temperature, ventilation, cooling and farm environment control."
+  },
+  {
+   "_parent_id": 38,
+   "name": "Disinfection Equipment",
+   "description": "For farm sanitation, disease prevention and daily biosecurity support."
+  },
+  {
+   "_parent_id": 39,
+   "name": "Plucker Machine",
+   "description": "For poultry feather removal after scalding."
+  },
+  {
+   "_parent_id": 40,
+   "name": "Scalding Machine",
+   "description": "For hot water scalding before poultry plucking."
+  },
+  {
+   "_parent_id": 41,
+   "name": "Bleeding Cone",
+   "description": "For poultry bleeding and organized processing handling."
+  },
+  {
+   "_parent_id": 42,
+   "name": "Cutting Machine",
+   "description": "For meat cutting, portioning and processing support."
+  },
+  {
+   "_parent_id": 43,
+   "name": "Working Table",
+   "description": "For clean handling, sorting and processing operation."
+  },
+  {
+   "_parent_id": 44,
+   "name": "Automatic Processing Machine",
+   "description": "For efficient slaughtering workflow and higher processing capacity."
+  },
+  {
+   "_parent_id": 45,
+   "name": "Planter",
+   "description": "For seeding, crop planting and field preparation."
+  },
+  {
+   "_parent_id": 46,
+   "name": "Weed Cutter",
+   "description": "For cutting weeds, grass and field vegetation."
+  },
+  {
+   "_parent_id": 47,
+   "name": "Sprayer",
+   "description": "For crop spraying, pesticide application and field care."
+  },
+  {
+   "_parent_id": 48,
+   "name": "Mist Maker",
+   "description": "For fine mist spraying, humidification and crop protection."
+  },
+  {
+   "_parent_id": 49,
+   "name": "Irrigation Equipment",
+   "description": "For water supply, field watering and farm irrigation support."
+  },
+  {
+   "_parent_id": 50,
+   "name": "Packing Bag",
+   "description": "For packing, storing and transporting agricultural products."
+  },
+  {
+   "_parent_id": 51,
+   "name": "Tractor",
+   "description": "For land preparation, field work and farm operation support."
+  },
+  {
+   "_parent_id": 52,
+   "name": "Harvester",
+   "description": "For crop harvesting, collection and seasonal production needs."
+  },
+  {
+   "_parent_id": 53,
+   "name": "Tricycle",
+   "description": "For short-distance farm transport and daily material handling."
+  },
+  {
+   "_parent_id": 54,
+   "name": "Walking Tractor",
+   "description": "For small farm tillage, transport and flexible field operation."
+  },
+  {
+   "_parent_id": 55,
+   "name": "Welded Wire Mesh",
+   "description": "For farm fencing, protection, cage making and general agricultural use."
+  },
+  {
+   "_parent_id": 56,
+   "name": "Cattle Fence",
+   "description": "For livestock control, grazing areas and farm boundary protection."
+  },
+  {
+   "_parent_id": 57,
+   "name": "Chain Link Fence",
+   "description": "For farm enclosures, security fencing and open area protection."
+  },
+  {
+   "_parent_id": 58,
+   "name": "Hexagonal Wire Mesh",
+   "description": "For poultry fencing, garden protection and light farm applications."
+  },
+  {
+   "_parent_id": 59,
+   "name": "Cage Mesh",
+   "description": "For poultry cages, rabbit cages and small animal breeding systems."
+  },
+  {
+   "_parent_id": 60,
+   "name": "Egg Tray Machine",
+   "description": "For producing egg trays used in packing, storage and transport."
+  },
+  {
+   "_parent_id": 61,
+   "name": "Egg Sizing Machine",
+   "description": "For sorting eggs by size, grade or market requirement."
+  },
+  {
+   "_parent_id": 62,
+   "name": "Egg Conveyor Machine",
+   "description": "For moving eggs efficiently during collection and handling."
+  },
+  {
+   "_parent_id": 63,
+   "name": "Egg Counting Machine",
+   "description": "For automatic egg counting and daily production management."
+  },
+  {
+   "_parent_id": 64,
+   "name": "Brick Making Machine",
+   "description": "For producing bricks used in farm buildings and project support."
+  }
+ ],
+ "products": [
+  {
+   "_parent_id": 1,
+   "name": "Layer Cage",
+   "description": "Layer cage systems support organized bird housing, feeding, drinking and egg collection for commercial egg farms. Different configurations can be matched to farm capacity, poultry house size and management requirements.",
+   "seo_title": "Layer Cage | Agricon Agricultural Equipment",
+   "seo_description": "Layer cage systems support organized bird housing, feeding, drinking and egg collection for commercial egg farms. Different configurations can be matched to farm capacity, poultry house size and management requirements."
+  },
+  {
+   "_parent_id": 2,
+   "name": "Broiler Cage",
+   "description": "Broiler cage systems provide organized housing, feeding and drinking support for meat chicken production. They help farms improve space use, batch management and daily operating efficiency.",
+   "seo_title": "Broiler Cage | Agricon Agricultural Equipment",
+   "seo_description": "Broiler cage systems provide organized housing, feeding and drinking support for meat chicken production. They help farms improve space use, batch management and daily operating efficiency."
+  },
+  {
+   "_parent_id": 3,
+   "name": "Chick Cage",
+   "description": "Chick cages provide suitable housing, feeding and drinking support during the early growth stage. They help farms observe young birds more easily and manage chick rearing before transfer to later production systems.",
+   "seo_title": "Chick Cage | Agricon Agricultural Equipment",
+   "seo_description": "Chick cages provide suitable housing, feeding and drinking support during the early growth stage. They help farms observe young birds more easily and manage chick rearing before transfer to later production systems."
+  },
+  {
+   "_parent_id": 4,
+   "name": "Automatic Cage",
+   "description": "Automatic cage systems combine cage structures with feeding, drinking, egg collection or manure removal options. They help commercial farms reduce labor requirements and improve operating efficiency.",
+   "seo_title": "Automatic Cage | Agricon Agricultural Equipment",
+   "seo_description": "Automatic cage systems combine cage structures with feeding, drinking, egg collection or manure removal options. They help commercial farms reduce labor requirements and improve operating efficiency."
+  },
+  {
+   "_parent_id": 5,
+   "name": "Hatcher Equipment",
+   "description": "Hatcher equipment supports egg incubation and chick production for hatcheries and poultry breeding farms. It helps operators manage hatching batches and production processes more systematically.",
+   "seo_title": "Hatcher Equipment | Agricon Agricultural Equipment",
+   "seo_description": "Hatcher equipment supports egg incubation and chick production for hatcheries and poultry breeding farms. It helps operators manage hatching batches and production processes more systematically."
+  },
+  {
+   "_parent_id": 6,
+   "name": "Farm Fence",
+   "description": "Fa r m f e n c e s a r e u s e d f o r fa r m boundaries, livestock control and grazing area separation. They help create safer animal activity zones and support more organized daily farm management.",
+   "seo_title": "Farm Fence | Agricon Agricultural Equipment",
+   "seo_description": "Fa r m f e n c e s a r e u s e d f o r fa r m boundaries, livestock control and grazing area separation. They help create safer animal activity zones and support more organized daily farm management."
+  },
+  {
+   "_parent_id": 7,
+   "name": "Cattle Panels",
+   "description": "Cattle panels are used in cattle yards, holding areas and handling lanes. Their strong and modular structure supports animal separation, movement control and temporary enclosure.",
+   "seo_title": "Cattle Panels | Agricon Agricultural Equipment",
+   "seo_description": "Cattle panels are used in cattle yards, holding areas and handling lanes. Their strong and modular structure supports animal separation, movement control and temporary enclosure."
+  },
+  {
+   "_parent_id": 8,
+   "name": "Livestock Scale",
+   "description": "Livestock scales provide weight data for cattle, pigs, goats and other farm animals. They support growth monitoring, feeding management and livestock trading decisions.",
+   "seo_title": "Livestock Scale | Agricon Agricultural Equipment",
+   "seo_description": "Livestock scales provide weight data for cattle, pigs, goats and other farm animals. They support growth monitoring, feeding management and livestock trading decisions."
+  },
+  {
+   "_parent_id": 9,
+   "name": "Goat Pen",
+   "description": "Goat pens provide organized housing, feeding and separation areas for goat and sheep farming. Different layouts can be matched to breeding, growth and daily management needs.",
+   "seo_title": "Goat Pen | Agricon Agricultural Equipment",
+   "seo_description": "Goat pens provide organized housing, feeding and separation areas for goat and sheep farming. Different layouts can be matched to breeding, growth and daily management needs."
+  },
+  {
+   "_parent_id": 10,
+   "name": "Rabbit Cage",
+   "description": "Rabbit cages support organized breeding, feeding and management according to growth stage or production purpose. They help farms save space and maintain cleaner housing conditions.",
+   "seo_title": "Rabbit Cage | Agricon Agricultural Equipment",
+   "seo_description": "Rabbit cages support organized breeding, feeding and management according to growth stage or production purpose. They help farms save space and maintain cleaner housing conditions."
+  },
+  {
+   "_parent_id": 11,
+   "name": "Livestock Accessories",
+   "description": "Livestock accessories include feeders, drinkers, gates, connectors and handling tools. They complete livestock farming systems and support daily operation, replacement and future farm expansion.",
+   "seo_title": "Livestock Accessories | Agricon Agricultural Equipment",
+   "seo_description": "Livestock accessories include feeders, drinkers, gates, connectors and handling tools. They complete livestock farming systems and support daily operation, replacement and future farm expansion."
+  },
+  {
+   "_parent_id": 12,
+   "name": "Water Pump",
+   "description": "Water pumps support water supply, circulation and drainage in aquaculture projects. They help farms maintain stable water movement and manage ponds more efficiently.",
+   "seo_title": "Water Pump | Agricon Agricultural Equipment",
+   "seo_description": "Water pumps support water supply, circulation and drainage in aquaculture projects. They help farms maintain stable water movement and manage ponds more efficiently."
+  },
+  {
+   "_parent_id": 13,
+   "name": "Aerator",
+   "description": "Aerators increase oxygen levels and improve water movement in fish and shrimp ponds. They support a more stable pond environment and healthier aquatic growth.",
+   "seo_title": "Aerator | Agricon Agricultural Equipment",
+   "seo_description": "Aerators increase oxygen levels and improve water movement in fish and shrimp ponds. They support a more stable pond environment and healthier aquatic growth."
+  },
+  {
+   "_parent_id": 14,
+   "name": "Fish Pond",
+   "description": "Fish ponds provide practical spaces for feeding, growing and managing fish. Pond layouts can be planned according to farming species, project size and water requirements.",
+   "seo_title": "Fish Pond | Agricon Agricultural Equipment",
+   "seo_description": "Fish ponds provide practical spaces for feeding, growing and managing fish. Pond layouts can be planned according to farming species, project size and water requirements."
+  },
+  {
+   "_parent_id": 15,
+   "name": "Floating Cage",
+   "description": "Floating cages support organized fish farming in lakes, rivers and reservoirs. They help farmers manage stocking, feeding and harvesting in open-water environments.",
+   "seo_title": "Floating Cage | Agricon Agricultural Equipment",
+   "seo_description": "Floating cages support organized fish farming in lakes, rivers and reservoirs. They help farmers manage stocking, feeding and harvesting in open-water environments."
+  },
+  {
+   "_parent_id": 16,
+   "name": "Fish Net",
+   "description": "Fish nets are used for capture, separation, protection and harvesting. Different ### specifications can be matched to pond farming, cage farming and daily handling requirements.",
+   "seo_title": "Fish Net | Agricon Agricultural Equipment",
+   "seo_description": "Fish nets are used for capture, separation, protection and harvesting. Different ### specifications can be matched to pond farming, cage farming and daily handling requirements."
+  },
+  {
+   "_parent_id": 17,
+   "name": "Aquaculture Accessories",
+   "description": "Aquaculture accessories include fittings, pipes, connectors, floats and feeding tools. They complete pond and cage systems and support daily operation, maintenance and replacement.",
+   "seo_title": "Aquaculture Accessories | Agricon Agricultural Equipment",
+   "seo_description": "Aquaculture accessories include fittings, pipes, connectors, floats and feeding tools. They complete pond and cage systems and support daily operation, maintenance and replacement."
+  },
+  {
+   "_parent_id": 18,
+   "name": "Pellet Machine",
+   "description": "Pellet machines process mixed raw materials into animal feed pellets. They are suitable for poultry, livestock and aquaculture feed production at different operating scales.",
+   "seo_title": "Pellet Machine | Agricon Agricultural Equipment",
+   "seo_description": "Pellet machines process mixed raw materials into animal feed pellets. They are suitable for poultry, livestock and aquaculture feed production at different operating scales."
+  },
+  {
+   "_parent_id": 19,
+   "name": "Extruder Machine",
+   "description": "Extruder machines produce expanded feed for fish, pets and livestock. They support material cooking, shaping and expansion, including floating fish feed production.",
+   "seo_title": "Extruder Machine | Agricon Agricultural Equipment",
+   "seo_description": "Extruder machines produce expanded feed for fish, pets and livestock. They support material cooking, shaping and expansion, including floating fish feed production."
+  },
+  {
+   "_parent_id": 20,
+   "name": "Grinding Machine",
+   "description": "Grinding machines crush corn, grain and other feed materials into smaller, more uniform particles before mixing or pelletizing.",
+   "seo_title": "Grinding Machine | Agricon Agricultural Equipment",
+   "seo_description": "Grinding machines crush corn, grain and other feed materials into smaller, more uniform particles before mixing or pelletizing."
+  },
+  {
+   "_parent_id": 21,
+   "name": "Grass Chaff Machine",
+   "description": "Grass chaff machines cut grass, straw, corn stalks and forage into smaller feeding materials for cattle, goats, sheep and other livestock.",
+   "seo_title": "Grass Chaff Machine | Agricon Agricultural Equipment",
+   "seo_description": "Grass chaff machines cut grass, straw, corn stalks and forage into smaller feeding materials for cattle, goats, sheep and other livestock."
+  },
+  {
+   "_parent_id": 22,
+   "name": "Mixing Machine",
+   "description": "Mixing machines blend different feed ingredients evenly before pelletizing or direct feeding. They support consistent material distribution and organized batch production.",
+   "seo_title": "Mixing Machine | Agricon Agricultural Equipment",
+   "seo_description": "Mixing machines blend different feed ingredients evenly before pelletizing or direct feeding. They support consistent material distribution and organized batch production."
+  },
+  {
+   "_parent_id": 23,
+   "name": "Drying Machine",
+   "description": "Drying machines reduce moisture in feed, grain and other agricultural materials. They help improve processing stability and prepare products for storage or further production.",
+   "seo_title": "Drying Machine | Agricon Agricultural Equipment",
+   "seo_description": "Drying machines reduce moisture in feed, grain and other agricultural materials. They help improve processing stability and prepare products for storage or further production."
+  },
+  {
+   "_parent_id": 24,
+   "name": "Rice Mill Machine",
+   "description": "Rice mill machines support rice husking, milling and basic grain processing. They are suitable for farms, local processors and small agricultural production projects.",
+   "seo_title": "Rice Mill Machine | Agricon Agricultural Equipment",
+   "seo_description": "Rice mill machines support rice husking, milling and basic grain processing. They are suitable for farms, local processors and small agricultural production projects."
+  },
+  {
+   "_parent_id": 25,
+   "name": "Production Line",
+   "description": "Production lines combine grinding, mixing, pelletizing, cooling and packing equipment into one coordinated system for continuous feed processing.",
+   "seo_title": "Production Line | Agricon Agricultural Equipment",
+   "seo_description": "Production lines combine grinding, mixing, pelletizing, cooling and packing equipment into one coordinated system for continuous feed processing."
+  },
+  {
+   "_parent_id": 26,
+   "name": "Metal Structure",
+   "description": "M e t a l s t ru c t u re s p rov i d e s t a b l e frameworks for poultry houses, livestock buildings, storage areas and other agricultural facilities. Designs can be matched to different project dimensions and applications.",
+   "seo_title": "Metal Structure | Agricon Agricultural Equipment",
+   "seo_description": "M e t a l s t ru c t u re s p rov i d e s t a b l e frameworks for poultry houses, livestock buildings, storage areas and other agricultural facilities. Designs can be matched to different project dimensions and applications."
+  },
+  {
+   "_parent_id": 27,
+   "name": "Greenhouse",
+   "description": "G r e e n h o u s e s c r e a t e p r o t e c t e d environments for vegetables, fruit, seedlings and other crops. They help reduce weather impact and improve growing-condition management.",
+   "seo_title": "Greenhouse | Agricon Agricultural Equipment",
+   "seo_description": "G r e e n h o u s e s c r e a t e p r o t e c t e d environments for vegetables, fruit, seedlings and other crops. They help reduce weather impact and improve growing-condition management."
+  },
+  {
+   "_parent_id": 28,
+   "name": "Exhaust Fan",
+   "description": "Exhaust fans remove heat and exchange air in poultry houses, livestock buildings and greenhouses. They help improve airflow and maintain more suitable indoor conditions.",
+   "seo_title": "Exhaust Fan | Agricon Agricultural Equipment",
+   "seo_description": "Exhaust fans remove heat and exchange air in poultry houses, livestock buildings and greenhouses. They help improve airflow and maintain more suitable indoor conditions."
+  },
+  {
+   "_parent_id": 29,
+   "name": "Cooling Pad",
+   "description": "Cooling pads work with exhaust fans to reduce indoor temperature through evaporative cooling. They are suitable for breeding houses and greenhouses in hot climates.",
+   "seo_title": "Cooling Pad | Agricon Agricultural Equipment",
+   "seo_description": "Cooling pads work with exhaust fans to reduce indoor temperature through evaporative cooling. They are suitable for breeding houses and greenhouses in hot climates."
+  },
+  {
+   "_parent_id": 30,
+   "name": "Slatted Floor",
+   "description": "Slatted floors keep animals above wet ground and allow waste to pass through the flooring. They support cleaner housing and easier daily maintenance.",
+   "seo_title": "Slatted Floor | Agricon Agricultural Equipment",
+   "seo_description": "Slatted floors keep animals above wet ground and allow waste to pass through the flooring. They support cleaner housing and easier daily maintenance."
+  },
+  {
+   "_parent_id": 31,
+   "name": "Manure Scraper",
+   "description": "Manure scrapers remove waste from poultry and livestock houses. They reduce manual cleaning requirements and help maintain a cleaner breeding environment.",
+   "seo_title": "Manure Scraper | Agricon Agricultural Equipment",
+   "seo_description": "Manure scrapers remove waste from poultry and livestock houses. They reduce manual cleaning requirements and help maintain a cleaner breeding environment."
+  },
+  {
+   "_parent_id": 32,
+   "name": "Feed Silo",
+   "description": "Feed silos provide bulk storage and continuous feed supply for poultry and livestock farms. They help protect feed and reduce repeated manual handling.",
+   "seo_title": "Feed Silo | Agricon Agricultural Equipment",
+   "seo_description": "Feed silos provide bulk storage and continuous feed supply for poultry and livestock farms. They help protect feed and reduce repeated manual handling."
+  },
+  {
+   "_parent_id": 33,
+   "name": "Environment Controller",
+   "description": "Environment controllers manage ventilation, cooling, temperature and other house settings. They help farms monitor and adjust breeding conditions more efficiently.",
+   "seo_title": "Environment Controller | Agricon Agricultural Equipment",
+   "seo_description": "Environment controllers manage ventilation, cooling, temperature and other house settings. They help farms monitor and adjust breeding conditions more efficiently."
+  },
+  {
+   "_parent_id": 34,
+   "name": "Disinfection Equipment",
+   "description": "Disinfection equipment supports farm sanitation and biosecurity management. It helps reduce contamination risks and maintain cleaner poultry and livestock environments.",
+   "seo_title": "Disinfection Equipment | Agricon Agricultural Equipment",
+   "seo_description": "Disinfection equipment supports farm sanitation and biosecurity management. It helps reduce contamination risks and maintain cleaner poultry and livestock environments."
+  },
+  {
+   "_parent_id": 35,
+   "name": "Plucker Machine",
+   "description": "Plucker machine is used for poultry feather removal after scalding. It helps small farms and processing facilities improve poultry processing speed, reduce manual work and keep the workflow more organized.",
+   "seo_title": "Plucker Machine | Agricon Agricultural Equipment",
+   "seo_description": "Plucker machine is used for poultry feather removal after scalding. It helps small farms and processing facilities improve poultry processing speed, reduce manual work and keep the workflow more organized."
+  },
+  {
+   "_parent_id": 36,
+   "name": "Scalding Machine",
+   "description": "Scalding machine is used for hot water preparation before poultry plucking. It helps soften feathers evenly, supports smoother plucking operation and improves the efficiency of poultry processing workflow.",
+   "seo_title": "Scalding Machine | Agricon Agricultural Equipment",
+   "seo_description": "Scalding machine is used for hot water preparation before poultry plucking. It helps soften feathers evenly, supports smoother plucking operation and improves the efficiency of poultry processing workflow."
+  },
+  {
+   "_parent_id": 37,
+   "name": "Bleeding Cone",
+   "description": "Bleeding cone is used for poultry holding and organized bleeding during processing preparation. It helps keep the operation area cleaner, more controlled and easier to manage before the next processing step.",
+   "seo_title": "Bleeding Cone | Agricon Agricultural Equipment",
+   "seo_description": "Bleeding cone is used for poultry holding and organized bleeding during processing preparation. It helps keep the operation area cleaner, more controlled and easier to manage before the next processing step."
+  },
+  {
+   "_parent_id": 38,
+   "name": "Cutting Machine",
+   "description": "Cutting machine is used for meat cutting, portioning and processing support. It helps farms and processing facilities improve cutting efficiency, reduce manual effort and maintain a more consistent processing workflow.",
+   "seo_title": "Cutting Machine | Agricon Agricultural Equipment",
+   "seo_description": "Cutting machine is used for meat cutting, portioning and processing support. It helps farms and processing facilities improve cutting efficiency, reduce manual effort and maintain a more consistent processing workflow."
+  },
+  {
+   "_parent_id": 39,
+   "name": "Working Table",
+   "description": "Working table provides a clean and stable work surface for handling, sorting, cutting and processing operation. It supports better workflow arrangement and is suitable for poultry and livestock processing facilities.",
+   "seo_title": "Working Table | Agricon Agricultural Equipment",
+   "seo_description": "Working table provides a clean and stable work surface for handling, sorting, cutting and processing operation. It supports better workflow arrangement and is suitable for poultry and livestock processing facilities."
+  },
+  {
+   "_parent_id": 40,
+   "name": "Automatic Processing Machine",
+   "description": "Automatic processing machine supports higher-capacity poultry or livestock processing workflow. It can combine multiple processing steps, reduce manual handling and improve overall efficiency for growing processing projects.",
+   "seo_title": "Automatic Processing Machine | Agricon Agricultural Equipment",
+   "seo_description": "Automatic processing machine supports higher-capacity poultry or livestock processing workflow. It can combine multiple processing steps, reduce manual handling and improve overall efficiency for growing processing projects."
+  },
+  {
+   "_parent_id": 41,
+   "name": "Planter",
+   "description": "Planter is used for crop seeding and field planting preparation. It helps farms place seeds more efficiently, improve planting organization and support practical crop production for different field sizes and planting needs.",
+   "seo_title": "Planter | Agricon Agricultural Equipment",
+   "seo_description": "Planter is used for crop seeding and field planting preparation. It helps farms place seeds more efficiently, improve planting organization and support practical crop production for different field sizes and planting needs."
+  },
+  {
+   "_parent_id": 42,
+   "name": "Weed Cutter",
+   "description": "Weed cutter is used for cutting weeds, grass and field vegetation in farms, orchards and rural areas. It helps farmers maintain cleaner fields, reduce manual cutting work and support daily crop care.",
+   "seo_title": "Weed Cutter | Agricon Agricultural Equipment",
+   "seo_description": "Weed cutter is used for cutting weeds, grass and field vegetation in farms, orchards and rural areas. It helps farmers maintain cleaner fields, reduce manual cutting work and support daily crop care."
+  },
+  {
+   "_parent_id": 43,
+   "name": "Sprayer",
+   "description": "Sprayer is used for pesticide, fertilizer and crop protection liquid application. It supports field spraying, orchard care and greenhouse operation, helping farms improve crop maintenance and daily plant protection work.",
+   "seo_title": "Sprayer | Agricon Agricultural Equipment",
+   "seo_description": "Sprayer is used for pesticide, fertilizer and crop protection liquid application. It supports field spraying, orchard care and greenhouse operation, helping farms improve crop maintenance and daily plant protection work."
+  },
+  {
+   "_parent_id": 44,
+   "name": "Mist Maker",
+   "description": "Mist maker is used for fine mist spraying, humidification and crop environment support. It is suitable for greenhouses, nurseries and planting areas that need gentle spraying or moisture control.",
+   "seo_title": "Mist Maker | Agricon Agricultural Equipment",
+   "seo_description": "Mist maker is used for fine mist spraying, humidification and crop environment support. It is suitable for greenhouses, nurseries and planting areas that need gentle spraying or moisture control."
+  },
+  {
+   "_parent_id": 45,
+   "name": "Irrigation Equipment",
+   "description": "Irrigation equipment is used for water supply, field watering and farm irrigation management. It helps farms deliver water more efficiently to crops, greenhouses and planting areas according to project needs.",
+   "seo_title": "Irrigation Equipment | Agricon Agricultural Equipment",
+   "seo_description": "Irrigation equipment is used for water supply, field watering and farm irrigation management. It helps farms deliver water more efficiently to crops, greenhouses and planting areas according to project needs."
+  },
+  {
+   "_parent_id": 46,
+   "name": "Packing Bag",
+   "description": "Packing bag is used for packing, storing and transporting agricultural products such as grain, feed, vegetables and farm materials. It helps keep products organized during handling, storage and delivery.",
+   "seo_title": "Packing Bag | Agricon Agricultural Equipment",
+   "seo_description": "Packing bag is used for packing, storing and transporting agricultural products such as grain, feed, vegetables and farm materials. It helps keep products organized during handling, storage and delivery."
+  },
+  {
+   "_parent_id": 47,
+   "name": "Tractor",
+   "description": "Tractor is used for land preparation, field work, towing and general farm operation. It supports plowing, tilling, transport and implement matching, making it suitable for crop farms, rural projects and agricultural service businesses.",
+   "seo_title": "Tractor | Agricon Agricultural Equipment",
+   "seo_description": "Tractor is used for land preparation, field work, towing and general farm operation. It supports plowing, tilling, transport and implement matching, making it suitable for crop farms, rural projects and agricultural service businesses."
+  },
+  {
+   "_parent_id": 48,
+   "name": "Harvester",
+   "description": "Harvester is used for crop harvesting and seasonal field production. It helps farms collect crops more efficiently, reduce manual harvesting work and improve operation speed during busy agricultural seasons.",
+   "seo_title": "Harvester | Agricon Agricultural Equipment",
+   "seo_description": "Harvester is used for crop harvesting and seasonal field production. It helps farms collect crops more efficiently, reduce manual harvesting work and improve operation speed during busy agricultural seasons."
+  },
+  {
+   "_parent_id": 49,
+   "name": "Tricycle",
+   "description": "Tricycle is used for short-distance farm transport, material movement and rural delivery. It helps farmers carry tools, crops, feed, fertilizer and daily supplies between fields, storage areas and farm facilities.",
+   "seo_title": "Tricycle | Agricon Agricultural Equipment",
+   "seo_description": "Tricycle is used for short-distance farm transport, material movement and rural delivery. It helps farmers carry tools, crops, feed, fertilizer and daily supplies between fields, storage areas and farm facilities."
+  },
+  {
+   "_parent_id": 50,
+   "name": "Walking Tractor",
+   "description": "Walking tractor is suitable for small farm tillage, field preparation and flexible agricultural operation. It can work with different attachments and is useful for narrow fields, small plots and rural farming projects.",
+   "seo_title": "Walking Tractor | Agricon Agricultural Equipment",
+   "seo_description": "Walking tractor is suitable for small farm tillage, field preparation and flexible agricultural operation. It can work with different attachments and is useful for narrow fields, small plots and rural farming projects."
+  },
+  {
+   "_parent_id": 51,
+   "name": "Welded Wire Mesh",
+   "description": "Welded wire mesh is used for farm fencing, cage making, protection areas and general agricultural applications. It provides a neat mesh structure and practical support for farms, livestock areas, gardens and building protection projects.",
+   "seo_title": "Welded Wire Mesh | Agricon Agricultural Equipment",
+   "seo_description": "Welded wire mesh is used for farm fencing, cage making, protection areas and general agricultural applications. It provides a neat mesh structure and practical support for farms, livestock areas, gardens and building protection projects."
+  },
+  {
+   "_parent_id": 52,
+   "name": "Cattle Fence",
+   "description": "Cattle fence is used for livestock control, grazing area separation and farm boundary protection. It helps farms manage cattle movement, organize pasture areas and build safer livestock activity zones.",
+   "seo_title": "Cattle Fence | Agricon Agricultural Equipment",
+   "seo_description": "Cattle fence is used for livestock control, grazing area separation and farm boundary protection. It helps farms manage cattle movement, organize pasture areas and build safer livestock activity zones."
+  },
+  {
+   "_parent_id": 53,
+   "name": "Chain Link Fence",
+   "description": "Chain link fence is suitable for farm enclosures, open area protection and agricultural facility security. Its flexible woven structure makes it useful for boundaries, storage areas, animal zones and general site protection.",
+   "seo_title": "Chain Link Fence | Agricon Agricultural Equipment",
+   "seo_description": "Chain link fence is suitable for farm enclosures, open area protection and agricultural facility security. Its flexible woven structure makes it useful for boundaries, storage areas, animal zones and general site protection."
+  },
+  {
+   "_parent_id": 54,
+   "name": "Hexagonal Wire Mesh",
+   "description": "Hexagonal wire mesh is used for poultry fencing, garden protection, light farm barriers and small animal areas. It is lightweight, flexible and suitable for farms that need simple protection or separation solutions.",
+   "seo_title": "Hexagonal Wire Mesh | Agricon Agricultural Equipment",
+   "seo_description": "Hexagonal wire mesh is used for poultry fencing, garden protection, light farm barriers and small animal areas. It is lightweight, flexible and suitable for farms that need simple protection or separation solutions."
+  },
+  {
+   "_parent_id": 55,
+   "name": "Cage Mesh",
+   "description": "Cage mesh is used for poultry cages, rabbit cages and small animal breeding systems. It helps create organized cage structures with proper separation, ventilation and daily management support.",
+   "seo_title": "Cage Mesh | Agricon Agricultural Equipment",
+   "seo_description": "Cage mesh is used for poultry cages, rabbit cages and small animal breeding systems. It helps create organized cage structures with proper separation, ventilation and daily management support."
+  },
+  {
+   "_parent_id": 56,
+   "name": "Egg Tray Machine",
+   "description": "Egg tray machine is used to produce molded trays for egg packing, storage and transport. It supports poultry farms, egg suppliers and packing businesses that need practical tray production for daily egg handling and delivery.",
+   "seo_title": "Egg Tray Machine | Agricon Agricultural Equipment",
+   "seo_description": "Egg tray machine is used to produce molded trays for egg packing, storage and transport. It supports poultry farms, egg suppliers and packing businesses that need practical tray production for daily egg handling and delivery."
+  },
+  {
+   "_parent_id": 57,
+   "name": "Egg Sizing Machine",
+   "description": "Egg sizing machine is used to sort eggs by size, grade or market requirement. It helps egg farms and packing centers organize egg products more efficiently before packing, selling or delivery.",
+   "seo_title": "Egg Sizing Machine | Agricon Agricultural Equipment",
+   "seo_description": "Egg sizing machine is used to sort eggs by size, grade or market requirement. It helps egg farms and packing centers organize egg products more efficiently before packing, selling or delivery."
+  },
+  {
+   "_parent_id": 58,
+   "name": "Egg Conveyor Machine",
+   "description": "Egg conveyor machine is used to move eggs during collection, grading and packing processes. It helps reduce manual handling, improve workflow efficiency and support more organized egg production management.",
+   "seo_title": "Egg Conveyor Machine | Agricon Agricultural Equipment",
+   "seo_description": "Egg conveyor machine is used to move eggs during collection, grading and packing processes. It helps reduce manual handling, improve workflow efficiency and support more organized egg production management."
+  },
+  {
+   "_parent_id": 59,
+   "name": "Egg Counting Machine",
+   "description": "Egg counting machine is used for automatic egg counting during collection, conveying or packing. It helps farms track daily output, reduce counting errors and improve production management accuracy.",
+   "seo_title": "Egg Counting Machine | Agricon Agricultural Equipment",
+   "seo_description": "Egg counting machine is used for automatic egg counting during collection, conveying or packing. It helps farms track daily output, reduce counting errors and improve production management accuracy."
+  },
+  {
+   "_parent_id": 60,
+   "name": "Brick Making Machine",
+   "description": "Brick making machine is used to produce bricks for farm buildings, agricultural facilities and local construction projects. It supports farms and project buyers that need practical building material production.",
+   "seo_title": "Brick Making Machine | Agricon Agricultural Equipment",
+   "seo_description": "Brick making machine is used to produce bricks for farm buildings, agricultural facilities and local construction projects. It supports farms and project buyers that need practical building material production."
+  },
+  {
+   "_parent_id": 61,
+   "name": "Floor-Rearing Equipment",
+   "description": "Flat breeding equipment supports floor- rearing poultry systems with flexible feeding and drinking arrangements. It is suitable for broiler, breeder and free- range poultry projects.",
+   "seo_title": "Floor-Rearing Equipment | Agricon Agricultural Equipment",
+   "seo_description": "Flat breeding equipment supports floor- rearing poultry systems with flexible feeding and drinking arrangements. It is suitable for broiler, breeder and free- range poultry projects."
+  },
+  {
+   "_parent_id": 62,
+   "name": "Cage Accessories",
+   "description": "Cage accessories include feeders, drinkers, trays, connectors, clips and replacement parts for poultry cage systems. They support installation, daily operation and future maintenance.",
+   "seo_title": "Cage Accessories | Agricon Agricultural Equipment",
+   "seo_description": "Cage accessories include feeders, drinkers, trays, connectors, clips and replacement parts for poultry cage systems. They support installation, daily operation and future maintenance."
+  },
+  {
+   "_parent_id": 63,
+   "name": "Breeding Accessories",
+   "description": "Breeding accessories support poultry feeding, drinking, brooding, handling and cleaning. They can be supplied with main equipment to complete daily poultry farm operations.",
+   "seo_title": "Breeding Accessories | Agricon Agricultural Equipment",
+   "seo_description": "Breeding accessories support poultry feeding, drinking, brooding, handling and cleaning. They can be supplied with main equipment to complete daily poultry farm operations."
+  },
+  {
+   "_parent_id": 64,
+   "name": "Farrow Pen",
+   "description": "Farrowing pens provide an organized space for sow farrowing and piglet nursing. They support safer piglet management, easier observation and cleaner pig farm operation.",
+   "seo_title": "Farrow Pen | Agricon Agricultural Equipment",
+   "seo_description": "Farrowing pens provide an organized space for sow farrowing and piglet nursing. They support safer piglet management, easier observation and cleaner pig farm operation."
+  }
+ ],
+ "products_features": [
+  {
+   "_parent_id": "6a79a0615d1a226228a9233d",
+   "feature": "Space Saving"
+  },
+  {
+   "_parent_id": "6a79a0615d1a226228a9233e",
+   "feature": "Easy Management"
+  },
+  {
+   "_parent_id": "6a79a0615d1a226228a9233f",
+   "feature": "Egg Collection"
+  },
+  {
+   "_parent_id": "6a79a0615d1a226228a92340",
+   "feature": "Stable Production"
+  },
+  {
+   "_parent_id": "6a79a0625d1a226228a92343",
+   "feature": "Efficient Rearing"
+  },
+  {
+   "_parent_id": "6a79a0625d1a226228a92344",
+   "feature": "Cleaner Housing"
+  },
+  {
+   "_parent_id": "6a79a0625d1a226228a92345",
+   "feature": "Better Space Use"
+  },
+  {
+   "_parent_id": "6a79a0625d1a226228a92346",
+   "feature": "Batch Management"
+  },
+  {
+   "_parent_id": "6a79a0625d1a226228a92349",
+   "feature": "Brooding Support"
+  },
+  {
+   "_parent_id": "6a79a0625d1a226228a9234a",
+   "feature": "Easy Observation"
+  },
+  {
+   "_parent_id": "6a79a0625d1a226228a9234b",
+   "feature": "Healthy Growth"
+  },
+  {
+   "_parent_id": "6a79a0625d1a226228a9234c",
+   "feature": "Simple Management"
+  },
+  {
+   "_parent_id": "6a79a0625d1a226228a9234f",
+   "feature": "Labor Saving"
+  },
+  {
+   "_parent_id": "6a79a0625d1a226228a92350",
+   "feature": "Stable Operation"
+  },
+  {
+   "_parent_id": "6a79a0625d1a226228a92351",
+   "feature": "Scalable Setup"
+  },
+  {
+   "_parent_id": "6a79a0625d1a226228a92352",
+   "feature": "Higher Efficiency"
+  },
+  {
+   "_parent_id": "6a79a0625d1a226228a92355",
+   "feature": "Batch Hatching"
+  },
+  {
+   "_parent_id": "6a79a0625d1a226228a92356",
+   "feature": "Chick Production"
+  },
+  {
+   "_parent_id": "6a79a0625d1a226228a92357",
+   "feature": "Breeding Support"
+  },
+  {
+   "_parent_id": "6a79a0625d1a226228a92358",
+   "feature": "Process Control"
+  },
+  {
+   "_parent_id": "6a79a0625d1a226228a9235b",
+   "feature": "Flexible Layout"
+  },
+  {
+   "_parent_id": "6a79a0625d1a226228a9235c",
+   "feature": "Natural Movement"
+  },
+  {
+   "_parent_id": "6a79a0625d1a226228a9235d",
+   "feature": "Easy Operation"
+  },
+  {
+   "_parent_id": "6a79a0625d1a226228a9235e",
+   "feature": "Floor Rearing"
+  },
+  {
+   "_parent_id": "6a79a0625d1a226228a92361",
+   "feature": "Complete Matching"
+  },
+  {
+   "_parent_id": "6a79a0625d1a226228a92362",
+   "feature": "Easy Replacement"
+  },
+  {
+   "_parent_id": "6a79a0625d1a226228a92363",
+   "feature": "System Support"
+  },
+  {
+   "_parent_id": "6a79a0625d1a226228a92364",
+   "feature": "Maintenance Friendly"
+  },
+  {
+   "_parent_id": "6a79a0625d1a226228a92367",
+   "feature": "Daily Farm Use"
+  },
+  {
+   "_parent_id": "6a79a0625d1a226228a92368",
+   "feature": "Flexible Supply"
+  },
+  {
+   "_parent_id": "6a79a0625d1a226228a92369",
+   "feature": "Operation Support"
+  },
+  {
+   "_parent_id": "6a79a0625d1a226228a9236a",
+   "feature": "Easy Restocking"
+  },
+  {
+   "_parent_id": "6a79a0625d1a226228a9236d",
+   "feature": "Strong Protection"
+  },
+  {
+   "_parent_id": "6a79a0625d1a226228a9236e",
+   "feature": "Flexible Installation"
+  },
+  {
+   "_parent_id": "6a79a0625d1a226228a9236f",
+   "feature": "Area Separation"
+  },
+  {
+   "_parent_id": "6a79a0625d1a226228a92370",
+   "feature": "Farm Security"
+  },
+  {
+   "_parent_id": "6a79a0635d1a226228a92373",
+   "feature": "Heavy-Duty Structure"
+  },
+  {
+   "_parent_id": "6a79a0635d1a226228a92374",
+   "feature": "Easy Assembly"
+  },
+  {
+   "_parent_id": "6a79a0635d1a226228a92375",
+   "feature": "Cattle Control"
+  },
+  {
+   "_parent_id": "6a79a0635d1a226228a92376",
+   "feature": "Long Service Use"
+  },
+  {
+   "_parent_id": "6a79a0635d1a226228a92379",
+   "feature": "Accurate Weighing"
+  },
+  {
+   "_parent_id": "6a79a0635d1a226228a9237a",
+   "feature": "Farm Management"
+  },
+  {
+   "_parent_id": "6a79a0635d1a226228a9237b",
+   "feature": "Trading Support"
+  },
+  {
+   "_parent_id": "6a79a0635d1a226228a9237c",
+   "feature": "Easy Operation"
+  },
+  {
+   "_parent_id": "6a79a0635d1a226228a9237f",
+   "feature": "Piglet Protection"
+  },
+  {
+   "_parent_id": "6a79a0635d1a226228a92380",
+   "feature": "Sow Management"
+  },
+  {
+   "_parent_id": "6a79a0635d1a226228a92381",
+   "feature": "Cleaner Nursing"
+  },
+  {
+   "_parent_id": "6a79a0635d1a226228a92382",
+   "feature": "Practical Layout"
+  },
+  {
+   "_parent_id": "6a79a0635d1a226228a92385",
+   "feature": "Organized Housing"
+  },
+  {
+   "_parent_id": "6a79a0635d1a226228a92386",
+   "feature": "Easy Feeding"
+  },
+  {
+   "_parent_id": "6a79a0635d1a226228a92387",
+   "feature": "Flexible Layout"
+  },
+  {
+   "_parent_id": "6a79a0635d1a226228a92388",
+   "feature": "Daily Management"
+  },
+  {
+   "_parent_id": "6a79a0635d1a226228a9238b",
+   "feature": "Space Saving"
+  },
+  {
+   "_parent_id": "6a79a0635d1a226228a9238c",
+   "feature": "Easy Cleaning"
+  },
+  {
+   "_parent_id": "6a79a0635d1a226228a9238d",
+   "feature": "Organized Breeding"
+  },
+  {
+   "_parent_id": "6a79a0635d1a226228a9238e",
+   "feature": "Feeding Support"
+  },
+  {
+   "_parent_id": "6a79a0635d1a226228a92391",
+   "feature": "Complete Matching"
+  },
+  {
+   "_parent_id": "6a79a0635d1a226228a92392",
+   "feature": "Easy Replacement"
+  },
+  {
+   "_parent_id": "6a79a0635d1a226228a92393",
+   "feature": "Daily Operation"
+  },
+  {
+   "_parent_id": "6a79a0635d1a226228a92394",
+   "feature": "Flexible Supply"
+  },
+  {
+   "_parent_id": "6a79a0635d1a226228a92397",
+   "feature": "Stable Water Flow"
+  },
+  {
+   "_parent_id": "6a79a0635d1a226228a92398",
+   "feature": "Easy Operation"
+  },
+  {
+   "_parent_id": "6a79a0635d1a226228a92399",
+   "feature": "Pond Circulation"
+  },
+  {
+   "_parent_id": "6a79a0635d1a226228a9239a",
+   "feature": "Farm Support"
+  },
+  {
+   "_parent_id": "6a79a0645d1a226228a9239d",
+   "feature": "Oxygen Support"
+  },
+  {
+   "_parent_id": "6a79a0645d1a226228a9239e",
+   "feature": "Water Movement"
+  },
+  {
+   "_parent_id": "6a79a0645d1a226228a9239f",
+   "feature": "Better Pond Environment"
+  },
+  {
+   "_parent_id": "6a79a0645d1a226228a923a0",
+   "feature": "Healthy Growth"
+  },
+  {
+   "_parent_id": "6a79a0645d1a226228a923a3",
+   "feature": "Flexible Setup"
+  },
+  {
+   "_parent_id": "6a79a0645d1a226228a923a4",
+   "feature": "Easy Management"
+  },
+  {
+   "_parent_id": "6a79a0645d1a226228a923a5",
+   "feature": "Fish Growing"
+  },
+  {
+   "_parent_id": "6a79a0645d1a226228a923a6",
+   "feature": "Project Adaptation"
+  },
+  {
+   "_parent_id": "6a79a0645d1a226228a923a9",
+   "feature": "Open Water Farming"
+  },
+  {
+   "_parent_id": "6a79a0645d1a226228a923aa",
+   "feature": "Organized Management"
+  },
+  {
+   "_parent_id": "6a79a0645d1a226228a923ab",
+   "feature": "Easy Harvesting"
+  },
+  {
+   "_parent_id": "6a79a0645d1a226228a923ac",
+   "feature": "Scalable Layout"
+  },
+  {
+   "_parent_id": "6a79a0645d1a226228a923af",
+   "feature": "Fish Protection"
+  },
+  {
+   "_parent_id": "6a79a0645d1a226228a923b0",
+   "feature": "Easy Handling"
+  },
+  {
+   "_parent_id": "6a79a0645d1a226228a923b1",
+   "feature": "Flexible Use"
+  },
+  {
+   "_parent_id": "6a79a0645d1a226228a923b2",
+   "feature": "Daily Farm Support"
+  },
+  {
+   "_parent_id": "6a79a0645d1a226228a923b5",
+   "feature": "Complete Matching"
+  },
+  {
+   "_parent_id": "6a79a0645d1a226228a923b6",
+   "feature": "Easy Replacement"
+  },
+  {
+   "_parent_id": "6a79a0645d1a226228a923b7",
+   "feature": "Daily Operation"
+  },
+  {
+   "_parent_id": "6a79a0645d1a226228a923b8",
+   "feature": "System Support"
+  },
+  {
+   "_parent_id": "6a79a0645d1a226228a923bb",
+   "feature": "Feed Pelletizing"
+  },
+  {
+   "_parent_id": "6a79a0645d1a226228a923bc",
+   "feature": "Compact Output"
+  },
+  {
+   "_parent_id": "6a79a0645d1a226228a923bd",
+   "feature": "Easy Storage"
+  },
+  {
+   "_parent_id": "6a79a0645d1a226228a923be",
+   "feature": "Farm Production"
+  },
+  {
+   "_parent_id": "6a79a0645d1a226228a923c1",
+   "feature": "Expanded Feed"
+  },
+  {
+   "_parent_id": "6a79a0645d1a226228a923c2",
+   "feature": "Floating Feed Support"
+  },
+  {
+   "_parent_id": "6a79a0645d1a226228a923c3",
+   "feature": "Stable Processing"
+  },
+  {
+   "_parent_id": "6a79a0645d1a226228a923c4",
+   "feature": "Wide Application"
+  },
+  {
+   "_parent_id": "6a79a0645d1a226228a923c7",
+   "feature": "Raw Material Crushing"
+  },
+  {
+   "_parent_id": "6a79a0645d1a226228a923c8",
+   "feature": "Uniform Size"
+  },
+  {
+   "_parent_id": "6a79a0645d1a226228a923c9",
+   "feature": "Feed Preparation"
+  },
+  {
+   "_parent_id": "6a79a0645d1a226228a923ca",
+   "feature": "Easy Operation"
+  },
+  {
+   "_parent_id": "6a79a0645d1a226228a923cd",
+   "feature": "Forage Cutting"
+  },
+  {
+   "_parent_id": "6a79a0645d1a226228a923ce",
+   "feature": "Feeding Preparation"
+  },
+  {
+   "_parent_id": "6a79a0645d1a226228a923cf",
+   "feature": "Labor Saving"
+  },
+  {
+   "_parent_id": "6a79a0645d1a226228a923d0",
+   "feature": "Livestock Support"
+  },
+  {
+   "_parent_id": "6a79a0645d1a226228a923d3",
+   "feature": "Even Mixing"
+  },
+  {
+   "_parent_id": "6a79a0645d1a226228a923d4",
+   "feature": "Feed Consistency"
+  },
+  {
+   "_parent_id": "6a79a0645d1a226228a923d5",
+   "feature": "Batch Processing"
+  },
+  {
+   "_parent_id": "6a79a0645d1a226228a923d6",
+   "feature": "Production Support"
+  },
+  {
+   "_parent_id": "6a79a0655d1a226228a923d9",
+   "feature": "Moisture Reduction"
+  },
+  {
+   "_parent_id": "6a79a0655d1a226228a923da",
+   "feature": "Storage Support"
+  },
+  {
+   "_parent_id": "6a79a0655d1a226228a923db",
+   "feature": "Stable Material"
+  },
+  {
+   "_parent_id": "6a79a0655d1a226228a923dc",
+   "feature": "Processing Efficiency"
+  },
+  {
+   "_parent_id": "6a79a0655d1a226228a923df",
+   "feature": "Rice Processing"
+  },
+  {
+   "_parent_id": "6a79a0655d1a226228a923e0",
+   "feature": "Grain Milling"
+  },
+  {
+   "_parent_id": "6a79a0655d1a226228a923e1",
+   "feature": "Practical Operation"
+  },
+  {
+   "_parent_id": "6a79a0655d1a226228a923e2",
+   "feature": "Maintenance Friendly"
+  },
+  {
+   "_parent_id": "6a79a0655d1a226228a923e5",
+   "feature": "Complete Processing"
+  },
+  {
+   "_parent_id": "6a79a0655d1a226228a923e6",
+   "feature": "Scalable Output"
+  },
+  {
+   "_parent_id": "6a79a0655d1a226228a923e7",
+   "feature": "Continuous Production"
+  },
+  {
+   "_parent_id": "6a79a0655d1a226228a923e8",
+   "feature": "Integrated Supply"
+  },
+  {
+   "_parent_id": "6a79a0655d1a226228a923eb",
+   "feature": "Strong Framework"
+  },
+  {
+   "_parent_id": "6a79a0655d1a226228a923ec",
+   "feature": "Flexible Design"
+  },
+  {
+   "_parent_id": "6a79a0655d1a226228a923ed",
+   "feature": "Farm Building Support"
+  },
+  {
+   "_parent_id": "6a79a0655d1a226228a923ee",
+   "feature": "Long Service Use"
+  },
+  {
+   "_parent_id": "6a79a0655d1a226228a923f1",
+   "feature": "Protected Growing"
+  },
+  {
+   "_parent_id": "6a79a0655d1a226228a923f2",
+   "feature": "Weather Protection"
+  },
+  {
+   "_parent_id": "6a79a0655d1a226228a923f3",
+   "feature": "Better Environment"
+  },
+  {
+   "_parent_id": "6a79a0655d1a226228a923f4",
+   "feature": "Flexible Planting"
+  },
+  {
+   "_parent_id": "6a79a0655d1a226228a923f7",
+   "feature": "Air Exchange"
+  },
+  {
+   "_parent_id": "6a79a0655d1a226228a923f8",
+   "feature": "Heat Removal"
+  },
+  {
+   "_parent_id": "6a79a0655d1a226228a923f9",
+   "feature": "Better Ventilation"
+  },
+  {
+   "_parent_id": "6a79a0655d1a226228a923fa",
+   "feature": "House Comfort"
+  },
+  {
+   "_parent_id": "6a79a0655d1a226228a923fd",
+   "feature": "Cooling Support"
+  },
+  {
+   "_parent_id": "6a79a0655d1a226228a923fe",
+   "feature": "Heat Reduction"
+  },
+  {
+   "_parent_id": "6a79a0655d1a226228a923ff",
+   "feature": "Better Airflow"
+  },
+  {
+   "_parent_id": "6a79a0655d1a226228a92400",
+   "feature": "Summer Operation"
+  },
+  {
+   "_parent_id": "6a79a0655d1a226228a92403",
+   "feature": "Cleaner Flooring"
+  },
+  {
+   "_parent_id": "6a79a0655d1a226228a92404",
+   "feature": "Animal Separation"
+  },
+  {
+   "_parent_id": "6a79a0655d1a226228a92405",
+   "feature": "Easy Cleaning"
+  },
+  {
+   "_parent_id": "6a79a0655d1a226228a92406",
+   "feature": "Daily Management"
+  },
+  {
+   "_parent_id": "6a79a0665d1a226228a92409",
+   "feature": "Manure Removal"
+  },
+  {
+   "_parent_id": "6a79a0665d1a226228a9240a",
+   "feature": "Labor Saving"
+  },
+  {
+   "_parent_id": "6a79a0665d1a226228a9240b",
+   "feature": "Cleaner House"
+  },
+  {
+   "_parent_id": "6a79a0665d1a226228a9240c",
+   "feature": "Hygiene Support"
+  },
+  {
+   "_parent_id": "6a79a0665d1a226228a9240f",
+   "feature": "Bulk Storage"
+  },
+  {
+   "_parent_id": "6a79a0665d1a226228a92410",
+   "feature": "Feed Protection"
+  },
+  {
+   "_parent_id": "6a79a0665d1a226228a92411",
+   "feature": "Feeding Support"
+  },
+  {
+   "_parent_id": "6a79a0665d1a226228a92412",
+   "feature": "Efficient Supply"
+  },
+  {
+   "_parent_id": "6a79a0665d1a226228a92415",
+   "feature": "Climate Control"
+  },
+  {
+   "_parent_id": "6a79a0665d1a226228a92416",
+   "feature": "Smart Management"
+  },
+  {
+   "_parent_id": "6a79a0665d1a226228a92417",
+   "feature": "Stable Environment"
+  },
+  {
+   "_parent_id": "6a79a0665d1a226228a92418",
+   "feature": "Operation Efficiency"
+  },
+  {
+   "_parent_id": "6a79a0665d1a226228a9241b",
+   "feature": "Farm Sanitation"
+  },
+  {
+   "_parent_id": "6a79a0665d1a226228a9241c",
+   "feature": "Biosecurity Support"
+  },
+  {
+   "_parent_id": "6a79a0665d1a226228a9241d",
+   "feature": "Cleaner Operation"
+  },
+  {
+   "_parent_id": "6a79a0665d1a226228a9241e",
+   "feature": "Disease Prevention"
+  },
+  {
+   "_parent_id": "6a79a0665d1a226228a92421",
+   "feature": "Fast Feather Removal"
+  },
+  {
+   "_parent_id": "6a79a0665d1a226228a92422",
+   "feature": "Labor Saving"
+  },
+  {
+   "_parent_id": "6a79a0665d1a226228a92423",
+   "feature": "Easy Operation"
+  },
+  {
+   "_parent_id": "6a79a0665d1a226228a92424",
+   "feature": "Processing Support"
+  },
+  {
+   "_parent_id": "6a79a0665d1a226228a92427",
+   "feature": "Even Scalding"
+  },
+  {
+   "_parent_id": "6a79a0665d1a226228a92428",
+   "feature": "Better Plucking"
+  },
+  {
+   "_parent_id": "6a79a0665d1a226228a92429",
+   "feature": "Time Saving"
+  },
+  {
+   "_parent_id": "6a79a0665d1a226228a9242a",
+   "feature": "Workflow Support"
+  },
+  {
+   "_parent_id": "6a79a0665d1a226228a9242d",
+   "feature": "Organized Handling"
+  },
+  {
+   "_parent_id": "6a79a0665d1a226228a9242e",
+   "feature": "Cleaner Operation"
+  },
+  {
+   "_parent_id": "6a79a0665d1a226228a9242f",
+   "feature": "Space Saving"
+  },
+  {
+   "_parent_id": "6a79a0665d1a226228a92430",
+   "feature": "Easy Management"
+  },
+  {
+   "_parent_id": "6a79a0665d1a226228a92433",
+   "feature": "Efficient Cutting"
+  },
+  {
+   "_parent_id": "6a79a0665d1a226228a92434",
+   "feature": "Consistent Portions"
+  },
+  {
+   "_parent_id": "6a79a0665d1a226228a92435",
+   "feature": "Labor Saving"
+  },
+  {
+   "_parent_id": "6a79a0665d1a226228a92436",
+   "feature": "Processing Efficiency"
+  },
+  {
+   "_parent_id": "6a79a0665d1a226228a92439",
+   "feature": "Clean Surface"
+  },
+  {
+   "_parent_id": "6a79a0665d1a226228a9243a",
+   "feature": "Stable Operation"
+  },
+  {
+   "_parent_id": "6a79a0665d1a226228a9243b",
+   "feature": "Easy Cleaning"
+  },
+  {
+   "_parent_id": "6a79a0665d1a226228a9243c",
+   "feature": "Flexible Use"
+  },
+  {
+   "_parent_id": "6a79a0665d1a226228a9243f",
+   "feature": "Higher Capacity"
+  },
+  {
+   "_parent_id": "6a79a0665d1a226228a92440",
+   "feature": "Labor Reduction"
+  },
+  {
+   "_parent_id": "6a79a0665d1a226228a92441",
+   "feature": "Continuous Workflow"
+  },
+  {
+   "_parent_id": "6a79a0665d1a226228a92442",
+   "feature": "Scalable Processing"
+  },
+  {
+   "_parent_id": "6a79a0675d1a226228a92445",
+   "feature": "Efficient Seeding"
+  },
+  {
+   "_parent_id": "6a79a0675d1a226228a92446",
+   "feature": "Field Preparation"
+  },
+  {
+   "_parent_id": "6a79a0675d1a226228a92447",
+   "feature": "Labor Saving"
+  },
+  {
+   "_parent_id": "6a79a0675d1a226228a92448",
+   "feature": "Crop Support"
+  },
+  {
+   "_parent_id": "6a79a0675d1a226228a9244b",
+   "feature": "Fast Cutting"
+  },
+  {
+   "_parent_id": "6a79a0675d1a226228a9244c",
+   "feature": "Field Cleaning"
+  },
+  {
+   "_parent_id": "6a79a0675d1a226228a9244d",
+   "feature": "Labor Saving"
+  },
+  {
+   "_parent_id": "6a79a0675d1a226228a9244e",
+   "feature": "Easy Operation"
+  },
+  {
+   "_parent_id": "6a79a0675d1a226228a92451",
+   "feature": "Uniform Spraying"
+  },
+  {
+   "_parent_id": "6a79a0675d1a226228a92452",
+   "feature": "Crop Protection"
+  },
+  {
+   "_parent_id": "6a79a0675d1a226228a92453",
+   "feature": "Wide Application"
+  },
+  {
+   "_parent_id": "6a79a0675d1a226228a92454",
+   "feature": "Daily Farm Use"
+  },
+  {
+   "_parent_id": "6a79a0675d1a226228a92457",
+   "feature": "Fine Mist Output"
+  },
+  {
+   "_parent_id": "6a79a0675d1a226228a92458",
+   "feature": "Humidity Support"
+  },
+  {
+   "_parent_id": "6a79a0675d1a226228a92459",
+   "feature": "Gentle Spraying"
+  },
+  {
+   "_parent_id": "6a79a0675d1a226228a9245a",
+   "feature": "Greenhouse Use"
+  },
+  {
+   "_parent_id": "6a79a0675d1a226228a9245d",
+   "feature": "Water Supply"
+  },
+  {
+   "_parent_id": "6a79a0675d1a226228a9245e",
+   "feature": "Efficient Irrigation"
+  },
+  {
+   "_parent_id": "6a79a0675d1a226228a9245f",
+   "feature": "Field Support"
+  },
+  {
+   "_parent_id": "6a79a0675d1a226228a92460",
+   "feature": "Flexible Setup"
+  },
+  {
+   "_parent_id": "6a79a0675d1a226228a92463",
+   "feature": "Product Packing"
+  },
+  {
+   "_parent_id": "6a79a0675d1a226228a92464",
+   "feature": "Easy Storage"
+  },
+  {
+   "_parent_id": "6a79a0675d1a226228a92465",
+   "feature": "Transport Support"
+  },
+  {
+   "_parent_id": "6a79a0675d1a226228a92466",
+   "feature": "Flexible Use"
+  },
+  {
+   "_parent_id": "6a79a0675d1a226228a92469",
+   "feature": "Field Power"
+  },
+  {
+   "_parent_id": "6a79a0675d1a226228a9246a",
+   "feature": "Implement Matching"
+  },
+  {
+   "_parent_id": "6a79a0675d1a226228a9246b",
+   "feature": "Farm Transport"
+  },
+  {
+   "_parent_id": "6a79a0675d1a226228a9246c",
+   "feature": "Wide Application"
+  },
+  {
+   "_parent_id": "6a79a0675d1a226228a9246f",
+   "feature": "Efficient Harvesting"
+  },
+  {
+   "_parent_id": "6a79a0675d1a226228a92470",
+   "feature": "Labor Saving"
+  },
+  {
+   "_parent_id": "6a79a0675d1a226228a92471",
+   "feature": "Seasonal Support"
+  },
+  {
+   "_parent_id": "6a79a0675d1a226228a92472",
+   "feature": "Faster Collection"
+  },
+  {
+   "_parent_id": "6a79a0675d1a226228a92475",
+   "feature": "Flexible Transport"
+  },
+  {
+   "_parent_id": "6a79a0675d1a226228a92476",
+   "feature": "Easy Loading"
+  },
+  {
+   "_parent_id": "6a79a0675d1a226228a92477",
+   "feature": "Daily Farm Use"
+  },
+  {
+   "_parent_id": "6a79a0675d1a226228a92478",
+   "feature": "Low-Cost Operation"
+  },
+  {
+   "_parent_id": "6a79a0675d1a226228a9247b",
+   "feature": "Small Farm Fit"
+  },
+  {
+   "_parent_id": "6a79a0675d1a226228a9247c",
+   "feature": "Flexible Operation"
+  },
+  {
+   "_parent_id": "6a79a0675d1a226228a9247d",
+   "feature": "Easy Handling"
+  },
+  {
+   "_parent_id": "6a79a0675d1a226228a9247e",
+   "feature": "Attachment Support"
+  },
+  {
+   "_parent_id": "6a79a0675d1a226228a92481",
+   "feature": "Strong Mesh Structure"
+  },
+  {
+   "_parent_id": "6a79a0675d1a226228a92482",
+   "feature": "Neat Appearance"
+  },
+  {
+   "_parent_id": "6a79a0675d1a226228a92483",
+   "feature": "Wide Application"
+  },
+  {
+   "_parent_id": "6a79a0675d1a226228a92484",
+   "feature": "Easy Installation"
+  },
+  {
+   "_parent_id": "6a79a0685d1a226228a92487",
+   "feature": "Livestock Control"
+  },
+  {
+   "_parent_id": "6a79a0685d1a226228a92488",
+   "feature": "Grazing Separation"
+  },
+  {
+   "_parent_id": "6a79a0685d1a226228a92489",
+   "feature": "Farm Boundary"
+  },
+  {
+   "_parent_id": "6a79a0685d1a226228a9248a",
+   "feature": "Durable Use"
+  },
+  {
+   "_parent_id": "6a79a0685d1a226228a9248d",
+   "feature": "Flexible Structure"
+  },
+  {
+   "_parent_id": "6a79a0685d1a226228a9248e",
+   "feature": "Area Protection"
+  },
+  {
+   "_parent_id": "6a79a0685d1a226228a9248f",
+   "feature": "Easy Setup"
+  },
+  {
+   "_parent_id": "6a79a0685d1a226228a92490",
+   "feature": "Security Support"
+  },
+  {
+   "_parent_id": "6a79a0685d1a226228a92493",
+   "feature": "Lightweight Mesh"
+  },
+  {
+   "_parent_id": "6a79a0685d1a226228a92494",
+   "feature": "Flexible Use"
+  },
+  {
+   "_parent_id": "6a79a0685d1a226228a92495",
+   "feature": "Poultry Support"
+  },
+  {
+   "_parent_id": "6a79a0685d1a226228a92496",
+   "feature": "Garden Protection"
+  },
+  {
+   "_parent_id": "6a79a0685d1a226228a92499",
+   "feature": "Cage Making"
+  },
+  {
+   "_parent_id": "6a79a0685d1a226228a9249a",
+   "feature": "Animal Separation"
+  },
+  {
+   "_parent_id": "6a79a0685d1a226228a9249b",
+   "feature": "Ventilation Support"
+  },
+  {
+   "_parent_id": "6a79a0685d1a226228a9249c",
+   "feature": "Easy Management"
+  },
+  {
+   "_parent_id": "6a79a0685d1a226228a9249f",
+   "feature": "Tray Production"
+  },
+  {
+   "_parent_id": "6a79a0685d1a226228a924a0",
+   "feature": "Egg Packing"
+  },
+  {
+   "_parent_id": "6a79a0685d1a226228a924a1",
+   "feature": "Transport Support"
+  },
+  {
+   "_parent_id": "6a79a0685d1a226228a924a2",
+   "feature": "Practical Output"
+  },
+  {
+   "_parent_id": "6a79a0685d1a226228a924a5",
+   "feature": "Size Sorting"
+  },
+  {
+   "_parent_id": "6a79a0685d1a226228a924a6",
+   "feature": "Grade Support"
+  },
+  {
+   "_parent_id": "6a79a0685d1a226228a924a7",
+   "feature": "Packing Efficiency"
+  },
+  {
+   "_parent_id": "6a79a0685d1a226228a924a8",
+   "feature": "Market Preparation"
+  },
+  {
+   "_parent_id": "6a79a0685d1a226228a924ab",
+   "feature": "Smooth Transfer"
+  },
+  {
+   "_parent_id": "6a79a0685d1a226228a924ac",
+   "feature": "Labor Saving"
+  },
+  {
+   "_parent_id": "6a79a0685d1a226228a924ad",
+   "feature": "Collection Support"
+  },
+  {
+   "_parent_id": "6a79a0685d1a226228a924ae",
+   "feature": "Workflow Efficiency"
+  },
+  {
+   "_parent_id": "6a79a0685d1a226228a924b1",
+   "feature": "Accurate Counting"
+  },
+  {
+   "_parent_id": "6a79a0685d1a226228a924b2",
+   "feature": "Output Tracking"
+  },
+  {
+   "_parent_id": "6a79a0685d1a226228a924b3",
+   "feature": "Error Reduction"
+  },
+  {
+   "_parent_id": "6a79a0685d1a226228a924b4",
+   "feature": "Production Control"
+  },
+  {
+   "_parent_id": "6a79a0685d1a226228a924b7",
+   "feature": "Brick Production"
+  },
+  {
+   "_parent_id": "6a79a0685d1a226228a924b8",
+   "feature": "Building Support"
+  },
+  {
+   "_parent_id": "6a79a0685d1a226228a924b9",
+   "feature": "Project Use"
+  },
+  {
+   "_parent_id": "6a79a0685d1a226228a924ba",
+   "feature": "Practical Operation"
+  }
+ ],
+ "solutions": [
+  {
+   "_parent_id": 1,
+   "name": "Poultry Farming Solutions",
+   "description": "Layer, broiler and chick farming equipment — cages, feeding, drinking and hatching systems for commercial poultry production."
+  },
+  {
+   "_parent_id": 2,
+   "name": "Livestock Farming Solutions",
+   "description": "Equipment for cattle, pig, goat and rabbit farms — fencing, pens, feeders, scales and handling systems."
+  },
+  {
+   "_parent_id": 3,
+   "name": "Aquaculture Solutions",
+   "description": "Pumps, aerators, fish cages and fish nets for pond farming, cage farming and open-water operations."
+  },
+  {
+   "_parent_id": 4,
+   "name": "Feed Processing Lines",
+   "description": "Grinding, mixing, pelletizing, extrusion and complete feed production lines for farms and feed producers."
+  },
+  {
+   "_parent_id": 5,
+   "name": "Breeding House & Infrastructure",
+   "description": "Farm housing, ventilation, cooling, environmental control and biosecurity systems for modern breeding projects."
+  },
+  {
+   "_parent_id": 6,
+   "name": "Farm Machinery & Tools",
+   "description": "Tractors, harvesters, planters, sprayers and processing machines for field work and farm operation."
+  }
+ ],
+ "case_studies": [
+  {
+   "_parent_id": 1,
+   "title": "Kenya Layer Farm Expansion",
+   "subtitle": "Layer Poultry Farm — Kenya",
+   "summary": "Expansion of commercial layer farms and increase in egg output.",
+   "content": "\"Layer cage installation for commercial egg production with complete feeding and drinking systems.\"",
+   "farm_name": "Layer Poultry Farm",
+   "key_result": "Layer cage installation for commercial egg production with complete feeding and drinking systems.",
+   "equipment": "Layer cages, feeding system, drinking system and poultry accessories.",
+   "application": "Expansion of commercial layer farms and increase in egg output.",
+   "challenge": "Existing layer farm needed to expand egg output while keeping manual labor manageable."
+  },
+  {
+   "_parent_id": 2,
+   "title": "Tanzania Layer Farm Project",
+   "subtitle": "Layer Poultry Farm — Tanzania",
+   "summary": "Layer cage installation and poultry house construction guidance.",
+   "content": "\"Full layer cage systems with ventilation and poultry house construction guidance.\"",
+   "farm_name": "Layer Poultry Farm",
+   "key_result": "Full layer cage systems with ventilation and poultry house construction guidance.",
+   "equipment": "Layer cages, feeding and drinking systems, ventilation equipment.",
+   "application": "Layer cage installation and poultry house construction guidance.",
+   "challenge": "New farm construction with no prior cage installation experience on site."
+  },
+  {
+   "_parent_id": 3,
+   "title": "Indonesia Goat Pen Project",
+   "subtitle": "Goat Farming Project — Indonesia",
+   "summary": "Organized goat housing and daily farm management.",
+   "content": "\"Organized goat housing system with complete fencing and feeding equipment.\"",
+   "farm_name": "Goat Farming Project",
+   "key_result": "Organized goat housing system with complete fencing and feeding equipment.",
+   "equipment": "Goat pens, fencing, feeders and livestock farm accessories.",
+   "application": "Organized goat housing and daily farm management.",
+   "challenge": "Goat herd kept in open yard with no separation between breeding and growing groups."
+  },
+  {
+   "_parent_id": 4,
+   "title": "Cattle Fence Supply for Africa",
+   "subtitle": "Cattle Farm Support — Nigeria",
+   "summary": "Livestock area enclosure, animal separation and farm protection.",
+   "content": "\"Livestock area enclosure systems with cattle panels for separation and boundary protection.\"",
+   "farm_name": "Cattle Farm Support",
+   "key_result": "Livestock area enclosure systems with cattle panels for separation and boundary protection.",
+   "equipment": "Farm fencing, cattle panels, gates and handling support products.",
+   "application": "Livestock area enclosure, animal separation and farm protection.",
+   "challenge": "Cattle wandering freely, damaging crops and creating safety risk around the farm."
+  },
+  {
+   "_parent_id": 5,
+   "title": "Ghana Feed Mill Setup",
+   "subtitle": "Animal Feed Processing Project — Ghana",
+   "summary": "Local poultry and livestock feed production for farm operation and market supply.",
+   "content": "\"Complete feed mill line enabling local feed production for poultry and livestock.\"",
+   "farm_name": "Animal Feed Processing Project",
+   "key_result": "Complete feed mill line enabling local feed production for poultry and livestock.",
+   "equipment": "Grinding machine, feed mixer, pellet machine, cooler and packing support.",
+   "application": "Local poultry and livestock feed production for farm operation and market supply.",
+   "challenge": "Feed costs were high due to reliance on imported finished feed."
+  },
+  {
+   "_parent_id": 6,
+   "title": "Nigeria Feed Production Support",
+   "subtitle": "Small Feed Mill Project — Nigeria",
+   "summary": "Feed production support for pig, poultry and livestock farming needs.",
+   "content": "\"Small feed mill with pelletizing supporting pig and poultry farming operations.\"",
+   "farm_name": "Small Feed Mill Project",
+   "key_result": "Small feed mill with pelletizing supporting pig and poultry farming operations.",
+   "equipment": "Hammer mill, mixer, pelletizing equipment, conveying and basic packing system.",
+   "application": "Feed production support for pig, poultry and livestock farming needs.",
+   "challenge": "Small farm needed affordable on-site feed production for multiple animal types."
+  },
+  {
+   "_parent_id": 7,
+   "title": "Ecuador Greenhouse Project",
+   "subtitle": "Commercial Greenhouse Project — Ecuador",
+   "summary": "Protected crop production with improved growing environment and farm operation efficiency.",
+   "content": "\"Protected crop production with complete climate and irrigation control.\"",
+   "farm_name": "Commercial Greenhouse Project",
+   "key_result": "Protected crop production with complete climate and irrigation control.",
+   "equipment": "Greenhouse structure, covering system, ventilation, irrigation and climate support.",
+   "application": "Protected crop production with improved growing environment and farm operation efficiency.",
+   "challenge": "Outdoor crop production exposed to weather variability, limiting yield consistency."
+  },
+  {
+   "_parent_id": 8,
+   "title": "Tanzania Poultry House Ventilation",
+   "subtitle": "Poultry House Ventilation Support — Tanzania",
+   "summary": "Improved airflow, heat reduction and daily environment control for poultry farming.",
+   "content": "\"Improved house airflow with heat reduction via cooling pads and daily environment control.\"",
+   "farm_name": "Poultry House Ventilation Support",
+   "key_result": "Improved house airflow with heat reduction via cooling pads and daily environment control.",
+   "equipment": "Exhaust fans, air inlets, cooling pads and ventilation control accessories.",
+   "application": "Improved airflow, heat reduction and daily environment control for poultry farming.",
+   "challenge": "High temperatures in poultry house were reducing bird performance during hot season."
+  },
+  {
+   "_parent_id": 9,
+   "title": "Philippines Fish Cage Farm Support",
+   "subtitle": "Fish Cage Farming Project — Philippines",
+   "summary": "Organized fish farming support for lake, river and coastal aquaculture operations.",
+   "content": "\"Floating cage farming system with complete mooring and walkway support.\"",
+   "farm_name": "Fish Cage Farming Project",
+   "key_result": "Floating cage farming system with complete mooring and walkway support.",
+   "equipment": "Floating cage, fish net, walkway support, mooring parts and farm accessories.",
+   "application": "Organized fish farming support for lake, river and coastal aquaculture operations.",
+   "challenge": "Fish farming in open lake water without proper containment or harvesting access."
+  },
+  {
+   "_parent_id": 10,
+   "title": "Southeast Asia Small Farm Machine Package",
+   "subtitle": "Small Farm Machinery Supply — Indonesia",
+   "summary": "Practical machinery package for small farms, dealers and rural supply businesses.",
+   "content": "\"Compact machinery package supporting small farms and rural dealers.\"",
+   "farm_name": "Small Farm Machinery Supply",
+   "key_result": "Compact machinery package supporting small farms and rural dealers.",
+   "equipment": "Walking tractor, water pump, sprayer, generator and compact farm machines.",
+   "application": "Practical machinery package for small farms, dealers and rural supply businesses.",
+   "challenge": "Smallholder farms lacked affordable mechanization for tillage, watering and spraying."
+  },
+  {
+   "_parent_id": 11,
+   "title": "South America Crop Farming Support",
+   "subtitle": "Crop Farming Equipment Support — Ecuador",
+   "summary": "Supporting planting, spraying, irrigation, harvesting and seasonal farm operation needs.",
+   "content": "\"Planting and spraying equipment with irrigation and harvest support coverage.\"",
+   "farm_name": "Crop Farming Equipment Support",
+   "key_result": "Planting and spraying equipment with irrigation and harvest support coverage.",
+   "equipment": "Planters, sprayers, irrigation tools, harvest support machines and farm accessories.",
+   "application": "Supporting planting, spraying, irrigation, harvesting and seasonal farm operation needs.",
+   "challenge": "Seasonal labor shortage during planting and harvest peaks on crop farms."
+  }
+ ]
+}

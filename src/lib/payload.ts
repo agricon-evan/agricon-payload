@@ -9,6 +9,8 @@ import type {
   BlogPost,
   CaseStudy,
   Faq,
+  Video,
+  Country,
   SiteSetting,
 } from '@/payload-types'
 
@@ -40,7 +42,7 @@ export const getProducts = cache(async (locale: string = 'en'): Promise<Product[
   const { docs } = await payload.find({
     collection: 'products',
     locale: locale as LocaleArg,
-    depth: 1,
+    depth: 2,
     sort: '-createdAt',
     limit: 100,
   })
@@ -129,6 +131,29 @@ export const getSiteSettings = cache(async (): Promise<SiteSetting | null> => {
     limit: 1,
   })
   return (docs[0] || null) as unknown as SiteSetting | null
+})
+
+export const getVideos = cache(async (locale: string = 'en'): Promise<Video[]> => {
+  const payload = await getPayloadClient()
+  const { docs } = await payload.find({
+    collection: 'videos',
+    locale: locale as LocaleArg,
+    depth: 1,
+    sort: 'sortOrder',
+    where: { published: { equals: true } },
+    limit: 100,
+  })
+  return docs as unknown as Video[]
+})
+
+export const getCountries = cache(async (): Promise<Country[]> => {
+  const payload = await getPayloadClient()
+  const { docs } = await payload.find({
+    collection: 'countries',
+    sort: 'name',
+    limit: 500,
+  })
+  return docs as unknown as Country[]
 })
 
 // ─────────────────────────────────────────────

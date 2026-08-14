@@ -5,6 +5,7 @@ import CtaSection from '@/components/CtaSection'
 import SectionHeading from '@/components/ui/SectionHeading'
 import Reveal from '@/components/ui/Reveal'
 import Icon from '@/components/ui/Icon'
+import MediaImage from '@/components/ui/MediaImage'
 
 interface Props {
   params: Promise<{ locale: string }>
@@ -46,6 +47,7 @@ export default async function TradeSupportPage({ params }: Props) {
         title={t.nav?.tradeSupport || 'Trade Support'}
         description={tTrade.hero?.description || 'Complete export support for global farm equipment buyers'}
         breadcrumb={`${tHome.breadcrumb?.home || 'Home'} / ${t.nav?.tradeSupport || 'Trade Support'}`}
+        image="/images/heroes/farm-machinery.jpg"
       />
 
       <section className="max-w-7xl mx-auto px-6 py-16 md:py-24">
@@ -75,11 +77,18 @@ export default async function TradeSupportPage({ params }: Props) {
         </div>
       </section>
 
-      <section className="max-w-4xl mx-auto px-6 py-16 md:py-24">
-        <Reveal>
-          <SectionHeading eyebrow="Export & Trade Support" title="From Order Confirmation to International Shipment" description="AGRICON coordinates packing, loading, documentation and delivery support for overseas buyers — so your order arrives exactly as confirmed." />
-        </Reveal>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-5 mt-10">
+      <section className="bg-[var(--color-surface-alt)] py-16 md:py-24">
+        <div className="max-w-4xl mx-auto px-6">
+          <Reveal>
+            <SectionHeading eyebrow="Export & Trade Support" title="From Order Confirmation to International Shipment" description="AGRICON coordinates packing, loading, documentation and delivery support for overseas buyers — so your order arrives exactly as confirmed." />
+          </Reveal>
+          {/* 画册出口实拍 — p121 */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-8">
+            {['/catalog/pages/p121_1.jpg', '/catalog/pages/p121_2.jpg', '/catalog/pages/p121_3.jpg'].map((src) => (
+              <MediaImage key={src} src={src} alt="AGRICON export packing and container loading" width={480} height={360} loading="lazy" className="w-full aspect-[4/3] object-cover rounded-lg" />
+            ))}
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-5 mt-10">
           {[
             { title: 'Order Confirmation', desc: 'All specifications, quantities and shipping requirements are reviewed and confirmed with the customer.' },
             { title: 'Export Packing', desc: 'Products are securely packed and clearly labeled for international transportation.' },
@@ -95,6 +104,7 @@ export default async function TradeSupportPage({ params }: Props) {
               </div>
             </Reveal>
           ))}
+        </div>
         </div>
       </section>
 

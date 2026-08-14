@@ -4,12 +4,12 @@ import SectionHeading from '@/components/ui/SectionHeading'
 
 export default function WhyChooseUs() {
   const features = [
-    { icon: 'factory', title: 'Factory Direct', desc: 'We own the production line. No middlemen — better pricing, full quality control, direct technical support.' },
-    { icon: 'shield', title: 'Certified Quality', desc: 'ISO 9001 certified manufacturing. Galvanized steel and stainless components rated for 15+ years of service.' },
-    { icon: 'globe', title: 'Export Expertise', desc: '20+ years shipping to Africa, Southeast Asia and South America. We handle documentation, packing and logistics.' },
-    { icon: 'gear', title: 'After-sales Support', desc: 'Spare parts in stock, installation guidance, and responsive engineers — your farm never stops because of us.' },
-    { icon: 'ruler', title: 'Custom Design', desc: 'Every farm is different. Our engineers adapt layouts, capacities and automation to your building and budget.' },
-    { icon: 'users', title: 'Multilingual Team', desc: 'English, Russian, French, Spanish, Swahili and Arabic speaking support for your local team.' },
+    { icon: 'layers', title: 'Coordinated Sourcing', desc: 'Poultry, livestock, feed processing, aquaculture, infrastructure and machinery through one supply window.' },
+    { icon: 'shield', title: 'Quality & Order Control', desc: 'Product scope, specifications, quantities and key inspection points are confirmed before shipment.' },
+    { icon: 'target', title: 'Project-Based Selection', desc: 'Equipment is matched to farm type, target capacity, site conditions, operating requirements and budget.' },
+    { icon: 'truck', title: 'Export-Ready Delivery', desc: 'Export packing, product identification, loading plans, container coordination and shipping documents.' },
+    { icon: 'users', title: 'Distributor Support', desc: 'Flexible product combinations, repeat-order support and coordinated sourcing for local market development.' },
+    { icon: 'handshake', title: 'Long-Term Cooperation', desc: 'From individual equipment to complete project packages, we support expansion and repeat supply.' },
   ]
 
   return (
@@ -17,7 +17,7 @@ export default function WhyChooseUs() {
       <Reveal>
         <SectionHeading
           eyebrow="Why Agricon"
-          title="A Partner, Not Just a Supplier"
+          title={<>A <span className="split-accent">Partner</span>, Not Just a Supplier</>}
           description="Six reasons commercial farms across three continents build with Agricon"
         />
       </Reveal>

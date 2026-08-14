@@ -51,7 +51,7 @@ export default function Reveal({
 
   return (
     <Tag
-      ref={ref as any}
+      ref={(node: HTMLElement | null) => { ref.current = node }}
       style={style}
       className={`reveal reveal-${variant} ${visible ? 'reveal-visible' : ''} ${className}`}
     >

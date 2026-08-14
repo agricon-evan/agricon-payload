@@ -23,7 +23,7 @@ test.describe('Agricon Frontend', () => {
     await page.goto('/en')
 
     // Stats band
-    await expect(page.getByText('Countries Served').first()).toBeVisible()
+    await expect(page.getByText('Export Markets').first()).toBeVisible()
 
     // Products & Solutions sections
     await expect(page.getByText('Complete Farm Equipment Lines').first()).toBeVisible()
@@ -39,6 +39,18 @@ test.describe('Agricon Frontend', () => {
     // Page renders (either categories or empty state)
     await expect(page).toHaveTitle(/Products|Agricon/)
     await expect(page.getByRole('heading', { level: 1 }).first()).toBeVisible()
+  })
+
+  test('SEO metadata routes return the correct formats', async ({ request }) => {
+    const robots = await request.get('/robots.txt')
+    expect(robots.ok()).toBeTruthy()
+    expect(robots.headers()['content-type']).toContain('text/plain')
+    expect(await robots.text()).toContain('Sitemap:')
+
+    const manifest = await request.get('/manifest.webmanifest')
+    expect(manifest.ok()).toBeTruthy()
+    expect(manifest.headers()['content-type']).toContain('application/manifest+json')
+    expect((await manifest.json()).short_name).toBe('Agricon')
   })
 
   test('contact page has inquiry form', async ({ page }) => {

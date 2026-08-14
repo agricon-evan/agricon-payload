@@ -2,41 +2,57 @@ import Icon from '@/components/ui/Icon'
 import Reveal from '@/components/ui/Reveal'
 import SectionHeading from '@/components/ui/SectionHeading'
 
-// From company sales process (手册第二层 11-阶段作战流程), simplified to a
-// client-facing 6-step workflow. Key differentiators: needs diagnosis (04),
-// value calculation (06), evidence matching (07), risk-reducing trial (10).
+// Six client-facing stages adapted directly from the Agricon catalog:
+// Inquiry, Analysis, Matching, Confirmation, Delivery and Support.
 export default function HowWeWork() {
   const steps = [
-    { num: '01', icon: 'users', title: 'Consultation & Diagnosis', desc: 'We ask about your current setup, pain points, and goals — then design around your specific farm, not a template.' },
-    { num: '02', icon: 'ruler', title: 'Layout & Value Design', desc: 'Our engineers produce a facility layout, equipment list, and a calculated value breakdown — expected output, cost savings, and payback.' },
-    { num: '03', icon: 'document', title: 'Quote, Evidence & Proposal', desc: 'You receive a transparent quote backed by evidence — QC flow, inspection samples, and references for your exact application.' },
-    { num: '04', icon: 'gear', title: 'Manufacturing & QC', desc: 'Built under ISO-controlled processes with in-factory load testing and pre-shipment inspection reports you can review.' },
-    { num: '05', icon: 'handshake', title: 'Risk-Lowering Delivery', desc: 'Sample or trial batches for first orders, phased payments, pre-production confirmation, and on-site installation support.' },
+    { icon: 'users', title: 'Inquiry', desc: 'Understand farm type, capacity, product interest, application scenario and purchasing purpose.' },
+    { icon: 'search', title: 'Analysis', desc: 'Review project conditions, operation goals, site requirements and budget expectations.' },
+    { icon: 'target', title: 'Matching', desc: 'Recommend suitable products, product lines and accessory packages for the confirmed needs.' },
+    { icon: 'clipboard', title: 'Confirmation', desc: 'Finalize models, quantities, specifications, packing and shipment planning before production.' },
+    { icon: 'truck', title: 'Delivery', desc: 'Coordinate export packing, container loading, shipping support and required documents.' },
+    { icon: 'handshake', title: 'Support', desc: 'Continue with product information, spare parts, repeat orders and future project expansion.' },
   ]
-  const icons = { 'document': 'file-text', 'gear': 'gear', 'handshake': 'handshake', 'ruler': 'ruler', 'users': 'users' }
 
   return (
     <section className="max-w-7xl mx-auto px-6 py-16 md:py-24">
       <Reveal>
         <SectionHeading
           eyebrow="How We Work"
-          title="From Inquiry to Production"
+          title={<>From Inquiry to <span className="split-accent">Support</span></>}
           description="A structured, evidence-based process — designed to lower your risk on every first order"
         />
       </Reveal>
-      <div className="grid grid-cols-1 md:grid-cols-5 gap-5 md:gap-6 mt-10">
-        {steps.map((s, i) => (
-          <Reveal key={s.num} delay={i * 80} className="h-full">
-            <div className="card card-hover p-6 h-full flex flex-col text-center">
-              <span className="text-xs font-bold text-[var(--color-primary)]/40 tracking-wider tabular-nums">{s.num}</span>
-              <div className="w-11 h-11 rounded-md bg-[var(--color-primary)]/8 text-[var(--color-primary)] flex items-center justify-center my-4 mx-auto">
-                <Icon name={icons[s.icon as keyof typeof icons] || s.icon} size={22} />
+
+      {/* Desktop: 3×2 process grid. Arrows connect cards within each row. */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 auto-rows-fr gap-5 md:gap-6 mt-10">
+        {steps.map((step, index) => {
+          const isRowEnd = index === 2 || index === 5
+          return (
+            <Reveal key={step.title} delay={index * 80} className="relative h-full">
+              <div className="card card-hover h-full min-h-[176px] p-5 md:p-6 flex flex-col text-left">
+                {/* 第一排：图标与标题两端对齐 */}
+                <div className="flex items-center justify-between gap-4">
+                  <div className="w-12 h-12 shrink-0 rounded-md bg-[var(--color-primary)]/8 text-[var(--color-primary)] flex items-center justify-center">
+                    <Icon name={step.icon} size={22} />
+                  </div>
+                  <h3 className="text-right text-[var(--color-text)] leading-tight">{step.title}</h3>
+                </div>
+                {/* 第二排：具体流程内容 */}
+                <p className="mt-5 pt-4 border-t border-[var(--color-border)] text-sm text-[var(--color-text-secondary)] leading-relaxed flex-1">
+                  {step.desc}
+                </p>
               </div>
-              <h3 className="text-[var(--color-text)]">{s.title}</h3>
-              <p className="mt-2 text-sm text-[var(--color-text-secondary)] leading-relaxed flex-1">{s.desc}</p>
-            </div>
-          </Reveal>
-        ))}
+              {!isRowEnd && (
+                <Icon
+                  name="chevron-right"
+                  size={18}
+                  className="hidden lg:block absolute top-1/2 -right-[21px] z-10 -translate-y-1/2 text-[var(--color-accent)]"
+                />
+              )}
+            </Reveal>
+          )
+        })}
       </div>
     </section>
   )

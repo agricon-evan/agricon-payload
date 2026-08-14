@@ -1,8 +1,12 @@
 import type { Metadata, Viewport } from 'next'
+import { headers } from 'next/headers'
 import { getTranslations, locales, isRtl, type Locale } from '@/i18n/config'
+import { SITE_URL, localizedAlternates, stripLocaleFromPath } from '@/lib/seo'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import Newsletter from '@/components/Newsletter'
+import FloatingActions from '@/components/FloatingActions'
+import { getSiteSettings } from '@/lib/payload'
 
 interface Props {
   children: React.ReactNode
@@ -17,48 +21,72 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params
   const t = getTranslations(locale as Locale, 'common')
 
+  // 当前请求路径（由 proxy.ts 注入），用于生成正确的 hreflang / canonical
+  const h = await headers()
+  const pathname = h.get('x-pathname') || ''
+  const rel = stripLocaleFromPath(pathname, locale)
+
+  const siteTitle = (t.meta?.siteTitle as string) || 'Agricon'
+  const siteDescription = (t.meta?.siteDescription as string) || (t.footer?.brandDescription as string) || ''
+
   return {
+    metadataBase: new URL(SITE_URL),
     title: {
-      default: 'Agricon - Poultry & Livestock Equipment Solutions',
-      template: '%s | Agricon',
+      default: siteTitle,
+      template: `%s | Agricon`,
     },
-    description: t.footer?.brandDescription || 'Poultry & Livestock Equipment Solutions',
-    alternates: {
-      languages: Object.fromEntries(
-        locales.map(l => [l, l === 'en' ? '/' : `/${l}`])
-      ),
-    },
+    description: siteDescription,
+    alternates: localizedAlternates(locale as Locale, rel),
     openGraph: {
       type: 'website',
       locale: locale === 'en' ? 'en_US' : `${locale}_${(locale as string).toUpperCase()}`,
       siteName: 'Agricon',
-      title: 'Agricon - Poultry & Livestock Equipment Solutions',
-      description: t.footer?.brandDescription || 'Poultry & Livestock Equipment Solutions',
+      title: siteTitle,
+      description: siteDescription,
     },
     twitter: {
       card: 'summary_large_image',
-      title: 'Agricon - Poultry & Livestock Equipment Solutions',
-      description: t.footer?.brandDescription || 'Poultry & Livestock Equipment Solutions',
+      title: siteTitle,
+      description: siteDescription,
     },
   }
 }
 
 export const viewport: Viewport = {
-  themeColor: '#1a5c38',
+  themeColor: '#0c5d3f',
 }
 
 export default async function LocaleLayout({ children, params }: Props) {
   const { locale } = await params
   const dir = isRtl(locale as Locale) ? 'rtl' : 'ltr'
+  const siteSettings = await getSiteSettings()
+  type SiteSettingsWithQr = NonNullable<typeof siteSettings> & {
+    tiktokQrCode?: number | { url?: string | null } | null
+    instagramQrCode?: number | { url?: string | null } | null
+  }
+  const settingsWithQr = siteSettings as SiteSettingsWithQr | null
+  const qrCodes = {
+    // 临时预览二维码：后台上传真实二维码后会自动覆盖
+    tiktok: (typeof settingsWithQr?.tiktokQrCode === 'object' ? settingsWithQr.tiktokQrCode?.url || undefined : undefined) || '/images/qr/tiktok-preview.png',
+    instagram: (typeof settingsWithQr?.instagramQrCode === 'object' ? settingsWithQr.instagramQrCode?.url || undefined : undefined) || '/images/qr/instagram-preview.png',
+  }
+
+  // 当前路径（由 proxy.ts 注入），传递给 Footer 以保持语言切换位置
+  const h = await headers()
+  const currentPath = h.get('x-pathname') || `/${locale}`
 
   return (
-    <div lang={locale} dir={dir} className="min-h-screen flex flex-col bg-[var(--color-bg)] text-[var(--color-text)] antialiased page-enter">
-      <Header locale={locale as Locale} />
-      <main id="main-content" className="flex-1">
-        {children}
-      </main>
-      <Newsletter locale={locale as Locale} />
-      <Footer locale={locale as Locale} />
-    </div>
+    <>
+      <div lang={locale} dir={dir} className="min-h-screen flex flex-col bg-[var(--color-bg)] text-[var(--color-text)] antialiased page-enter">
+        <Header locale={locale as Locale} />
+        <main id="main-content" className="flex-1">
+          {children}
+        </main>
+        <Newsletter locale={locale as Locale} />
+        <Footer locale={locale as Locale} currentPath={currentPath} qrCodes={qrCodes} />
+      </div>
+      {/* Root page animation must not become the containing block for viewport-fixed actions. */}
+      <FloatingActions locale={locale as Locale} whatsappNumber={siteSettings?.whatsappNumber} />
+    </>
   )
 }

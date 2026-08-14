@@ -69,6 +69,22 @@ const nextConfig: NextConfig = {
       {
         pathname: '/api/media/file/**',
       },
+      {
+        pathname: '/catalog/**',
+      },
+      {
+        pathname: '/images/**',
+      },
+    ],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
+      {
+        protocol: 'https',
+        hostname: '**.blob.vercel-storage.com',
+      },
     ],
   },
   webpack: (webpackConfig) => {

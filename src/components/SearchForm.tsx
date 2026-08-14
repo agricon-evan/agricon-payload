@@ -1,8 +1,9 @@
 'use client'
 
 import { useState, useEffect, Suspense, useCallback, useTransition } from 'react'
-import { useParams, useSearchParams } from 'next/navigation'
+import { useSearchParams } from 'next/navigation'
 import Icon from '@/components/ui/Icon'
+import MediaImage from '@/components/ui/MediaImage'
 
 interface SearchPageProps {
   locale: string
@@ -22,7 +23,6 @@ interface SearchResult {
 
 function SearchContent(props: SearchPageProps) {
   const { locale, searchTitle, searchPlaceholder, searchLabel, brandDesc, noResultsTitle, noResultsDesc, contactCta } = props
-  const params = useParams()
   const searchParams = useSearchParams()
   const q = searchParams.get('q') || ''
   const [query, setQuery] = useState(q)
@@ -85,7 +85,7 @@ function SearchContent(props: SearchPageProps) {
         )}
         {results.map(r => (
           <a key={r.id} href={r.url} className="flex items-start gap-4 p-5 card card-hover">
-            {r.image ? <img src={r.image} alt={r.title} className="w-14 h-14 rounded-md object-cover flex-shrink-0" /> : <div className="w-14 h-14 rounded-md bg-[var(--color-muted)] flex items-center justify-center flex-shrink-0"><Icon name={r.type === 'Product' ? 'box' : 'building'} size={22} className="text-[var(--color-text-secondary)]/40" /></div>}
+            {r.image ? <MediaImage src={r.image} alt={r.title} width={56} height={56} className="w-14 h-14 rounded-md object-cover flex-shrink-0" /> : <div className="w-14 h-14 rounded-md bg-[var(--color-muted)] flex items-center justify-center flex-shrink-0"><Icon name={r.type === 'Product' ? 'box' : 'building'} size={22} className="text-[var(--color-text-secondary)]/40" /></div>}
             <div className="min-w-0">
               <div className="text-xs text-[var(--color-primary)] font-semibold uppercase tracking-wide">{r.type}</div>
               <div className="mt-1 font-semibold text-[var(--color-text)] truncate">{r.title}</div>

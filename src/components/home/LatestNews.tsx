@@ -3,6 +3,8 @@ import { getBlogPosts } from '@/lib/payload'
 import type { Locale } from '@/i18n/config'
 import Icon from '@/components/ui/Icon'
 import Reveal from '@/components/ui/Reveal'
+import MediaImage from '@/components/ui/MediaImage'
+import { FALLBACK_ARTICLES } from '@/lib/blog-fallback'
 
 interface Props {
   locale: Locale
@@ -19,22 +21,24 @@ interface NewsItem {
 
 export default async function LatestNews({ locale }: Props) {
   const posts = await getBlogPosts(locale)
-  const lp = locale === 'en' ? '' : `/${locale}`
+  const lp = `/${locale}`
 
   // Map CMS posts to the unified shape
-  const cmsItems: NewsItem[] = posts.map((p: any) => ({
+  const cmsItems: NewsItem[] = posts.map((p) => ({
     title: p.title || '',
-    excerpt: p.excerpt || p.subtitle || '',
+    excerpt: p.excerpt || '',
     date: p.createdAt ? new Date(p.createdAt).getFullYear().toString() : '2026',
     slug: p.slug || '',
     coverUrl: typeof p.coverImage === 'object' && p.coverImage?.url ? p.coverImage.url : null,
   }))
 
-  const placeholders: NewsItem[] = [
-    { title: 'How to Choose the Right Layer Cage System', excerpt: 'A-type vs H-type vs manure-belt: capacity, cost and climate considerations for your poultry house.', date: '2026', slug: '', coverUrl: null },
-    { title: '5 Key Factors for Incubation Success', excerpt: 'Temperature, humidity, turning, ventilation and sanitation — the science behind hatch rate.', date: '2026', slug: '', coverUrl: null },
-    { title: 'Designing a Profitable Broiler House', excerpt: 'Stocking density, ventilation and feeding automation that maximize your return per square meter.', date: '2026', slug: '', coverUrl: null },
-  ]
+  const placeholders: NewsItem[] = FALLBACK_ARTICLES.slice(0, 3).map((a) => ({
+    title: a.title,
+    excerpt: a.excerpt,
+    date: a.date,
+    slug: a.slug,
+    coverUrl: a.coverUrl,
+  }))
 
   const items = cmsItems.length > 0 ? cmsItems : placeholders
 
@@ -44,7 +48,8 @@ export default async function LatestNews({ locale }: Props) {
         <div className="flex items-end justify-between mb-10">
           <div>
             <span className="eyebrow">News &amp; Insights</span>
-            <h2 className="mt-2 text-[var(--color-text)]">From Our Blog</h2>
+            <h2 className="mt-2 split-color-title text-[var(--color-text)]">From Our <span className="split-accent">Blog</span></h2>
+            <span className="orange-underline mt-3" aria-hidden="true" />
           </div>
           <Link href={`${lp}/blog`} className="hidden sm:inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--color-primary)] hover:underline">
             View all
@@ -58,7 +63,7 @@ export default async function LatestNews({ locale }: Props) {
             <article className="card card-hover h-full flex flex-col">
               <div className="aspect-video bg-[var(--color-muted)] flex items-center justify-center icon-zoom overflow-hidden">
                 {p.coverUrl ? (
-                  <img src={p.coverUrl} alt={p.title} className="w-full h-full object-cover" loading="lazy" />
+                  <MediaImage src={p.coverUrl} alt={p.title} width={800} height={450} className="w-full h-full object-cover" loading="lazy" />
                 ) : (
                   <Icon name="file-text" size={36} className="text-[var(--color-text-secondary)]/30" />
                 )}

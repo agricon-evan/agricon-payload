@@ -12,10 +12,9 @@ interface Props {
 
 export default async function DistributorsPage({ params }: Props) {
   const { locale } = await params
-  const t = getTranslations(locale as Locale, 'common')
   const tDist = getTranslations(locale as Locale, 'distributors')
   const tHome = getTranslations(locale as Locale, 'home')
-  const lp = locale === 'en' ? '' : `/${locale}`
+  const lp = `/${locale}`
 
   const benefits = [
     { icon: 'trending-up', title: 'Attractive Margins', desc: 'Competitive distributor pricing with volume-based tiered discounts. Your margins grow with your sales.' },
@@ -39,6 +38,7 @@ export default async function DistributorsPage({ params }: Props) {
         title={tDist.hero?.title || 'Become a Distributor'}
         description={tDist.hero?.description || 'Grow your business with a proven agricultural equipment partner'}
         breadcrumb={`${tHome.breadcrumb?.home || 'Home'} / Distributors`}
+        image="/images/heroes/farm-machinery.jpg"
       />
 
       <section className="max-w-7xl mx-auto px-6 py-16 md:py-24">
@@ -96,7 +96,7 @@ export default async function DistributorsPage({ params }: Props) {
             </p>
             <a
               href={`${lp}/contact`}
-              className="inline-flex items-center justify-center gap-2 mt-6 px-10 py-4 bg-[var(--color-accent)] text-white font-semibold rounded-md min-h-[48px] press tap-target text-lg transition-colors hover:brightness-110"
+              className="inline-flex items-center justify-center gap-2 mt-6 px-10 py-4 bg-white text-[var(--color-primary)] font-semibold rounded-sm min-h-[48px] press tap-target text-lg transition-colors hover:bg-white/90"
             >
               {tDist.applicationForm?.submit || 'Apply Now'}
               <Icon name="arrow-right" size={18} />

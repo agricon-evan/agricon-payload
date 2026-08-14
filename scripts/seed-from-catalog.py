@@ -241,6 +241,14 @@ CASES = [
         "published": True,
     },
     {
+        "title": "Fish Farm Equipment Package", "slug": "fish-farm-equipment",
+        "country": "Southeast Asia", "projectType": "Aquaculture Equipment Package",
+        "equipment": "Water pump, aerator, fish net, floating cage and basic support products.",
+        "application": "Flexible equipment package for small and medium fish farming operations.",
+        "results": ["Water circulation and oxygen support", "Flexible cage and net equipment", "Small and medium fish farm supply"],
+        "published": True,
+    },
+    {
         "title": "Southeast Asia Small Farm Machine Package", "slug": "se-asia-farm-machines",
         "country": "Southeast Asia", "projectType": "Small Farm Machinery Supply",
         "equipment": "Walking tractor, water pump, sprayer, generator and compact farm machines.",

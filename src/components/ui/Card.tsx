@@ -1,8 +1,13 @@
 import type { ReactNode } from 'react'
 
-export function Card({ children, className = '', hover = true }: { children: ReactNode; className?: string; hover?: boolean }) {
+/**
+ * Flat card — elevation is not the primary hierarchy mechanism.
+ * Use `info-card` for soft-gray information containers, `.card` for white modules.
+ * Per D:\system-design.md {component.info-card} + elevation philosophy.
+ */
+export function Card({ children, className = '', hover = false }: { children: ReactNode; className?: string; hover?: boolean }) {
   return (
-    <div className={`bg-[var(--color-surface)] rounded-xl border border-[var(--color-border)] overflow-hidden ${hover ? 'hover-lift' : ''} ${className}`}>
+    <div className={`bg-[var(--color-surface)] rounded-sm border border-[var(--color-border)] overflow-hidden ${hover ? 'card-hover' : ''} ${className}`}>
       {children}
     </div>
   )

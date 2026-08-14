@@ -5,33 +5,36 @@ import SectionHeading from '@/components/ui/SectionHeading'
 export default function Testimonials() {
   const testimonials = [
     {
-      quote: 'We installed 5 tiers of H-type cages with manure belts from Agricon. Hatching rate improved and labor costs dropped by 40%.',
-      name: 'James Mwangi',
-      role: 'Farm Owner, Kenya',
+      quote: 'Layer cages, feeding, drinking and poultry accessories coordinated for commercial egg production and farm expansion.',
+      name: 'Kenya Layer Farm',
+      role: 'Layer poultry project',
     },
     {
-      quote: 'The full feed processing line was delivered and installed right on schedule. Their engineers stayed until everything was running perfectly.',
-      name: 'Alejandro Rojas',
-      role: 'Operations Manager, Colombia',
+      quote: 'Grinding, mixing, pelletizing, cooling and packing support combined into a practical feed production package.',
+      name: 'Ghana Feed Mill Setup',
+      role: 'Animal feed processing project',
     },
     {
-      quote: 'Excellent quality and after-sales spare parts support. We have expanded three times, always with Agricon equipment.',
-      name: 'Sergey Ivanov',
-      role: 'Farm Director, Russia',
+      quote: 'Floating cage, fish net, walkway support and mooring parts organized for lake, river and coastal aquaculture operations.',
+      name: 'Philippines Fish Cage Support',
+      role: 'Aquaculture equipment package',
     },
   ]
 
   return (
-    <section className="bg-[var(--color-surface-alt)] py-16 md:py-24">
+    <section className="bg-[var(--color-surface-alt)] py-20 md:py-28">
       <div className="max-w-7xl mx-auto px-6">
         <Reveal>
-          <SectionHeading eyebrow="Testimonials" title="Trusted by Farmers Worldwide" />
+          <SectionHeading eyebrow="Testimonials" title={<>Trusted by <span className="split-accent">Farmers</span> Worldwide</>} />
         </Reveal>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6 mt-10">
           {testimonials.map((t, i) => (
             <Reveal key={t.name} delay={i * 100} className="h-full">
-              <figure className="card card-hover p-6 md:p-8 h-full flex flex-col">
-                <Icon name="quote" size={28} className="text-[var(--color-primary)]/30 mb-4" />
+              <figure className="card card-hover p-6 md:p-8 h-full flex flex-col relative overflow-hidden">
+                <div className="absolute right-5 top-5 flex gap-0.5 text-[var(--color-accent)]" aria-label="5 star rating">
+                  {[1, 2, 3, 4, 5].map(star => <Icon key={star} name="star" size={13} strokeWidth={2.2} />)}
+                </div>
+                <Icon name="quote" size={30} className="text-[var(--color-primary)]/30 mb-5" />
                 <blockquote className="text-[var(--color-text-secondary)] leading-relaxed flex-1 text-sm">
                   {t.quote}
                 </blockquote>
