@@ -133,10 +133,15 @@ node scripts/import-translations.mjs
 
 | 变量 | 用途 | 开发 | 生产 |
 |---|---|---|---|
-| `PAYLOAD_SECRET` | CMS 加密密钥 | 任意值 | 强随机值（必填） |
+| `PAYLOAD_SECRET` | CMS 加密密钥 | 任意值 | 强随机值（必填，`openssl rand -base64 32`） |
 | `DATABASE_URI` | SQLite 路径 | `file:./agricon-dev.db` | — |
-| `POSTGRES_URL` | Postgres 连接串 | — | 必填 |
-| `BLOB_READ_WRITE_TOKEN` | Vercel Blob 令牌 | — | 图片上传需要 |
+| `POSTGRES_URL` | Postgres 连接串 | — | 必填（自动切换 SQLite→Postgres） |
+| `BLOB_READ_WRITE_TOKEN` | Vercel Blob 令牌 | — | 后台图片上传必需 |
+| `NEXT_PUBLIC_SITE_URL` | 正式域名（sitemap/robots/canonical） | `http://localhost:3000` | **正式域名** |
+| `PAYLOAD_PUSH_SCHEMA` | 关闭 schema 自动同步 | 开发已设 `false` | 默认开启（首次部署建全表） |
+| `SMTP_HOST` / `SMTP_PORT` / `SMTP_SECURE` / `SMTP_USER` / `SMTP_PASS` | 邮件发送 | 不设（日志模式） | 询盘通知必需 |
+| `EMAIL_FROM` / `EMAIL_FROM_NAME` | 发件人 | `noreply@agricon.com` | 配置 |
+| `INQUIRY_NOTIFY_EMAIL` | 询盘通知收件人 | — | 销售邮箱（默认 EMAIL_FROM） |
 
 > ⚠️ `.env` 已被 git 忽略，密钥永不入库。
 
@@ -146,19 +151,55 @@ node scripts/import-translations.mjs
 2. 添加环境变量（见上表）
 3. 添加 Vercel Postgres（或 Neon）数据库，复制 `POSTGRES_URL`
 4. 添加 Vercel Blob 存储，复制 `BLOB_READ_WRITE_TOKEN`
-5. 部署——首次部署后运行数据库迁移：
-   ```bash
-   npx payload migrate    # 本地跑完提交 migration，或
-   # Vercel CI 会自动执行 package.json 的 "ci": "payload migrate && next build"
-   ```
+5. 部署——`vercel-build` 自动执行 `payload migrate && next build`；
+   **首次部署时 Postgres push 会自动补全全部 17 个 collection 的 schema**
+   （checked-in migrations 仅覆盖初始 schema，`PAYLOAD_PUSH_SCHEMA=false` 可强制仅迁移模式）
 6. 通过 `https://<project>.vercel.app/admin` 创建首个管理员
+7. 配置 SMTP 环境变量，否则询盘通知只写入日志不发邮件
+
+### 管理员
+
+本地开发管理员：`admin@agricon.com`（密码见本地 scripts 或首次创建）。
+
+## 上线检查清单（2026-08 已全部验证）
+
+### ✅ 页面与数据
+
+- 6 语言 × 14 主要页面全部 200（首页 308 重定向正常）
+- 43 产品 / 10 分类 / 70 子分类 / 12 案例 / 6 方案 全部可访问
+- 354 个代码引用的 catalog 图片文件全部存在；全站扫描 0 破损图片、0 4xx、0 控制台错误
+- 数据库无孤儿引用、无空/重复 slug；media 全有 url；产品全有图
+- 首页 hero 已本地化 5 语言；各页面 hero 图片后台可配（`siteSettings.pageHeroImages`）
+
+### ✅ 功能与交互
+
+- 搜索（`/search?q=`）正常；语言切换保持当前路径（`/en/about → /ru/about`）
+- 移动端 13 页无横向溢出；汉堡菜单正常
+- 产品详情页：画廊缩略图单排滑动 + 大图箭头切换；Technical Information sticky；
+  两列等高；无价格/MOQ/噪音标签（Agricon…、alibaba-… 已过滤）
+- 产品页 “Request Quote” → 联系表单自动预填产品名
+- 询盘表单提交 → 后台入库 → SMTP 邮件通知（配置后）
+- 阿拉伯语 RTL 正常；安全头（CSP/HSTS/X-Frame）完整；robots/sitemap/404 正常
+
+### ⚠️ 上线后待办
+
+- **多语言翻译续完**：blog 第 2/3 篇、FAQ 7 条仍为英文（MyMemory 免费配额每日限制）：
+  `PYTHONIOENCODING=utf-8 python scripts/translate-blog-faq.py`（幂等，可次日重跑）
+- **Videos / Downloads** 为空（前台显示空态），上线后后台添加
+- 定期备份：`pnpm backup`（数据库 + media，保留 7 份）
+
+### 🔧 生产环境配置提醒
+
+- `NEXT_PUBLIC_SITE_URL` 必须设为正式域名（否则 robots/sitemap/canonical 指向错误地址）
+- `PAYLOAD_SECRET` 用强随机值；生产管理员密码请轮换
+- 首次部署后立即通过后台验证：产品/分类/博客/FAQ/媒体上传
 
 ## 质量门禁
 
 ```bash
-npm run lint        # ESLint
-npx tsc --noEmit    # TypeScript
-npm run build       # 生产构建（85 静态页 × 6 语言）
+npm run lint        # ESLint 0 error 0 warning
+npx tsc --noEmit    # TypeScript 0 error
+npm run build       # 生产构建（94 静态页）
 npm test            # Vitest + Playwright（可选）
 ```
 
