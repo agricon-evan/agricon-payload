@@ -125,13 +125,13 @@ export default async function ProductDetailPage({ params }: Props) {
 
       <main className="max-w-7xl mx-auto px-6 py-10 md:py-16">
         {/* Product hero/spec — main image + short introduction + inquiry */}
-        <section className="grid grid-cols-1 lg:grid-cols-[1.08fr_0.92fr] gap-8 lg:gap-14 items-start">
-          <Reveal>
-            <ImageGallery images={gallery} aspect="4-3" priority />
+        <section className="grid grid-cols-1 lg:grid-cols-[1.08fr_0.92fr] gap-8 lg:gap-14 items-stretch">
+          <Reveal className="h-full">
+            <ImageGallery images={gallery} aspect="4-3" priority className="h-full flex flex-col" />
           </Reveal>
 
-          <Reveal delay={100}>
-            <div className="lg:sticky lg:top-24">
+          <Reveal delay={100} className="h-full">
+            <div className="lg:sticky lg:top-24 flex flex-col h-full">
               <span className="eyebrow">AGRICON Product</span>
               <h1 className="mt-4 text-3xl md:text-5xl font-bold leading-[1.06] tracking-[-0.02em] text-[var(--color-text)]">{p.name}</h1>
               <span className="orange-underline mt-5" aria-hidden="true" />
@@ -145,7 +145,7 @@ export default async function ProductDetailPage({ params }: Props) {
                 ))}
               </div>
 
-              <div className="mt-7 flex flex-col sm:flex-row gap-3">
+              <div className="mt-auto pt-7 flex flex-col sm:flex-row gap-3">
                 <a
                   href={`/${locale}/contact?product=${p.slug}`}
                   className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-[var(--color-primary)] text-white font-semibold rounded-sm min-h-[48px] tap-target hover:bg-[var(--color-primary-dark)] transition-colors"

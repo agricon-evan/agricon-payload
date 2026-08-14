@@ -94,11 +94,11 @@ export default function ImageGallery({ images, aspect = '4-3', priority = false,
         )}
       </div>
 
-      {/* Single-row scrollable thumbnail strip — py offsets leave room for the ring */}
+      {/* Single-row scrollable thumbnail strip — px/py offsets leave room for the ring */}
       {count > 1 && (
         <div
           ref={stripRef}
-          className="flex gap-2.5 mt-2.5 overflow-x-auto scrollbar-none snap-x snap-mandatory py-1.5 -my-1.5"
+          className="flex gap-2.5 mt-2.5 overflow-x-auto scrollbar-none snap-x snap-mandatory px-1.5 -mx-1.5 py-1.5 -my-1.5"
           role="tablist"
           aria-label="Product images"
         >
