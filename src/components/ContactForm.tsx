@@ -20,6 +20,8 @@ interface ContactFormProps {
   whatsappTitle: string; whatsappDesc: string; whatsappOpen: string
   responseLabel: string
   whatsappNumber?: string
+  /** Product pre-selected from the product detail page (?product=slug) */
+  initialProduct?: string
 }
 
 export default function ContactForm(props: ContactFormProps) {
@@ -27,15 +29,17 @@ export default function ContactForm(props: ContactFormProps) {
     locale, contactMethods, inquiryLabels: t, responseInfo, countries, productOptions,
     successTitle, successDesc, successBrowse,
     whatsappTitle, whatsappDesc, whatsappOpen, responseLabel, whatsappNumber,
+    initialProduct,
   } = props
 
   const whatsappDigits = whatsappNumber?.replace(/\D/g, '')
 
   const [form, setForm] = useState({
-    name: '', email: '', company: '', country: '', phone: '', message: '',
+    name: '', email: '', company: '', country: '', phone: '',
+    message: initialProduct ? `I'm interested in: ${initialProduct}\n\n` : '',
     application: '', currentSetup: '', purchaseType: '',
   })
-  const [interest, setInterest] = useState<string[]>([])
+  const [interest, setInterest] = useState<string[]>(initialProduct ? [initialProduct] : [])
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
   const [error, setError] = useState('')
 

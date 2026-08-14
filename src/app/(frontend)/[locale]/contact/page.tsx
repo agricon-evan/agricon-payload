@@ -1,19 +1,29 @@
 import type { Locale } from '@/i18n/config'
 import { getTranslations } from '@/i18n/config'
-import { getSiteSettings, getCountries } from '@/lib/payload'
+import { getSiteSettings, getCountries, getProducts } from '@/lib/payload'
 import ContactForm from '@/components/ContactForm'
 import MediaImage from '@/components/ui/MediaImage'
 
 interface Props {
   params: Promise<{ locale: string }>
+  searchParams: Promise<{ product?: string }>
 }
 
-export default async function ContactPage({ params }: Props) {
+export default async function ContactPage({ params, searchParams }: Props) {
   const { locale } = await params
+  const { product: productSlug } = await searchParams
   const t = getTranslations(locale as Locale, 'contact')
   const tHome = getTranslations(locale as Locale, 'home')
   const settings = await getSiteSettings()
   const dbCountries = await getCountries()
+
+  // 产品详情页的 “Request Quote” 带 ?product=slug — 解析成产品名并预选到询盘表单
+  let initialProduct: string | undefined
+  if (productSlug) {
+    const products = await getProducts(locale as Locale)
+    const match = products.find((p) => p.slug === productSlug)
+    initialProduct = match?.name || productSlug
+  }
 
   // Countries come from the CMS Countries collection (single source of truth),
   // falling back to the bundled i18n list while the admin list is empty.
@@ -75,6 +85,7 @@ export default async function ContactPage({ params }: Props) {
           }}
           countries={countries}
           productOptions={t.productOptions || []}
+          initialProduct={initialProduct}
           successTitle={t.success?.title || 'Inquiry Submitted'}
           successDesc={t.success?.description || 'Thank you for your inquiry.'}
           successBrowse={t.success?.browseProducts || 'Browse Products'}

@@ -135,10 +135,11 @@ export const getFaqCategories = cache(async (locale: string = 'en'): Promise<{ i
   return docs as unknown as { id: number; name: string }[]
 })
 
-export const getSiteSettings = cache(async (): Promise<SiteSetting | null> => {
+export const getSiteSettings = cache(async (locale: string = 'en'): Promise<SiteSetting | null> => {
   const payload = await getPayloadClient()
   const { docs } = await payload.find({
     collection: 'siteSettings',
+    locale: locale as LocaleArg,
     limit: 1,
   })
   return (docs[0] || null) as unknown as SiteSetting | null

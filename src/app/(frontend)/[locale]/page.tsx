@@ -21,7 +21,7 @@ interface Props {
 
 export default async function HomePage({ params }: Props) {
   const { locale } = await params
-  const settings = await getSiteSettings()
+  const settings = await getSiteSettings(locale)
   const stats = (settings?.stats ?? {}) as { countriesServed?: string; farmProjects?: string; yearsInBusiness?: string; onTimeDelivery?: string; equipmentModels?: string }
   const hero = (settings?.hero ?? {}) as {
     eyebrow?: string | null

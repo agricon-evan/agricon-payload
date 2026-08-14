@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const rel = stripLocaleFromPath(pathname, locale)
 
   // SEO defaults from SiteSettings (admin-editable) with i18n fallback
-  const settings = await getSiteSettings()
+  const settings = await getSiteSettings(locale)
   const seo = (settings?.seo ?? {}) as { siteTitle?: string | null; siteDescription?: string | null }
   const siteTitle = seo.siteTitle || (t.meta?.siteTitle as string) || 'Agricon'
   const siteDescription = seo.siteDescription || (t.meta?.siteDescription as string) || (t.footer?.brandDescription as string) || ''
@@ -61,7 +61,7 @@ export const viewport: Viewport = {
 export default async function LocaleLayout({ children, params }: Props) {
   const { locale } = await params
   const dir = isRtl(locale as Locale) ? 'rtl' : 'ltr'
-  const siteSettings = await getSiteSettings()
+  const siteSettings = await getSiteSettings(locale)
   // 当前请求路径（由 proxy.ts 注入），用于生成正确的 hreflang / canonical
   const h = await headers()
   const _pathname = h.get('x-pathname') || ''
