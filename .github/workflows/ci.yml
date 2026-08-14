@@ -1,0 +1,49 @@
+name: CI
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+
+jobs:
+  check:
+    name: Lint + Typecheck + Build
+    runs-on: ubuntu-latest
+    env:
+      PAYLOAD_SECRET: ci-secret-for-build-only
+      DATABASE_URI: file:./ci-test.db
+      PAYLOAD_PUSH_SCHEMA: 'false'
+      NEXT_PUBLIC_SITE_URL: https://www.agricon.com
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Generate import map & types
+        run: |
+          pnpm payload generate:importmap
+          pnpm payload generate:types
+
+      - name: Typecheck
+        run: pnpm exec tsc --noEmit
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Build
+        run: pnpm build
+
+      - name: E2E (admin + frontend smoke)
+        run: |
+          pnpm exec playwright install chromium --with-deps
+          pnpm test:e2e

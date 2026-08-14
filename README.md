@@ -173,3 +173,15 @@ npm test            # Vitest + Playwright（可选）
 ## 旧项目
 
 原 Astro + Cloudflare Workers 版本保留在 `D:\Agricon_Website`（迁移前的历史版本）。
+
+### 多语言内容维护(博客/FAQ)
+
+博客与 FAQ 的翻译使用免费的 MyMemory API(免费版每日有配额):
+
+```bash
+PYTHONIOENCODING=utf-8 python scripts/translate-blog-faq.py
+```
+
+- 幂等:已存在的语言行会跳过,配额耗尽后**次日重跑**即可续完
+- 支持 `--langs ru,fr,es,sw,ar` 与 `--limit N`
+- richText(content/answer)以 lexical JSON 结构递归翻译文本节点,不破坏结构
