@@ -17,6 +17,7 @@ const PATHS: Record<string, string> = {
   'check-circle': 'M12 21a9 9 0 100-18 9 9 0 000 18zM8.5 12l2.5 2.5 4.5-5',
   'chevron-down': 'M6 9l6 6 6-6',
   'chevron-right': 'M9 6l6 6-6 6',
+  'chevron-left': 'M15 6l-6 6 6 6',
   'menu': 'M4 7h16M4 12h16M4 17h16',
   'close': 'M6 6l12 12M18 6L6 18',
   'search': 'M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z',

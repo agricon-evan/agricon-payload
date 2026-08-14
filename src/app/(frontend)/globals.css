@@ -599,4 +599,11 @@
     ::-webkit-scrollbar-thumb { background: rgba(35, 31, 32, 0.18); border-radius: 4px; }
     ::-webkit-scrollbar-thumb:hover { background: rgba(35, 31, 32, 0.3); }
   }
+
+  /* Hide scrollbar on horizontally scrolling thumbnail strips */
+  .scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-none::-webkit-scrollbar { display: none; }
 }
