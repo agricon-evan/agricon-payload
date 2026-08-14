@@ -69,46 +69,76 @@ export const SiteSettings: CollectionConfig = {
         { name: 'galvanizedLifespan', type: 'text', defaultValue: '15+ years', label: 'Galvanized Steel Lifespan' },
       ],
     },
-    // ── Homepage section content (JSON) ──
-    // Each field stores the items for one homepage section. When a field is
-    // empty the storefront falls back to the built-in defaults, so every
-    // section is optional. Edit via the admin JSON editor or the API.
+    // ── Homepage section content ──
+    // Array fields give the admin a row-based table editor for each homepage
+    // section. When a section is empty the storefront falls back to the
+    // built-in defaults. `items` sub-lists are JSON for flexibility.
     {
       name: 'homeTestimonials',
-      type: 'json',
+      type: 'array',
       label: 'Home · Testimonials',
-      admin: { description: 'JSON array: [{ "quote": "…", "name": "…", "role": "…" }]' },
+      admin: { description: 'Customer testimonials on the homepage. Empty → built-in defaults.' },
+      fields: [
+        { name: 'quote', type: 'textarea', required: true, admin: { description: 'Customer quote.' } },
+        { name: 'name', type: 'text', required: true, admin: { placeholder: 'e.g. Kenya Layer Farm' } },
+        { name: 'role', type: 'text', admin: { placeholder: 'e.g. Layer poultry project' } },
+      ],
     },
     {
       name: 'homeWhyChooseUs',
-      type: 'json',
+      type: 'array',
       label: 'Home · Why Choose Us',
-      admin: { description: 'JSON array: [{ "icon": "shield", "title": "…", "desc": "…" }]' },
+      admin: { description: 'Advantage cards. Empty → built-in defaults.' },
+      fields: [
+        { name: 'icon', type: 'text', admin: { description: 'Icon name (see src/components/ui/Icon.tsx).' } },
+        { name: 'title', type: 'text', required: true },
+        { name: 'desc', type: 'textarea', required: true },
+      ],
     },
     {
       name: 'homeHowWeWork',
-      type: 'json',
+      type: 'array',
       label: 'Home · How We Work',
-      admin: { description: 'JSON array: [{ "icon": "users", "title": "…", "desc": "…" }]' },
+      admin: { description: 'Process steps. Empty → built-in defaults.' },
+      fields: [
+        { name: 'icon', type: 'text', admin: { description: 'Icon name.' } },
+        { name: 'title', type: 'text', required: true },
+        { name: 'desc', type: 'textarea', required: true },
+      ],
     },
     {
       name: 'homeGlobalCoverage',
-      type: 'json',
+      type: 'array',
       label: 'Home · Global Coverage',
-      admin: { description: 'JSON array: [{ "icon": "building", "title": "…", "sub": "…" }]' },
+      admin: { description: 'Coverage cards. Empty → built-in defaults.' },
+      fields: [
+        { name: 'icon', type: 'text', admin: { description: 'Icon name.' } },
+        { name: 'title', type: 'text', required: true },
+        { name: 'sub', type: 'textarea', required: true },
+      ],
     },
     {
       name: 'homeValueCalculated',
-      type: 'json',
+      type: 'array',
       label: 'Home · Value Calculated',
-      admin: { description: 'JSON array: [{ "icon": "trending-down", "title": "…", "items": [{ "label": "…", "value": "…" }] }]' },
+      admin: { description: 'Value cards. Empty → built-in defaults.' },
+      fields: [
+        { name: 'icon', type: 'text', admin: { description: 'Icon name.' } },
+        { name: 'title', type: 'text', required: true },
+        { name: 'items', type: 'json', label: 'Items', admin: { description: 'JSON: [{ "label": "…", "value": "…" }]' } },
+      ],
     },
     {
       name: 'homeTrustEvidence',
-      type: 'json',
+      type: 'array',
       label: 'Home · Trust & Evidence',
-      admin: { description: 'JSON array: [{ "icon": "shield", "title": "…", "items": ["…"] }]' },
+      admin: { description: 'Evidence cards. Empty → built-in defaults.' },
+      fields: [
+        { name: 'icon', type: 'text', admin: { description: 'Icon name.' } },
+        { name: 'title', type: 'text', required: true },
+        { name: 'items', type: 'json', label: 'Items', admin: { description: 'JSON array of strings: ["…", "…"]' } },
+      ],
     },
   ],
-  versions: { drafts: false },
+  versions: false,
 }

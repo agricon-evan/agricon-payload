@@ -155,22 +155,31 @@ curl -s -X POST http://localhost:3000/api/graphql \
 
 ---
 
-## 5. 首页内容(最近新增 — 后台 JSON 可管理)
+## 5. 首页内容(后台表格编辑 — array 字段)
 
-首页 6 个区块的内容现在存于 `siteSettings`(id=1)的 JSON 字段,
-后台 Site Settings 编辑页可直接改,agent 可通过 API 改:
+首页 6 个区块的内容存于 `siteSettings`(id=1)的 **array 字段**,
+后台 Site Settings 编辑页以**表格/行编辑器**管理(可增删、排序、折叠),
+agent 可通过 API 传数组更新:
 
-| 字段 | 结构 | 对应区块 |
+| 字段 | 行结构 | 对应区块 |
 |---|---|---|
 | `homeTestimonials` | `[{quote,name,role}]` | 客户评价 |
 | `homeWhyChooseUs` | `[{icon,title,desc}]` | 为什么选我们 |
 | `homeHowWeWork` | `[{icon,title,desc}]` | 服务流程 6 步 |
 | `homeGlobalCoverage` | `[{icon,title,sub}]` | 全球覆盖 |
-| `homeValueCalculated` | `[{icon,title,items:[{label,value}]}]` | 价值数据卡 |
-| `homeTrustEvidence` | `[{icon,title,items:[string]}]` | 信任与证据 |
+| `homeValueCalculated` | `[{icon,title,items}]`(`items` 为 JSON) | 价值数据卡 |
+| `homeTrustEvidence` | `[{icon,title,items}]`(`items` 为 JSON) | 信任与证据 |
 
-**规则**:字段为空数组/空值 → 前端回退到内置默认内容(可安全清空恢复默认)。
-`icon` 取值见 `src/components/ui/Icon.tsx` 的图标名(如 `shield`/`truck`/`users`…)。
+**API 示例**(整体替换数组):
+
+```bash
+curl -s -X PATCH http://localhost:3000/api/siteSettings/1 \
+  -H "Content-Type: application/json" -H "Authorization: JWT $TOKEN" \
+  -d '{"homeTestimonials":[{"quote":"…","name":"…","role":"…"}]}'
+```
+
+**规则**:数组为空 → 前端回退到内置默认内容(可安全清空恢复默认)。
+`icon` 取值见 `src/components/ui/Icon.tsx`(如 `shield`/`truck`/`users`…)。
 
 ---
 
