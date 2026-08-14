@@ -137,6 +137,10 @@ export default buildConfig({
         pool: {
           connectionString: process.env.POSTGRES_URL,
         },
+        // Production: the checked-in migrations only cover the initial schema,
+        // so the first production deploy relies on push to build the full schema.
+        // Set PAYLOAD_PUSH_SCHEMA=false to force migrations-only mode.
+        push: process.env.PAYLOAD_PUSH_SCHEMA !== 'false',
       })
     : sqliteAdapter({
         client: {
