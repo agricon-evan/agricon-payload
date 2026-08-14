@@ -193,8 +193,8 @@ export default async function ProductDetailPage({ params }: Props) {
             )}
           </article>
 
-          <Reveal delay={120}>
-            <aside className="info-card p-6 md:p-7">
+          <Reveal delay={120} className="h-full">
+            <aside className="info-card p-6 md:p-7 lg:sticky lg:top-24">
               <span className="eyebrow">Technical Information</span>
               <h2 className="mt-3 text-xl font-bold text-[var(--color-text)]">Key Specifications</h2>
               {specs.length > 0 ? (
