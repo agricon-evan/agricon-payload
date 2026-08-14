@@ -70,6 +70,16 @@ export default async function LocaleLayout({ children, params }: Props) {
     tiktok: (typeof settingsWithQr?.tiktokQrCode === 'object' ? settingsWithQr.tiktokQrCode?.url || undefined : undefined) || '/images/qr/tiktok-preview.png',
     instagram: (typeof settingsWithQr?.instagramQrCode === 'object' ? settingsWithQr.instagramQrCode?.url || undefined : undefined) || '/images/qr/instagram-preview.png',
   }
+  const footerSettings = {
+    siteTagline: settingsWithQr?.siteTagline,
+    address: settingsWithQr?.address,
+    socialLinks: settingsWithQr?.socialLinks as
+      | { linkedin?: string | null; facebook?: string | null; instagram?: string | null; youtube?: string | null }
+      | null
+      | undefined,
+    contactEmail: settingsWithQr?.contactEmail,
+    contactPhone: settingsWithQr?.contactPhone,
+  }
 
   // 当前路径（由 proxy.ts 注入），传递给 Footer 以保持语言切换位置
   const h = await headers()
@@ -83,7 +93,7 @@ export default async function LocaleLayout({ children, params }: Props) {
           {children}
         </main>
         <Newsletter locale={locale as Locale} />
-        <Footer locale={locale as Locale} currentPath={currentPath} qrCodes={qrCodes} />
+        <Footer locale={locale as Locale} currentPath={currentPath} qrCodes={qrCodes} settings={footerSettings} />
       </div>
       {/* Root page animation must not become the containing block for viewport-fixed actions. */}
       <FloatingActions locale={locale as Locale} whatsappNumber={siteSettings?.whatsappNumber} />

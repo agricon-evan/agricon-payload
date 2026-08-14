@@ -44,13 +44,22 @@ export default async function SubcategoryPage({ params }: Props) {
     notFound()
   }
 
+  // 子分类 hero 图：优先使用后台配置的 heroImage，其次子分类图，最后通用占位
+  const heroImage = (() => {
+    const hero = (sub as { heroImage?: number | { url?: string | null } | null }).heroImage
+    const image = (sub as { image?: number | { url?: string | null } | null }).image
+    if (typeof hero === 'object' && hero?.url) return hero.url
+    if (typeof image === 'object' && image?.url) return image.url
+    return '/images/heroes/farm-machinery.jpg'
+  })()
+
   return (
     <>
       <PageHero
         title={sub.name}
-        description={sub.description ?? undefined}
+        description={(sub as { subtitle?: string | null }).subtitle || (sub.description ?? undefined)}
         breadcrumb={`${tHome.breadcrumb?.home || 'Home'} / ${t.nav?.products || 'Products'} / ${catObj?.name || catSlug} / ${sub.name}`}
-        image="/images/heroes/farm-machinery.jpg"
+        image={heroImage}
       />
       <section className="max-w-7xl mx-auto px-6 py-16 md:py-24">
         {subProducts.length === 0 ? (

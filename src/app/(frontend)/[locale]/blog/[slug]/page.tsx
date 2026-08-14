@@ -40,6 +40,16 @@ export default async function BlogPostPage({ params }: Props) {
       <article className="max-w-5xl mx-auto px-6 py-10 md:py-16">
         <p className="text-sm text-[var(--color-text-secondary)]">{date}</p>
         <h1 className="mt-3 text-2xl md:text-3xl font-bold text-[var(--color-text)] leading-tight tracking-tight">{title}</h1>
+        {post && (post.tags || []).length > 0 && (
+          <div className="flex flex-wrap gap-1.5 mt-4">
+            {(post.tags || []).map((t) => {
+              const name = typeof t === 'object' && t !== null ? (t.name ?? '') : ''
+              return name ? (
+                <span key={name} className="px-2.5 py-1 rounded-full bg-[var(--color-primary)]/8 text-[var(--color-primary)] text-[11px] font-medium">{name}</span>
+              ) : null
+            })}
+          </div>
+        )}
         {excerpt && <p className="mt-4 text-base md:text-lg text-[var(--color-text-secondary)] leading-relaxed">{excerpt}</p>}
 
         {fallback?.coverUrl && (

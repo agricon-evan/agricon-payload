@@ -124,6 +124,17 @@ export const getFAQs = cache(async (locale: string = 'en'): Promise<Faq[]> => {
   return docs as unknown as Faq[]
 })
 
+export const getFaqCategories = cache(async (locale: string = 'en'): Promise<{ id: number; name: string }[]> => {
+  const payload = await getPayloadClient()
+  const { docs } = await payload.find({
+    collection: 'faqCategories',
+    locale: locale as LocaleArg,
+    sort: 'sortOrder',
+    limit: 100,
+  })
+  return docs as unknown as { id: number; name: string }[]
+})
+
 export const getSiteSettings = cache(async (): Promise<SiteSetting | null> => {
   const payload = await getPayloadClient()
   const { docs } = await payload.find({

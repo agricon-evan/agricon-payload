@@ -36,6 +36,7 @@ export default async function BlogPage({ params }: Props) {
         excerpt: post.excerpt || '',
         year: post.createdAt ? new Date(post.createdAt).getFullYear().toString() : '2026',
         image: typeof post.coverImage === 'object' && post.coverImage?.url ? post.coverImage.url : null,
+        tags: (post.tags || []).map((t) => (typeof t === 'object' && t !== null ? (t.name ?? '') : '')).filter(Boolean) as string[],
       }))
     : fallbackPosts
 
@@ -68,6 +69,13 @@ export default async function BlogPage({ params }: Props) {
                     <span className="mt-2 w-8 h-8 shrink-0 aspect-square rounded-full border border-[var(--color-border)] flex items-center justify-center text-[var(--color-primary)] group-hover:bg-[var(--color-primary)] group-hover:text-white transition-colors">↗</span>
                   </div>
                   {post.excerpt && <p className="mt-2 text-sm text-[var(--color-text-secondary)] line-clamp-3 leading-relaxed">{post.excerpt}</p>}
+                  {'tags' in post && (post as { tags?: string[] }).tags && (post as { tags?: string[] }).tags!.length > 0 && (
+                    <div className="flex flex-wrap gap-1.5 mt-4">
+                      {(post as { tags?: string[] }).tags!.map((tag) => (
+                        <span key={tag} className="px-2.5 py-1 rounded-full bg-[var(--color-primary)]/8 text-[var(--color-primary)] text-[11px] font-medium">{tag}</span>
+                      ))}
+                    </div>
+                  )}
                 </div>
               </a>
             </Reveal>

@@ -40,6 +40,14 @@ export default async function AboutPage({ params }: Props) {
   const tHome = getTranslations(locale as Locale, 'home')
   const settings = await getSiteSettings()
   const stats = (settings?.stats ?? {}) as { countriesServed?: string; farmProjects?: string; yearsInBusiness?: string; onTimeDelivery?: string; equipmentModels?: string }
+  const claims = settings?.claims as { iso9001?: boolean | null; ceMarked?: boolean | null; galvanizedLifespan?: string | null } | null | undefined
+
+  // 认证与承诺 — 仅在后台配置了真实数据时展示
+  const claimItems = [
+    claims?.iso9001 ? { icon: 'award', title: 'ISO 9001 Certified', desc: 'Quality management system in place.' } : null,
+    claims?.ceMarked ? { icon: 'shield', title: 'CE Marked', desc: 'Products meet EU safety requirements.' } : null,
+    claims?.galvanizedLifespan ? { icon: 'factory', title: 'Hot-Dip Galvanized', desc: claims.galvanizedLifespan } : null,
+  ].filter(Boolean) as Array<{ icon: string; title: string; desc: string }>
 
   const milestones = [
     { year: '01', title: 'Inquiry', desc: 'Understand farm type, capacity, product interest, application scenario and purchasing purpose.' },
@@ -174,13 +182,12 @@ export default async function AboutPage({ params }: Props) {
       </section>
 
       {/* Stats — reads verified figures from SiteSettings */}
-      <section className="bg-[var(--color-primary-dark)] text-white py-12 md:py-16">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      <section className="bg-[var(--color-primary-dark)] text-white py-12 md:py-16">        <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           {[
             { num: stats.equipmentModels || '10+', label: 'Product Categories' },
-            { num: stats.farmProjects || '100+', label: 'Product Options' },
+            { num: stats.farmProjects || '100+', label: 'Farm Projects' },
             { num: stats.countriesServed || '30+', label: 'Export Markets' },
-            { num: stats.onTimeDelivery || '500+', label: 'Container Shipments' },
+            { num: stats.yearsInBusiness || '15+', label: 'Years in Business' },
           ].map((s, i) => (
             <div key={s.label} className={`reveal reveal-fade-up stagger-${i + 1}`}>
               <div className="stat-num">{s.num}</div>
@@ -189,6 +196,32 @@ export default async function AboutPage({ params }: Props) {
           ))}
         </div>
       </section>
+
+      {/* Certifications & commitments — only when configured in SiteSettings */}
+      {claimItems.length > 0 && (
+        <section className="max-w-7xl mx-auto px-6 py-16 md:py-20">
+          <Reveal>
+            <SectionHeading
+              eyebrow="Certifications & Standards"
+              title={<>Verifiable <span className="split-accent">Standards</span></>}
+              description="Manufacturing and quality commitments configured in Site Settings — shown only when the data is provided."
+            />
+          </Reveal>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 mt-10">
+            {claimItems.map((c, i) => (
+              <Reveal key={c.title} delay={(i % 3) * 80} className="h-full">
+                <div className="card card-hover p-6 h-full flex flex-col items-start">
+                  <div className="w-11 h-11 rounded-md bg-[var(--color-primary)]/8 text-[var(--color-primary)] flex items-center justify-center mb-4">
+                    <Icon name={c.icon} size={22} />
+                  </div>
+                  <h3 className="text-[var(--color-text)]">{c.title}</h3>
+                  <p className="mt-2 text-sm text-[var(--color-text-secondary)] leading-relaxed">{c.desc}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Timeline */}
       <section className="max-w-4xl mx-auto px-6 py-16 md:py-24">

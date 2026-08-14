@@ -68,16 +68,6 @@ const SOLUTION_FEATURES: Record<string, string[]> = {
   ],
 }
 
-// 相关项目（画册分级：Poultry / Livestock / Feed / Aquaculture / Machinery / Infrastructure）
-const SOLUTION_CASES: Record<string, string[]> = {
-  'poultry-farming': ['kenya-layer-farm', 'tanzania-layer-farm', 'tanzania-ventilation'],
-  'livestock-farming': ['indonesia-goat-pen', 'africa-cattle-fence'],
-  'aquaculture': ['philippines-fish-cage'],
-  'feed-processing': ['ghana-feed-mill', 'nigeria-feed-production'],
-  'breeding-house': ['ecuador-greenhouse'],
-  'farm-machinery': ['se-asia-farm-machines', 'sa-crop-farming'],
-}
-
 const SOLUTION_IMAGE: Record<string, string> = {
   'poultry-farming': '/images/heroes/farm-landscape.jpg',
   'livestock-farming': '/images/heroes/farm-crop.jpg',
@@ -106,7 +96,11 @@ export default async function SolutionDetailPage({ params }: Props) {
   const relatedProducts = products.filter((p) =>
     (p.solutions || []).some((rel) => (typeof rel === 'object' && rel !== null ? rel.id === solutionId : rel === solutionId))
   )
-  const relatedCases = cases.filter((c) => (SOLUTION_CASES[s.slug] || []).includes(c.slug))
+  // 关联案例：优先使用数据库 caseStudies.solution 关系，不再依赖硬编码映射
+  const relatedCases = cases.filter((c) => {
+    const sol = (c as { solution?: number | { id: number } | null }).solution
+    return typeof sol === 'object' && sol !== null ? sol.id === solutionId : sol === solutionId
+  })
 
   const features =
     s.features && s.features.length > 0

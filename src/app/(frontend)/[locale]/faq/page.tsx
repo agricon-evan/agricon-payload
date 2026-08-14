@@ -1,6 +1,6 @@
 import type { Locale } from '@/i18n/config'
 import { getTranslations } from '@/i18n/config'
-import { getFAQs } from '@/lib/payload'
+import { getFAQs, getFaqCategories } from '@/lib/payload'
 import PageHero from '@/components/PageHero'
 import Reveal from '@/components/ui/Reveal'
 import Icon from '@/components/ui/Icon'
@@ -18,6 +18,7 @@ export default async function FaqPage({ params }: Props) {
   const t = getTranslations(locale as Locale, 'faq')
   const tHome = getTranslations(locale as Locale, 'home')
   const faqs = await getFAQs(locale)
+  const faqCategories = await getFaqCategories(locale)
   const lp = `/${locale}`
 
   const supportItems = (t.relatedSupport?.items ?? {}) as Record<string, { title: string; description: string }>
@@ -78,19 +79,31 @@ export default async function FaqPage({ params }: Props) {
       />
 
       <section className="max-w-5xl mx-auto px-6 py-16 md:py-24">
-        {/* Quick category chips */}
+        {/* Quick category chips — driven by CMS FAQ categories */}
         <Reveal>
           <div className="flex flex-wrap gap-2 mb-10">
-            {['Ordering & MOQ', 'Shipping & Export', 'Quality Control', 'Farm Projects', 'Distributors', 'After-sales'].map((chip) => (
-              <a key={chip} href={`${lp}/contact`} className="px-4 py-2 rounded-full border border-[var(--color-border)] text-sm font-medium text-[var(--color-text-secondary)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] transition-colors tap-target">
-                {chip}
-              </a>
-            ))}
+            {faqCategories.length > 0 ? (
+              faqCategories.map((cat) => (
+                <a
+                  key={cat.id}
+                  href="#faq-list"
+                  className="px-4 py-2 rounded-full border border-[var(--color-border)] text-sm font-medium text-[var(--color-text-secondary)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] transition-colors tap-target"
+                >
+                  {cat.name}
+                </a>
+              ))
+            ) : (
+              ['Ordering & MOQ', 'Shipping & Export', 'Quality Control', 'Farm Projects', 'Distributors', 'After-sales'].map((chip) => (
+                <a key={chip} href="#faq-list" className="px-4 py-2 rounded-full border border-[var(--color-border)] text-sm font-medium text-[var(--color-text-secondary)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] transition-colors tap-target">
+                  {chip}
+                </a>
+              ))
+            )}
           </div>
         </Reveal>
 
         {/* FAQ accordion */}
-        <div className="space-y-4">
+        <div id="faq-list" className="space-y-4">
           {displayFaqs.map((faq, i) => (
             <Reveal key={'id' in faq ? faq.id : faq.question} delay={(i % 5) * 60}>
               <details className="group card overflow-hidden" open={i === 0}>

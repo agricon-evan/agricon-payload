@@ -1,5 +1,6 @@
 import type { Locale } from '@/i18n/config'
 import ProductCategories from '@/components/home/ProductCategories'
+import FeaturedProducts from '@/components/home/FeaturedProducts'
 import SolutionsSection from '@/components/home/SolutionsSection'
 import StatsSection from '@/components/home/StatsSection'
 import WhyChooseUs from '@/components/home/WhyChooseUs'
@@ -12,6 +13,7 @@ import ValueCalculated from '@/components/home/ValueCalculated'
 import Icon from '@/components/ui/Icon'
 import Reveal from '@/components/ui/Reveal'
 import MediaImage from '@/components/ui/MediaImage'
+import { getSiteSettings } from '@/lib/payload'
 
 interface Props {
   params: Promise<{ locale: string }>
@@ -19,6 +21,13 @@ interface Props {
 
 export default async function HomePage({ params }: Props) {
   const { locale } = await params
+  const settings = await getSiteSettings()
+  const stats = (settings?.stats ?? {}) as { countriesServed?: string; farmProjects?: string; yearsInBusiness?: string; onTimeDelivery?: string; equipmentModels?: string }
+  const heroStats = [
+    `${stats.equipmentModels || '10+'} Product Categories`,
+    `${stats.countriesServed || '30+'} Export Markets`,
+    `${stats.farmProjects || '100+'} Farm Projects`,
+  ]
 
   return (
     <>
@@ -73,7 +82,7 @@ export default async function HomePage({ params }: Props) {
             {/* Bottom service labels separated by orange rules — {component.cover-hero} */}
             <Reveal delay={400}>
               <div className="flex flex-wrap items-center gap-x-5 gap-y-3 mt-11 pt-5 border-t border-white/25">
-                {['10+ Product Categories', '30+ Export Markets', '500+ Container Shipments'].map((label, i) => (
+                {heroStats.map((label, i) => (
                   <span key={label} className="flex items-center gap-5 text-xs md:text-sm font-medium text-white/90">
                     {i > 0 && <span className="w-px h-4 bg-[var(--color-accent)]" aria-hidden="true" />}
                     {label}
@@ -87,6 +96,7 @@ export default async function HomePage({ params }: Props) {
 
       <StatsSection locale={locale as Locale} />
       <ProductCategories locale={locale as Locale} />
+      <FeaturedProducts locale={locale as Locale} />
       <ValueCalculated />
       <SolutionsSection locale={locale as Locale} />
       <HowWeWork />

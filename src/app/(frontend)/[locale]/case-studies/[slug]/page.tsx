@@ -73,6 +73,7 @@ export default async function CaseStudyDetailPage({ params }: Props) {
               <dl className="metadata-pairs mt-6">
                 <div className="pair"><dt>Country / Market</dt><dd>{country}</dd></div>
                 <div className="pair"><dt>Project Type</dt><dd>{projectType}</dd></div>
+                {cs.farmScale && <div className="pair"><dt>Farm Scale</dt><dd>{cs.farmScale}</dd></div>}
                 <div className="pair"><dt>Equipment</dt><dd>{equipment}</dd></div>
                 <div className="pair"><dt>Application</dt><dd>{application}</dd></div>
               </dl>
