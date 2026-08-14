@@ -23,11 +23,21 @@ export default async function HomePage({ params }: Props) {
   const { locale } = await params
   const settings = await getSiteSettings()
   const stats = (settings?.stats ?? {}) as { countriesServed?: string; farmProjects?: string; yearsInBusiness?: string; onTimeDelivery?: string; equipmentModels?: string }
+  const hero = (settings?.hero ?? {}) as {
+    eyebrow?: string | null
+    title?: string | null
+    titleAccent?: string | null
+    description?: string | null
+    image?: number | { url?: string | null } | null
+    primaryButton?: string | null
+    secondaryButton?: string | null
+  }
   const heroStats = [
     `${stats.equipmentModels || '10+'} Product Categories`,
     `${stats.countriesServed || '30+'} Export Markets`,
     `${stats.farmProjects || '100+'} Farm Projects`,
   ]
+  const heroImage = typeof hero.image === 'object' && hero.image?.url ? hero.image.url : '/images/home-hero-agricon.png'
 
   return (
     <>
@@ -35,7 +45,7 @@ export default async function HomePage({ params }: Props) {
       <section className="hero-standard relative overflow-hidden bg-[var(--color-surface-brand)] text-white">
         <div className="absolute inset-0">
           <MediaImage
-            src="/images/home-hero-agricon.png"
+            src={heroImage}
             alt="Commercial farm with modern agricultural equipment"
             width={1920}
             height={1080}
@@ -47,19 +57,19 @@ export default async function HomePage({ params }: Props) {
         <div className="hero-standard-content relative max-w-7xl mx-auto px-6 pt-20 pb-16 md:pt-28 md:pb-24 lg:pt-36 lg:pb-32">
           <div className="max-w-3xl">
             <Reveal>
-              <span className="eyebrow !text-[var(--color-accent-soft)] mb-5">Farm systems, engineered for growth</span>
+              <span className="eyebrow !text-[var(--color-accent-soft)] mb-5">{hero.eyebrow || 'Farm systems, engineered for growth'}</span>
             </Reveal>
             <Reveal delay={100}>
               <h1 className="mt-5 text-4xl sm:text-5xl md:text-6xl lg:text-[4.25rem] font-bold leading-[1.02] tracking-[-0.02em] text-white">
-                Farm Equipment Built
+                {hero.title || 'Farm Equipment Built'}
                 <br />
-                <span className="split-accent !text-[var(--color-accent)]">for Growth</span>
+                <span className="split-accent !text-[var(--color-accent)]">{hero.titleAccent || 'for Growth'}</span>
               </h1>
             </Reveal>
             <Reveal delay={200}>
               <span className="block w-14 h-[3px] bg-[var(--color-accent)] mt-6" aria-hidden="true" />
               <p className="mt-6 text-base md:text-lg text-white/85 max-w-xl leading-relaxed">
-                Practical equipment solutions for farms, importers, distributors and agricultural projects worldwide.
+                {hero.description || 'Practical equipment solutions for farms, importers, distributors and agricultural projects worldwide.'}
               </p>
             </Reveal>
             <Reveal delay={300}>
@@ -68,14 +78,14 @@ export default async function HomePage({ params }: Props) {
                   href={`/${locale}/products`}
                   className="inline-flex items-center justify-center gap-2 px-7 py-4 bg-white text-[var(--color-primary)] font-semibold rounded-sm min-h-[50px] press tap-target text-base transition-all hover:bg-white/90"
                 >
-                  Explore Products
+                  {hero.primaryButton || 'Explore Products'}
                   <Icon name="arrow-right" size={18} className="text-[var(--color-accent)]" />
                 </a>
                 <a
                   href={`/${locale}/contact`}
                   className="inline-flex items-center justify-center px-7 py-4 border border-white/40 text-white font-semibold rounded-sm min-h-[50px] press tap-target text-base transition-all hover:bg-white/10"
                 >
-                  Get a Free Quote
+                  {hero.secondaryButton || 'Get a Free Quote'}
                 </a>
               </div>
             </Reveal>

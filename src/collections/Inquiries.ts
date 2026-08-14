@@ -1,5 +1,32 @@
 import type { CollectionConfig } from 'payload'
 
+/**
+ * Emails a human-readable inquiry summary to the sales inbox.
+ * Runs after a new inquiry is created (contact form submission).
+ */
+const notifySales = (payload: any, doc: any) => {
+  const to = process.env.INQUIRY_NOTIFY_EMAIL || process.env.EMAIL_FROM || 'sales@agricon.com'
+  const lines = [
+    `Name: ${doc.name || '—'}`,
+    `Email: ${doc.email || '—'}`,
+    `Company: ${doc.company || '—'}`,
+    `Country: ${doc.country || '—'}`,
+    `Phone: ${doc.phone || '—'}`,
+    `Application: ${doc.application || '—'}`,
+    `Current setup: ${doc.currentSetup || '—'}`,
+    `Purchase type: ${doc.purchaseType || '—'}`,
+    `Products: ${(doc.productInterest || []).map((p: any) => (typeof p === 'object' ? p.product || '' : p)).filter(Boolean).join(', ') || '—'}`,
+    ``,
+    `Message:`,
+    `${doc.message || '—'}`,
+  ]
+  payload.sendEmail({
+    to,
+    subject: `[Agricon] New inquiry from ${doc.name || doc.email || 'website'}`,
+    text: lines.join('\n'),
+  }).catch(() => {})
+}
+
 export const Inquiries: CollectionConfig = {
   slug: 'inquiries',
   labels: { singular: 'Inquiry', plural: 'Inquiries' },
@@ -52,5 +79,15 @@ export const Inquiries: CollectionConfig = {
     },
     { name: 'notes', type: 'textarea', admin: { description: 'Internal follow-up notes (not shown to the customer).' } },
   ],
+  hooks: {
+    afterChange: [
+      async ({ operation, doc, req }) => {
+        // Notify sales only for new submissions (not admin edits)
+        if (operation === 'create' && req && req.payload) {
+          notifySales(req.payload, doc)
+        }
+      },
+    ],
+  },
   timestamps: true,
 }

@@ -26,8 +26,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const pathname = h.get('x-pathname') || ''
   const rel = stripLocaleFromPath(pathname, locale)
 
-  const siteTitle = (t.meta?.siteTitle as string) || 'Agricon'
-  const siteDescription = (t.meta?.siteDescription as string) || (t.footer?.brandDescription as string) || ''
+  // SEO defaults from SiteSettings (admin-editable) with i18n fallback
+  const settings = await getSiteSettings()
+  const seo = (settings?.seo ?? {}) as { siteTitle?: string | null; siteDescription?: string | null }
+  const siteTitle = seo.siteTitle || (t.meta?.siteTitle as string) || 'Agricon'
+  const siteDescription = seo.siteDescription || (t.meta?.siteDescription as string) || (t.footer?.brandDescription as string) || ''
 
   return {
     metadataBase: new URL(SITE_URL),
@@ -36,8 +39,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       template: `%s | Agricon`,
     },
     description: siteDescription,
-    alternates: localizedAlternates(locale as Locale, rel),
-    openGraph: {
+    alternates: localizedAlternates(locale as Locale, rel),    openGraph: {
       type: 'website',
       locale: locale === 'en' ? 'en_US' : `${locale}_${(locale as string).toUpperCase()}`,
       siteName: 'Agricon',
@@ -60,6 +62,10 @@ export default async function LocaleLayout({ children, params }: Props) {
   const { locale } = await params
   const dir = isRtl(locale as Locale) ? 'rtl' : 'ltr'
   const siteSettings = await getSiteSettings()
+  // 当前请求路径（由 proxy.ts 注入），用于生成正确的 hreflang / canonical
+  const h = await headers()
+  const pathname = h.get('x-pathname') || ''
+  const rel = stripLocaleFromPath(pathname, locale)
   type SiteSettingsWithQr = NonNullable<typeof siteSettings> & {
     tiktokQrCode?: number | { url?: string | null } | null
     instagramQrCode?: number | { url?: string | null } | null
@@ -82,8 +88,8 @@ export default async function LocaleLayout({ children, params }: Props) {
   }
 
   // 当前路径（由 proxy.ts 注入），传递给 Footer 以保持语言切换位置
-  const h = await headers()
-  const currentPath = h.get('x-pathname') || `/${locale}`
+  const h2 = await headers()
+  const currentPath = h2.get('x-pathname') || `/${locale}`
 
   return (
     <>

@@ -28,16 +28,62 @@ import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
-// Keep email behavior explicit until a production SMTP provider is configured.
-// This preserves Payload's development behavior without emitting its fallback warning.
-const consoleEmailAdapter: EmailAdapter = ({ payload }) => ({
-  name: 'agricon-console-email',
-  defaultFromAddress: process.env.EMAIL_FROM || 'noreply@agricon.com',
-  defaultFromName: 'Agricon',
-  sendEmail: async (message) => {
-    payload.logger.info({ message }, 'Email delivery is not configured; message logged instead')
-  },
-})
+/**
+ * Email adapter — uses SMTP when SMTP_HOST is configured, otherwise logs to
+ * the console (safe for local development). See README → Email.
+ */
+const emailAdapter: EmailAdapter = ({ payload }) => {
+  const smtpHost = process.env.SMTP_HOST
+  const fromAddress = process.env.EMAIL_FROM || 'noreply@agricon.com'
+  const fromName = process.env.EMAIL_FROM_NAME || 'Agricon'
+
+  if (smtpHost) {
+    // Lazy import so nodemailer is not required in dev without SMTP
+    const nodemailer = require('nodemailer') as typeof import('nodemailer')
+    const transporter = nodemailer.createTransport({
+      host: smtpHost,
+      port: Number(process.env.SMTP_PORT || 587),
+      secure: process.env.SMTP_SECURE === 'true',
+      auth: process.env.SMTP_USER
+        ? { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS }
+        : undefined,
+    })
+    return {
+      name: 'agricon-smtp-email',
+      defaultFromAddress: fromAddress,
+      defaultFromName: fromName,
+      sendEmail: async (message) => {
+        const to = Array.isArray(message.to) ? message.to.join(', ') : String(message.to || '')
+        const subject = message.subject || '(no subject)'
+        const html = typeof message.html === 'string'
+          ? message.html
+          : (typeof message.text === 'string' ? message.text.replace(/\n/g, '<br/>') : '')
+        try {
+          await transporter.sendMail({
+            from: `"${fromName}" <${fromAddress}>`,
+            to,
+            subject,
+            html,
+            text: typeof message.text === 'string' ? message.text : undefined,
+          })
+          payload.logger.info({ to, subject }, 'Email sent via SMTP')
+        } catch (err) {
+          payload.logger.error({ to, subject, err: (err as Error).message }, 'SMTP send failed')
+        }
+      },
+    }
+  }
+
+  // No SMTP configured — log instead of sending
+  return {
+    name: 'agricon-console-email',
+    defaultFromAddress: fromAddress,
+    defaultFromName: fromName,
+    sendEmail: async (message) => {
+      payload.logger.info({ message }, 'Email delivery is not configured; message logged instead')
+    },
+  }
+}
 
 export default buildConfig({
   admin: {
@@ -83,7 +129,7 @@ export default buildConfig({
   ],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
-  email: consoleEmailAdapter,
+  email: emailAdapter,
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },

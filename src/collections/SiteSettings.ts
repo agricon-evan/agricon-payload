@@ -15,6 +15,33 @@ export const SiteSettings: CollectionConfig = {
   fields: [
     { name: 'siteName', type: 'text', defaultValue: 'Agricon' },
     { name: 'siteTagline', type: 'text', localized: true },
+    // ── SEO defaults (override i18n meta) ──
+    {
+      name: 'seo',
+      type: 'group',
+      label: 'SEO (global defaults)',
+      admin: { description: 'Fallback site title/description used by search engines. Leave empty to use built-in i18n values.' },
+      fields: [
+        { name: 'siteTitle', type: 'text', label: 'Site Title', admin: { placeholder: 'Agricon - Poultry & Livestock Equipment Solutions' } },
+        { name: 'siteDescription', type: 'textarea', label: 'Site Description', admin: { placeholder: 'Poultry & Livestock Equipment Solutions' } },
+      ],
+    },
+    // ── Homepage hero ──
+    {
+      name: 'hero',
+      type: 'group',
+      label: 'Homepage Hero',
+      admin: { description: 'Homepage hero content. Empty fields fall back to built-in defaults.' },
+      fields: [
+        { name: 'eyebrow', type: 'text', localized: true, admin: { placeholder: 'Farm systems, engineered for growth' } },
+        { name: 'title', type: 'text', localized: true, admin: { placeholder: 'Farm Equipment Built' } },
+        { name: 'titleAccent', type: 'text', localized: true, admin: { placeholder: 'for Growth', description: 'Highlighted part of the title (orange).' } },
+        { name: 'description', type: 'textarea', localized: true },
+        { name: 'image', type: 'upload', relationTo: 'media', admin: { description: 'Hero background image.' } },
+        { name: 'primaryButton', type: 'text', localized: true, admin: { placeholder: 'Explore Products' } },
+        { name: 'secondaryButton', type: 'text', localized: true, admin: { placeholder: 'Get a Free Quote' } },
+      ],
+    },
     { name: 'contactEmail', type: 'email', admin: { description: 'Shown on the contact page.' } },
     { name: 'contactPhone', type: 'text', admin: { description: 'Shown on the contact page.' } },
     { name: 'whatsappNumber', type: 'text', admin: { description: 'Full international format, e.g. +8613800000000.' } },
