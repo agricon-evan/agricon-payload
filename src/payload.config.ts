@@ -1,6 +1,7 @@
 import { vercelPostgresAdapter } from '@payloadcms/db-vercel-postgres'
 import { sqliteAdapter } from '@payloadcms/db-sqlite'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
+import nodemailer from 'nodemailer'
 import path from 'path'
 import { buildConfig, type EmailAdapter } from 'payload'
 import { fileURLToPath } from 'url'
@@ -38,8 +39,6 @@ const emailAdapter: EmailAdapter = ({ payload }) => {
   const fromName = process.env.EMAIL_FROM_NAME || 'Agricon'
 
   if (smtpHost) {
-    // Lazy import so nodemailer is not required in dev without SMTP
-    const nodemailer = require('nodemailer') as typeof import('nodemailer')
     const transporter = nodemailer.createTransport({
       host: smtpHost,
       port: Number(process.env.SMTP_PORT || 587),

@@ -1,11 +1,29 @@
-import type { CollectionConfig } from 'payload'
+import type { CollectionConfig, Payload } from 'payload'
+
+interface InquiryDoc {
+  id: number
+  name?: string | null
+  email?: string | null
+  company?: string | null
+  country?: string | null
+  phone?: string | null
+  application?: string | null
+  currentSetup?: string | null
+  purchaseType?: string | null
+  productInterest?: Array<{ product?: string | null } | string | null> | null
+  message?: string | null
+}
 
 /**
  * Emails a human-readable inquiry summary to the sales inbox.
  * Runs after a new inquiry is created (contact form submission).
  */
-const notifySales = (payload: any, doc: any) => {
+const notifySales = (payload: Payload, doc: InquiryDoc) => {
   const to = process.env.INQUIRY_NOTIFY_EMAIL || process.env.EMAIL_FROM || 'sales@agricon.com'
+  const productInterest = (doc.productInterest || [])
+    .map((p) => (typeof p === 'object' && p ? p.product || '' : p || ''))
+    .filter(Boolean)
+    .join(', ') || '—'
   const lines = [
     `Name: ${doc.name || '—'}`,
     `Email: ${doc.email || '—'}`,
@@ -15,7 +33,7 @@ const notifySales = (payload: any, doc: any) => {
     `Application: ${doc.application || '—'}`,
     `Current setup: ${doc.currentSetup || '—'}`,
     `Purchase type: ${doc.purchaseType || '—'}`,
-    `Products: ${(doc.productInterest || []).map((p: any) => (typeof p === 'object' ? p.product || '' : p)).filter(Boolean).join(', ') || '—'}`,
+    `Products: ${productInterest}`,
     ``,
     `Message:`,
     `${doc.message || '—'}`,

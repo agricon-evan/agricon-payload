@@ -64,8 +64,7 @@ export default async function LocaleLayout({ children, params }: Props) {
   const siteSettings = await getSiteSettings()
   // 当前请求路径（由 proxy.ts 注入），用于生成正确的 hreflang / canonical
   const h = await headers()
-  const pathname = h.get('x-pathname') || ''
-  const rel = stripLocaleFromPath(pathname, locale)
+  const _pathname = h.get('x-pathname') || ''
   type SiteSettingsWithQr = NonNullable<typeof siteSettings> & {
     tiktokQrCode?: number | { url?: string | null } | null
     instagramQrCode?: number | { url?: string | null } | null
