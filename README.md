@@ -60,6 +60,47 @@ npm run dev
 # → 后台 http://localhost:3000/admin
 ```
 
+### 导入公司产品画册
+
+产品、子分类、产品描述、优势列表和产品主图可以从画册 Markdown 自动导入。首次初始化数据库时，先运行分类/案例/方案导入，再运行产品导入：
+
+```bash
+python scripts/seed-from-catalog.py
+pnpm catalog:import
+```
+
+优先读取 `C:\Users\Evan\WorkBuddy\2026-08-10-15-00-06\output\catalog`；其他环境会使用仓库内的 `docs/catalog/catalog.md`。如需指定其他目录：
+
+```bash
+CATALOG_DIR=/path/to/catalog pnpm catalog:import
+```
+
+画册导入会更新英文 CMS 内容，并将产品主图复制到 `public/catalog/products`。
+
+### 多语言内容翻译
+
+六语言（en/ru/fr/es/sw/ar）的 CMS 内容（分类、产品、方案、案例）由 LLM 翻译并存入本地化表。翻译文件位于 `scripts/translations/*.json`：
+
+- `{lang}.json` — 分类/子分类/产品特性/方案/案例的短文本
+- `{lang}-products.json` — 产品描述
+
+修改翻译后重新入库（幂等，会更新已有行）：
+
+```bash
+node scripts/import-translations.mjs
+```
+
+> 产品名保留英文技术术语；`seo_title` 按 `{产品名} | Agricon {语言后缀}` 自动生成；`seo_description` 复用翻译后的描述。
+
+### 设计系统
+
+前端严格遵循 `D:\system-design.md`（AGRICON 印刷级设计标准）：
+
+- **色彩**：AGRICON 绿 `#0C5D3F`（结构）+ Harvest 橙 `#EE9230`（唯一强调），无装饰渐变/发光
+- **字体**：Outfit（显示标题）+ Noto Sans（正文，MiSans 网页替代）
+- **组件**：split-color-title、orange-underline、section-ribbon、metric-stat、info-card、advantages-list、technical-spec-table 等（见 `globals.css` 与 `src/components/ui/`）
+- **原则**：扁平优先、阴影克制（仅大型项目卡）、照片遮罩为功能性深绿/近黑 overlay
+
 ### 首次创建管理员
 
 打开 `http://localhost:3000/admin`，通过 "Create first user" 表单创建管理员账号。
@@ -68,6 +109,25 @@ npm run dev
 
 - **开发**：自动使用 SQLite（`agricon-dev.db`，零依赖），无需配置
 - **生产**：设置 `POSTGRES_URL` 环境变量后自动切换到 Postgres
+
+> ⚠️ **SQLite schema 同步（重要）**：本机 `PAYLOAD_PUSH_SCHEMA=false` 已写入 `.env`。
+> `@payloadcms/db-sqlite` 的 push 模式在 Windows/libsql 上会反复尝试创建已存在的索引并崩溃
+> （`index xxx already exists`）。修改 collection 字段后需手动同步开发库，例如：
+>
+> ```bash
+> # 添加缺失列（videos 表曾缺 platform/published）
+> node -e "const {createClient}=require('@libsql/client');const db=createClient({url:'file:agricon-dev.db'});(async()=>{await db.execute(\"ALTER TABLE videos ADD COLUMN platform TEXT DEFAULT 'youtube'\");await db.execute(\"ALTER TABLE videos ADD COLUMN published INTEGER DEFAULT 1\");})()"
+> ```
+>
+> ### 种子内容（后台与前台对齐）
+>
+> 前台曾用硬编码 fallback 展示博客/FAQ，导致后台管理无效。内容已导入 CMS：
+>
+> ```bash
+> pnpm tsx scripts/seed-fallback-content.ts   # 3 篇博客 + 8 条 FAQ（幂等）
+> ```
+>
+> 前台仍有 fallback 作为空库兑底（数据库为空时展示），后台添加/编辑内容后会优先使用数据库数据。
 
 ## 环境变量
 
