@@ -1,6 +1,8 @@
 import type { Locale } from '@/i18n/config'
 import { getTranslations } from '@/i18n/config'
 import { getFAQs, getFaqCategories } from '@/lib/payload'
+import { resolvePageHeroImage } from '@/lib/payload'
+import { getSiteSettings } from '@/lib/payload'
 import PageHero from '@/components/PageHero'
 import Reveal from '@/components/ui/Reveal'
 import Icon from '@/components/ui/Icon'
@@ -15,6 +17,7 @@ export const dynamic = 'force-dynamic'
 
 export default async function FaqPage({ params }: Props) {
   const { locale } = await params
+  const heroImage = await resolvePageHeroImage('faq', '/images/heroes/farm-field.jpg')
   const t = getTranslations(locale as Locale, 'faq')
   const tHome = getTranslations(locale as Locale, 'home')
   const faqs = await getFAQs(locale)
@@ -75,7 +78,7 @@ export default async function FaqPage({ params }: Props) {
         title={t.hero?.title || 'FAQ'}
         description={t.hero?.description || 'Answers to the questions buyers ask us most — from MOQ and shipping to quality control and support.'}
         breadcrumb={`${tHome.breadcrumb?.home || 'Home'} / ${t.breadcrumb?.faq || 'FAQ'}`}
-        image="/images/heroes/farm-field.jpg"
+        image={heroImage}
       />
 
       <section className="max-w-5xl mx-auto px-6 py-16 md:py-24">

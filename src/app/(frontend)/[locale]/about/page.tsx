@@ -1,6 +1,7 @@
 import type { Locale } from '@/i18n/config'
 import { getTranslations } from '@/i18n/config'
 import { getSiteSettings } from '@/lib/payload'
+import { resolvePageHeroImage } from '@/lib/payload'
 import PageHero from '@/components/PageHero'
 import CtaSection from '@/components/CtaSection'
 import SectionHeading from '@/components/ui/SectionHeading'
@@ -36,6 +37,7 @@ interface Props {
 
 export default async function AboutPage({ params }: Props) {
   const { locale } = await params
+  const heroImage = await resolvePageHeroImage('about', '/images/heroes/farm-crop.jpg')
   const t = getTranslations(locale as Locale, 'common')
   const tHome = getTranslations(locale as Locale, 'home')
   const settings = await getSiteSettings()
@@ -87,7 +89,7 @@ export default async function AboutPage({ params }: Props) {
         title={t.nav?.about || 'About Agricon'}
         description="Practical equipment, integrated supply and global export support for farms and agricultural projects."
         breadcrumb={`${tHome.breadcrumb?.home || 'Home'} / ${t.nav?.about || 'About'}`}
-        image="/images/heroes/farm-crop.jpg"
+        image={heroImage}
       />
 
       <section className="max-w-7xl mx-auto px-6 py-16 md:py-24">

@@ -1,6 +1,8 @@
 import type { Locale } from '@/i18n/config'
 import { getTranslations } from '@/i18n/config'
 import { getSolutions } from '@/lib/payload'
+import { resolvePageHeroImage } from '@/lib/payload'
+import { getSiteSettings } from '@/lib/payload'
 import PageHero from '@/components/PageHero'
 import CtaSection from '@/components/CtaSection'
 import Reveal from '@/components/ui/Reveal'
@@ -26,6 +28,7 @@ const SOLUTION_IMAGE: Record<string, string> = {
 
 export default async function SolutionsPage({ params }: Props) {
   const { locale } = await params
+  const heroImage = await resolvePageHeroImage('solutions', '/images/heroes/greenhouse.jpg')
   const t = getTranslations(locale as Locale, 'common')
   const tHome = getTranslations(locale as Locale, 'home')
   const solutions = await getSolutions(locale)
@@ -46,7 +49,7 @@ export default async function SolutionsPage({ params }: Props) {
         title={t.nav?.solutions || 'Solutions'}
         description="Complete farm solutions — from poultry houses to feed processing lines"
         breadcrumb={`${tHome.breadcrumb?.home || 'Home'} / ${t.nav?.solutions || 'Solutions'}`}
-        image="/images/heroes/greenhouse.jpg"
+        image={heroImage}
       />
       <section className="max-w-7xl mx-auto px-6 py-16 md:py-24">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">

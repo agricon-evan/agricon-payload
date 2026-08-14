@@ -1,3 +1,4 @@
+import { resolvePageHeroImage } from '@/lib/payload'
 import type { Locale } from '@/i18n/config'
 import { getTranslations } from '@/i18n/config'
 import PageHero from '@/components/PageHero'
@@ -12,6 +13,7 @@ interface Props {
 
 export default async function DistributorsPage({ params }: Props) {
   const { locale } = await params
+  const heroImage = await resolvePageHeroImage('distributors', '/images/heroes/farm-machinery.jpg')
   const tDist = getTranslations(locale as Locale, 'distributors')
   const tHome = getTranslations(locale as Locale, 'home')
   const lp = `/${locale}`
@@ -38,7 +40,7 @@ export default async function DistributorsPage({ params }: Props) {
         title={tDist.hero?.title || 'Become a Distributor'}
         description={tDist.hero?.description || 'Grow your business with a proven agricultural equipment partner'}
         breadcrumb={`${tHome.breadcrumb?.home || 'Home'} / Distributors`}
-        image="/images/heroes/farm-machinery.jpg"
+        image={heroImage}
       />
 
       <section className="max-w-7xl mx-auto px-6 py-16 md:py-24">

@@ -167,6 +167,17 @@ export const getCountries = cache(async (): Promise<Country[]> => {
   return docs as unknown as Country[]
 })
 
+/**
+ * Resolves a page hero image from SiteSettings (admin-editable) with the
+ * built-in default as fallback. Keys: about, blog, case-studies, contact,
+ * distributors, faq, products, solutions, trade-support, videos.
+ */
+export async function resolvePageHeroImage(page: string, fallback: string): Promise<string> {
+  const settings = await getSiteSettings()
+  const map = (settings as unknown as { pageHeroImages?: Record<string, string> | null }).pageHeroImages
+  return (map && typeof map === 'object' && map[page]) || fallback
+}
+
 // ─────────────────────────────────────────────
 // Homepage aggregate — one call, all sections' data.
 // Used by the homepage to avoid N parallel queries.

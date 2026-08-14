@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import type { Locale } from '@/i18n/config'
 import { getTranslations } from '@/i18n/config'
 import { getVideos } from '@/lib/payload'
+import { resolvePageHeroImage } from '@/lib/payload'
+import { getSiteSettings } from '@/lib/payload'
 import PageHero from '@/components/PageHero'
 import CtaSection from '@/components/CtaSection'
 import Reveal from '@/components/ui/Reveal'
@@ -56,6 +58,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function VideosPage({ params }: Props) {
   const { locale } = await params
+  const heroImage = await resolvePageHeroImage('videos', '/images/heroes/farm-field.jpg')
   const t = getTranslations(locale as Locale, 'videos')
   const tHome = getTranslations(locale as Locale, 'home')
   const videos = await getVideos(locale)
@@ -84,7 +87,7 @@ export default async function VideosPage({ params }: Props) {
         title={t.hero?.title || 'Video Library'}
         description={t.hero?.description || 'See Agricon equipment in action.'}
         breadcrumb={`${tHome.breadcrumb?.home || 'Home'} / ${t.breadcrumb?.videos || 'Videos'}`}
-        image="/images/heroes/farm-field.jpg"
+        image={heroImage}
       />
 
       <section className="max-w-7xl mx-auto px-6 py-14 md:py-20">

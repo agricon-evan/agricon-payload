@@ -1,3 +1,4 @@
+import { resolvePageHeroImage } from '@/lib/payload'
 import type { Locale } from '@/i18n/config'
 import { getTranslations } from '@/i18n/config'
 import PageHero from '@/components/PageHero'
@@ -13,6 +14,7 @@ interface Props {
 
 export default async function TradeSupportPage({ params }: Props) {
   const { locale } = await params
+  const heroImage = await resolvePageHeroImage('trade-support', '/images/heroes/farm-machinery.jpg')
   const t = getTranslations(locale as Locale, 'common')
   const tTrade = getTranslations(locale as Locale, 'trade-support')
   const tHome = getTranslations(locale as Locale, 'home')
@@ -47,7 +49,7 @@ export default async function TradeSupportPage({ params }: Props) {
         title={t.nav?.tradeSupport || 'Trade Support'}
         description={tTrade.hero?.description || 'Complete export support for global farm equipment buyers'}
         breadcrumb={`${tHome.breadcrumb?.home || 'Home'} / ${t.nav?.tradeSupport || 'Trade Support'}`}
-        image="/images/heroes/farm-machinery.jpg"
+        image={heroImage}
       />
 
       <section className="max-w-7xl mx-auto px-6 py-16 md:py-24">

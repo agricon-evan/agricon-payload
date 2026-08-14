@@ -1,6 +1,8 @@
 import type { Locale } from '@/i18n/config'
 import { getTranslations } from '@/i18n/config'
 import { getCategories } from '@/lib/payload'
+import { resolvePageHeroImage } from '@/lib/payload'
+import { getSiteSettings } from '@/lib/payload'
 import PageHero from '@/components/PageHero'
 import CtaSection from '@/components/CtaSection'
 import Reveal from '@/components/ui/Reveal'
@@ -16,6 +18,7 @@ export const dynamic = 'force-dynamic'
 
 export default async function ProductsPage({ params }: Props) {
   const { locale } = await params
+  const heroImage = await resolvePageHeroImage('products', '/images/heroes/farm-machinery.jpg')
   const t = getTranslations(locale as Locale, 'common')
   const tHome = getTranslations(locale as Locale, 'home')
   const categories = await getCategories(locale)
@@ -34,7 +37,7 @@ export default async function ProductsPage({ params }: Props) {
         title={t.nav?.products || 'Products'}
         description={t.footer?.brandDescription || 'Durable, export-ready farm equipment'}
         breadcrumb={`${tHome.breadcrumb?.home || 'Home'} / ${t.nav?.products || 'Products'}`}
-        image="/images/heroes/farm-machinery.jpg"
+        image={heroImage}
       />
 
       <section className="max-w-7xl mx-auto px-6 py-16 md:py-24">

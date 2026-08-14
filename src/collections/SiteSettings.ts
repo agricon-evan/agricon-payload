@@ -101,6 +101,12 @@ export const SiteSettings: CollectionConfig = {
     // section. When a section is empty the storefront falls back to the
     // built-in defaults. `items` sub-lists are JSON for flexibility.
     {
+      name: 'pageHeroImages',
+      type: 'json',
+      label: 'Page Hero Images',
+      admin: { description: 'JSON object keyed by page: { "about": "/catalog/...", "blog": "...", "products": "...", "solutions": "...", "case-studies": "...", "faq": "...", "contact": "...", "distributors": "...", "trade-support": "...", "videos": "..." }. Empty → built-in defaults.' },
+    },
+    {
       name: 'homeTestimonials',
       type: 'array',
       label: 'Home · Testimonials',

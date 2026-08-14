@@ -1,6 +1,8 @@
 import type { Locale } from '@/i18n/config'
 import { getTranslations } from '@/i18n/config'
 import { getCaseStudies } from '@/lib/payload'
+import { resolvePageHeroImage } from '@/lib/payload'
+import { getSiteSettings } from '@/lib/payload'
 import PageHero from '@/components/PageHero'
 import CtaSection from '@/components/CtaSection'
 import Reveal from '@/components/ui/Reveal'
@@ -40,6 +42,7 @@ function countryName(country: unknown, location?: string | null): string {
 
 export default async function CaseStudiesPage({ params }: Props) {
   const { locale } = await params
+  const heroImage = await resolvePageHeroImage('case-studies', '/images/heroes/farm-landscape.jpg')
   const t = getTranslations(locale as Locale, 'common')
   const tHome = getTranslations(locale as Locale, 'home')
   const cases = await getCaseStudies(locale)
@@ -90,7 +93,7 @@ export default async function CaseStudiesPage({ params }: Props) {
         title={t.nav?.caseStudies || 'Case Studies'}
         description="Real projects, real results — see how farms worldwide grow with Agricon"
         breadcrumb={`${tHome.breadcrumb?.home || 'Home'} / ${t.nav?.caseStudies || 'Case Studies'}`}
-        image="/images/heroes/farm-landscape.jpg"
+        image={heroImage}
       />
 
       <section className="max-w-7xl mx-auto px-6 py-16 md:py-24">
