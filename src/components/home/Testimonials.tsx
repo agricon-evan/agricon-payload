@@ -1,9 +1,11 @@
 import Reveal from '@/components/ui/Reveal'
 import Icon from '@/components/ui/Icon'
 import SectionHeading from '@/components/ui/SectionHeading'
+import { getSiteSettings } from '@/lib/payload'
 
-export default function Testimonials() {
-  const testimonials = [
+export default async function Testimonials() {
+  const settings = await getSiteSettings()
+  const fallback = [
     {
       quote: 'Layer cages, feeding, drinking and poultry accessories coordinated for commercial egg production and farm expansion.',
       name: 'Kenya Layer Farm',
@@ -20,6 +22,8 @@ export default function Testimonials() {
       role: 'Aquaculture equipment package',
     },
   ]
+  const raw = (settings as { homeTestimonials?: unknown }).homeTestimonials
+  const testimonials = (Array.isArray(raw) && raw.length > 0 ? raw : fallback) as Array<{ quote: string; name: string; role: string }>
 
   return (
     <section className="bg-[var(--color-surface-alt)] py-20 md:py-28">

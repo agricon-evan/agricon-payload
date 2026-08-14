@@ -1,11 +1,14 @@
 import Icon from '@/components/ui/Icon'
 import Reveal from '@/components/ui/Reveal'
 import SectionHeading from '@/components/ui/SectionHeading'
+import { getSiteSettings } from '@/lib/payload'
 
 // From company principle 05: 信任靠证据，不靠形容词 (Trust is built on evidence, not adjectives)
 // And sales process 07 证据匹配 (Evidence matching — every customer concern has supporting documentation)
 // Claims are read from SiteSettings (admin-editable) so only verified statements ship.
-export default function TrustEvidence() {  const evidence = [
+export default async function TrustEvidence() {
+  const settings = await getSiteSettings()
+  const fallback = [
     {
       icon: 'shield',
       title: 'Quality & Order Control',
@@ -27,6 +30,8 @@ export default function TrustEvidence() {  const evidence = [
       items: ['Export packing and labeling', 'Container loading plans', 'Shipping document preparation', 'Shipment coordination to dispatch'],
     },
   ]
+  const raw = (settings as { homeTrustEvidence?: unknown }).homeTrustEvidence
+  const evidence = (Array.isArray(raw) && raw.length > 0 ? raw : fallback) as Array<{ icon: string; title: string; items: string[] }>
 
   return (
     <section className="bg-[var(--color-surface-brand)] text-white py-20 md:py-28">

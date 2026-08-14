@@ -1,9 +1,11 @@
 import Icon from '@/components/ui/Icon'
 import Reveal from '@/components/ui/Reveal'
 import SectionHeading from '@/components/ui/SectionHeading'
+import { getSiteSettings } from '@/lib/payload'
 
-export default function WhyChooseUs() {
-  const features = [
+export default async function WhyChooseUs() {
+  const settings = await getSiteSettings()
+  const fallback = [
     { icon: 'layers', title: 'Coordinated Sourcing', desc: 'Poultry, livestock, feed processing, aquaculture, infrastructure and machinery through one supply window.' },
     { icon: 'shield', title: 'Quality & Order Control', desc: 'Product scope, specifications, quantities and key inspection points are confirmed before shipment.' },
     { icon: 'target', title: 'Project-Based Selection', desc: 'Equipment is matched to farm type, target capacity, site conditions, operating requirements and budget.' },
@@ -11,6 +13,8 @@ export default function WhyChooseUs() {
     { icon: 'users', title: 'Distributor Support', desc: 'Flexible product combinations, repeat-order support and coordinated sourcing for local market development.' },
     { icon: 'handshake', title: 'Long-Term Cooperation', desc: 'From individual equipment to complete project packages, we support expansion and repeat supply.' },
   ]
+  const raw = (settings as { homeWhyChooseUs?: unknown }).homeWhyChooseUs
+  const features = (Array.isArray(raw) && raw.length > 0 ? raw : fallback) as Array<{ icon: string; title: string; desc: string }>
 
   return (
     <section className="max-w-7xl mx-auto px-6 py-16 md:py-24">

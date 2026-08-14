@@ -1,11 +1,13 @@
 import Icon from '@/components/ui/Icon'
 import Reveal from '@/components/ui/Reveal'
 import SectionHeading from '@/components/ui/SectionHeading'
+import { getSiteSettings } from '@/lib/payload'
 
 // Six client-facing stages adapted directly from the Agricon catalog:
 // Inquiry, Analysis, Matching, Confirmation, Delivery and Support.
-export default function HowWeWork() {
-  const steps = [
+export default async function HowWeWork() {
+  const settings = await getSiteSettings()
+  const fallback = [
     { icon: 'users', title: 'Inquiry', desc: 'Understand farm type, capacity, product interest, application scenario and purchasing purpose.' },
     { icon: 'search', title: 'Analysis', desc: 'Review project conditions, operation goals, site requirements and budget expectations.' },
     { icon: 'target', title: 'Matching', desc: 'Recommend suitable products, product lines and accessory packages for the confirmed needs.' },
@@ -13,6 +15,8 @@ export default function HowWeWork() {
     { icon: 'truck', title: 'Delivery', desc: 'Coordinate export packing, container loading, shipping support and required documents.' },
     { icon: 'handshake', title: 'Support', desc: 'Continue with product information, spare parts, repeat orders and future project expansion.' },
   ]
+  const raw = (settings as { homeHowWeWork?: unknown }).homeHowWeWork
+  const steps = (Array.isArray(raw) && raw.length > 0 ? raw : fallback) as Array<{ icon: string; title: string; desc: string }>
 
   return (
     <section className="max-w-7xl mx-auto px-6 py-16 md:py-24">

@@ -1,12 +1,14 @@
 import Icon from '@/components/ui/Icon'
 import Reveal from '@/components/ui/Reveal'
 import SectionHeading from '@/components/ui/SectionHeading'
+import { getSiteSettings } from '@/lib/payload'
 
 // Homepage section — "Value, Calculated"
 // From company principle 04: 价值必须尽可能算出来 (Value must be calculated, not claimed)
 // We avoid "high quality / good service" adjectives and show measurable outcomes instead.
-export default function ValueCalculated() {
-  const calculators = [
+export default async function ValueCalculated() {
+  const settings = await getSiteSettings()
+  const fallback = [
     {
       icon: 'trending-down',
       title: 'Portfolio Breadth',
@@ -35,6 +37,12 @@ export default function ValueCalculated() {
       ],
     },
   ]
+  const raw = (settings as { homeValueCalculated?: unknown }).homeValueCalculated
+  const calculators = (Array.isArray(raw) && raw.length > 0 ? raw : fallback) as Array<{
+    icon: string
+    title: string
+    items: Array<{ label: string; value: string }>
+  }>
 
   return (
     <section className="max-w-7xl mx-auto px-6 py-16 md:py-24">

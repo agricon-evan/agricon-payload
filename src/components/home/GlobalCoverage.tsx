@@ -1,14 +1,18 @@
 import Icon from '@/components/ui/Icon'
 import Reveal from '@/components/ui/Reveal'
 import SectionHeading from '@/components/ui/SectionHeading'
+import { getSiteSettings } from '@/lib/payload'
 
-export default function GlobalCoverage() {
-  const regions = [
+export default async function GlobalCoverage() {
+  const settings = await getSiteSettings()
+  const fallback = [
     { icon: 'building', title: 'Farm Operations', sub: 'Poultry, livestock, aquaculture and crop production equipment for daily operation.' },
     { icon: 'layers', title: 'Processing & Supply', sub: 'Feed preparation, pelletizing, machinery and mixed-category equipment sourcing.' },
     { icon: 'warehouse', title: 'Infrastructure', sub: 'Farm structures, ventilation, cooling, storage, fencing and environmental support.' },
     { icon: 'globe', title: 'International Buyers', sub: 'Export coordination for farms, importers, distributors and project buyers worldwide.' },
   ]
+  const raw = (settings as { homeGlobalCoverage?: unknown }).homeGlobalCoverage
+  const regions = (Array.isArray(raw) && raw.length > 0 ? raw : fallback) as Array<{ icon: string; title: string; sub: string }>
 
   return (
     <section className="bg-[var(--color-surface-alt)] py-16 md:py-24">

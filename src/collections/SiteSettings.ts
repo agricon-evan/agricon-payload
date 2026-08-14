@@ -69,6 +69,46 @@ export const SiteSettings: CollectionConfig = {
         { name: 'galvanizedLifespan', type: 'text', defaultValue: '15+ years', label: 'Galvanized Steel Lifespan' },
       ],
     },
+    // ── Homepage section content (JSON) ──
+    // Each field stores the items for one homepage section. When a field is
+    // empty the storefront falls back to the built-in defaults, so every
+    // section is optional. Edit via the admin JSON editor or the API.
+    {
+      name: 'homeTestimonials',
+      type: 'json',
+      label: 'Home · Testimonials',
+      admin: { description: 'JSON array: [{ "quote": "…", "name": "…", "role": "…" }]' },
+    },
+    {
+      name: 'homeWhyChooseUs',
+      type: 'json',
+      label: 'Home · Why Choose Us',
+      admin: { description: 'JSON array: [{ "icon": "shield", "title": "…", "desc": "…" }]' },
+    },
+    {
+      name: 'homeHowWeWork',
+      type: 'json',
+      label: 'Home · How We Work',
+      admin: { description: 'JSON array: [{ "icon": "users", "title": "…", "desc": "…" }]' },
+    },
+    {
+      name: 'homeGlobalCoverage',
+      type: 'json',
+      label: 'Home · Global Coverage',
+      admin: { description: 'JSON array: [{ "icon": "building", "title": "…", "sub": "…" }]' },
+    },
+    {
+      name: 'homeValueCalculated',
+      type: 'json',
+      label: 'Home · Value Calculated',
+      admin: { description: 'JSON array: [{ "icon": "trending-down", "title": "…", "items": [{ "label": "…", "value": "…" }] }]' },
+    },
+    {
+      name: 'homeTrustEvidence',
+      type: 'json',
+      label: 'Home · Trust & Evidence',
+      admin: { description: 'JSON array: [{ "icon": "shield", "title": "…", "items": ["…"] }]' },
+    },
   ],
   versions: { drafts: false },
 }
