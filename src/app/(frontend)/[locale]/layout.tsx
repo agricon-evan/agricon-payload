@@ -13,6 +13,12 @@ interface Props {
   params: Promise<{ locale: string }>
 }
 
+// Render dynamically: DB-backed pages (products, blog, site settings, …) are
+// fetched at request time. This keeps `next build` from requiring a live
+// database at build time, so the app deploys cleanly to Vercel (and other
+// serverless platforms) where Payload pushes the schema to Postgres on first run.
+export const dynamic = 'force-dynamic'
+
 export async function generateStaticParams() {
   return locales.map((locale) => ({ locale }))
 }

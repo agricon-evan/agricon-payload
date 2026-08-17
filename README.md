@@ -151,9 +151,9 @@ node scripts/import-translations.mjs
 2. 添加环境变量（见上表）
 3. 添加 Vercel Postgres（或 Neon）数据库，复制 `POSTGRES_URL`
 4. 添加 Vercel Blob 存储，复制 `BLOB_READ_WRITE_TOKEN`
-5. 部署——`vercel-build` 自动执行 `payload migrate && next build`；
-   **首次部署时 Postgres push 会自动补全全部 17 个 collection 的 schema**
-   （checked-in migrations 仅覆盖初始 schema，`PAYLOAD_PUSH_SCHEMA=false` 可强制仅迁移模式）
+5. 部署——`vercel-build` 自动执行 `payload migrate && next build`（`payload migrate` 当前无迁移文件时为安全空操作）；
+   **首次运行时 Postgres `push` 会自动创建全部 17 个 collection 的 schema**
+   （生产保留 `PAYLOAD_PUSH_SCHEMA` 不设为 `false` 即可启用 push；若改用显式迁移：先 `pnpm payload migrate:create` 再设 `PAYLOAD_PUSH_SCHEMA=false`）
 6. 通过 `https://<project>.vercel.app/admin` 创建首个管理员
 7. 配置 SMTP 环境变量，否则询盘通知只写入日志不发邮件
 
