@@ -37,6 +37,9 @@ layer-cage.html
 .env.production.local
 .env.*.local
 
+# Secrets handover doc — local only, NEVER commit
+docs/ENV-SECRETS.md
+
 # Testing
 coverage/
 playwright-report/
