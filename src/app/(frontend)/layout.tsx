@@ -4,6 +4,7 @@ import type { Metadata, Viewport } from 'next'
 import { headers } from 'next/headers'
 import { Outfit, Noto_Sans } from 'next/font/google'
 import { SpeedInsights } from '@vercel/speed-insights/next'
+import { Analytics } from '@vercel/analytics/next'
 import { locales, isRtl } from '@/i18n/config'
 
 // Display: Outfit (per system design). Body: Noto Sans (MiSans web substitute, covers latin/cyrillic/greek for all 6 locales)
@@ -42,6 +43,7 @@ export default async function FrontendRootLayout(props: { children: React.ReactN
       <body>
         {children}
         <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   )
