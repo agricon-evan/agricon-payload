@@ -17,7 +17,7 @@
 | 开发库 | SQLite（`agricon-dev.db`，本地） |
 | 生产库 | Neon Postgres（`POSTGRES_URL`） |
 | 媒体存储 | Vercel Blob（store `wqqdmdni7x1vusvs`） |
-| 性能监控 | Vercel Speed Insights（`<SpeedInsights/>` 注入在前台根布局 `src/app/(frontend)/layout.tsx`） |
+| 性能监控 | Vercel Speed Insights + Web Analytics（`<SpeedInsights/>`、`<Analytics/>` 注入在前台根布局 `src/app/(frontend)/layout.tsx`，共用 `/_vercel/insights/script.js` 路由） |
 | 部署 | Vercel **原生 Git 集成**：push `main` → 自动构建部署（无需任何手动步骤） |
 | 数据访问三层 | Admin 后台 / REST+GraphQL API / Local API（详见 AGENT-API.md） |
 
