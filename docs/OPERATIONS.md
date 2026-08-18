@@ -17,6 +17,7 @@
 | 开发库 | SQLite（`agricon-dev.db`，本地） |
 | 生产库 | Neon Postgres（`POSTGRES_URL`） |
 | 媒体存储 | Vercel Blob（store `wqqdmdni7x1vusvs`） |
+| 性能监控 | Vercel Speed Insights（`<SpeedInsights/>` 注入在前台根布局 `src/app/(frontend)/layout.tsx`） |
 | 部署 | Vercel **原生 Git 集成**：push `main` → 自动构建部署（无需任何手动步骤） |
 | 数据访问三层 | Admin 后台 / REST+GraphQL API / Local API（详见 AGENT-API.md） |
 
@@ -185,7 +186,12 @@ done
 3. **GitHub Actions：`if:` 条件里引用 `secrets.X`** → 工作流以 **0 个 job 静默失败**。
    把密钥检查写进 run 脚本里，不要放 `if:`。
 4. **Neon 空闲连接被杀** → 长任务脚本要按 chunk 新建 Client + 吞掉 pg error（见 §4）。
-5. **前端是 `force-dynamic`**：页面不在构建期查库，所以"无库构建"可行；生产 schema 靠启动时 push（`PAYLOAD_PUSH_SCHEMA` 不设）。
+5. **本机 pnpm 在 D: 盘报 `[safe-delete] ... trash operation` 错误**（D: 是虚拟盘/沙箱限制，
+   trash 移入回收站必失败；在 C: 盘跑 pnpm 正常）。
+   绕过方法：装依赖时在 C: 盘临时目录放 `package.json` + `pnpm-workspace.yaml` + `pnpm-lock.yaml`，
+   跑 `pnpm install --lockfile-only` 生成/更新锁文件后拷回；node_modules 里的包可用
+   `node node_modules/xxx/bin/xxx` 直接跑（本会话 Speed Insights 即用此法安装）。
+6. **前端是 `force-dynamic`**：页面不在构建期查库，所以"无库构建"可行；生产 schema 靠启动时 push（`PAYLOAD_PUSH_SCHEMA` 不设）。
 6. **本机沙箱怪癖（不影响功能）**：`git status -sb` 显示 `## master...origin/main [gone]` —— 沙箱对
    `refs/remotes/` 写入静默拦截，纯显示问题；`git ls-remote` 可验证远端一致。真实终端无此问题。
 7. **CI e2e 移出**：原因见 §6.4。`tests/helpers/seedUser.ts` 是 e2e 建测试用户的工具。
