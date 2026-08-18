@@ -38,5 +38,9 @@ export default defineConfig({
     command: 'pnpm dev',
     reuseExistingServer: true,
     url: 'http://localhost:3000',
+    // `pnpm test:e2e` sets NODE_OPTIONS="--import=tsx/esm"; if the dev server
+    // inherits it, the tsx preload turns pnpm's graceful "no .pnpmfile" skip
+    // into a fatal import error. Run the dev server with a clean NODE_OPTIONS.
+    env: { NODE_OPTIONS: '--no-deprecation' },
   },
 })
