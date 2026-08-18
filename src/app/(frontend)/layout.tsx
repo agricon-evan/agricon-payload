@@ -3,6 +3,7 @@ import './globals.css'
 import type { Metadata, Viewport } from 'next'
 import { headers } from 'next/headers'
 import { Outfit, Noto_Sans } from 'next/font/google'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import { locales, isRtl } from '@/i18n/config'
 
 // Display: Outfit (per system design). Body: Noto Sans (MiSans web substitute, covers latin/cyrillic/greek for all 6 locales)
@@ -40,6 +41,7 @@ export default async function FrontendRootLayout(props: { children: React.ReactN
     <html lang={locale} dir={isRtl(locale as (typeof locales)[number]) ? 'rtl' : 'ltr'} className={`${outfit.variable} ${noto.variable}`} data-scroll-behavior="smooth">
       <body>
         {children}
+        <SpeedInsights />
       </body>
     </html>
   )
