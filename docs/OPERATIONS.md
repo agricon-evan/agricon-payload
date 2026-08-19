@@ -40,7 +40,7 @@
 | `PAYLOAD_SECRET` | Payload 加密密钥 | 同上，不透明形态，正常 |
 | `BLOB_READ_WRITE_TOKEN` | Blob 读写 token | ⚠️ 由 Vercel 自动管理，**不要去改它**（会被还原）；见 §6 坑② |
 | `STORAGE_VERCEL_BLOB_BASE_URL` | **媒体 404 修复关键** | `https://wqqdmdni7x1vusvs.public.blob.vercel-storage.com`，**别删** |
-| `NEXT_PUBLIC_SITE_URL` | 前台/SEO 用的站点 URL | `https://agricon-payload.vercel.app` |
+| `NEXT_PUBLIC_SITE_URL` | 前台/SEO 用的站点 URL（sitemap/canonical/hreflang 基址） | `https://www.agricon.cn`（真实域名；`agricon.cn` 308 到 www；改它需重新部署才会重生成 sitemap/robots） |
 | `PAYLOAD_PUSH_SCHEMA` | 生产**保持不设置** | 不设 = 启动时自动 push schema（当前 schema 来源）；设 `false` 则只走 migrations |
 | `DATABASE_URI` | 本地 SQLite 路径 | 默认 `file:./agricon-dev.db`，本地 dev 用 |
 | `SMTP_HOST/PORT/USER/PASS/FROM` | 邮件（可选） | 不配则邮件仅打日志 |
