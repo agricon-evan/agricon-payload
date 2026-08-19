@@ -25,6 +25,7 @@ import { default as default_2467d70dfe39bffb1426e9dddb56bce1 } from '../../../ap
 import { default as default_c58a3b6b12046fac997a025cc1623f93 } from '../../../app/(payload)/admin/components/Logo.tsx'
 import { default as default_c65a496f253f722f9703369dbd44f29d } from '../../../app/(payload)/admin/components/ThemeInjector.tsx'
 import { default as default_a078b3eb1644a85c0650a2f123f567bb } from '../../../app/(payload)/admin/components/BeforeDashboard.tsx'
+import { VercelBlobClientUploadHandler as VercelBlobClientUploadHandler_16c82c5e25f430251a3e3ba57219ff4e } from '@payloadcms/storage-vercel-blob/client'
 import { CollectionCards as CollectionCards_f9c02e79a4aed9a3924487c0cd4cafb1 } from '@payloadcms/next/rsc'
 
 export const importMap = {
@@ -55,5 +56,6 @@ export const importMap = {
   "./app/(payload)/admin/components/Logo.tsx#default": default_c58a3b6b12046fac997a025cc1623f93,
   "./app/(payload)/admin/components/ThemeInjector.tsx#default": default_c65a496f253f722f9703369dbd44f29d,
   "./app/(payload)/admin/components/BeforeDashboard.tsx#default": default_a078b3eb1644a85c0650a2f123f567bb,
+  "@payloadcms/storage-vercel-blob/client#VercelBlobClientUploadHandler": VercelBlobClientUploadHandler_16c82c5e25f430251a3e3ba57219ff4e,
   "@payloadcms/next/rsc#CollectionCards": CollectionCards_f9c02e79a4aed9a3924487c0cd4cafb1
 }
