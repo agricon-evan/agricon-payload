@@ -195,6 +195,13 @@ done
 6. **本机沙箱怪癖（不影响功能）**：`git status -sb` 显示 `## master...origin/main [gone]` —— 沙箱对
    `refs/remotes/` 写入静默拦截，纯显示问题；`git ls-remote` 可验证远端一致。真实终端无此问题。
 7. **CI e2e 移出**：原因见 §6.4。`tests/helpers/seedUser.ts` 是 e2e 建测试用户的工具。
+8. **过期的 importMap 会让 admin 白屏**（2026-08-19 踩过，已修）：`src/app/(payload)/admin/importMap.js`
+   必须在**有 `BLOB_READ_WRITE_TOKEN`** 的环境下用 `payload generate:importmap` 生成并**提交**，
+   否则 `@payloadcms/storage-vercel-blob` 的 `VercelBlobClientUploadHandler` 缺失，Vercel 上
+   admin SSR 报 `PayloadComponent not found in importMap` → **/admin 和 /admin/login 白屏**
+   （curl 200、构建 0 错、前台正常，极具迷惑性）。`vercel-build` 已含 `generate:importmap`。
+   排查方法：`vercel logs <deployment-url>` 能看到这条 SSR 报错（浏览器 console 是干净的）。
+   改 collection/插件/新增 admin 组件后：**重新 `generate:importmap` 并提交 importMap.js**。
 
 ---
 
