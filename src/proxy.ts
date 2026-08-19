@@ -36,3 +36,5 @@ export const config = {
     '/((?!api|_next|favicon|robots|sitemap|manifest|images|admin|icon|catalog|.*\\.(?:jpg|jpeg|png|webp|svg|gif|ico|avif|mp4|pdf|woff2?|css|js|json|txt)).*)',
   ],
 }
+// Note: /admin is intentionally excluded so the Payload admin auth/session flow
+// (which depends on the route group) works without locale-prefix interference.
