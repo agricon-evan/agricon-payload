@@ -1,8 +1,9 @@
 import type { Locale } from '@/i18n/config'
 import ProductCategories from '@/components/home/ProductCategories'
+import StatsSection from '@/components/home/StatsSection'
+import ProductSeriesScreens from '@/components/home/ProductSeriesScreens'
 import FeaturedProducts from '@/components/home/FeaturedProducts'
 import SolutionsSection from '@/components/home/SolutionsSection'
-import StatsSection from '@/components/home/StatsSection'
 import WhyChooseUs from '@/components/home/WhyChooseUs'
 import Testimonials from '@/components/home/Testimonials'
 import LatestNews from '@/components/home/LatestNews'
@@ -40,9 +41,9 @@ export default async function HomePage({ params }: Props) {
   const heroImage = typeof hero.image === 'object' && hero.image?.url ? hero.image.url : '/images/home-hero-agricon.png'
 
   return (
-    <>
-      {/* ── HERO — {component.cover-hero}: full-bleed photo + brand-green overlay ── */}
-      <section className="hero-standard relative overflow-hidden bg-[var(--color-surface-brand)] text-white">
+   <>
+     {/* ── HERO — {component.cover-hero}: full-bleed photo + brand-green overlay ── */}
+     <section className="hero-standard hero-home snap-start snap-always relative overflow-hidden bg-[var(--color-surface-brand)] text-white">
         <div className="absolute inset-0">
           <MediaImage
             src={heroImage}
@@ -54,7 +55,7 @@ export default async function HomePage({ params }: Props) {
           />
           <div className="absolute inset-0 photo-overlay-green" />
         </div>
-        <div className="hero-standard-content relative max-w-7xl mx-auto px-6 pt-20 pb-16 md:pt-28 md:pb-24 lg:pt-36 lg:pb-32">
+        <div className="hero-standard-content relative max-w-7xl mx-auto px-6 pt-14 pb-10 sm:pt-16 sm:pb-12 md:pt-28 md:pb-24 lg:pt-36 lg:pb-32">
           <div className="max-w-3xl">
             <Reveal>
               <span className="eyebrow !text-[var(--color-accent-soft)] mb-5">{hero.eyebrow || 'Farm systems, engineered for growth'}</span>
@@ -104,7 +105,9 @@ export default async function HomePage({ params }: Props) {
         </div>
       </section>
 
-      <StatsSection locale={locale as Locale} />
+      {/* Four full-screen product series (养殖 / 畜牧 / 机器 / 屠宰), each snaps to one screen */}
+      <ProductSeriesScreens locale={locale as Locale} />
+
       <ProductCategories locale={locale as Locale} />
       <FeaturedProducts locale={locale as Locale} />
       <ValueCalculated />

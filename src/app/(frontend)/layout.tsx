@@ -38,8 +38,16 @@ export default async function FrontendRootLayout(props: { children: React.ReactN
     const seg = p.split('/').filter(Boolean)[0]
     if (locales.includes(seg as (typeof locales)[number])) locale = seg
   } catch { /* headers 不可用时回退 en */ }
+  // suppressHydrationWarning: 浏览器插件（如沉浸式翻译）会在 React 接管前往 <html>
+  // 注入 data-* 属性，导致 hydration 属性不匹配警告。仅抑制该标签自身，不影响子元素。
   return (
-    <html lang={locale} dir={isRtl(locale as (typeof locales)[number]) ? 'rtl' : 'ltr'} className={`${outfit.variable} ${noto.variable}`} data-scroll-behavior="smooth">
+    <html
+      lang={locale}
+      dir={isRtl(locale as (typeof locales)[number]) ? 'rtl' : 'ltr'}
+      className={`${outfit.variable} ${noto.variable}`}
+      data-scroll-behavior="smooth"
+      suppressHydrationWarning
+    >
       <body>
         {children}
         <SpeedInsights />

@@ -8,6 +8,7 @@ import SectionHeading from '@/components/ui/SectionHeading'
 import Reveal from '@/components/ui/Reveal'
 import Icon from '@/components/ui/Icon'
 import MediaImage from '@/components/ui/MediaImage'
+import StatsSection from '@/components/home/StatsSection'
 
 // 画册公司照片（p8 Why AGRICON）
 const COMPANY_PHOTOS = [
@@ -44,12 +45,13 @@ export default async function AboutPage({ params }: Props) {
   const stats = (settings?.stats ?? {}) as { countriesServed?: string; farmProjects?: string; yearsInBusiness?: string; onTimeDelivery?: string; equipmentModels?: string }
   const claims = settings?.claims as { iso9001?: boolean | null; ceMarked?: boolean | null; galvanizedLifespan?: string | null } | null | undefined
 
-  // 认证与承诺 — 仅在后台配置了真实数据时展示
+  // Commitments — non-certification promises drawn from the company's operating
+  // model (not third-party certifications). Galvanized lifespan reads from SiteSettings.
   const claimItems = [
-    claims?.iso9001 ? { icon: 'award', title: 'ISO 9001 Certified', desc: 'Quality management system in place.' } : null,
-    claims?.ceMarked ? { icon: 'shield', title: 'CE Marked', desc: 'Products meet EU safety requirements.' } : null,
-    claims?.galvanizedLifespan ? { icon: 'factory', title: 'Hot-Dip Galvanized', desc: claims.galvanizedLifespan } : null,
-  ].filter(Boolean) as Array<{ icon: string; title: string; desc: string }>
+    { icon: 'layers', title: 'Integrated Equipment Supply', desc: 'Poultry, livestock, feed processing, aquaculture, infrastructure and machinery coordinated through one supply window.' },
+    { icon: 'truck', title: 'Export-Ready Delivery', desc: 'Export packing, product identification, loading plans, container coordination and shipping documents for overseas buyers.' },
+    { icon: 'factory', title: 'Hot-Dip Galvanized', desc: claims?.galvanizedLifespan || '15–20 years service life (hot-dip galvanized steel).' },
+  ]
 
   const milestones = [
     { year: '01', title: 'Inquiry', desc: 'Understand farm type, capacity, product interest, application scenario and purchasing purpose.' },
@@ -183,30 +185,16 @@ export default async function AboutPage({ params }: Props) {
         </div>
       </section>
 
-      {/* Stats — reads verified figures from SiteSettings */}
-      <section className="bg-[var(--color-primary-dark)] text-white py-12 md:py-16">        <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-          {[
-            { num: stats.equipmentModels || '10+', label: 'Product Categories' },
-            { num: stats.farmProjects || '100+', label: 'Farm Projects' },
-            { num: stats.countriesServed || '30+', label: 'Export Markets' },
-            { num: stats.yearsInBusiness || '15+', label: 'Years in Business' },
-          ].map((s, i) => (
-            <div key={s.label} className={`reveal reveal-fade-up stagger-${i + 1}`}>
-              <div className="stat-num">{s.num}</div>
-              <div className="mt-2 text-sm md:text-base opacity-70">{s.label}</div>
-            </div>
-          ))}
-        </div>
-      </section>
+      {/* Stats — full "Numbers That Speak for Themselves" block (moved here from homepage) */}
+      <StatsSection locale={locale as Locale} />
 
-      {/* Certifications & commitments — only when configured in SiteSettings */}
-      {claimItems.length > 0 && (
-        <section className="max-w-7xl mx-auto px-6 py-16 md:py-20">
+      {/* Commitments — fixed three-card block (no third-party certifications) */}
+      <section className="max-w-7xl mx-auto px-6 py-16 md:py-20">
           <Reveal>
             <SectionHeading
-              eyebrow="Certifications & Standards"
-              title={<>Verifiable <span className="split-accent">Standards</span></>}
-              description="Manufacturing and quality commitments configured in Site Settings — shown only when the data is provided."
+              eyebrow="Our Commitments"
+              title={<>Practical <span className="split-accent">Commitments</span></>}
+              description="How AGRICON supports equipment supply and delivery for farms and agricultural projects worldwide."
             />
           </Reveal>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 mt-10">
@@ -223,7 +211,6 @@ export default async function AboutPage({ params }: Props) {
             ))}
           </div>
         </section>
-      )}
 
       {/* Timeline */}
       <section className="max-w-4xl mx-auto px-6 py-16 md:py-24">

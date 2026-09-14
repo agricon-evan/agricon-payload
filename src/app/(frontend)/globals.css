@@ -103,6 +103,9 @@
     scroll-behavior: smooth;
     -webkit-tap-highlight-color: transparent;
     font-size: 16px;
+    /* Full-screen snapping for hero + product series: proximity + snap-always
+       gives hard one-screen-at-a-time stops without trapping after the last screen */
+    scroll-snap-type: y proximity;
   }
 
   body {
@@ -389,6 +392,9 @@
 @media (min-width: 1024px) {
   .hero-standard { min-height: 46.125rem; }
 }
+
+/* Homepage hero — fills the full viewport on every screen size (mobile included). */
+.hero-home { min-height: 100dvh; }
 
 /* component.rich-text — brand prose for CMS content (replaces tailwind typography plugin) */
 .prose-agricon {

@@ -12,7 +12,7 @@ export default async function StatsSection({ locale: _locale }: { locale: Locale
     { num: stats?.equipmentModels || '10+', label: 'Product Categories', desc: 'Poultry, livestock, aquaculture, machinery and infrastructure.' },
     { num: stats?.farmProjects || '100+', label: 'Farm Projects', desc: 'Complete projects delivered across farm types and scales.' },
     { num: stats?.countriesServed || '30+', label: 'Export Markets', desc: 'Serving farms and distributors worldwide.' },
-    { num: stats?.onTimeDelivery || '98%', label: 'On-Time Delivery', desc: 'Practical international delivery experience.' },
+    { num: stats?.yearsInBusiness || '15+', label: 'Years in Business', desc: 'Practical experience supporting agricultural equipment projects.' },
   ]
 
   return (

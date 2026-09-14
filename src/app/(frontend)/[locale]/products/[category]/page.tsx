@@ -6,7 +6,7 @@ import PageHero from '@/components/PageHero'
 import CtaSection from '@/components/CtaSection'
 import Reveal from '@/components/ui/Reveal'
 import Icon from '@/components/ui/Icon'
-import { subcategoryImages } from '@/lib/images'
+import { subcategoryImages, categoryImages } from '@/lib/images'
 import MediaImage from '@/components/ui/MediaImage'
 import { notFound } from 'next/navigation'
 
@@ -47,7 +47,7 @@ export default async function CategoryPage({ params }: Props) {
         title={cat?.name || catSlug}
         description={cat?.description ?? undefined}
         breadcrumb={`${tHome.breadcrumb?.home || 'Home'} / ${t.nav?.products || 'Products'} / ${cat?.name || catSlug}`}
-        image="/images/heroes/farm-machinery.jpg"
+        image={categoryImages[catSlug] || '/images/heroes/farm-machinery.jpg'}
       />
       <section className="max-w-7xl mx-auto px-6 py-16 md:py-24">
         {subs.length === 0 ? (
