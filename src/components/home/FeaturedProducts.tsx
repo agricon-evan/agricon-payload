@@ -5,6 +5,7 @@ import Reveal from '@/components/ui/Reveal'
 import SectionHeading from '@/components/ui/SectionHeading'
 import Icon from '@/components/ui/Icon'
 import MediaImage from '@/components/ui/MediaImage'
+import ScrollRail from '@/components/ui/ScrollRail'
 
 /**
  * Featured products band — products with `featured: true` in the CMS.
@@ -55,14 +56,15 @@ export default async function FeaturedProducts({ locale }: { locale: Locale }) {
         </Reveal>
 
         {/*
-          12 products — 4 across on desktop, 3 rows.
-          Ranked treatment: a 01–12 index (top three in the accent colour) plus a category
-          eyebrow, so the band reads as an actual best-seller ranking rather than a plain
-          product grid. Photos stay untouched — nothing is ever overlaid on them.
+          Horizontal gallery — one row of large cards that scrolls sideways.
+          Cards get 360px each (vs 290px in a 4-up grid), so the product shots read
+          properly; about 3.4 are visible at a time and the next one peeks in to signal
+          there is more. Prev/next controls + a progress bar live in ScrollRail, because
+          horizontal scrolling with a mouse is otherwise awkward.
         */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-5 gap-y-9 lg:gap-x-6 lg:gap-y-11">
+        <ScrollRail label="Best-selling equipment">
           {featured.map((p, i) => (
-            <Reveal key={p.id} delay={i * 45}>
+            <Reveal key={p.id} delay={i * 45} className="snap-start shrink-0 w-[280px] sm:w-[320px] lg:w-[360px]">
               <Link
                 href={`/${locale}/products/${p.categorySlug || 'poultry-equipment'}/${p.subcategorySlug}/${p.slug}`}
                 className="group block"
@@ -97,7 +99,7 @@ export default async function FeaturedProducts({ locale }: { locale: Locale }) {
               </Link>
             </Reveal>
           ))}
-        </div>
+        </ScrollRail>
       </div>
     </section>
   )
