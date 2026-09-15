@@ -42,12 +42,10 @@ export default async function FeaturedProducts({ locale }: { locale: Locale }) {
   if (featured.length === 0) return null
 
   return (
-    <section className="snap-start snap-always min-h-[100dvh] lg:h-screen bg-[var(--color-bg)] pt-[72px] flex">
-      <div className="w-full max-w-7xl mx-auto px-6 flex flex-col py-5 lg:py-7 lg:h-[calc(100vh-72px)]">
-
-        <Reveal className="shrink-0">
+    <section className="py-16 md:py-20">
+      <div className="w-full max-w-7xl mx-auto px-6">
+        <Reveal>
           <SectionHeading
-            className="!mb-5 lg:!mb-6"
             eyebrow="Featured Equipment"
             title={<>Best-Selling <span className="split-accent">Equipment</span></>}
             description="Hand-picked machines and systems our customers order most — verified by the product team."
@@ -55,45 +53,36 @@ export default async function FeaturedProducts({ locale }: { locale: Locale }) {
         </Reveal>
 
         {/*
-          Full-screen grid — 12 products in 4 columns × 3 rows.
-          `grid-rows-3` splits the space under the heading into three equal rows, and each
-          card lets the photo flex to fill whatever the caption doesn't use. That keeps the
-          section exactly one screen and means the photos need no overlay at all.
-          below lg : a single-row horizontal snap rail, which also stays one screen.
+          12 products — 4 across on desktop, 3 rows.
+          Big square photos with just the product name underneath: photo-led, minimal text.
+          No overlay of any kind, so the product shots stay untouched.
         */}
-        <div className="flex-1 min-h-0 flex gap-3 overflow-x-auto snap-x snap-mandatory pb-3 lg:grid lg:grid-cols-4 lg:grid-rows-3 lg:gap-4 lg:overflow-visible lg:pb-0">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-8 lg:gap-x-5 lg:gap-y-10">
           {featured.map((p, i) => (
-            <Reveal
-              key={p.id}
-              delay={(i % 4) * 50}
-              className="w-[46%] shrink-0 sm:w-[31%] md:w-[23%] lg:w-auto lg:shrink h-full min-h-0"
-            >
+            <Reveal key={p.id} delay={i * 45}>
               <Link
                 href={`/${locale}/products/${p.categorySlug || 'poultry-equipment'}/${p.subcategorySlug}/${p.slug}`}
-                className="card card-hover group h-full min-h-0 flex flex-col overflow-hidden"
+                className="group block"
               >
-                {/* Clean photo — no scrim, no darkening */}
-                <div className="relative aspect-[16/10] lg:aspect-auto lg:flex-1 min-h-0 bg-[var(--color-muted)] overflow-hidden">
+                <div className="relative aspect-square rounded-[var(--radius-md)] overflow-hidden bg-[var(--color-surface-alt)]">
                   {p.image ? (
-                    <MediaImage src={p.image} alt={p.name} width={640} height={400} loading="lazy" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                    <MediaImage src={p.image} alt={p.name} width={800} height={800} loading="lazy" className="absolute inset-0 w-full h-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.06]" />
                   ) : (
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <Icon name="box" size={30} className="text-[var(--color-text-secondary)]/30" />
+                      <Icon name="box" size={34} className="text-[var(--color-text-secondary)]/30" />
                     </div>
                   )}
                 </div>
-                {/* Caption sits below the photo */}
-                <div className="shrink-0 px-3 py-2 flex items-center justify-between gap-2">
-                  <h3 className="text-[13px] font-medium text-[var(--color-text)] group-hover:text-[var(--color-primary)] transition-colors leading-snug line-clamp-2">
+                <div className="mt-3 flex items-start justify-between gap-2">
+                  <h3 className="text-[15px] font-semibold text-[var(--color-text)] leading-snug group-hover:text-[var(--color-primary)] transition-colors">
                     {p.name}
                   </h3>
-                  <Icon name="arrow-up-right" size={13} className="shrink-0 text-[var(--color-accent)] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  <Icon name="arrow-up-right" size={15} className="shrink-0 mt-0.5 text-[var(--color-accent)] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </div>
               </Link>
             </Reveal>
           ))}
         </div>
-
       </div>
     </section>
   )
