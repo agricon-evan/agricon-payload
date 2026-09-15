@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { getTranslations, locales, type Locale } from '@/i18n/config'
+import { defaultLocale, getTranslations, locales, type Locale } from '@/i18n/config'
 
 /** 站点规范域名（与 sitemap.ts 保持一致） */
 export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.agricon.cn').replace(/\/$/, '')
@@ -12,9 +12,12 @@ export function localizedAlternates(locale: Locale, path: string): Metadata['alt
   const rel = path === '' ? '' : path.startsWith('/') ? path : `/${path}`
   return {
     canonical: `/${locale}${rel}`,
-    languages: Object.fromEntries(
-      locales.map((l) => [`${l}`, `/${l}${rel}`]),
-    ) as Record<string, string>,
+    languages: {
+      ...Object.fromEntries(locales.map((l) => [`${l}`, `/${l}${rel}`])),
+      // x-default 告诉搜索引擎：没有语言匹配时该给哪一版（这里用默认语言 en）。
+      // 多语言站的最佳实践，此前缺失。
+      'x-default': `/${defaultLocale}${rel}`,
+    } as Record<string, string>,
   }
 }
 
