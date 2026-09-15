@@ -192,16 +192,26 @@ done
    跑 `pnpm install --lockfile-only` 生成/更新锁文件后拷回；node_modules 里的包可用
    `node node_modules/xxx/bin/xxx` 直接跑（本会话 Speed Insights 即用此法安装）。
 6. **前端是 `force-dynamic`**：页面不在构建期查库，所以"无库构建"可行；生产 schema 靠启动时 push（`PAYLOAD_PUSH_SCHEMA` 不设）。
-6. **本机沙箱怪癖（不影响功能）**：`git status -sb` 显示 `## master...origin/main [gone]` —— 沙箱对
+7. **本机沙箱怪癖（不影响功能）**：`git status -sb` 显示 `## master...origin/main [gone]` —— 沙箱对
    `refs/remotes/` 写入静默拦截，纯显示问题；`git ls-remote` 可验证远端一致。真实终端无此问题。
-7. **CI e2e 移出**：原因见 §6.4。`tests/helpers/seedUser.ts` 是 e2e 建测试用户的工具。
-8. **过期的 importMap 会让 admin 白屏**（2026-08-19 踩过，已修）：`src/app/(payload)/admin/importMap.js`
+8. **CI e2e 移出**：原因见 §6.4。`tests/helpers/seedUser.ts` 是 e2e 建测试用户的工具。
+9. **过期的 importMap 会让 admin 白屏**（2026-08-19 踩过，已修）：`src/app/(payload)/admin/importMap.js`
    必须在**有 `BLOB_READ_WRITE_TOKEN`** 的环境下用 `payload generate:importmap` 生成并**提交**，
    否则 `@payloadcms/storage-vercel-blob` 的 `VercelBlobClientUploadHandler` 缺失，Vercel 上
    admin SSR 报 `PayloadComponent not found in importMap` → **/admin 和 /admin/login 白屏**
    （curl 200、构建 0 错、前台正常，极具迷惑性）。`vercel-build` 已含 `generate:importmap`。
    排查方法：`vercel logs <deployment-url>` 能看到这条 SSR 报错（浏览器 console 是干净的）。
    改 collection/插件/新增 admin 组件后：**重新 `generate:importmap` 并提交 importMap.js**。
+10. **CSP 会把第三方脚本静默拦掉**（2026-09-15 踩过，已修）：`next.config.ts` 的 CSP 里
+   `script-src` 只放 `'self' 'unsafe-inline' 'unsafe-eval'`、`connect-src` 只放 `'self'`，
+   于是 `@vercel/analytics` 与 `@vercel/speed-insights` 的脚本被拦：
+   `Loading 'https://va.vercel-scripts.com/v1/script.js' violates CSP directive "script-src ..."`。
+   **后果：Web Analytics / Speed Insights 一个数据都没上报过，而前台正常、构建 0 错**，极易漏掉。
+   已放行 `https://va.vercel-scripts.com`（script-src + connect-src）与
+   `https://vitals.vercel-insights.com`（Speed Insights 上报端点）。
+   **排查方法**：浏览器 console 搜 `Content Security Policy`；或看 Network 里被 `(blocked:csp)` 的请求。
+   **注意**：改 `next.config.ts` 的 headers **必须重启 dev server**，热更新不生效。
+   → 以后引入任何第三方脚本/CDN（支付、地图、客服、统计、字体）都要实测确认没被 CSP 拦。
 
 ---
 
