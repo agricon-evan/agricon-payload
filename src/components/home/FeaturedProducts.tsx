@@ -69,9 +69,9 @@ export default async function FeaturedProducts({ locale }: { locale: Locale }) {
                 href={`/${locale}/products/${p.categorySlug || 'poultry-equipment'}/${p.subcategorySlug}/${p.slug}`}
                 className="group block"
               >
-                <div className="relative aspect-[4/3] rounded-[var(--radius-md)] overflow-hidden bg-[var(--color-surface-alt)]">
+                <div className="relative aspect-square rounded-[var(--radius-md)] overflow-hidden bg-[var(--color-surface-alt)]">
                   {p.image ? (
-                    <MediaImage src={p.image} alt={p.name} width={800} height={600} loading="lazy" className="absolute inset-0 w-full h-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.06]" />
+                    <MediaImage src={p.image} alt={p.name} width={800} height={800} loading="lazy" className="absolute inset-0 w-full h-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.06]" />
                   ) : (
                     <div className="absolute inset-0 flex items-center justify-center">
                       <Icon name="box" size={30} className="text-[var(--color-text-secondary)]/30" />
