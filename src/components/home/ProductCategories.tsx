@@ -37,38 +37,31 @@ export default async function ProductCategories({ locale }: Props) {
         </Reveal>
 
         {/*
-          10 categories — three across, large photos, everything visible at once.
-          No rail here: a category index is something you want to scan in full,
-          not scroll through. Cards land at ~395px wide (vs 360px in the rail).
+          10 categories — five across, two rows. Every line visible at once, no rail.
         */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-10 lg:gap-x-7 lg:gap-y-12">
-          {items.map((cat, i) => {
-            // 10 categories over 3 columns leaves one card alone on the last row —
-            // centre it so the grid reads as intentional rather than cut off.
-            const loneLast = i === items.length - 1 && items.length % 3 === 1
-            return (
-              <Reveal key={cat.id} delay={i * 45} className={loneLast ? 'lg:col-start-2' : undefined}>
-                <Link
-                  href={cat.slug ? `${lp}/products/${cat.slug}` : `${lp}/products`}
-                  className="group block"
-                >
-                  <div className="relative aspect-[4/3] rounded-[var(--radius-md)] overflow-hidden bg-[var(--color-surface-alt)]">
-                    {cat.image ? (
-                      <MediaImage src={cat.image} alt={cat.name} width={800} height={600} className="absolute inset-0 w-full h-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.06]" loading="lazy" />
-                    ) : (
-                      <div className="absolute inset-0 flex items-center justify-center text-[var(--color-text-secondary)]/30 text-lg font-medium">{cat.name?.slice(0,2)}</div>
-                    )}
-                  </div>
-                  <div className="mt-3.5 flex items-start justify-between gap-3">
-                    <h3 className="text-base lg:text-[17px] font-semibold text-[var(--color-text)] leading-snug group-hover:text-[var(--color-primary)] transition-colors">
-                      {cat.name}
-                    </h3>
-                    <Icon name="arrow-up-right" size={16} className="shrink-0 mt-1 text-[var(--color-accent)] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                  </div>
-                </Link>
-              </Reveal>
-            )
-          })}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-x-5 gap-y-8 lg:gap-x-5 lg:gap-y-10">
+          {items.map((cat, i) => (
+            <Reveal key={cat.id} delay={i * 45}>
+              <Link
+                href={cat.slug ? `${lp}/products/${cat.slug}` : `${lp}/products`}
+                className="group block"
+              >
+                <div className="relative aspect-[4/3] rounded-[var(--radius-md)] overflow-hidden bg-[var(--color-surface-alt)]">
+                  {cat.image ? (
+                    <MediaImage src={cat.image} alt={cat.name} width={800} height={600} className="absolute inset-0 w-full h-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.06]" loading="lazy" />
+                  ) : (
+                    <div className="absolute inset-0 flex items-center justify-center text-[var(--color-text-secondary)]/30 text-lg font-medium">{cat.name?.slice(0,2)}</div>
+                  )}
+                </div>
+                <div className="mt-3 flex items-start justify-between gap-2">
+                  <h3 className="text-[15px] font-semibold text-[var(--color-text)] leading-snug group-hover:text-[var(--color-primary)] transition-colors">
+                    {cat.name}
+                  </h3>
+                  <Icon name="arrow-up-right" size={15} className="shrink-0 mt-0.5 text-[var(--color-accent)] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </div>
+              </Link>
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>
