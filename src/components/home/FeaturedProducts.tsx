@@ -12,9 +12,11 @@ import MediaImage from '@/components/ui/MediaImage'
  */
 export default async function FeaturedProducts({ locale }: { locale: Locale }) {
   const products = await getProducts(locale)
-  const featured = products
-    .filter((p) => p.featured)
-    .slice(0, 10)
+  // 12 cards: featured products first, topped up from the rest of the catalogue.
+  // Only 10 products currently carry `featured: true` — mark two more in the CMS
+  // to control which products fill the last two slots.
+  const featured = [...products.filter((p) => p.featured), ...products.filter((p) => !p.featured)]
+    .slice(0, 12)
     .map((p) => {
       const sub = typeof p.subcategory === 'object' && p.subcategory !== null ? p.subcategory : null
       const cat = sub && typeof sub.category === 'object' && sub.category !== null ? sub.category : null
@@ -53,36 +55,40 @@ export default async function FeaturedProducts({ locale }: { locale: Locale }) {
         </Reveal>
 
         {/*
-          Full-screen product grid — 10 items.
-          lg+ : 5 columns × 2 rows, vertically centred in the space left under the heading.
-          below lg : a single-row horizontal snap rail, so the section still fits one screen.
+          Full-screen product grid — 12 items.
+          lg+ : 4 columns × 3 rows, vertically centred under the heading. Cards are
+                photo-first (name overlaid on the image) so three rows still fit one screen.
+          below lg : a single-row horizontal snap rail.
         */}
-        <div className="flex-1 min-h-0 flex gap-3 overflow-x-auto snap-x snap-mandatory pb-3 lg:grid lg:grid-cols-5 lg:gap-5 lg:overflow-visible lg:pb-0 lg:content-center">
+        <div className="flex-1 min-h-0 flex gap-3 overflow-x-auto snap-x snap-mandatory pb-3 lg:grid lg:grid-cols-4 lg:gap-5 lg:overflow-visible lg:pb-0 lg:content-center">
           {featured.map((p, i) => (
             <Reveal
               key={p.id}
-              delay={(i % 5) * 60}
+              delay={(i % 4) * 60}
               className="w-[46%] shrink-0 sm:w-[31%] md:w-[23%] lg:w-auto lg:shrink h-full"
             >
               <Link
                 href={`/${locale}/products/${p.categorySlug || 'poultry-equipment'}/${p.subcategorySlug}/${p.slug}`}
-                className="card card-hover group flex h-full flex-col overflow-hidden"
+                className="card card-hover group relative block h-full overflow-hidden"
               >
-                <div className="relative aspect-[4/3] bg-[var(--color-muted)] flex items-center justify-center overflow-hidden">
+                <div className="relative aspect-[16/10] bg-[var(--color-muted)] flex items-center justify-center overflow-hidden">
                   {p.image ? (
-                    <MediaImage src={p.image} alt={p.name} width={640} height={480} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                    <MediaImage src={p.image} alt={p.name} width={640} height={400} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                   ) : (
                     <Icon name="box" size={30} className="text-[var(--color-text-secondary)]/30" />
                   )}
-                  <span className="absolute top-2 left-2 bg-[var(--color-primary)] text-white text-[10px] font-semibold uppercase tracking-[0.1em] px-2 py-0.5 rounded-full">
-                    Export-ready
-                  </span>
                 </div>
-                <div className="flex flex-1 flex-col p-3 lg:p-4">
-                  <h3 className="text-[13px] lg:text-sm font-medium text-[var(--color-text)] group-hover:text-[var(--color-primary)] transition-colors leading-snug line-clamp-2">
+                {/* Bottom scrim only — keeps the product photo vivid while the
+                    overlaid caption stays readable. Same treatment as ProductSeriesScreens. */}
+                <div className="absolute inset-x-0 bottom-0 h-3/5 bg-gradient-to-t from-black/85 via-black/45 to-transparent" />
+                <span className="absolute top-3 left-3 bg-[var(--color-primary)] text-white text-[10px] font-semibold uppercase tracking-[0.1em] px-2 py-0.5 rounded-full">
+                  Export-ready
+                </span>
+                <div className="absolute inset-x-0 bottom-0 p-3 lg:p-4">
+                  <h3 className="text-white text-[13px] lg:text-sm font-semibold leading-snug line-clamp-2">
                     {p.name}
                   </h3>
-                  <span className="mt-auto pt-2.5 inline-flex items-center gap-1 text-xs font-semibold text-[var(--color-primary)]">
+                  <span className="mt-1.5 inline-flex items-center gap-1 text-[11px] font-semibold text-white/85">
                     View Details
                     <Icon name="arrow-right" size={12} className="group-hover:translate-x-0.5 transition-transform" />
                   </span>

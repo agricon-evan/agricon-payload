@@ -33,10 +33,10 @@ export default async function ProductCategories({ locale }: Props) {
           description="An integrated equipment ecosystem covering breeding, feeding, housing, processing and daily farm operation."
         />
       </Reveal>
-      {/* 10 个产品分类：桌面端保持宽松 4 列，优先保证产品信息可读性 */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 auto-rows-fr items-stretch gap-6 md:gap-8 mt-10">
+      {/* 10 个产品分类：桌面端 5 列 × 2 行，一屏看全所有产线 */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 auto-rows-fr items-stretch gap-4 md:gap-5 mt-10">
         {items.map((cat, i) => (
-          <Reveal key={cat.id} delay={i * 80} className="h-full">
+          <Reveal key={cat.id} delay={i * 60} className="h-full">
             <Link href={cat.slug ? `${lp}/products/${cat.slug}` : `${lp}/products`} className="card card-hover h-full min-w-0 flex flex-col group overflow-hidden">
               <div className="relative aspect-[4/3] bg-[var(--color-muted)] overflow-hidden">
                 {cat.image ? (
@@ -46,16 +46,15 @@ export default async function ProductCategories({ locale }: Props) {
                 )}
                 {/* Flat photo overlay — {colors.surface-photo-dark}, no gradients per design spec */}
                 <div className="absolute inset-0 bg-black/40" />
-                <span className="absolute bottom-4 left-5 text-xs font-semibold uppercase tracking-[0.14em] text-white/85">Equipment line</span>
+                <span className="absolute bottom-3 left-4 text-[10px] font-semibold uppercase tracking-[0.14em] text-white/85">Equipment line</span>
+                {/* Arrow moved onto the photo so the narrow 5-up column keeps its full text width */}
+                <span className="absolute top-3 right-3 w-7 h-7 shrink-0 rounded-full bg-white/15 border border-white/30 flex items-center justify-center text-white text-xs group-hover:bg-[var(--color-primary)] group-hover:border-[var(--color-primary)] transition-colors" aria-hidden="true">
+                  ↗
+                </span>
               </div>
-              <div className="p-5 md:p-6">
-                <div className="flex items-start justify-between gap-3">
-                  <h3 className="font-semibold text-[var(--color-text)] group-hover:text-[var(--color-primary)] transition-colors">{cat.name}</h3>
-                  <span className="w-8 h-8 shrink-0 aspect-square rounded-full border border-[var(--color-border)] flex items-center justify-center text-[var(--color-primary)] group-hover:bg-[var(--color-primary)] group-hover:text-white group-hover:border-[var(--color-primary)] transition-colors">
-                    <span aria-hidden="true">↗</span>
-                  </span>
-                </div>
-                <p className="mt-2 text-sm text-[var(--color-text-secondary)] leading-relaxed line-clamp-2">{cat.description}</p>
+              <div className="p-4 flex-1 flex flex-col">
+                <h3 className="text-[15px] font-semibold text-[var(--color-text)] group-hover:text-[var(--color-primary)] transition-colors leading-snug line-clamp-2">{cat.name}</h3>
+                <p className="mt-1.5 text-xs text-[var(--color-text-secondary)] leading-relaxed line-clamp-2">{cat.description}</p>
               </div>
             </Link>
           </Reveal>
