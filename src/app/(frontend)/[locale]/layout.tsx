@@ -8,6 +8,17 @@ import Newsletter from '@/components/Newsletter'
 import FloatingActions from '@/components/FloatingActions'
 import { getSiteSettings } from '@/lib/payload'
 
+// Skip-link label per locale. Kept here rather than in the i18n bundle: it is
+// assistive-tech chrome and never appears in the visible UI.
+const SKIP_TO_CONTENT: Record<string, string> = {
+  en: 'Skip to content',
+  ru: 'Перейти к содержимому',
+  fr: 'Aller au contenu',
+  es: 'Ir al contenido',
+  sw: 'Nenda kwenye maudhui',
+  ar: 'تخطَّ إلى المحتوى',
+}
+
 interface Props {
   children: React.ReactNode
   params: Promise<{ locale: string }>
@@ -98,6 +109,18 @@ export default async function LocaleLayout({ children, params }: Props) {
 
   return (
     <>
+      {/* Skip link (WCAG 2.4.1) — first focusable element, off-screen until focused.
+          Deliberately OUTSIDE the .page-enter wrapper: that wrapper's entry animation
+          sets a transform, which makes it a containing block and neutralises `fixed`.
+          Parked above the viewport with a transform (not sr-only — its `position: static`
+          would override `fixed`). */}
+      <a
+        href="#main-content"
+        dir={dir}
+        className="fixed top-4 start-4 z-[999] -translate-y-24 focus:translate-y-0 transition-transform bg-[var(--color-primary)] text-white font-semibold px-5 py-3 rounded-md"
+      >
+        {SKIP_TO_CONTENT[locale] || SKIP_TO_CONTENT.en}
+      </a>
       <div lang={locale} dir={dir} className="min-h-screen flex flex-col bg-[var(--color-bg)] text-[var(--color-text)] antialiased page-enter">
         <Header locale={locale as Locale} />
         <main id="main-content" className="flex-1">
