@@ -8,6 +8,8 @@ import Reveal from '@/components/ui/Reveal'
 import Icon from '@/components/ui/Icon'
 import { caseStudyImages, caseStudyGalleries } from '@/lib/images'
 import MediaImage from '@/components/ui/MediaImage'
+import type { Metadata } from 'next'
+import { pageMetadata } from '@/lib/seo'
 
 interface Props {
   params: Promise<{ locale: string }>
@@ -37,6 +39,15 @@ function countryName(country: unknown, location?: string | null): string {
     return String(country.name || location || '')
   }
   return String(country || location || '')
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params
+  return pageMetadata(locale as Locale, {
+    path: '/case-studies',
+    title: "Case Studies",
+    description: "Real installations: how farms specified, ordered and commissioned Agricon poultry, livestock and machinery lines.",
+  })
 }
 
 export default async function CaseStudiesPage({ params }: Props) {
