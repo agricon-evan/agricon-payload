@@ -3,10 +3,22 @@ import { getTranslations } from '@/i18n/config'
 import { getSiteSettings, getCountries, getProducts } from '@/lib/payload'
 import ContactForm from '@/components/ContactForm'
 import MediaImage from '@/components/ui/MediaImage'
+import type { Metadata } from 'next'
+import { pageMetadata } from '@/lib/seo'
 
 interface Props {
   params: Promise<{ locale: string }>
   searchParams: Promise<{ product?: string }>
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params
+  return pageMetadata(locale as Locale, {
+    namespace: 'contact',
+    path: '/contact',
+    title: "Contact Us",
+    description: "Send an enquiry about poultry, livestock or farm machinery. Our export team replies within one business day.",
+  })
 }
 
 export default async function ContactPage({ params, searchParams }: Props) {

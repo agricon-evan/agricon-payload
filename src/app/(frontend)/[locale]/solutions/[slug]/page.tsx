@@ -9,6 +9,8 @@ import SectionHeading from '@/components/ui/SectionHeading'
 import { caseStudyImages } from '@/lib/images'
 import type { Product } from '@/payload-types'
 import { notFound } from 'next/navigation'
+import type { Metadata } from 'next'
+import { localizedAlternates } from '@/lib/seo'
 
 interface Props {
   params: Promise<{ locale: string; slug: string }>
@@ -78,6 +80,21 @@ const SOLUTION_IMAGE: Record<string, string> = {
 }
 
 export const dynamic = 'force-dynamic'
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale, slug } = await params
+  const solutions = await getSolutions(locale)
+  const solution = solutions.find((s) => s.slug === slug)
+  const raw = (solution as { description?: unknown } | undefined)?.description
+  return {
+    title: (solution as { name?: string } | undefined)?.name || 'Farm Solutions',
+    description:
+      typeof raw === 'string' && raw.trim().length > 0
+        ? raw.trim()
+        : 'Turnkey farm solutions from Agricon — planned, supplied and commissioned end to end.',
+    alternates: localizedAlternates(locale as Locale, `/solutions/${slug}`),
+  }
+}
 
 export default async function SolutionDetailPage({ params }: Props) {
   const { locale, slug } = await params

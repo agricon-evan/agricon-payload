@@ -6,9 +6,21 @@ import CtaSection from '@/components/CtaSection'
 import SectionHeading from '@/components/ui/SectionHeading'
 import Reveal from '@/components/ui/Reveal'
 import Icon from '@/components/ui/Icon'
+import type { Metadata } from 'next'
+import { pageMetadata } from '@/lib/seo'
 
 interface Props {
   params: Promise<{ locale: string }>
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params
+  return pageMetadata(locale as Locale, {
+    namespace: 'distributors',
+    path: '/distributors',
+    title: "Become a Distributor",
+    description: "Partner with Agricon as a regional distributor — territory support, marketing material, inventory and sales training.",
+  })
 }
 
 export default async function DistributorsPage({ params }: Props) {

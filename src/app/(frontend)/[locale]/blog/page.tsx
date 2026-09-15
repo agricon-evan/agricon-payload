@@ -8,12 +8,23 @@ import Reveal from '@/components/ui/Reveal'
 import Icon from '@/components/ui/Icon'
 import MediaImage from '@/components/ui/MediaImage'
 import { FALLBACK_ARTICLES } from '@/lib/blog-fallback'
+import type { Metadata } from 'next'
+import { pageMetadata } from '@/lib/seo'
 
 interface Props {
   params: Promise<{ locale: string }>
 }
 
 export const dynamic = 'force-dynamic'
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params
+  return pageMetadata(locale as Locale, {
+    path: '/blog',
+    title: "Blog",
+    description: "Guides and field notes on poultry housing, livestock systems, feed processing and choosing the right farm equipment.",
+  })
+}
 
 export default async function BlogPage({ params }: Props) {
   const { locale } = await params

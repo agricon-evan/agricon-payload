@@ -8,6 +8,8 @@ import Reveal from '@/components/ui/Reveal'
 import Icon from '@/components/ui/Icon'
 import MediaImage from '@/components/ui/MediaImage'
 import { categoryImages } from '@/lib/images'
+import type { Metadata } from 'next'
+import { pageMetadata } from '@/lib/seo'
 
 interface Props {
   params: Promise<{ locale: string }>
@@ -23,6 +25,15 @@ const SOLUTION_IMAGE: Record<string, string> = {
   'feed-processing': categoryImages['agriculture-machinery'],
   'breeding-house': categoryImages['breeding-house-equipment'],
   'farm-machinery': categoryImages['farming-vehicles'],
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params
+  return pageMetadata(locale as Locale, {
+    path: '/solutions',
+    title: "Farm Solutions",
+    description: "Turnkey farm solutions — poultry houses, livestock sheds, feed lines and processing setups, planned end to end.",
+  })
 }
 
 export default async function SolutionsPage({ params }: Props) {

@@ -1,9 +1,21 @@
 import type { Locale } from '@/i18n/config'
 import { getTranslations } from '@/i18n/config'
 import Icon from '@/components/ui/Icon'
+import type { Metadata } from 'next'
+import { pageMetadata } from '@/lib/seo'
 
 interface Props {
   params: Promise<{ locale: string }>
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params
+  return pageMetadata(locale as Locale, {
+    namespace: 'privacy',
+    path: '/privacy',
+    title: "Privacy Policy",
+    description: "How Agricon collects, uses, stores and protects the personal information you submit through this website.",
+  })
 }
 
 export default async function PrivacyPage({ params }: Props) {

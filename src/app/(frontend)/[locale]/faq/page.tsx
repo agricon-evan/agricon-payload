@@ -7,12 +7,24 @@ import Reveal from '@/components/ui/Reveal'
 import Icon from '@/components/ui/Icon'
 import { RichText } from '@payloadcms/richtext-lexical/react'
 import Link from 'next/link'
+import type { Metadata } from 'next'
+import { pageMetadata } from '@/lib/seo'
 
 interface Props {
   params: Promise<{ locale: string }>
 }
 
 export const dynamic = 'force-dynamic'
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params
+  return pageMetadata(locale as Locale, {
+    namespace: 'faq',
+    path: '/faq',
+    title: "Frequently Asked Questions",
+    description: "Answers on MOQ, lead times, shipping, payment terms, spare parts and after-sales support for Agricon equipment.",
+  })
+}
 
 export default async function FaqPage({ params }: Props) {
   const { locale } = await params

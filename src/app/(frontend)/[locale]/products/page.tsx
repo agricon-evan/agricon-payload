@@ -8,12 +8,24 @@ import Reveal from '@/components/ui/Reveal'
 import Icon from '@/components/ui/Icon'
 import { categoryImages } from '@/lib/images'
 import MediaImage from '@/components/ui/MediaImage'
+import type { Metadata } from 'next'
+import { pageMetadata } from '@/lib/seo'
 
 interface Props {
   params: Promise<{ locale: string }>
 }
 
 export const dynamic = 'force-dynamic'
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params
+  return pageMetadata(locale as Locale, {
+    path: '/products',
+    title: 'Products',
+    description:
+      'Browse Agricon poultry, livestock, aquaculture and farm machinery lines — cages, feeding systems, incubators, processing equipment and more.',
+  })
+}
 
 export default async function ProductsPage({ params }: Props) {
   const { locale } = await params

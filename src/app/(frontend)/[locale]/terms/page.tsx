@@ -1,9 +1,21 @@
 import type { Locale } from '@/i18n/config'
 import { getTranslations } from '@/i18n/config'
 import Icon from '@/components/ui/Icon'
+import type { Metadata } from 'next'
+import { pageMetadata } from '@/lib/seo'
 
 interface Props {
   params: Promise<{ locale: string }>
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params
+  return pageMetadata(locale as Locale, {
+    namespace: 'terms',
+    path: '/terms',
+    title: "Terms of Service",
+    description: "The terms that govern use of the Agricon website, quotations, orders and the supply of farm equipment.",
+  })
 }
 
 export default async function TermsPage({ params }: Props) {

@@ -9,12 +9,26 @@ import MediaImage from '@/components/ui/MediaImage'
 import BlogToc from '@/components/BlogToc'
 import { buildHeadingIds } from '@/lib/slugify'
 import { notFound } from 'next/navigation'
+import type { Metadata } from 'next'
+import { localizedAlternates } from '@/lib/seo'
 
 interface Props {
   params: Promise<{ locale: string; slug: string }>
 }
 
 export const dynamic = 'force-dynamic'
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale, slug } = await params
+  const posts = await getBlogPosts(locale)
+  const post = posts.find((p) => p.slug === slug)
+  const fallback = post ? null : getFallbackArticle(slug)
+  return {
+    title: post?.title || fallback?.title || 'Blog',
+    description: post?.excerpt || fallback?.excerpt || 'Guides and field notes from Agricon.',
+    alternates: localizedAlternates(locale as Locale, `/blog/${slug}`),
+  }
+}
 
 export default async function BlogPostPage({ params }: Props) {
   const { locale, slug } = await params

@@ -10,6 +10,8 @@ import { notFound } from 'next/navigation'
 import { caseStudyImages, caseStudyGalleries } from '@/lib/images'
 import MediaImage from '@/components/ui/MediaImage'
 import ImageGallery from '@/components/ui/ImageGallery'
+import type { Metadata } from 'next'
+import { localizedAlternates } from '@/lib/seo'
 
 interface Props {
   params: Promise<{ locale: string; slug: string }>
@@ -22,6 +24,25 @@ function countryName(country: unknown, location?: string | null): string {
     return String(country.name || location || '—')
   }
   return String(country || location || '—')
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale, slug } = await params
+  const cases = await getCaseStudies(locale)
+  const cs = cases.find((item) => item.slug === slug)
+  const summary = (cs as { summary?: unknown } | undefined)?.summary
+  const subtitle = (cs as { subtitle?: unknown } | undefined)?.subtitle
+  const desc =
+    typeof summary === 'string' && summary.trim().length > 0
+      ? summary.trim()
+      : typeof subtitle === 'string' && subtitle.trim().length > 0
+        ? subtitle.trim()
+        : 'How farms specified, ordered and commissioned Agricon equipment.'
+  return {
+    title: (cs as { title?: string } | undefined)?.title || 'Case Studies',
+    description: desc,
+    alternates: localizedAlternates(locale as Locale, `/case-studies/${slug}`),
+  }
 }
 
 export default async function CaseStudyDetailPage({ params }: Props) {

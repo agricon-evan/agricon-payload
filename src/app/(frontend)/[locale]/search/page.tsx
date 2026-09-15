@@ -1,9 +1,21 @@
 import type { Locale } from '@/i18n/config'
 import { getTranslations } from '@/i18n/config'
 import SearchForm from '@/components/SearchForm'
+import type { Metadata } from 'next'
+import { pageMetadata } from '@/lib/seo'
 
 interface Props {
   params: Promise<{ locale: string }>
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params
+  return pageMetadata(locale as Locale, {
+    namespace: 'search',
+    path: '/search',
+    title: "Search",
+    description: "Search Agricon products, solutions and guides to find the right equipment for your farm.",
+  })
 }
 
 export default async function SearchPage({ params }: Props) {

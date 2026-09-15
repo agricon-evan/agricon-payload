@@ -7,9 +7,21 @@ import SectionHeading from '@/components/ui/SectionHeading'
 import Reveal from '@/components/ui/Reveal'
 import Icon from '@/components/ui/Icon'
 import MediaImage from '@/components/ui/MediaImage'
+import type { Metadata } from 'next'
+import { pageMetadata } from '@/lib/seo'
 
 interface Props {
   params: Promise<{ locale: string }>
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params
+  return pageMetadata(locale as Locale, {
+    namespace: 'trade-support',
+    path: '/trade-support',
+    title: "Trade Support",
+    description: "Documentation, inspection, logistics and after-sales support for international buyers of Agricon farm equipment.",
+  })
 }
 
 export default async function TradeSupportPage({ params }: Props) {

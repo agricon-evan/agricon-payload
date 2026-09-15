@@ -1,5 +1,7 @@
+import type { Metadata } from 'next'
 import type { Locale } from '@/i18n/config'
 import { getTranslations } from '@/i18n/config'
+import { pageMetadata } from '@/lib/seo'
 import { getSiteSettings } from '@/lib/payload'
 import { resolvePageHeroImage } from '@/lib/payload'
 import PageHero from '@/components/PageHero'
@@ -34,6 +36,16 @@ const ECOSYSTEM_PHOTOS = [
 
 interface Props {
   params: Promise<{ locale: string }>
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params
+  return pageMetadata(locale as Locale, {
+    path: '/about',
+    title: 'About Us',
+    description:
+      'Agricon supplies poultry, livestock and farm machinery to commercial farms worldwide. See how we work, what we build and who you deal with.',
+  })
 }
 
 export default async function AboutPage({ params }: Props) {
