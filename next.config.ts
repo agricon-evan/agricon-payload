@@ -36,15 +36,19 @@ const securityHeaders = [
   // NOTE: 'unsafe-inline' / 'unsafe-eval' are required because the Payload
   // admin panel relies on inline scripts. Tighten (e.g. add nonces) only after
   // verifying the admin UI still works with a stricter policy.
+  //
+  // va.vercel-scripts.com / vitals.vercel-insights.com are required by
+  // @vercel/analytics and @vercel/speed-insights — without them the CSP blocks
+  // the scripts and no analytics is ever reported.
   {
     key: 'Content-Security-Policy',
     value: [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com",
       "style-src 'self' 'unsafe-inline'",
       "img-src 'self' data: blob: https:",
       "font-src 'self' data:",
-      "connect-src 'self'",
+      "connect-src 'self' https://va.vercel-scripts.com https://vitals.vercel-insights.com",
       "frame-ancestors 'none'",
       "base-uri 'self'",
       "form-action 'self'",
