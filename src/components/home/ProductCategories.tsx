@@ -5,6 +5,7 @@ import { getTranslations } from '@/i18n/config'
 import Reveal from '@/components/ui/Reveal'
 import SectionHeading from '@/components/ui/SectionHeading'
 import Icon from '@/components/ui/Icon'
+import ScrollRail from '@/components/ui/ScrollRail'
 import { categoryImages } from '@/lib/images'
 import MediaImage from '@/components/ui/MediaImage'
 
@@ -37,20 +38,20 @@ export default async function ProductCategories({ locale }: Props) {
         </Reveal>
 
         {/*
-          10 categories — 5 across on desktop, 2 rows.
-          Big square photos with a single-line name underneath: photo-led, minimal text.
-          No overlay of any kind, so the product shots stay untouched.
+          Horizontal gallery — same treatment as the Best-Selling band below it, so the
+          two product sections read as one system. Cards get 360px each instead of the
+          230px a 5-up grid allowed, and the next card peeks in to signal more.
         */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-x-4 gap-y-8 lg:gap-x-5 lg:gap-y-10">
+        <ScrollRail label="Complete farm equipment lines">
           {items.map((cat, i) => (
-            <Reveal key={cat.id} delay={i * 45}>
+            <Reveal key={cat.id} delay={i * 45} className="snap-start shrink-0 w-[280px] sm:w-[320px] lg:w-[360px]">
               <Link
                 href={cat.slug ? `${lp}/products/${cat.slug}` : `${lp}/products`}
                 className="group block"
               >
-                <div className="relative aspect-square rounded-[var(--radius-md)] overflow-hidden bg-[var(--color-surface-alt)]">
+                <div className="relative aspect-[4/3] rounded-[var(--radius-md)] overflow-hidden bg-[var(--color-surface-alt)]">
                   {cat.image ? (
-                    <MediaImage src={cat.image} alt={cat.name} width={800} height={800} className="absolute inset-0 w-full h-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.06]" loading="lazy" />
+                    <MediaImage src={cat.image} alt={cat.name} width={800} height={600} className="absolute inset-0 w-full h-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.06]" loading="lazy" />
                   ) : (
                     <div className="absolute inset-0 flex items-center justify-center text-[var(--color-text-secondary)]/30 text-lg font-medium">{cat.name?.slice(0,2)}</div>
                   )}
@@ -64,7 +65,7 @@ export default async function ProductCategories({ locale }: Props) {
               </Link>
             </Reveal>
           ))}
-        </div>
+        </ScrollRail>
       </div>
     </section>
   )
