@@ -33,7 +33,9 @@ export default async function FeaturedProducts({ locale }: { locale: Locale }) {
         moq: p.moq || null,
         price: p.price || null,
         categorySlug: cat?.slug || '',
+        categoryName: (cat as { name?: string } | null)?.name || '',
         subcategorySlug: sub?.slug || '',
+        subcategoryName: (sub as { name?: string } | null)?.name || '',
         image: cover,
       }
     })
@@ -54,26 +56,39 @@ export default async function FeaturedProducts({ locale }: { locale: Locale }) {
 
         {/*
           12 products — 4 across on desktop, 3 rows.
-          Big square photos with just the product name underneath: photo-led, minimal text.
-          No overlay of any kind, so the product shots stay untouched.
+          Ranked treatment: a 01–12 index (top three in the accent colour) plus a category
+          eyebrow, so the band reads as an actual best-seller ranking rather than a plain
+          product grid. Photos stay untouched — nothing is ever overlaid on them.
         */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-8 lg:gap-x-5 lg:gap-y-10">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-5 gap-y-9 lg:gap-x-6 lg:gap-y-11">
           {featured.map((p, i) => (
             <Reveal key={p.id} delay={i * 45}>
               <Link
                 href={`/${locale}/products/${p.categorySlug || 'poultry-equipment'}/${p.subcategorySlug}/${p.slug}`}
                 className="group block"
               >
-                <div className="relative aspect-square rounded-[var(--radius-md)] overflow-hidden bg-[var(--color-surface-alt)]">
+                <div className="relative aspect-[4/3] rounded-[var(--radius-md)] overflow-hidden bg-[var(--color-surface-alt)]">
                   {p.image ? (
-                    <MediaImage src={p.image} alt={p.name} width={800} height={800} loading="lazy" className="absolute inset-0 w-full h-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.06]" />
+                    <MediaImage src={p.image} alt={p.name} width={800} height={600} loading="lazy" className="absolute inset-0 w-full h-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.06]" />
                   ) : (
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <Icon name="box" size={34} className="text-[var(--color-text-secondary)]/30" />
+                      <Icon name="box" size={30} className="text-[var(--color-text-secondary)]/30" />
                     </div>
                   )}
                 </div>
-                <div className="mt-3 flex items-start justify-between gap-2">
+                {/* Ranked eyebrow */}
+                <p className="mt-3 text-[11px] font-semibold uppercase tracking-[0.14em] leading-none">
+                  <span className={i < 3 ? 'text-[var(--color-accent)]' : 'text-[var(--color-text-muted)]'}>
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  {p.categoryName ? (
+                    <>
+                      <span className="mx-1.5 text-[var(--color-border)]">·</span>
+                      <span className="text-[var(--color-primary-light)]">{p.categoryName}</span>
+                    </>
+                  ) : null}
+                </p>
+                <div className="mt-1.5 flex items-start justify-between gap-2">
                   <h3 className="text-[15px] font-semibold text-[var(--color-text)] leading-snug group-hover:text-[var(--color-primary)] transition-colors">
                     {p.name}
                   </h3>
