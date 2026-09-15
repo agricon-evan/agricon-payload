@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { getTranslations, locales, type Locale } from '@/i18n/config'
 
 /** 站点规范域名（与 sitemap.ts 保持一致） */
-export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.agricon.com').replace(/\/$/, '')
+export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.agricon.cn').replace(/\/$/, '')
 
 /**
  * 生成当前页面的 hreflang 与 canonical。

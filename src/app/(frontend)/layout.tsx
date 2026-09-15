@@ -6,6 +6,7 @@ import { Outfit, Noto_Sans } from 'next/font/google'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { Analytics } from '@vercel/analytics/next'
 import { locales, isRtl } from '@/i18n/config'
+import { SITE_URL } from '@/lib/seo'
 
 // Display: Outfit (per system design). Body: Noto Sans (MiSans web substitute, covers latin/cyrillic/greek for all 6 locales)
 const outfit = Outfit({ subsets: ['latin'], variable: '--font-display', display: 'swap' })
@@ -17,7 +18,8 @@ const noto = Noto_Sans({
 
 export const metadata: Metadata = {
   applicationName: 'Agricon',
-  metadataBase: new URL('https://www.agricon.com'),
+  // 跟随 NEXT_PUBLIC_SITE_URL（此前写死 https://www.agricon.com，与真实域名 .cn 不符）
+  metadataBase: new URL(SITE_URL),
   formatDetection: { telephone: false },
 }
 
