@@ -25,40 +25,57 @@ export default async function ProductCategories({ locale }: Props) {
     : fallbackCategories
 
   return (
-    <section className="max-w-7xl mx-auto px-6 py-20 md:py-28">
-      <Reveal>
-        <SectionHeading
-          eyebrow={t.nav?.products || 'Products'}
-          title={<>Complete Farm <span className="split-accent">Equipment Lines</span></>}
-          description="An integrated equipment ecosystem covering breeding, feeding, housing, processing and daily farm operation."
-        />
-      </Reveal>
-      {/* 10 个产品分类：桌面端 5 列 × 2 行，一屏看全所有产线 */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 auto-rows-fr items-stretch gap-4 md:gap-5 mt-10">
-        {items.map((cat, i) => (
-          <Reveal key={cat.id} delay={i * 60} className="h-full">
-            <Link href={cat.slug ? `${lp}/products/${cat.slug}` : `${lp}/products`} className="card card-hover h-full min-w-0 flex flex-col group overflow-hidden">
-              <div className="relative aspect-[4/3] bg-[var(--color-muted)] overflow-hidden">
-                {cat.image ? (
-                  <MediaImage src={cat.image} alt={cat.name} width={800} height={600} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center text-[var(--color-text-secondary)]/30 text-lg font-medium">{cat.name?.slice(0,2)}</div>
-                )}
-                {/* Flat photo overlay — {colors.surface-photo-dark}, no gradients per design spec */}
-                <div className="absolute inset-0 bg-black/40" />
-                <span className="absolute bottom-3 left-4 text-[10px] font-semibold uppercase tracking-[0.14em] text-white/85">Equipment line</span>
-                {/* Arrow moved onto the photo so the narrow 5-up column keeps its full text width */}
-                <span className="absolute top-3 right-3 w-7 h-7 shrink-0 rounded-full bg-white/15 border border-white/30 flex items-center justify-center text-white text-xs group-hover:bg-[var(--color-primary)] group-hover:border-[var(--color-primary)] transition-colors" aria-hidden="true">
-                  ↗
-                </span>
-              </div>
-              <div className="p-4 flex-1 flex flex-col">
-                <h3 className="text-[15px] font-semibold text-[var(--color-text)] group-hover:text-[var(--color-primary)] transition-colors leading-snug line-clamp-2">{cat.name}</h3>
-                <p className="mt-1.5 text-xs text-[var(--color-text-secondary)] leading-relaxed line-clamp-2">{cat.description}</p>
-              </div>
-            </Link>
-          </Reveal>
-        ))}
+    <section className="snap-start snap-always min-h-[100dvh] lg:h-screen bg-[var(--color-bg)] pt-[72px] flex">
+      <div className="w-full max-w-7xl mx-auto px-6 flex flex-col py-5 lg:py-7 lg:h-[calc(100vh-72px)]">
+        <Reveal className="shrink-0">
+          <SectionHeading
+            className="!mb-5 lg:!mb-6"
+            eyebrow={t.nav?.products || 'Products'}
+            title={<>Complete Farm <span className="split-accent">Equipment Lines</span></>}
+            description="An integrated equipment ecosystem covering breeding, feeding, housing, processing and daily farm operation."
+          />
+        </Reveal>
+
+        {/*
+          Full-screen grid — 10 categories in 5 columns × 2 rows.
+          Rows are sized with `grid-rows-2` + `1fr` so the two rows always split the
+          space left under the heading exactly; each card lets the photo flex to fill
+          whatever the caption doesn't use. Result: no photo overlay is needed at all,
+          and the section is exactly one screen at any text length.
+        */}
+        <div className="flex-1 min-h-0 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 lg:grid-rows-2 gap-3 md:gap-4">
+          {items.map((cat, i) => (
+            <Reveal key={cat.id} delay={i * 50} className="h-full min-h-0">
+              <Link
+                href={cat.slug ? `${lp}/products/${cat.slug}` : `${lp}/products`}
+                className="card card-hover h-full min-h-0 min-w-0 flex flex-col group overflow-hidden"
+              >
+                {/* Clean photo — no scrim, no darkening */}
+                <div className="relative flex-1 min-h-0 bg-[var(--color-muted)] overflow-hidden">
+                  {cat.image ? (
+                    <MediaImage src={cat.image} alt={cat.name} width={800} height={600} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+                  ) : (
+                    <div className="absolute inset-0 flex items-center justify-center text-[var(--color-text-secondary)]/30 text-lg font-medium">{cat.name?.slice(0,2)}</div>
+                  )}
+                </div>
+                {/* Caption sits below the photo, so nothing ever tints the image */}
+                <div className="shrink-0 px-3 lg:px-4 pt-3 pb-3.5">
+                  <div className="flex items-start justify-between gap-2">
+                    <h3 className="text-[14px] lg:text-[15px] font-semibold text-[var(--color-text)] group-hover:text-[var(--color-primary)] transition-colors leading-snug line-clamp-2">
+                      {cat.name}
+                    </h3>
+                    <span className="shrink-0 mt-0.5 text-[var(--color-primary)] text-sm leading-none transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true">
+                      ↗
+                    </span>
+                  </div>
+                  <p className="mt-1 text-[11px] lg:text-xs text-[var(--color-text-secondary)] leading-relaxed line-clamp-2">
+                    {cat.description}
+                  </p>
+                </div>
+              </Link>
+            </Reveal>
+          ))}
+        </div>
       </div>
     </section>
   )
