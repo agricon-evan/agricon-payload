@@ -80,7 +80,7 @@ export default async function FeaturedProducts({ locale }: { locale: Locale }) {
                 </div>
                 {/* Ranked eyebrow */}
                 <p className="mt-3 text-[11px] font-semibold uppercase tracking-[0.14em] leading-none">
-                  <span className={i < 3 ? 'text-[var(--color-accent)]' : 'text-[var(--color-text-muted)]'}>
+                  <span className={i < 3 ? 'text-[var(--color-accent)]' : 'text-[var(--color-primary-light)]'}>
                     {String(i + 1).padStart(2, '0')}
                   </span>
                   {p.categoryName ? (

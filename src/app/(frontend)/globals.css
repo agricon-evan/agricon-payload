@@ -119,10 +119,15 @@
     font-weight: 400;
   }
 
-  /* Typography — {typography.*} adapted to web; display uses Outfit */
+  /* Typography — {typography.*} adapted to web; display uses Outfit.
+     NOTE: deliberately NO `color` here. A hard `color: var(--color-text)` used to
+     live on this rule, which silently beat the inherited `text-white` of any
+     heading inside a dark panel (a direct rule always wins over inheritance) —
+     that made the contact hero h1 near-invisible on its dark-green background.
+     `body` already sets the default ink colour, so headings inherit correctly
+     everywhere, including inside brand-coloured panels. */
   h1, h2, h3, h4 {
     font-family: var(--font-display);
-    color: var(--color-text);
   }
   h1 { font-size: 1.9rem; line-height: 1.08; font-weight: 700; letter-spacing: -0.015em; }
   h2 { font-size: 1.5rem; line-height: 1.12; font-weight: 700; letter-spacing: -0.01em; }
