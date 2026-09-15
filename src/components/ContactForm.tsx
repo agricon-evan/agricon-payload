@@ -96,36 +96,39 @@ export default function ContactForm(props: ContactFormProps) {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium mb-1.5">{t.contactName} *</label>
-              <input required value={form.name} onChange={update('name')} className={fieldClass} placeholder={t.contactName} />
+              <label htmlFor="contact-name" className="block text-sm font-medium mb-1.5">{t.contactName} *</label>
+              <input id="contact-name" required value={form.name} onChange={update('name')} className={fieldClass} placeholder={t.contactName} />
             </div>
             <div>
-              <label className="block text-sm font-medium mb-1.5">{t.emailAddress} *</label>
-              <input required type="email" value={form.email} onChange={update('email')} className={fieldClass} placeholder="you@company.com" />
+              <label htmlFor="contact-email" className="block text-sm font-medium mb-1.5">{t.emailAddress} *</label>
+              <input id="contact-email" required type="email" value={form.email} onChange={update('email')} className={fieldClass} placeholder="you@company.com" />
             </div>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium mb-1.5">{t.companyName}</label>
-              <input value={form.company} onChange={update('company')} className={fieldClass} placeholder={t.companyName} />
+              <label htmlFor="contact-company" className="block text-sm font-medium mb-1.5">{t.companyName}</label>
+              <input id="contact-company" value={form.company} onChange={update('company')} className={fieldClass} placeholder={t.companyName} />
             </div>
             <div>
-              <label className="block text-sm font-medium mb-1.5">{t.country}</label>
-              <select value={form.country} onChange={update('country')} className={fieldClass}>
+              <label htmlFor="contact-country" className="block text-sm font-medium mb-1.5">{t.country}</label>
+              <select id="contact-country" value={form.country} onChange={update('country')} className={fieldClass}>
                 <option value="">{t.selectCountry}</option>
                 {countries.map(c => <option key={c} value={c}>{c}</option>)}
               </select>
             </div>
           </div>
           <div>
-            <label className="block text-sm font-medium mb-1.5">Phone</label>
-            <input type="tel" value={form.phone} onChange={update('phone')} className={fieldClass} placeholder="+86 000 000 0000" />
+            <label htmlFor="contact-phone" className="block text-sm font-medium mb-1.5">Phone</label>
+            <input id="contact-phone" type="tel" value={form.phone} onChange={update('phone')} className={fieldClass} placeholder="+86 000 000 0000" />
           </div>
           <div>
-            <label className="block text-sm font-medium mb-2">{t.interestedProducts}</label>
-            <div className="flex flex-wrap gap-2">
+            {/* Button group, not a labelled control — use a group + toggle semantics
+                instead of a <label> (which would have nothing to point at). */}
+            <span id="contact-interests-label" className="block text-sm font-medium mb-2">{t.interestedProducts}</span>
+            <div role="group" aria-labelledby="contact-interests-label" className="flex flex-wrap gap-2">
               {productOptions.map(p => (
                 <button key={p} type="button" onClick={() => toggleInterest(p)}
+                  aria-pressed={interest.includes(p)}
                   className={`px-3.5 py-2 rounded-md text-sm border min-h-[40px] tap-target transition-colors ${
                     interest.includes(p)
                       ? 'bg-[var(--color-primary)] border-[var(--color-primary)] text-white font-medium'
@@ -137,8 +140,8 @@ export default function ContactForm(props: ContactFormProps) {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div>
-              <label className="block text-sm font-medium mb-1.5">Application</label>
-              <select value={form.application} onChange={update('application')} className={fieldClass}>
+              <label htmlFor="contact-application" className="block text-sm font-medium mb-1.5">Application</label>
+              <select id="contact-application" value={form.application} onChange={update('application')} className={fieldClass}>
                 <option value="">Select...</option>
                 <option>Layer (egg) farm</option>
                 <option>Broiler farm</option>
@@ -151,8 +154,8 @@ export default function ContactForm(props: ContactFormProps) {
               </select>
             </div>
             <div>
-              <label className="block text-sm font-medium mb-1.5">Current Setup</label>
-              <select value={form.currentSetup} onChange={update('currentSetup')} className={fieldClass}>
+              <label htmlFor="contact-current-setup" className="block text-sm font-medium mb-1.5">Current Setup</label>
+              <select id="contact-current-setup" value={form.currentSetup} onChange={update('currentSetup')} className={fieldClass}>
                 <option value="">Select...</option>
                 <option>New project</option>
                 <option>Replacing old equipment</option>
@@ -162,8 +165,8 @@ export default function ContactForm(props: ContactFormProps) {
               </select>
             </div>
             <div>
-              <label className="block text-sm font-medium mb-1.5">Purchase Type</label>
-              <select value={form.purchaseType} onChange={update('purchaseType')} className={fieldClass}>
+              <label htmlFor="contact-purchase-type" className="block text-sm font-medium mb-1.5">Purchase Type</label>
+              <select id="contact-purchase-type" value={form.purchaseType} onChange={update('purchaseType')} className={fieldClass}>
                 <option value="">Select...</option>
                 <option>Need a quote for comparison</option>
                 <option>Ready to order</option>
@@ -173,8 +176,8 @@ export default function ContactForm(props: ContactFormProps) {
             </div>
           </div>
           <div>
-            <label className="block text-sm font-medium mb-1.5">{t.message} *</label>
-            <textarea required rows={5} value={form.message} onChange={update('message')} className={`${fieldClass} resize-y`} placeholder={t.messagePlaceholder} />
+            <label htmlFor="contact-message" className="block text-sm font-medium mb-1.5">{t.message} *</label>
+            <textarea id="contact-message" required rows={5} value={form.message} onChange={update('message')} className={`${fieldClass} resize-y`} placeholder={t.messagePlaceholder} />
           </div>
           {status === 'success' && (
             <div className="p-5 bg-[var(--color-primary)]/6 border border-[var(--color-primary)]/20 rounded-md text-[var(--color-primary)]">

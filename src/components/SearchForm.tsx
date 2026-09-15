@@ -66,7 +66,7 @@ function SearchContent(props: SearchPageProps) {
       }}>
         <div className="relative flex-1">
           <Icon name="search" size={17} className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--color-text-secondary)]" />
-          <input value={query} onChange={e => setQuery(e.target.value)} placeholder={searchPlaceholder}
+          <input value={query} onChange={e => setQuery(e.target.value)} placeholder={searchPlaceholder} aria-label={searchPlaceholder || searchTitle}
             className="w-full pl-11 pr-4 py-3 bg-[var(--color-surface)] border border-[var(--color-border)] rounded-md min-h-[48px] text-[var(--color-text)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]" />
         </div>
         <button type="submit" className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-[var(--color-primary)] text-white font-semibold rounded-md min-h-[48px] press tap-target transition-colors hover:bg-[var(--color-primary-dark)]">
