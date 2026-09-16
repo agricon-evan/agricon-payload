@@ -138,26 +138,29 @@ export default async function SolutionDetailPage({ params }: Props) {
       <section className="max-w-7xl mx-auto px-6 py-14 md:py-20">
         {/* Scope — {component.info-card} + orange bullets */}
         {features.length > 0 && (
-          <div>
+          <div className="grid gap-10 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.35fr)] lg:gap-16">
             <Reveal>
-              <SectionHeading
-                align="left"
-                eyebrow="Solution Scope"
-                title={<>What This Solution <span className="split-accent">Covers</span></>}
-              />
+              <div className="lg:sticky lg:top-28">
+                <SectionHeading
+                  align="left"
+                  eyebrow="Solution Scope"
+                  title={<>What This Solution <span className="split-accent">Covers</span></>}
+                  description="Everything this package includes — from the first site survey through to commissioning."
+                />
+              </div>
             </Reveal>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-8">
-              {features.map((f, i) => (
-                <Reveal key={i} delay={(i % 2) * 60}>
-                  <div className="flex items-start gap-3 p-4 card h-full">
-                    <span className="w-7 h-7 rounded-full bg-[var(--color-primary)]/10 text-[var(--color-primary)] flex items-center justify-center flex-shrink-0 font-semibold text-xs tabular-nums">
-                      {String(i + 1).padStart(2, '0')}
+            <Reveal delay={80}>
+              <ul className="divide-y divide-[var(--color-border)] border-y border-[var(--color-border)]">
+                {features.map((f, i) => (
+                  <li key={i} className="flex items-start gap-4 py-5">
+                    <span className="mt-[3px] inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[var(--color-accent)]/12 text-[var(--color-accent)]">
+                      <Icon name="check" size={13} />
                     </span>
-                    <span className="text-sm text-[var(--color-text-secondary)] leading-relaxed">{f}</span>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
+                    <span className="text-[15px] leading-relaxed text-[var(--color-text)]">{f}</span>
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
           </div>
         )}
 
