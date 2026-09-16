@@ -9,22 +9,58 @@ interface ScrollRailProps {
   label: string
   /** Auto-advance interval in ms. Set to 0 to disable. Default 3000. */
   autoAdvanceMs?: number
+  /** How long to hold autoplay after the user touches the rail, in ms. Default 8000. */
+  manualHoldMs?: number
 }
+
+/** Matches the `gap-5` on the rail — used so every step lands on a card boundary. */
+const GAP = 20
 
 /**
  * Horizontal snap rail with prev/next controls, a progress bar and optional autoplay.
  *
- * Native horizontal scrolling is awkward with a mouse, so the rail gets explicit
- * controls. Autoplay pauses while the user is hovering, focusing or touching the
- * rail, and is disabled entirely under `prefers-reduced-motion`.
+ * Manual and automatic movement MUST use the same step (one card + gap). They used to
+ * differ — the buttons jumped ~0.85 × viewport while autoplay moved a single card — so
+ * a manual click left the rail off a snap point and the next automatic tick landed
+ * mid-card, which read as a glitch. Autoplay now also restarts its interval after any
+ * manual interaction instead of firing on top of it.
+ *
+ * Autoplay pauses while the rail is hovered, focused or touched, for a cooldown after a
+ * manual action, while the tab is hidden, and is disabled entirely under
+ * `prefers-reduced-motion`.
  */
-export default function ScrollRail({ children, label, autoAdvanceMs = 3000 }: ScrollRailProps) {
+export default function ScrollRail({
+  children,
+  label,
+  autoAdvanceMs = 3000,
+  manualHoldMs = 8000,
+}: ScrollRailProps) {
   const railRef = useRef<HTMLDivElement>(null)
   const [progress, setProgress] = useState(0)
   const [visible, setVisible] = useState(1)
   const [atStart, setAtStart] = useState(true)
   const [atEnd, setAtEnd] = useState(false)
-  const [paused, setPaused] = useState(false)
+  const [hovered, setHovered] = useState(false)
+  const [manualHold, setManualHold] = useState(false)
+  const [hidden, setHidden] = useState(false)
+
+  /**
+   * True while a programmatic (autoplay / button) scroll animation is running, so the
+   * scroll handler can tell it apart from a real user drag or swipe.
+   */
+  const autoScrolling = useRef(false)
+  const autoScrollTimer = useRef<number | null>(null)
+  const holdTimer = useRef<number | null>(null)
+
+  const paused = hovered || manualHold || hidden
+
+  /** One card + gap, so every movement lands exactly on a snap point. */
+  const stepSize = useCallback(() => {
+    const el = railRef.current
+    if (!el) return 0
+    const first = el.firstElementChild as HTMLElement | null
+    return first ? first.getBoundingClientRect().width + GAP : Math.round(el.clientWidth * 0.85)
+  }, [])
 
   const measure = useCallback(() => {
     const el = railRef.current
@@ -36,20 +72,69 @@ export default function ScrollRail({ children, label, autoAdvanceMs = 3000 }: Sc
     setAtEnd(max <= 0 || el.scrollLeft >= max - 4)
   }, [])
 
+  /** Hold autoplay for a while after the user does something themselves. */
+  const holdAfterManual = useCallback(() => {
+    setManualHold(true)
+    if (holdTimer.current) window.clearTimeout(holdTimer.current)
+    holdTimer.current = window.setTimeout(() => setManualHold(false), manualHoldMs)
+  }, [manualHoldMs])
+
+  /** Mark the next ~700ms of scroll events as ours rather than the user's. */
+  const markAutoScroll = useCallback(() => {
+    autoScrolling.current = true
+    if (autoScrollTimer.current) window.clearTimeout(autoScrollTimer.current)
+    autoScrollTimer.current = window.setTimeout(() => {
+      autoScrolling.current = false
+    }, 700)
+  }, [])
+
+  const scrollByStep = useCallback(
+    (dir: -1 | 1) => {
+      const el = railRef.current
+      if (!el) return
+      const step = stepSize()
+      if (!step) return
+      markAutoScroll()
+      el.scrollBy({ left: dir * step, behavior: 'smooth' })
+    },
+    [stepSize, markAutoScroll],
+  )
+
   useEffect(() => {
     const el = railRef.current
     if (!el) return
     measure()
-    el.addEventListener('scroll', measure, { passive: true })
+
+    const onScroll = () => {
+      measure()
+      // A scroll we did not start is the user dragging / swiping — hold autoplay.
+      if (!autoScrolling.current) holdAfterManual()
+    }
+
+    el.addEventListener('scroll', onScroll, { passive: true })
     window.addEventListener('resize', measure)
     return () => {
-      el.removeEventListener('scroll', measure)
+      el.removeEventListener('scroll', onScroll)
       window.removeEventListener('resize', measure)
     }
-  }, [measure])
+  }, [measure, holdAfterManual])
 
-  // Autoplay. Steps by exactly one card (card width + gap) so it lands on a snap
-  // point, and wraps back to the first card at the end.
+  // Don't let the rail race ahead while the tab is in the background.
+  useEffect(() => {
+    const onVisibility = () => setHidden(document.visibilityState === 'hidden')
+    document.addEventListener('visibilitychange', onVisibility)
+    return () => document.removeEventListener('visibilitychange', onVisibility)
+  }, [])
+
+  useEffect(
+    () => () => {
+      if (holdTimer.current) window.clearTimeout(holdTimer.current)
+      if (autoScrollTimer.current) window.clearTimeout(autoScrollTimer.current)
+    },
+    [],
+  )
+
+  // Autoplay — one card per tick, wrapping back to the first card at the end.
   useEffect(() => {
     if (!autoAdvanceMs || paused) return
     if (typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
@@ -59,20 +144,19 @@ export default function ScrollRail({ children, label, autoAdvanceMs = 3000 }: Sc
     const id = window.setInterval(() => {
       const max = el.scrollWidth - el.clientWidth
       if (max <= 4) return
-      const first = el.firstElementChild as HTMLElement | null
-      const gap = 20 // matches `gap-5`
-      const step = first ? first.getBoundingClientRect().width + gap : Math.round(el.clientWidth * 0.85)
+      const step = stepSize()
+      if (!step) return
       const next = el.scrollLeft + step
+      markAutoScroll()
       el.scrollTo({ left: next >= max - 8 ? 0 : next, behavior: 'smooth' })
     }, autoAdvanceMs)
 
     return () => window.clearInterval(id)
-  }, [autoAdvanceMs, paused])
+  }, [autoAdvanceMs, paused, stepSize, markAutoScroll])
 
-  const nudge = (dir: -1 | 1) => {
-    const el = railRef.current
-    if (!el) return
-    el.scrollBy({ left: dir * Math.round(el.clientWidth * 0.85), behavior: 'smooth' })
+  const onManual = (dir: -1 | 1) => {
+    holdAfterManual()
+    scrollByStep(dir)
   }
 
   const thumb = Math.min(100, Math.max(10, Math.round(visible * 100)))
@@ -81,12 +165,12 @@ export default function ScrollRail({ children, label, autoAdvanceMs = 3000 }: Sc
 
   return (
     <div
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-      onFocusCapture={() => setPaused(true)}
-      onBlurCapture={() => setPaused(false)}
-      onTouchStart={() => setPaused(true)}
-      onTouchEnd={() => setPaused(false)}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      onFocusCapture={() => setHovered(true)}
+      onBlurCapture={() => setHovered(false)}
+      onTouchStart={() => setHovered(true)}
+      onTouchEnd={() => setHovered(false)}
     >
       <div
         ref={railRef}
@@ -106,10 +190,10 @@ export default function ScrollRail({ children, label, autoAdvanceMs = 3000 }: Sc
           />
         </div>
         <div className="flex items-center gap-2">
-          <button type="button" onClick={() => nudge(-1)} disabled={atStart} aria-label="Scroll left" className={btn}>
+          <button type="button" onClick={() => onManual(-1)} disabled={atStart} aria-label="Scroll left" className={btn}>
             <Icon name="chevron-left" size={18} />
           </button>
-          <button type="button" onClick={() => nudge(1)} disabled={atEnd} aria-label="Scroll right" className={btn}>
+          <button type="button" onClick={() => onManual(1)} disabled={atEnd} aria-label="Scroll right" className={btn}>
             <Icon name="chevron-right" size={18} />
           </button>
         </div>
