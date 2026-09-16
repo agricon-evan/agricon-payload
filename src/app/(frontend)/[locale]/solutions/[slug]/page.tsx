@@ -237,7 +237,9 @@ export default async function SolutionDetailPage({ params }: Props) {
           <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[var(--color-text-secondary)]">
             One team coordinates the whole path — from the first message to a running installation, with no hand-off between suppliers.
           </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 mt-8">
+          {/* Three across, two rows. Six cards in a single row left each one too narrow to
+              read; three columns give the copy room and let the sequence wrap naturally. */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 mt-10 auto-rows-fr">
             {[
               { title: 'Inquiry', icon: 'send', desc: 'Tell us your farm type, target capacity and destination market.' },
               { title: 'Analysis', icon: 'search', desc: 'We review site conditions, climate and operating requirements.' },
@@ -246,22 +248,33 @@ export default async function SolutionDetailPage({ params }: Props) {
               { title: 'Delivery', icon: 'truck', desc: 'Manufacturing, pre-shipment inspection and export documents handled.' },
               { title: 'Support', icon: 'shield', desc: 'Installation guidance, commissioning and long-term spare parts.' },
             ].map((step, i) => (
-              <Reveal key={step.title} delay={i * 60} className="h-full">
-                <div className="card card-hover p-5 h-full relative">
-                  {/* Connector chevron — only meaningful in the single-row xl layout */}
-                  {i < 5 && (
-                    <Icon
-                      name="chevron-right"
-                      size={14}
-                      className="hidden xl:block absolute -right-3 top-1/2 -translate-y-1/2 text-[var(--color-accent)]"
-                    />
-                  )}
-                  <div className="flex items-center gap-2.5">
-                    <span className="w-9 h-9 shrink-0 rounded-full bg-[var(--color-primary)] text-white flex items-center justify-center text-xs font-bold tabular-nums">{String(i + 1).padStart(2, '0')}</span>
-                    <Icon name={step.icon} size={18} className="text-[var(--color-accent)]" />
+              <Reveal key={step.title} delay={i * 60} className="relative h-full">
+                {/* Flow arrow lives outside the card: the card clips its own overflow
+                    (for the watermark number), which would swallow an arrow placed inside. */}
+                {i % 3 !== 2 && (
+                  <Icon
+                    name="chevron-right"
+                    size={16}
+                    className="hidden lg:block absolute -right-[19px] top-1/2 -translate-y-1/2 z-10 text-[var(--color-accent)]"
+                  />
+                )}
+                <div className="card card-hover relative h-full overflow-hidden p-6 md:p-7">
+                  {/* Oversized step number as a watermark — carries the order without
+                      eating into the card's width the way a badge row would. */}
+                  <span
+                    aria-hidden="true"
+                    className="pointer-events-none select-none absolute -top-5 right-3 text-[78px] font-bold leading-none tabular-nums text-[var(--color-primary)] opacity-[0.07]"
+                  >
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+
+                  <div className="relative">
+                    <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-[var(--color-primary)]/8 text-[var(--color-primary)]">
+                      <Icon name={step.icon} size={20} />
+                    </span>
+                    <h3 className="mt-5 text-base md:text-[17px] font-semibold leading-snug text-[var(--color-text)]">{step.title}</h3>
+                    <p className="mt-2 text-[13px] leading-relaxed text-[var(--color-text-secondary)]">{step.desc}</p>
                   </div>
-                  <h3 className="mt-4 text-[15px] font-semibold text-[var(--color-text)]">{step.title}</h3>
-                  <p className="mt-1.5 text-xs leading-relaxed text-[var(--color-text-secondary)]">{step.desc}</p>
                 </div>
               </Reveal>
             ))}
