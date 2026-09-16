@@ -34,6 +34,24 @@ const ECOSYSTEM_PHOTOS = [
   '/catalog/categories/other-machines.jpg',
 ]
 
+// Bento spans for the ecosystem band (applied from `sm` up, where the grid is 5 wide).
+// Traced through CSS grid auto-placement so the mosaic packs exactly with no holes:
+//   row 1: [ A A ][ B B ][ C ]
+//   row 2: [ A A ][ D ][ E ][ F ]
+//   row 3: [ G G ][ H ][ I ][ J ]
+const ECOSYSTEM_SPANS: string[] = [
+  'sm:col-span-2 sm:row-span-2', // A — 2×2 lead tile
+  'sm:col-span-2',               // B — wide
+  '',                            // C
+  '',                            // D
+  '',                            // E
+  '',                            // F
+  'sm:col-span-2',               // G — wide
+  '',                            // H
+  '',                            // I
+  '',                            // J
+]
+
 interface Props {
   params: Promise<{ locale: string }>
 }
@@ -174,8 +192,11 @@ export default async function AboutPage({ params }: Props) {
         </div>
       </section>
 
-      {/* 产品生态照片带 — 画册 p9 */}
-      <section className="bg-[var(--color-primary)] text-white py-14 md:py-20">
+      {/* 产品生态照片带 — 画册 p9. Deliberately uneven: one 2×2 lead tile, three 2×1
+          wide tiles and six squares, so the band reads as a mosaic rather than a
+          uniform contact sheet. Span classes only apply from `sm` up (5 columns);
+          below that everything is a single square for a predictable mobile layout. */}
+      <section className="bg-[var(--color-primary)] text-white py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-6">
           <Reveal>
             <SectionHeading
@@ -185,14 +206,20 @@ export default async function AboutPage({ params }: Props) {
               dark
             />
           </Reveal>
-          <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 mt-10">
-            {ECOSYSTEM_PHOTOS.map((src, i) => (
-              <Reveal key={src} delay={(i % 5) * 60}>
-                <div className="rounded-lg overflow-hidden aspect-square">
-                  <MediaImage src={src} alt="AGRICON equipment ecosystem" width={320} height={320} loading="lazy" className="w-full h-full object-cover" />
-                </div>
-              </Reveal>
-            ))}
+          <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 md:gap-4 mt-10">
+            {ECOSYSTEM_PHOTOS.map((src, i) => {
+              const span = ECOSYSTEM_SPANS[i]
+              return (
+                <Reveal key={src} delay={(i % 5) * 60} className={span || undefined}>
+                  {/* The photo is absolutely positioned so it contributes no intrinsic
+                      height — the square tiles alone drive the row heights, and the
+                      spanning tiles simply stretch into them. */}
+                  <div className={`relative rounded-lg overflow-hidden bg-[var(--color-primary-dark)]/40 ${span ? 'h-full' : 'aspect-square'}`}>
+                    <MediaImage src={src} alt="AGRICON equipment ecosystem" width={640} height={640} loading="lazy" className="absolute inset-0 w-full h-full object-cover" />
+                  </div>
+                </Reveal>
+              )
+            })}
           </div>
         </div>
       </section>

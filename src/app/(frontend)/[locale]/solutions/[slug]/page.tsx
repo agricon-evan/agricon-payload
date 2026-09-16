@@ -234,15 +234,34 @@ export default async function SolutionDetailPage({ params }: Props) {
               title={<>From Inquiry to <span className="split-accent">Installation</span></>}
             />
           </Reveal>
-          <div className="grid grid-cols-2 md:grid-cols-6 gap-4 mt-8">
-            {['Inquiry', 'Analysis', 'Matching', 'Confirmation', 'Delivery', 'Support'].map((step, i) => (
-              <Reveal key={step} delay={i * 60} className="h-full">
-                <div className="card p-4 h-full text-center relative">
-                  <span className="mx-auto w-8 h-8 rounded-full bg-[var(--color-primary)] text-white flex items-center justify-center text-xs font-bold tabular-nums">{String(i + 1).padStart(2, '0')}</span>
-                  <div className="mt-3 text-sm font-semibold text-[var(--color-text)]">{step}</div>
+          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[var(--color-text-secondary)]">
+            One team coordinates the whole path — from the first message to a running installation, with no hand-off between suppliers.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 mt-8">
+            {[
+              { title: 'Inquiry', icon: 'send', desc: 'Tell us your farm type, target capacity and destination market.' },
+              { title: 'Analysis', icon: 'search', desc: 'We review site conditions, climate and operating requirements.' },
+              { title: 'Matching', icon: 'layers', desc: 'We shortlist the right equipment lines and lay out the configuration.' },
+              { title: 'Confirmation', icon: 'clipboard', desc: 'Quotation, drawings and specifications agreed before production.' },
+              { title: 'Delivery', icon: 'truck', desc: 'Manufacturing, pre-shipment inspection and export documents handled.' },
+              { title: 'Support', icon: 'shield', desc: 'Installation guidance, commissioning and long-term spare parts.' },
+            ].map((step, i) => (
+              <Reveal key={step.title} delay={i * 60} className="h-full">
+                <div className="card card-hover p-5 h-full relative">
+                  {/* Connector chevron — only meaningful in the single-row xl layout */}
                   {i < 5 && (
-                    <Icon name="chevron-right" size={14} className="hidden md:block absolute right-[-12px] top-1/2 -translate-y-1/2 text-[var(--color-accent)]" />
+                    <Icon
+                      name="chevron-right"
+                      size={14}
+                      className="hidden xl:block absolute -right-3 top-1/2 -translate-y-1/2 text-[var(--color-accent)]"
+                    />
                   )}
+                  <div className="flex items-center gap-2.5">
+                    <span className="w-9 h-9 shrink-0 rounded-full bg-[var(--color-primary)] text-white flex items-center justify-center text-xs font-bold tabular-nums">{String(i + 1).padStart(2, '0')}</span>
+                    <Icon name={step.icon} size={18} className="text-[var(--color-accent)]" />
+                  </div>
+                  <h3 className="mt-4 text-[15px] font-semibold text-[var(--color-text)]">{step.title}</h3>
+                  <p className="mt-1.5 text-xs leading-relaxed text-[var(--color-text-secondary)]">{step.desc}</p>
                 </div>
               </Reveal>
             ))}

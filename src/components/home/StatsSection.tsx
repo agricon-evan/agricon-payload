@@ -13,7 +13,13 @@ export default async function StatsSection({ locale: _locale }: { locale: Locale
     { num: stats?.farmProjects || '100+', label: 'Farm Projects', desc: 'Complete projects delivered across farm types and scales.' },
     { num: stats?.countriesServed || '30+', label: 'Export Markets', desc: 'Serving farms and distributors worldwide.' },
     { num: stats?.yearsInBusiness || '15+', label: 'Years in Business', desc: 'Practical experience supporting agricultural equipment projects.' },
-  ]
+  ].map((item) => ({
+    ...item,
+    // The values already carry the "+" (e.g. "10+"), and the markup below adds an accent
+    // superscript "+" — strip the one in the data, or the UI renders a doubled "10+⁺".
+    base: item.num.replace(/\+\s*$/, ''),
+    showPlus: !item.num.includes('%'),
+  }))
 
   return (
     <section className="bg-[var(--color-canvas-soft)] border-y border-[var(--color-border)] py-16 md:py-24">
@@ -34,8 +40,8 @@ export default async function StatsSection({ locale: _locale }: { locale: Locale
                 <span className="stats-metric-index text-xs font-semibold uppercase tracking-[0.12em] text-[var(--color-primary-light)]">0{i + 1}</span>
                 <div className="mt-auto pt-10">
                   <div className="relative inline-block metric-stat text-[var(--color-primary)]">
-                    {item.num}
-                    {!item.num.includes('%') && (
+                    {item.base}
+                    {item.showPlus && (
                       <span className="absolute -right-4 -top-1 text-xl md:text-2xl font-bold leading-none text-[var(--color-accent)]">+</span>
                     )}
                   </div>

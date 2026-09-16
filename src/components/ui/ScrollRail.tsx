@@ -7,21 +7,24 @@ interface ScrollRailProps {
   children: ReactNode
   /** Accessible label for the scrollable region. */
   label: string
+  /** Auto-advance interval in ms. Set to 0 to disable. Default 3000. */
+  autoAdvanceMs?: number
 }
 
 /**
- * Horizontal snap rail with prev/next controls and a progress bar.
+ * Horizontal snap rail with prev/next controls, a progress bar and optional autoplay.
  *
- * Native horizontal scrolling is awkward with a mouse, so the homepage product
- * rails get explicit controls. The rail is also keyboard-focusable (arrow keys
- * scroll it natively once focused).
+ * Native horizontal scrolling is awkward with a mouse, so the rail gets explicit
+ * controls. Autoplay pauses while the user is hovering, focusing or touching the
+ * rail, and is disabled entirely under `prefers-reduced-motion`.
  */
-export default function ScrollRail({ children, label }: ScrollRailProps) {
+export default function ScrollRail({ children, label, autoAdvanceMs = 3000 }: ScrollRailProps) {
   const railRef = useRef<HTMLDivElement>(null)
   const [progress, setProgress] = useState(0)
   const [visible, setVisible] = useState(1)
   const [atStart, setAtStart] = useState(true)
   const [atEnd, setAtEnd] = useState(false)
+  const [paused, setPaused] = useState(false)
 
   const measure = useCallback(() => {
     const el = railRef.current
@@ -45,6 +48,27 @@ export default function ScrollRail({ children, label }: ScrollRailProps) {
     }
   }, [measure])
 
+  // Autoplay. Steps by exactly one card (card width + gap) so it lands on a snap
+  // point, and wraps back to the first card at the end.
+  useEffect(() => {
+    if (!autoAdvanceMs || paused) return
+    if (typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    const el = railRef.current
+    if (!el) return
+
+    const id = window.setInterval(() => {
+      const max = el.scrollWidth - el.clientWidth
+      if (max <= 4) return
+      const first = el.firstElementChild as HTMLElement | null
+      const gap = 20 // matches `gap-5`
+      const step = first ? first.getBoundingClientRect().width + gap : Math.round(el.clientWidth * 0.85)
+      const next = el.scrollLeft + step
+      el.scrollTo({ left: next >= max - 8 ? 0 : next, behavior: 'smooth' })
+    }, autoAdvanceMs)
+
+    return () => window.clearInterval(id)
+  }, [autoAdvanceMs, paused])
+
   const nudge = (dir: -1 | 1) => {
     const el = railRef.current
     if (!el) return
@@ -56,7 +80,14 @@ export default function ScrollRail({ children, label }: ScrollRailProps) {
     'w-10 h-10 shrink-0 rounded-full border border-[var(--color-border)] flex items-center justify-center text-[var(--color-text)] transition-colors hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] disabled:opacity-30 disabled:hover:border-[var(--color-border)] disabled:hover:text-[var(--color-text)]'
 
   return (
-    <div>
+    <div
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      onFocusCapture={() => setPaused(true)}
+      onBlurCapture={() => setPaused(false)}
+      onTouchStart={() => setPaused(true)}
+      onTouchEnd={() => setPaused(false)}
+    >
       <div
         ref={railRef}
         role="region"
