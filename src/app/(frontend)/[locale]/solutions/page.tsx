@@ -1,6 +1,6 @@
 import type { Locale } from '@/i18n/config'
 import { getTranslations } from '@/i18n/config'
-import { getSolutions } from '@/lib/payload'
+import { getSolutions, getCategories } from '@/lib/payload'
 import { resolvePageHeroImage } from '@/lib/payload'
 import PageHero from '@/components/PageHero'
 import CtaSection from '@/components/CtaSection'
@@ -18,10 +18,22 @@ interface Props {
 export const dynamic = 'force-dynamic'
 
 // 方案封面图（画册分类图）
+// Solution -> the product category it maps onto. Prefer the CMS category image (set for all
+// ten categories) and keep the catalog map as a fallback, so a category rename can't leave
+// the cards without a picture.
+const SOLUTION_CATEGORY: Record<string, string> = {
+  'poultry-farming': 'poultry-equipment',
+  'livestock-farming': 'livestock-equipment',
+  aquaculture: 'aquaculture-equipment',
+  'feed-processing': 'agriculture-machinery',
+  'breeding-house': 'breeding-coop-equipment',
+  'farm-machinery': 'farming-vehicle',
+}
+
 const SOLUTION_IMAGE: Record<string, string> = {
   'poultry-farming': categoryImages['poultry-equipment'],
   'livestock-farming': categoryImages['livestock-equipment'],
-  'aquaculture': categoryImages['aquaculture-equipment'],
+  aquaculture: categoryImages['aquaculture-equipment'],
   'feed-processing': categoryImages['agriculture-machinery'],
   'breeding-house': categoryImages['breeding-house-equipment'],
   'farm-machinery': categoryImages['farming-vehicles'],
@@ -42,7 +54,16 @@ export default async function SolutionsPage({ params }: Props) {
   const t = getTranslations(locale as Locale, 'common')
   const tHome = getTranslations(locale as Locale, 'home')
   const solutions = await getSolutions(locale)
+  const categories = await getCategories(locale)
   const lp = `/${locale}`
+
+  // Prefer the CMS category image; fall back to the bundled catalog image.
+  const categoryImage = (categorySlug: string | undefined): string | null => {
+    if (!categorySlug) return null
+    const cat = categories.find((c) => (c as unknown as { slug: string }).slug === categorySlug)
+    const media = (cat as unknown as { image?: { url?: string } } | undefined)?.image
+    return media?.url || null
+  }
   const fallbackSolutions = [
     { id: 'poultry', slug: '', name: 'Poultry Farm Setup', description: 'Complete laying-hen and broiler house solutions — from cage systems to climate control and feeding lines.', icon: 'building', image: categoryImages['poultry-equipment'] },
     { id: 'livestock', slug: '', name: 'Livestock Farm Setup', description: 'Cattle, pig and sheep facilities engineered for productivity, hygiene and animal welfare.', icon: 'warehouse', image: categoryImages['livestock-equipment'] },
@@ -50,7 +71,11 @@ export default async function SolutionsPage({ params }: Props) {
     { id: 'infrastructure', slug: '', name: 'Farm Infrastructure', description: 'Water systems, ventilation, lighting and power — the backbone of a modern commercial farm.', icon: 'droplet', image: categoryImages['breeding-house-equipment'] },
   ]
   const displaySolutions = solutions.length > 0
-    ? solutions.map(solution => ({ ...solution, icon: undefined, image: SOLUTION_IMAGE[solution.slug] || null }))
+    ? solutions.map(solution => ({
+        ...solution,
+        icon: undefined,
+        image: categoryImage(SOLUTION_CATEGORY[solution.slug]) || SOLUTION_IMAGE[solution.slug] || null,
+      }))
     : fallbackSolutions
 
   return (
