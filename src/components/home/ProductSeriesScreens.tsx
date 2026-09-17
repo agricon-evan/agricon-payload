@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import type { Locale } from '@/i18n/config'
-import { getCategories, getSubcategories } from '@/lib/payload'
+import { getCategories, getSubcategories, getProducts } from '@/lib/payload'
 import { categoryImages, subcategoryImages, heroFallback } from '@/lib/images'
 import MediaImage from '@/components/ui/MediaImage'
 import Icon from '@/components/ui/Icon'
@@ -71,13 +71,27 @@ const SERIES_CARD_OVERRIDES: Record<string, SeriesCard[]> = {
 
 export default async function ProductSeriesScreens({ locale }: Props) {
   const lp = `/${locale}`
-  const [categories, subs] = await Promise.all([
+  const [categories, subs, products] = await Promise.all([
     getCategories(locale),
     getSubcategories(locale),
+    getProducts(locale),
   ])
 
   const catName = (slug: string) =>
     categories.find((c) => c.slug === slug)?.name || slug
+
+  // Hardcoded card hrefs are "<subcategory>/<product>". The product part has gone stale
+  // three times as the catalogue was replaced, each time producing 404s. Verify it against
+  // the CMS and fall back to the subcategory, so a rename can never produce a dead link.
+  const productSlugs = new Set(products.map((p) => (p as unknown as { slug: string }).slug))
+  const subSlugs = new Set(subs.map((s) => (s as unknown as { slug: string }).slug))
+  const resolveCardHref = (seriesSlug: string, href: string): string => {
+    if (!href) return '#'
+    const [sub, product] = href.split('/')
+    if (product && productSlugs.has(product)) return `${lp}/products/${seriesSlug}/${sub}/${product}`
+    if (sub && subSlugs.has(sub)) return `${lp}/products/${seriesSlug}/${sub}`
+    return `${lp}/products/${seriesSlug}`
+  }
 
   return (
     <>
@@ -148,7 +162,7 @@ export default async function ProductSeriesScreens({ locale }: Props) {
                     const cardItems = overrideCards
                       ? overrideCards.map((c) => ({
                           name: c.name,
-                          href: c.href ? `${lp}/products/${series.slug}/${c.href}` : '#',
+                          href: resolveCardHref(series.slug, c.href),
                           imgSrc: c.img.src,
                           imgW: c.img.w,
                           imgH: c.img.h,
