@@ -22,7 +22,13 @@ export default async function ProductCategories({ locale }: Props) {
     { id: 'infrastructure', slug: '', name: 'Farm Infrastructure', description: 'Ventilation, water, fencing and supporting equipment that keeps your operation moving.', image: categoryImages['wire-mesh-fencing'] },
   ]
   const items = categories.length > 0
-    ? categories.map((cat) => ({ ...cat, image: categoryImages[cat.slug] || null }))
+    ? categories.map((cat) => {
+        // Prefer the CMS category image. The bundled catalog map is keyed by the OLD category
+        // slugs, so renamed categories (wire-mesh, farming-vehicle, breeding-coop-equipment,
+        // other-machine) silently fell through to no image.
+        const media = (cat as unknown as { image?: { url?: string } }).image
+        return { ...cat, image: media?.url || categoryImages[cat.slug] || null }
+      })
     : fallbackCategories
 
   return (
