@@ -134,13 +134,28 @@ function cleanName(raw: string, group: string): string {
   return t || group
 }
 
-/** First sentence-ish of the supplier blurb, for the product header. */
-function shortDesc(raw: string, fallback: string): string {
-  const t = (raw || '').replace(/\s+/g, ' ').replace(/^Report abuse\s*/i, '').trim()
-  if (!t) return fallback
+/**
+ * Some products have no supplier description block at all. What gets captured instead is
+ * Alibaba's cross-sell widget — "Frequently bought together" followed by OTHER products'
+ * titles and prices. That must never be shown as this product's description.
+ */
+function isCrossSellJunk(raw: string): boolean {
+  const head = (raw || '').slice(0, 400)
+  return /Frequently bought together|Video Description|You may also like/i.test(head)
+}
+
+/** First sentence-ish of the supplier blurb, for the product header. Null when unusable. */
+function shortDesc(raw: string, fallback: string): string | null {
+  if (!raw || isCrossSellJunk(raw)) return null
+  const t = raw
+    .replace(/\s+/g, ' ')
+    // strip the supplier's section labels, which otherwise leak into the header
+    .replace(/^(Report abuse|Highlights at a glance|Highlights|Product Description)\s*/gi, '')
+    .trim()
+  if (!t) return null
   const cut = t.slice(0, 260)
   const end = cut.lastIndexOf('. ')
-  return (end > 80 ? cut.slice(0, end + 1) : cut).trim()
+  return (end > 80 ? cut.slice(0, end + 1) : cut).trim() || null
 }
 
 /**
@@ -402,8 +417,10 @@ async function main() {
           name,
           slug,
           subcategory: subIds[g2s[r.group]],
-          description: shortDesc(r.description, name),
-          overviewHtml: toOverviewHtml(detailByIdx.get(r.idx) || '') || undefined,
+          description: shortDesc(r.description, name) || undefined,
+          overviewHtml: detailByIdx.get(r.idx) && !isCrossSellJunk(detailByIdx.get(r.idx) as string)
+            ? toOverviewHtml(detailByIdx.get(r.idx) as string) || undefined
+            : undefined,
           price: rich?.price || undefined,
           moq: moq || undefined,
           specs: mergedSpecs,

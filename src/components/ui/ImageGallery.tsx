@@ -110,13 +110,13 @@ export default function ImageGallery({ images, aspect = '4-3', priority = false,
               aria-label={`View image ${i + 1}`}
               role="tab"
               aria-selected={i === active}
-              className={`relative w-20 sm:w-24 shrink-0 aspect-[4/3] overflow-hidden rounded-md bg-[var(--color-muted)] transition-all tap-target press snap-start ${
+              className={`relative w-20 sm:w-24 shrink-0 ${ASPECT[aspect]} overflow-hidden rounded-md bg-[var(--color-muted)] transition-all tap-target press snap-start ${
                 i === active
                   ? 'ring-2 ring-[var(--color-primary)] ring-offset-2 ring-offset-[var(--color-bg)]'
                   : 'opacity-70 hover:opacity-100'
               }`}
             >
-              <MediaImage src={img.src} alt={img.alt} width={160} height={120} loading="lazy" className="w-full h-full object-cover" />
+              <MediaImage src={img.src} alt={img.alt} width={160} height={aspect === 'square' ? 160 : 120} loading="lazy" className="w-full h-full object-cover" />
             </button>
           ))}
         </div>

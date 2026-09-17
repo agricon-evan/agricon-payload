@@ -136,7 +136,7 @@ export default async function ProductDetailPage({ params }: Props) {
         {/* Product hero/spec — main image + short introduction + inquiry */}
         <section className="grid grid-cols-1 lg:grid-cols-[1.08fr_0.92fr] gap-8 lg:gap-14 items-stretch">
           <Reveal className="h-full">
-            <ImageGallery images={gallery} aspect="4-3" priority className="h-full flex flex-col" />
+            <ImageGallery images={gallery} aspect="square" priority className="h-full flex flex-col" />
           </Reveal>
 
           <Reveal delay={100} className="h-full">
