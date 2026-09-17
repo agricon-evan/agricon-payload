@@ -273,7 +273,10 @@ export default async function ProductDetailPage({ params }: Props) {
             </Reveal>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5 mt-7">
               {relatedProducts.map((related, index) => {
-                const image = catalogProductImages[related.slug]
+                const relImg = (related.images || []).find(
+                  (it) => it.image && typeof it.image === 'object' && (it.image as { url?: string }).url,
+                )
+                const image = relImg ? ((relImg.image as { url?: string }).url as string) : catalogProductImages[related.slug]
                 const relatedSub = typeof related.subcategory === 'object' && related.subcategory ? related.subcategory : null
                 const relatedCategory = relatedSub && typeof relatedSub.category === 'object' && relatedSub.category ? relatedSub.category : null
                 return (

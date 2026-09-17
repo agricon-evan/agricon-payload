@@ -1,0 +1,143 @@
+{
+  "_note": "用户指定的 10 分类 / 78 子分类。sub.groups 为 D:/链接.txt 的分组名，用于把已抓取的 53 个产品归位；没有 groups 的子分类暂时为空。",
+  "categories": [
+    {
+      "name": "Poultry Equipment", "nameCn": "家禽设备", "slug": "poultry-equipment",
+      "desc": "Cages, hatchery and drinking systems for layer, broiler and breeder farms.",
+      "subcategories": [
+        { "name": "Layer Cage", "nameCn": "蛋鸡笼", "slug": "layer-cage", "groups": ["A type layer cage", "H type layer cage", "Complete half set layer chicken cage"] },
+        { "name": "Broiler Cage", "nameCn": "肉鸡笼", "slug": "broiler-cage", "groups": ["Broiler Cage"] },
+        { "name": "Chick Cage", "nameCn": "雏鸡笼", "slug": "chick-cage", "groups": ["Chick cage"] },
+        { "name": "Automatic Cage", "nameCn": "自动化鸡笼", "slug": "automatic-cage", "groups": ["Automatic A type chicken Cage", "Automatic H type chicken Cage"] },
+        { "name": "Hatcher Equipment", "nameCn": "孵化设备", "slug": "hatcher-equipment", "groups": ["Hatcher Equipment"] },
+        { "name": "Flat Breeding Equipment", "nameCn": "平养设备", "slug": "flat-breeding-equipment", "groups": ["Flat Breeding Equipment"] },
+        { "name": "Cage Accessory", "nameCn": "鸡笼配件", "slug": "cage-accessory", "groups": [] },
+        { "name": "Breeding Accessory", "nameCn": "养殖配件", "slug": "breeding-accessory", "groups": ["Breeding Accessory"] }
+      ]
+    },
+    {
+      "name": "Livestock Equipment", "nameCn": "畜牧设备", "slug": "livestock-equipment",
+      "desc": "Pens, scales and cages for pig, goat, rabbit and cattle operations.",
+      "subcategories": [
+        { "name": "Farm Fence", "nameCn": "农场围栏", "slug": "farm-fence", "groups": [] },
+        { "name": "Cattle Panels", "nameCn": "畜牧栅栏", "slug": "cattle-panels", "groups": [] },
+        { "name": "Livestock Scale", "nameCn": "畜牧秤", "slug": "livestock-scale", "groups": [] },
+        { "name": "Farrow Pen", "nameCn": "母猪栏", "slug": "farrow-pen", "groups": ["Feeding pen", "Farrow Pen"] },
+        { "name": "Goat Pen", "nameCn": "羊栏", "slug": "goat-pen", "groups": [] },
+        { "name": "Rabbit Cage", "nameCn": "兔笼", "slug": "rabbit-cage", "groups": ["Rabbit cage", "European-style rabbit cage"] },
+        { "name": "Livestock Equipment", "nameCn": "畜牧配件", "slug": "livestock-accessory", "groups": [] }
+      ]
+    },
+    {
+      "name": "Aquaculture Equipment", "nameCn": "水产设备", "slug": "aquaculture-equipment",
+      "desc": "Pumps, aeration and netting for fish and shrimp farming.",
+      "subcategories": [
+        { "name": "Water pump", "nameCn": "水泵", "slug": "water-pump", "groups": [] },
+        { "name": "Oxygenerator", "nameCn": "氧气泵", "slug": "oxygenerator", "groups": [] },
+        { "name": "Fish Pound", "nameCn": "鱼塘", "slug": "fish-pound", "groups": [] },
+        { "name": "Float Pound", "nameCn": "养殖箱", "slug": "float-pound", "groups": [] },
+        { "name": "Fish net", "nameCn": "渔网", "slug": "fish-net", "groups": [] },
+        { "name": "Aquaculture Accessory", "nameCn": "水产配件", "slug": "aquaculture-accessory", "groups": [] }
+      ]
+    },
+    {
+      "name": "Agriculture Machinery", "nameCn": "农业机器", "slug": "agriculture-machinery",
+      "desc": "Feed and grain processing machinery for farm production lines.",
+      "subcategories": [
+        { "name": "Pellet machine", "nameCn": "颗粒机", "slug": "pellet-machine", "groups": ["Pellet machine"] },
+        { "name": "Extruder machine", "nameCn": "挤压机", "slug": "extruder-machine", "groups": ["Extruder machine"] },
+        { "name": "Grinding machine", "nameCn": "粉碎机", "slug": "grinding-machine", "groups": ["Hammer miller machine", "Disc miller machine"] },
+        { "name": "Grass chaff machine", "nameCn": "铡草机", "slug": "grass-chaff-machine", "groups": ["Grass Chaff machine", "Multifunctional grass Chaff machine", "High discharge grass Chaff machine"] },
+        { "name": "Mixing machine", "nameCn": "搅拌机", "slug": "mixing-machine", "groups": ["Mixer&grinder", "Small Mixer"] },
+        { "name": "Drying machine", "nameCn": "烘干机", "slug": "drying-machine", "groups": [] },
+        { "name": "Rice mill machine", "nameCn": "碾米机", "slug": "rice-mill-machine", "groups": [] },
+        { "name": "Production line", "nameCn": "生产线", "slug": "production-line", "groups": [] },
+        { "name": "Machine Accessory", "nameCn": "机器配件", "slug": "machine-accessory", "groups": [] },
+        { "name": "Screw Elevator", "nameCn": "提升机", "slug": "screw-elevator", "groups": ["Screw Elevator"] },
+        { "name": "Multifunctional thresher", "nameCn": "多功能脱粒机", "slug": "multifunctional-thresher", "groups": ["Multifunctional threshing machine"] },
+        { "name": "Peanut sheller", "nameCn": "花生脱壳机", "slug": "peanut-sheller", "groups": ["Peanut sheller machine"] },
+        { "name": "Corn peeler", "nameCn": "玉米剥皮机", "slug": "corn-peeler", "groups": [] },
+        { "name": "Corn peeler & thresher", "nameCn": "玉米剥皮脱粒一体机", "slug": "corn-peeler-thresher", "groups": ["Corn husking and threshing machine"] },
+        { "name": "Corn thresher", "nameCn": "玉米脱粒机", "slug": "corn-thresher", "groups": ["Corn threshing machine"] },
+        { "name": "Vibrating screen", "nameCn": "振筛机", "slug": "vibrating-screen", "groups": ["Shaking screen machine"] }
+      ]
+    },
+    {
+      "name": "Breeding Coop Equipment", "nameCn": "养殖建筑设备", "slug": "breeding-coop-equipment",
+      "desc": "Structures, ventilation and environmental control for the poultry house.",
+      "subcategories": [
+        { "name": "Metal structure", "nameCn": "钢结构", "slug": "metal-structure", "groups": [] },
+        { "name": "Green house", "nameCn": "大棚", "slug": "green-house", "groups": [] },
+        { "name": "Exhaust fans", "nameCn": "排风机", "slug": "exhaust-fans", "groups": [] },
+        { "name": "Cooling pad", "nameCn": "水帘", "slug": "cooling-pad", "groups": [] },
+        { "name": "Floor pallet", "nameCn": "地板", "slug": "floor-pallet", "groups": [] },
+        { "name": "Manure scraper", "nameCn": "刮粪板", "slug": "manure-scraper", "groups": [] },
+        { "name": "Feed silo", "nameCn": "料塔", "slug": "feed-silo", "groups": [] },
+        { "name": "Environment controller", "nameCn": "环境控制器", "slug": "environment-controller", "groups": [] },
+        { "name": "Disinfection equipment", "nameCn": "消毒设备", "slug": "disinfection-equipment", "groups": [] },
+        { "name": "Off grid Solar equipment", "nameCn": "离网发电机", "slug": "off-grid-solar", "groups": [] },
+        { "name": "Accessory", "nameCn": "配件", "slug": "coop-accessory", "groups": [] }
+      ]
+    },
+    {
+      "name": "Slaughter Equipment", "nameCn": "屠宰设备", "slug": "slaughter-equipment",
+      "desc": "Plucking, scalding and cutting equipment for poultry slaughter lines.",
+      "subcategories": [
+        { "name": "Plucker machine", "nameCn": "拔毛机", "slug": "plucker-machine", "groups": ["Plucker machine"] },
+        { "name": "Scalding machine", "nameCn": "烫毛机", "slug": "scalding-machine", "groups": [] },
+        { "name": "Bleed cone", "nameCn": "杀鸡锥", "slug": "bleed-cone", "groups": [] },
+        { "name": "Cutting machine", "nameCn": "切割机", "slug": "cutting-machine", "groups": [] },
+        { "name": "Working table", "nameCn": "工作台", "slug": "working-table", "groups": [] },
+        { "name": "Automatic machine", "nameCn": "自动化机器", "slug": "automatic-machine", "groups": [] },
+        { "name": "Machine accessory", "nameCn": "机器配件", "slug": "slaughter-accessory", "groups": [] }
+      ]
+    },
+    {
+      "name": "Farming Tools", "nameCn": "农业工具", "slug": "farming-tools",
+      "desc": "Planting, spraying and irrigation tools for daily farm work.",
+      "subcategories": [
+        { "name": "Planter", "nameCn": "播种机", "slug": "planter", "groups": [] },
+        { "name": "Weed cutter", "nameCn": "割草机", "slug": "weed-cutter", "groups": [] },
+        { "name": "Sprayer", "nameCn": "喷洒机", "slug": "sprayer", "groups": [] },
+        { "name": "Mist maker", "nameCn": "喷雾机", "slug": "mist-maker", "groups": [] },
+        { "name": "Irrigation equipment", "nameCn": "灌溉机", "slug": "irrigation-equipment", "groups": [] },
+        { "name": "Packing bag", "nameCn": "打包袋", "slug": "packing-bag", "groups": [] },
+        { "name": "Transport crate", "nameCn": "运输框", "slug": "transport-crate", "groups": [] }
+      ]
+    },
+    {
+      "name": "Farming Vehicle", "nameCn": "农业车辆", "slug": "farming-vehicle",
+      "desc": "Tractors, harvesters and transport vehicles for field and farm work.",
+      "subcategories": [
+        { "name": "Tractor", "nameCn": "拖拉机", "slug": "tractor", "groups": ["Tractor"] },
+        { "name": "Harvester", "nameCn": "收割机", "slug": "harvester", "groups": ["Harvester"] },
+        { "name": "Tricycle", "nameCn": "三轮车", "slug": "tricycle", "groups": ["Tricycle"] },
+        { "name": "Walking Tractor", "nameCn": "手扶拖拉机", "slug": "walking-tractor", "groups": ["Walking Tractor"] },
+        { "name": "Tractor Parts", "nameCn": "拖拉机配件", "slug": "tractor-parts", "groups": [] },
+        { "name": "Accessory", "nameCn": "配件", "slug": "vehicle-accessory", "groups": [] }
+      ]
+    },
+    {
+      "name": "Wire Mesh", "nameCn": "丝网", "slug": "wire-mesh",
+      "desc": "Welded, hexagonal and chain link fencing for farm boundaries and pens.",
+      "subcategories": [
+        { "name": "Welded Wire Mesh", "nameCn": "电焊网", "slug": "welded-wire-mesh", "groups": ["Welded Wire Mesh"] },
+        { "name": "Cattle Fence", "nameCn": "牛栏网", "slug": "cattle-fence", "groups": ["Cattle Fence"] },
+        { "name": "Chain Link Fence", "nameCn": "勾花网", "slug": "chain-link-fence", "groups": ["Chain Link Fence"] },
+        { "name": "Hexagonal Mesh", "nameCn": "六角网", "slug": "hexagonal-mesh", "groups": ["Hexagonal Mesh"] },
+        { "name": "Cage Mesh", "nameCn": "笼网", "slug": "cage-mesh", "groups": [] }
+      ]
+    },
+    {
+      "name": "Other Machine", "nameCn": "其他机器", "slug": "other-machine",
+      "desc": "Egg handling, brick making and other machines outside the main ranges.",
+      "subcategories": [
+        { "name": "Egg Tray Machine", "nameCn": "蛋托机", "slug": "egg-tray-machine", "groups": [] },
+        { "name": "Egg Sizing Machine", "nameCn": "分级机", "slug": "egg-sizing-machine", "groups": [] },
+        { "name": "Egg Conveyor Machine", "nameCn": "输送机", "slug": "egg-conveyor-machine", "groups": [] },
+        { "name": "Egg Counting Machine", "nameCn": "计数机", "slug": "egg-counting-machine", "groups": [] },
+        { "name": "Brick Making Machine", "nameCn": "造砖机", "slug": "brick-making-machine", "groups": [] }
+      ]
+    }
+  ]
+}

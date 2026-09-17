@@ -1,0 +1,102 @@
+{
+  "_note": "用户指定的 10 个分类。key 为 D:/链接.txt 里的分组名。",
+  "categories": [
+    {
+      "name": "Poultry Equipment",
+      "nameCn": "家禽设备",
+      "slug": "poultry-equipment",
+      "desc": "Cages, hatchery and drinking systems for layer, broiler and breeder farms.",
+      "subcategories": [
+        { "name": "Layer Cages", "slug": "layer-cages", "groups": ["A type layer cage", "H type layer cage", "Complete half set layer chicken cage", "Automatic A type chicken Cage", "Automatic H type chicken Cage"] },
+        { "name": "Broiler Cages", "slug": "broiler-cages", "groups": ["Broiler Cage"] },
+        { "name": "Chick Cages", "slug": "chick-cages", "groups": ["Chick cage"] },
+        { "name": "Hatchery & Incubation", "slug": "hatchery-incubation", "groups": ["Hatcher Equipment"] }
+      ]
+    },
+    {
+      "name": "Livestock Equipment",
+      "nameCn": "畜牧设备",
+      "slug": "livestock-equipment",
+      "desc": "Pens and cages for pig, rabbit and cattle operations.",
+      "subcategories": [
+        { "name": "Pig Equipment", "slug": "pig-equipment", "groups": ["Feeding pen", "Farrow Pen"] },
+        { "name": "Rabbit Cages", "slug": "rabbit-cages", "groups": ["Rabbit cage", "European-style rabbit cage"] }
+      ]
+    },
+    {
+      "name": "Aquaculture Equipment",
+      "nameCn": "水产设备",
+      "slug": "aquaculture-equipment",
+      "desc": "Feed and processing equipment for fish and shrimp farming.",
+      "subcategories": [
+        { "name": "Fish Feed Equipment", "slug": "fish-feed-equipment", "groups": ["Extruder machine"] }
+      ]
+    },
+    {
+      "name": "Agriculture Machinery",
+      "nameCn": "农业机器",
+      "slug": "agriculture-machinery",
+      "desc": "Feed and grain processing machinery for farm production lines.",
+      "subcategories": [
+        { "name": "Feed Processing", "slug": "feed-processing", "groups": ["Pellet machine", "Hammer miller machine", "Disc miller machine", "Mixer&grinder", "Small Mixer", "Screw Elevator"] },
+        { "name": "Grain Processing", "slug": "grain-processing", "groups": ["Shaking screen machine", "Peanut sheller machine", "Corn threshing machine", "Corn husking and threshing machine", "Multifunctional threshing machine"] }
+      ]
+    },
+    {
+      "name": "Breeding Coop Equipment",
+      "nameCn": "养殖建筑设备",
+      "slug": "breeding-coop-equipment",
+      "desc": "Feeding lines, drinkers and fittings that equip the poultry house.",
+      "subcategories": [
+        { "name": "Feeding & Drinking Lines", "slug": "feeding-drinking-lines", "groups": ["Flat Breeding Equipment"] },
+        { "name": "Coop Accessories", "slug": "coop-accessories", "groups": ["Breeding Accessory"] }
+      ]
+    },
+    {
+      "name": "Slaughter Equipment",
+      "nameCn": "屠宰设备",
+      "slug": "slaughter-equipment",
+      "desc": "Plucking and processing equipment for poultry slaughter lines.",
+      "subcategories": [
+        { "name": "Plucking Machines", "slug": "plucking-machines", "groups": ["Plucker machine"] }
+      ]
+    },
+    {
+      "name": "Farming Tools",
+      "nameCn": "农业工具",
+      "slug": "farming-tools",
+      "desc": "Chaff cutters and forage tools for daily farm work.",
+      "subcategories": [
+        { "name": "Chaff Cutters", "slug": "chaff-cutters", "groups": ["Grass Chaff machine", "Multifunctional grass Chaff machine", "High discharge grass Chaff machine"] }
+      ]
+    },
+    {
+      "name": "Farming Vehicle",
+      "nameCn": "农业车辆",
+      "slug": "farming-vehicle",
+      "desc": "Tractors, harvesters and transport vehicles for field and farm work.",
+      "subcategories": [
+        { "name": "Tractors", "slug": "tractors", "groups": ["Tractor", "Walking Tractor"] },
+        { "name": "Harvesters", "slug": "harvesters", "groups": ["Harvester"] },
+        { "name": "Transport Vehicles", "slug": "transport-vehicles", "groups": ["Tricycle"] }
+      ]
+    },
+    {
+      "name": "Wire Mesh",
+      "nameCn": "丝网",
+      "slug": "wire-mesh",
+      "desc": "Welded, hexagonal and chain link fencing for farm boundaries and pens.",
+      "subcategories": [
+        { "name": "Welded & Hexagonal Mesh", "slug": "welded-hexagonal-mesh", "groups": ["Welded Wire Mesh", "Hexagonal Mesh"] },
+        { "name": "Farm Fencing", "slug": "farm-fencing", "groups": ["Cattle Fence", "Chain Link Fence"] }
+      ]
+    },
+    {
+      "name": "Other Machine",
+      "nameCn": "其他机器",
+      "slug": "other-machine",
+      "desc": "Additional machines and equipment outside the main ranges.",
+      "subcategories": []
+    }
+  ]
+}
