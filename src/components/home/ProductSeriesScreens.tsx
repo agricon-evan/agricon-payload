@@ -12,7 +12,7 @@ const SERIES_SLUGS = [
   { slug: 'poultry-equipment', accent: 'Poultry', tagline: 'Layer, broiler & hatchery systems' },
   { slug: 'livestock-equipment', accent: 'Livestock', tagline: 'Cattle, pig, goat & rabbit housing' },
   { slug: 'agriculture-machinery', accent: 'Machinery', tagline: 'Feed, processing & farm machinery' },
-  { slug: 'farming-vehicles', accent: 'Vehicles', tagline: 'Tractors, harvesters & farm transport' },
+  { slug: 'farming-vehicle', accent: 'Vehicles', tagline: 'Tractors, harvesters & farm transport' },
 ] as const
 
 const subImg = (slug: string, seriesSlug: string) =>
@@ -21,8 +21,8 @@ const subImg = (slug: string, seriesSlug: string) =>
 // 首页左屏场景图覆盖：指定系列使用专属航拍图（不影响产品详情页画廊所引用的 catalog 图）。
 // w/h 为文件真实内禀尺寸；图已预压缩，unoptimized 绕过 Next 优化器避免二次压缩发虚。
 const SCENE_OVERRIDES: Record<string, { src: string; w: number; h: number }> = {
-  'breeding-accessories': { src: '/images/home-series-poultry.jpg', w: 1672, h: 941 },
-  'livestock-accessories': { src: '/images/home-series-livestock.jpg', w: 2289, h: 1831 },
+  'breeding-accessory': { src: '/images/home-series-poultry.jpg', w: 1672, h: 941 },
+  'livestock-accessory': { src: '/images/home-series-livestock.jpg', w: 2289, h: 1831 },
   'production-line': { src: '/images/home-series-machinery.jpg', w: 2864, h: 1463 },
   'walking-tractor': { src: '/images/home-series-vehicles.jpg', w: 2741, h: 1530 },
 }
@@ -37,10 +37,11 @@ interface SeriesCard {
 
 const SERIES_CARD_OVERRIDES: Record<string, SeriesCard[]> = {
   'poultry-equipment': [
-    { name: 'H-Frame Automatic Layer Cage', img: { src: '/images/card-h-frame-automatic-layer-cage.jpg', w: 1200, h: 560 }, href: 'automatic-cage/h-frame-automatic-layer-cage' },
-    { name: 'A-Type Automatic Layer Cage', img: { src: '/images/card-a-type-automatic-layer-cage.jpg', w: 1200, h: 560 }, href: 'automatic-cage/a-type-automatic-layer-cage' },
-    { name: '128-Bird 4-Tier Layer Cage', img: { src: '/images/card-128-bird-4-tier-layer-cage.jpg', w: 1200, h: 560 }, href: 'layer-cage/128-bird-4-tier-layer-cage' },
-    { name: 'H-Frame Broiler Cage', img: { src: '/images/card-h-frame-broiler-cage.jpg', w: 1280, h: 560 }, href: 'broiler-cage/h-frame-broiler-cage' },
+    { name: 'H-Frame Automatic Layer Cage', img: { src: '/images/card-h-frame-automatic-layer-cage.jpg', w: 1200, h: 560 }, href: 'automatic-cage/h-frame-layer-cage-hot-dipped-galvanized-steel-battery-cage' },
+    { name: 'A-Type Automatic Layer Cage', img: { src: '/images/card-a-type-automatic-layer-cage.jpg', w: 1200, h: 560 }, href: 'automatic-cage/automatic-layer-cage-hot-dipped-galvanized-steel-battery-cage' },
+    // No exact 128-bird / 4-tier product in the current catalogue — send the card to the subcategory.
+    { name: '128-Bird 4-Tier Layer Cage', img: { src: '/images/card-128-bird-4-tier-layer-cage.jpg', w: 1200, h: 560 }, href: 'layer-cage' },
+    { name: 'H-Frame Broiler Cage', img: { src: '/images/card-h-frame-broiler-cage.jpg', w: 1280, h: 560 }, href: 'broiler-cage/h-frame-automatic-broiler-chicken-cage-feeding-drinking' },
     { name: 'Chick Cage', img: { src: '/images/card-chick-cage.jpg', w: 1280, h: 560 }, href: '' },
     { name: 'Feeding & Watering Line', img: { src: '/images/card-feeding-watering-line.jpg', w: 1280, h: 560 }, href: '' },
   ],
