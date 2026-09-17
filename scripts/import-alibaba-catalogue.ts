@@ -369,6 +369,25 @@ async function main() {
       : specs
 
     const faqs = (rich?.faqs || []).map((f: any) => ({ question: f.question, answer: f.answer }))
+
+    // Some products have no "Minimum order quantity" line — their entry point is the
+    // lowest tier of the ladder, so derive it. Take the FIRST number in the qty string:
+    // concatenating all digits turns "10-89" into 1089 and picks the wrong tier.
+    let moq = rich?.moq || r.moq || ''
+    if (!moq && tiers.length) {
+      const entry = tiers
+        .map((t) => {
+          const m = String(t.qty).match(/([\d,]+)/)
+          return { qty: t.qty, n: m ? parseInt(m[1].replace(/,/g, ''), 10) : NaN }
+        })
+        .filter((t) => Number.isFinite(t.n))
+        .sort((a, b) => a.n - b.n)[0]
+      if (entry) {
+        const m = String(entry.qty).match(/([\d,]+)\s*([a-zA-Z]*)/)
+        if (m) moq = `${m[1].replace(/,/g, '')} ${(m[2] || 'units').toLowerCase()}`
+      }
+    }
+
     const banned = postersByIdx.get(r.idx)
     const detailImages = (rich?.detail || [])
       .filter((u: string) => !banned?.has(baseName(u)))
@@ -386,7 +405,7 @@ async function main() {
           description: shortDesc(r.description, name),
           overviewHtml: toOverviewHtml(detailByIdx.get(r.idx) || '') || undefined,
           price: rich?.price || undefined,
-          moq: rich?.moq || r.moq || undefined,
+          moq: moq || undefined,
           specs: mergedSpecs,
           features,
           faqs: faqs.length ? faqs : undefined,
