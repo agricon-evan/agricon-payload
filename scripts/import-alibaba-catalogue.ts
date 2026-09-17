@@ -135,6 +135,75 @@ function cleanName(raw: string, group: string): string {
 }
 
 /**
+ * Product names come from the client's own material (D:/链接.txt), not the Alibaba title.
+ * That material gives one name per GROUP, and 23 of the 53 products share a group with
+ * siblings, so those get a short distinguishing suffix pulled from the Alibaba title.
+ */
+// 'a'/'an' are NOT treated as articles — in these names they are model designations
+// ("A Type Layer Cage" vs "H Type Layer Cage"), so lowercasing them reads as a typo.
+const SMALL_WORDS = new Set(['and', 'the', 'of', 'for', 'in', 'on', 'with', 'to'])
+
+function titleCase(s: string): string {
+  return s
+    .replace(/&/g, ' & ')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .split(' ')
+    .map((w, i) => {
+      if (/^[A-Z]{2,}$/.test(w)) return w
+      const lower = w.toLowerCase()
+      if (i > 0 && SMALL_WORDS.has(lower)) return lower
+      return lower.charAt(0).toUpperCase() + lower.slice(1)
+    })
+    .join(' ')
+}
+
+const SUFFIX_STOP = new Set([
+  'new','hot','selling','sale','wholesale','factory','automatic','fully','high','low','quality','best','cheap',
+  'agricon','type','machine','equipment','cage','for','with','and','the','a','an','of','in','on','to','farm',
+  'poultry','chicken','capacity','grade','pp','pvc','steel','plastic','metal','system','product','products',
+])
+
+/** Fix unit casing the supplier writes inconsistently ("10l", "4kw", "220v"). */
+function fixUnits(s: string): string {
+  return s
+    .replace(/\b(\d+(?:\.\d+)?)\s*l\b/gi, '$1L')
+    .replace(/\b(\d+(?:\.\d+)?)\s*kw\b/gi, '$1kW')
+    .replace(/\b(\d+(?:\.\d+)?)\s*v\b/gi, '$1V')
+    .replace(/\b(\d+(?:\.\d+)?)\s*hp\b/gi, '$1HP')
+}
+
+/** Short, readable distinguishing phrase from the Alibaba title (max 3 words). */
+function suffixFrom(title: string, groupName: string): string {
+  const groupWords = new Set(groupName.toLowerCase().split(/\s+/))
+  const clean = (title || '').replace(/\s+/g, ' ').trim()
+
+  // A number range WITH a unit reads far better than stray words. The unit is required —
+  // a bare "3-4" (from "3-4 Tier") is meaningless as a name suffix.
+  const spec = clean.match(
+    /\d[\d,.]*\s*[-–~]\s*\d[\d,.]*\s*(?:eggs?|kg\/h|t\/h|hp|kw|w|v|birds?|sets?|units?|meters?|cm|mm|m)\b|\d[\d,.]*\s*(?:kg\/h|t\/h|hp|kw|eggs?)\b/i,
+  )
+  if (spec) return fixUnits(titleCase(spec[0].replace(/\s+/g, ' ').trim()))
+
+  const words = clean
+    .split(/[\s/]+/)
+    .map((w) => w.replace(/[^A-Za-z0-9-]/g, ''))
+    .filter((w) => w && !groupWords.has(w.toLowerCase()) && !SUFFIX_STOP.has(w.toLowerCase()))
+
+  return fixUnits(titleCase(words.slice(0, 3).join(' ')))
+}
+
+/** name -> slug, de-duplicated. */
+function uniqueSlug(name: string, used: Set<string>): string {
+  let slug = slugify(name) || 'product'
+  const base = slug
+  let n = 2
+  while (used.has(slug)) slug = `${base}-${n++}`
+  used.add(slug)
+  return slug
+}
+
+/**
  * Some products have no supplier description block at all. What gets captured instead is
  * Alibaba's cross-sell widget — "Frequently bought together" followed by OTHER products'
  * titles and prices. That must never be shown as this product's description.
@@ -415,12 +484,19 @@ async function main() {
 
   // ── products ────────────────────────────────────────────────────────────────
   const used = new Set<string>()
+
+  // Names come from the client's material, so first work out which groups repeat.
+  const groupCounts = new Map<string, number>()
+  for (const r of rows) groupCounts.set(r.group, (groupCounts.get(r.group) || 0) + 1)
+
   let created = 0
   for (const r of rows) {
-    const name = cleanName(r.name, r.group)
-    let slug = slugify(name) || 'product'
-    while (used.has(slug)) slug += '-2'
-    used.add(slug)
+    const base = titleCase(r.group)
+    const name =
+      (groupCounts.get(r.group) || 0) > 1
+        ? `${base}${suffixFrom(r.name, r.group) ? ` — ${suffixFrom(r.name, r.group)}` : ''}`
+        : base
+    const slug = uniqueSlug(name, used)
 
     const images = (r.images || [])
       .map((_: string, ii: number) => mediaByKey[`${r.idx}-${ii}`])
@@ -560,6 +636,27 @@ async function main() {
     }
   }
   console.log(`  covers: ${catCovers} categories · ${subCovers} subcategories`)
+
+  // ── solutions order ─────────────────────────────────────────────────────────
+  // All six solutions ship with sortOrder 0, so /solutions renders in an arbitrary order.
+  // Poultry first, Farm Machinery & Tools last.
+  const SOLUTION_ORDER = [
+    'poultry-farming',
+    'livestock-farming',
+    'aquaculture',
+    'feed-processing',
+    'breeding-house',
+    'farm-machinery',
+  ]
+  const { docs: solutions } = await payload.find({ collection: 'solutions', limit: 100, depth: 0 })
+  let solOrdered = 0
+  for (const [i, slug] of SOLUTION_ORDER.entries()) {
+    const doc = solutions.find((s) => s.slug === slug)
+    if (!doc) continue
+    await payload.update({ collection: 'solutions', id: doc.id, data: { sortOrder: i } })
+    solOrdered++
+  }
+  console.log(`  solutions ordered: ${solOrdered}`)
 
   const counts = {
     categories: (await payload.count({ collection: 'categories' })).totalDocs,

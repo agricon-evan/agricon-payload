@@ -37,11 +37,11 @@ interface SeriesCard {
 
 const SERIES_CARD_OVERRIDES: Record<string, SeriesCard[]> = {
   'poultry-equipment': [
-    { name: 'H-Frame Automatic Layer Cage', img: { src: '/images/card-h-frame-automatic-layer-cage.jpg', w: 1200, h: 560 }, href: 'automatic-cage/h-frame-layer-cage-hot-dipped-galvanized-steel-battery-cage' },
-    { name: 'A-Type Automatic Layer Cage', img: { src: '/images/card-a-type-automatic-layer-cage.jpg', w: 1200, h: 560 }, href: 'automatic-cage/automatic-layer-cage-hot-dipped-galvanized-steel-battery-cage' },
+    { name: 'H-Frame Automatic Layer Cage', img: { src: '/images/card-h-frame-automatic-layer-cage.jpg', w: 1200, h: 560 }, href: 'automatic-cage/automatic-h-type-chicken-cage' },
+    { name: 'A-Type Automatic Layer Cage', img: { src: '/images/card-a-type-automatic-layer-cage.jpg', w: 1200, h: 560 }, href: 'automatic-cage/automatic-a-type-chicken-cage' },
     // No exact 128-bird / 4-tier product in the current catalogue — send the card to the subcategory.
     { name: '128-Bird 4-Tier Layer Cage', img: { src: '/images/card-128-bird-4-tier-layer-cage.jpg', w: 1200, h: 560 }, href: 'layer-cage' },
-    { name: 'H-Frame Broiler Cage', img: { src: '/images/card-h-frame-broiler-cage.jpg', w: 1280, h: 560 }, href: 'broiler-cage/h-frame-automatic-broiler-chicken-cage-feeding-drinking' },
+    { name: 'H-Frame Broiler Cage', img: { src: '/images/card-h-frame-broiler-cage.jpg', w: 1280, h: 560 }, href: 'broiler-cage/broiler-cage-h-frame-feeding' },
     { name: 'Chick Cage', img: { src: '/images/card-chick-cage.jpg', w: 1280, h: 560 }, href: '' },
     { name: 'Feeding & Watering Line', img: { src: '/images/card-feeding-watering-line.jpg', w: 1280, h: 560 }, href: '' },
   ],
