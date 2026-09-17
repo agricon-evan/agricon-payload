@@ -67,6 +67,15 @@ export default async function ProductDetailPage({ params }: Props) {
     .slice(0, 4)
 
   const specs = p.specs || []
+  const faqs = (p.faqs || [])
+    .map((f) => ({ question: (f.question || '').trim(), answer: (f.answer || '').trim() }))
+    .filter((f) => f.question && f.answer)
+  const detailImages = (p.detailImages || [])
+    .filter((item) => item.image && typeof item.image === 'object' && (item.image as { url?: string }).url)
+    .map((item) => ({
+      src: (item.image as { url?: string }).url as string,
+      alt: item.alt || `${p.name} detail image`,
+    }))
   const features = (p.features || [])
     .map((feature) => typeof feature === 'object' ? feature.feature || '' : feature)
     .filter(Boolean)
@@ -139,6 +148,25 @@ export default async function ProductDetailPage({ params }: Props) {
                 {p.description || 'Reliable agricultural equipment matched to your farm type, capacity and operating requirements.'}
               </p>
 
+              {(p.price || p.moq) && (
+                <div className="mt-7 flex flex-wrap items-baseline gap-x-10 gap-y-4 border-t border-[var(--color-border)] pt-5">
+                  {p.price && (
+                    <div>
+                      <span className="eyebrow">Unit Price</span>
+                      <span className="mt-1.5 block text-2xl md:text-[28px] font-bold leading-none tracking-[-0.01em] text-[var(--color-text)]">
+                        {p.price}
+                      </span>
+                    </div>
+                  )}
+                  {p.moq && (
+                    <div>
+                      <span className="eyebrow">Min. Order</span>
+                      <span className="mt-1.5 block text-base font-semibold text-[var(--color-text)]">{p.moq}</span>
+                    </div>
+                  )}
+                </div>
+              )}
+
               <div className="flex flex-wrap gap-2 mt-5">
                 {tags.map((tag, index) => (
                   <span key={`${tag}-${index}`} className="px-3 py-1.5 text-xs font-medium text-[var(--color-primary)] bg-[var(--color-primary)]/8 rounded-xs">{tag}</span>
@@ -188,6 +216,27 @@ export default async function ProductDetailPage({ params }: Props) {
                   <ul>
                     {features.map((feature, index) => <li key={`${feature}-${index}`}>{feature}</li>)}
                   </ul>
+                </div>
+              </Reveal>
+            )}
+
+            {/* Long-form detail images from the supplier's product description */}
+            {detailImages.length > 0 && (
+              <Reveal delay={110}>
+                <div className="mt-12 space-y-5">
+                  <span className="eyebrow">Product in Detail</span>
+                  {detailImages.map((img, index) => (
+                    <div key={`${img.src}-${index}`} className="overflow-hidden rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)]">
+                      <MediaImage
+                        src={img.src}
+                        alt={img.alt}
+                        width={1200}
+                        height={800}
+                        loading="lazy"
+                        className="w-full h-auto"
+                      />
+                    </div>
+                  ))}
                 </div>
               </Reveal>
             )}
@@ -258,6 +307,34 @@ export default async function ProductDetailPage({ params }: Props) {
                     </span>
                     <Icon name="download" size={18} className="shrink-0 text-[var(--color-primary)] mt-1" />
                   </a>
+                </Reveal>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* Product FAQ */}
+        {faqs.length > 0 && (
+          <section className="mt-16 md:mt-24 border-t border-[var(--color-border)] pt-10">
+            <Reveal>
+              <span className="eyebrow">FAQ</span>
+              <h2 className="mt-3 text-2xl md:text-3xl font-bold text-[var(--color-text)]">Common questions</h2>
+              <span className="orange-underline mt-4" aria-hidden="true" />
+            </Reveal>
+            <div className="mt-8 max-w-3xl divide-y divide-[var(--color-border)] border-y border-[var(--color-border)]">
+              {faqs.map((faq, index) => (
+                <Reveal key={`${faq.question}-${index}`} delay={index * 40}>
+                  <details className="group py-5">
+                    <summary className="flex cursor-pointer list-none items-start justify-between gap-6 text-[15px] font-semibold leading-snug text-[var(--color-text)] marker:content-none">
+                      {faq.question}
+                      <Icon
+                        name="chevron-down"
+                        size={18}
+                        className="mt-0.5 shrink-0 text-[var(--color-accent)] transition-transform duration-200 group-open:rotate-180"
+                      />
+                    </summary>
+                    <p className="mt-3 pr-10 text-sm leading-relaxed text-[var(--color-text-secondary)]">{faq.answer}</p>
+                  </details>
                 </Reveal>
               ))}
             </div>

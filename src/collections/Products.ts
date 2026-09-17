@@ -70,6 +70,15 @@ export const Products: CollectionConfig = {
               ],
               admin: { description: 'Key technical specifications rendered as a table.' },
             },
+            {
+              name: 'faqs',
+              type: 'array',
+              fields: [
+                { name: 'question', type: 'text', localized: true },
+                { name: 'answer', type: 'textarea', localized: true },
+              ],
+              admin: { description: 'Product-level questions shown in the FAQ section of the detail page.' },
+            },
           ],
         },
         {
@@ -83,6 +92,15 @@ export const Products: CollectionConfig = {
                 { name: 'alt', type: 'text', localized: true },
               ],
               admin: { description: 'Product gallery images. The first image is used as the cover.' },
+            },
+            {
+              name: 'detailImages',
+              type: 'array',
+              fields: [
+                { name: 'image', type: 'relationship', relationTo: 'media' },
+                { name: 'alt', type: 'text', localized: true },
+              ],
+              admin: { description: 'Long-form detail images shown under the product overview.' },
             },
             { name: 'seoImage', type: 'relationship', relationTo: 'media', admin: { description: 'Social sharing / SEO image.' } },
           ],
