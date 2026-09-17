@@ -33,8 +33,71 @@ const TAXONOMY = path.join(SCRAPE, 'taxonomy-78sub-2026-09-17.json')
 const PRODUCTS = path.join(SCRAPE, 'alibaba-products-2026-09-16.jsonl')
 const DETAILS = path.join(SCRAPE, 'alibaba-details-2026-09-17.jsonl')
 const RICH = path.join(SCRAPE, 'alibaba-rich-2026-09-17.jsonl')
+const JSONLD = path.join(SCRAPE, 'alibaba-jsonld-verify-2026-09-17.jsonl')
 const IMG_DIR = path.join(ROOT, '.cache/alibaba-images')
 const DETAIL_IMG_DIR = path.join(ROOT, '.cache/alibaba-detail-images')
+const CAT_DIR = path.join(ROOT, 'public/catalog/categories')
+const SUB_DIR = path.join(ROOT, 'public/catalog/products')
+
+/** new category slug -> old catalog image basename */
+const CATEGORY_IMG: Record<string, string> = {
+  'poultry-equipment': 'poultry-equipment',
+  'livestock-equipment': 'livestock-equipment',
+  'aquaculture-equipment': 'aquaculture-equipment',
+  'agriculture-machinery': 'agriculture-machinery',
+  'breeding-coop-equipment': 'breeding-house-equipment',
+  'slaughter-equipment': 'slaughter-equipment',
+  'farming-tools': 'farming-tools',
+  'farming-vehicle': 'farming-vehicles',
+  'wire-mesh': 'wire-mesh-fencing',
+  'other-machine': 'other-machines',
+}
+
+/** new subcategory slug -> old catalog image basename (see src/lib/images.ts) */
+const SUBCATEGORY_IMG: Record<string, string> = {
+  'layer-cage': 'layer-cage', 'broiler-cage': 'broiler-cage', 'chick-cage': 'chick-cage',
+  'automatic-cage': 'automatic-cage', 'hatcher-equipment': 'hatcher-equipment',
+  'flat-breeding-equipment': 'floor-rearing-equipment', 'cage-accessory': 'cage-accessories',
+  'breeding-accessory': 'breeding-accessories', 'farm-fence': 'farm-fence',
+  'cattle-panels': 'cattle-panels', 'livestock-scale': 'livestock-scale', 'farrow-pen': 'farrow-pen',
+  'goat-pen': 'goat-pen', 'rabbit-cage': 'rabbit-cage', 'livestock-accessory': 'livestock-accessories',
+  'water-pump': 'water-pump', oxygenerator: 'aerator', 'fish-pound': 'fish-pond',
+  'float-pound': 'floating-cage', 'fish-net': 'fish-net', 'aquaculture-accessory': 'aquaculture-accessories',
+  'pellet-machine': 'pellet-machine', 'extruder-machine': 'extruder-machine',
+  'grinding-machine': 'grinding-machine', 'grass-chaff-machine': 'grass-chaff-machine',
+  'mixing-machine': 'mixing-machine', 'drying-machine': 'drying-machine',
+  'rice-mill-machine': 'rice-mill-machine', 'production-line': 'production-line',
+  'machine-accessory': 'production-line', 'screw-elevator': 'screw-conveyor',
+  'multifunctional-thresher': 'threshing-machine', 'peanut-sheller': 'peanut-sheller',
+  'corn-peeler': 'threshing-machine', 'corn-peeler-thresher': 'threshing-machine',
+  'corn-thresher': 'threshing-machine', 'vibrating-screen': 'production-line',
+  'metal-structure': 'metal-structure', 'green-house': 'greenhouse', 'exhaust-fans': 'exhaust-fan',
+  'cooling-pad': 'cooling-pad', 'floor-pallet': 'slatted-floor', 'manure-scraper': 'manure-scraper',
+  'feed-silo': 'feed-silo', 'environment-controller': 'environment-controller',
+  'disinfection-equipment': 'disinfection-equipment', 'off-grid-solar': 'metal-structure',
+  'coop-accessory': 'floor-rearing-equipment', 'plucker-machine': 'plucker-machine',
+  'scalding-machine': 'scalding-machine', 'bleed-cone': 'bleeding-cone',
+  'cutting-machine': 'cutting-machine', 'working-table': 'working-table',
+  'automatic-machine': 'automatic-processing-machine', 'slaughter-accessory': 'working-table',
+  planter: 'planter', 'weed-cutter': 'weed-cutter', sprayer: 'sprayer', 'mist-maker': 'mist-maker',
+  'irrigation-equipment': 'irrigation-equipment', 'packing-bag': 'packing-bag',
+  'transport-crate': 'transport-crate', tractor: 'tractor', harvester: 'harvester',
+  tricycle: 'tricycle', 'walking-tractor': 'walking-tractor', 'tractor-parts': 'tractor',
+  'vehicle-accessory': 'tricycle', 'welded-wire-mesh': 'welded-wire-mesh',
+  'cattle-fence': 'cattle-fence', 'chain-link-fence': 'chain-link-fence',
+  'hexagonal-mesh': 'hexagonal-wire-mesh', 'cage-mesh': 'cage-mesh',
+  'egg-tray-machine': 'egg-tray-machine', 'egg-sizing-machine': 'egg-sizing-machine',
+  'egg-conveyor-machine': 'egg-conveyor-machine', 'egg-counting-machine': 'egg-counting-machine',
+  'brick-making-machine': 'brick-making-machine',
+}
+
+function resolveFile(dir: string, baseName: string): string | null {
+  for (const ext of ['.jpg', '.jpeg', '.png', '.webp']) {
+    const p = path.join(dir, baseName + ext)
+    if (fs.existsSync(p)) return p
+  }
+  return null
+}
 
 const args = new Set(process.argv.slice(2))
 const DRY = args.has('--dry-run')
@@ -152,6 +215,16 @@ async function main() {
   const detailByIdx = new Map<number, string>(details.map((d: any) => [d.idx, d.desc]))
   const richRows = fs.existsSync(RICH) ? readJsonl(RICH) : []
   const richByIdx = new Map<number, any>(richRows.map((d: any) => [d.idx, d]))
+
+  // Video posters live in the detail block alongside the still images and must not be
+  // imported as photos. Collected during the verification pass.
+  const baseName = (u: string) => (u || '').split('/').pop()?.split('?')[0] || ''
+  const postersByIdx = new Map<number, Set<string>>()
+  if (fs.existsSync(JSONLD)) {
+    for (const r of readJsonl(JSONLD) as any[]) {
+      if (r.videoPosters?.length) postersByIdx.set(r.idx, new Set(r.videoPosters.map(baseName)))
+    }
+  }
 
   console.log(`taxonomy: ${tax.categories.length} categories`)
   console.log(`products: ${rows.length} · details: ${details.length}`)
@@ -296,7 +369,9 @@ async function main() {
       : specs
 
     const faqs = (rich?.faqs || []).map((f: any) => ({ question: f.question, answer: f.answer }))
+    const banned = postersByIdx.get(r.idx)
     const detailImages = (rich?.detail || [])
+      .filter((u: string) => !banned?.has(baseName(u)))
       .map((u: string) => detailMediaByUrl.get(u))
       .filter(Boolean)
       .map((id: number) => ({ image: id, alt: name }))
@@ -328,7 +403,26 @@ async function main() {
   }
 
   // ── covers ──────────────────────────────────────────────────────────────────
+  // Prefer the purpose-made catalog image (public/catalog/*); fall back to the first
+  // product photo. Categories with no products at all still get a proper cover this way.
+  const coverCache: Record<string, number> = {}
+  const coverFromCatalog = async (dir: string, baseName: string, alt: string): Promise<number | null> => {
+    const file = resolveFile(dir, baseName)
+    if (!file) return null
+    if (coverCache[file]) return coverCache[file]
+    try {
+      const doc = await payload.create({ collection: 'media', data: { alt }, filePath: file })
+      coverCache[file] = doc.id as number
+      return doc.id as number
+    } catch {
+      return null
+    }
+  }
+
   const { docs: cats } = await payload.find({ collection: 'categories', limit: 100, depth: 0 })
+  let catCovers = 0
+  let subCovers = 0
+
   for (const c of cats) {
     const { docs: subs } = await payload.find({
       collection: 'subcategories',
@@ -336,23 +430,38 @@ async function main() {
       limit: 200,
       depth: 0,
     })
-    let cover: number | null = null
+
+    let cover: number | null = await coverFromCatalog(CAT_DIR, CATEGORY_IMG[c.slug as string] || '', c.name as string)
+
     for (const s of subs) {
-      const { docs: prods } = await payload.find({
-        collection: 'products',
-        where: { subcategory: { equals: s.id } },
-        limit: 1,
-        depth: 1,
-        sort: 'sortOrder',
-      })
-      const img = (prods[0]?.images as any[])?.[0]?.image
-      const id = typeof img === 'object' && img ? img.id : img
-      if (!id) continue
-      await payload.update({ collection: 'subcategories', id: s.id, data: { image: id } })
-      if (!cover) cover = id as number
+      let subCover = await coverFromCatalog(SUB_DIR, SUBCATEGORY_IMG[s.slug as string] || '', s.name as string)
+
+      if (!subCover) {
+        const { docs: prods } = await payload.find({
+          collection: 'products',
+          where: { subcategory: { equals: s.id } },
+          limit: 1,
+          depth: 1,
+          sort: 'sortOrder',
+        })
+        const img = (prods[0]?.images as any[])?.[0]?.image
+        const id = typeof img === 'object' && img ? img.id : img
+        subCover = (id as number) || null
+      }
+
+      if (subCover) {
+        await payload.update({ collection: 'subcategories', id: s.id, data: { image: subCover } })
+        subCovers++
+        if (!cover) cover = subCover
+      }
     }
-    if (cover) await payload.update({ collection: 'categories', id: c.id, data: { image: cover } })
+
+    if (cover) {
+      await payload.update({ collection: 'categories', id: c.id, data: { image: cover } })
+      catCovers++
+    }
   }
+  console.log(`  covers: ${catCovers} categories · ${subCovers} subcategories`)
 
   const counts = {
     categories: (await payload.count({ collection: 'categories' })).totalDocs,
