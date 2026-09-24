@@ -1,0 +1,482 @@
+{
+  "feed-mill-guide": {
+    "root": {
+      "type": "root",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "children": [
+        {
+          "type": "heading",
+          "tag": "h2",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "text",
+              "text": "Bainisha uwezo wa uzalishaji kabla ya kununua vifaa",
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "version": 1
+            }
+          ],
+          "direction": "ltr"
+        },
+        {
+          "type": "paragraph",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "text",
+              "text": "Mstari wa kulisha ni mnyororo: kusaga, kuchanganya, kutengeneza pellets, kupoza na kufunga kwenye mifuko. Kila hatua lazima iweze kushughulikia kiwango cha uzalishaji kwa saa kinacholengwa, vinginevyo kiungo dhaifu zaidi hupunguza mstari wote. Amua kama unalisha kundi lako la kuku pekee au unauza chakula pia, kwa sababu hiyo hubadilisha uwezo unaohitajika na kiwango cha kiotomatiki.",
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "version": 1
+            }
+          ],
+          "direction": "ltr",
+          "textStyle": "",
+          "textFormat": 0
+        },
+        {
+          "type": "heading",
+          "tag": "h2",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "text",
+              "text": "Kusaga: linganisha chujio na nguvu na malighafi",
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "version": 1
+            }
+          ],
+          "direction": "ltr"
+        },
+        {
+          "type": "paragraph",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "text",
+              "text": "Mashine ya kusaga kwa nyundo au kwa diski lazima ilingane na malighafi yako mikuu — mahindi, ngano, muhogo, mabaki ya mpunga. Ukubwa wa chujio hudhibiti ukubwa wa chembe, unaoathiri ubora wa kuchanganya na uimara wa pellets. Kwa malighafi mchanganyiko, chagua mashine yenye vichujio vinavyoweza kubadilishwa na nguvu ya kutosha ili kuepuka kuziba mara kwa mara.",
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "version": 1
+            }
+          ],
+          "direction": "ltr",
+          "textStyle": "",
+          "textFormat": 0
+        },
+        {
+          "type": "heading",
+          "tag": "h2",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "text",
+              "text": "Kuchanganya: uthabiti ndio bidhaa",
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "version": 1
+            }
+          ],
+          "direction": "ltr"
+        },
+        {
+          "type": "paragraph",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "text",
+              "text": "Ubora wa chakula hupimwa kwa usawa wake. Mchanganyiko wa wima unafaa kwa shamba la kati; mchanganyiko wa ribbon unafaa kwa mistari mikubwa inayoendelea. Angalia muda wa kuchanganya kwenye mwongozo na ufuate — kuchanganya kupita kiasi hutumia nishati na kunaweza kutenganisha viungo vyepesi. Ongeza viungo vya maji tu kwa mchanganyiko ulioundwa kwa ajili hiyo.",
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "version": 1
+            }
+          ],
+          "direction": "ltr",
+          "textStyle": "",
+          "textFormat": 0
+        },
+        {
+          "type": "heading",
+          "tag": "h2",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "text",
+              "text": "Kutengeneza pellets na kupoza",
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "version": 1
+            }
+          ],
+          "direction": "ltr"
+        },
+        {
+          "type": "paragraph",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "text",
+              "text": "Pellets hupunguza upotevu, huboresha mmeng'enyo na hurahisisha kuhifadhi na kusafirisha chakula. Mashine ya kutengeneza pellets lazima ilingane na ukubwa wa die kwa aina unayolenga — kuku, nguruwe au samaki. Pellets moto lazima zipozwe na kukaushwa kabla ya kufunga kwenye mifuko, vinginevyo unyevu husababisha ukungu wa kuvu wakati wa kuhifadhi.",
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "version": 1
+            }
+          ],
+          "direction": "ltr",
+          "textStyle": "",
+          "textFormat": 0
+        },
+        {
+          "type": "list",
+          "tag": "ul",
+          "listType": "bullet",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "listitem",
+              "value": 1,
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Kusaga → kuchanganya → kutengeneza pellets → kupoza → kufunga, na uwezo unaolingana",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ],
+              "direction": "ltr"
+            },
+            {
+              "type": "listitem",
+              "value": 1,
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Ukubwa wa die na muda wa conditioner hutegemea aina inayolengwa",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ],
+              "direction": "ltr"
+            },
+            {
+              "type": "listitem",
+              "value": 1,
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Kupoza kabla ya kufunga huzuia ukungu wa kuvu na huongeza muda wa kuhifadhi",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ],
+              "direction": "ltr"
+            }
+          ],
+          "direction": "ltr"
+        },
+        {
+          "type": "heading",
+          "tag": "h2",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "text",
+              "text": "Mpangilio, wafanyakazi na udhibiti wa ubora",
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "version": 1
+            }
+          ],
+          "direction": "ltr"
+        },
+        {
+          "type": "paragraph",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "text",
+              "text": "Weka mtiririko wa mstari: kupokea, kusaga, kuchanganya, kutengeneza pellets, kufunga, kuhifadhi. Mpangilio safi hupunguza kubeba kwa mikono na hufanya usafi wa kila siku uwezekane. Hifadhi sampuli za kila kundi, rekodi mabadiliko ya uundaji na pima mizani kwa usahihi mara kwa mara — katika uzalishaji wa chakula, uthabiti ndio wateja wanalipia.",
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "version": 1
+            }
+          ],
+          "direction": "ltr",
+          "textStyle": "",
+          "textFormat": 0
+        }
+      ],
+      "direction": "ltr"
+    }
+  },
+  "incubation-guide": {
+    "root": {
+      "type": "root",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "children": [
+        {
+          "type": "heading",
+          "tag": "h2",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "text",
+              "text": "1. Joto thabiti",
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "version": 1
+            }
+          ],
+          "direction": "ltr"
+        },
+        {
+          "type": "paragraph",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "text",
+              "text": "Ukuaji wa embryo hutegemea kiwango chembamba cha joto. Mabadiliko katika nusu ya kwanza ya kuangulia husababisha uharibifu mkubwa zaidi, hivyo chumba cha kuangulia lazima kishikilie joto lililowekwa kwa mchepuko mdogo. Pima sensor kwa usahihi mara kwa mara na usiweke mashine kwenye jua moja kwa moja au karibu na upepo mkali.",
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "version": 1
+            }
+          ],
+          "direction": "ltr",
+          "textStyle": "",
+          "textFormat": 0
+        },
+        {
+          "type": "heading",
+          "tag": "h2",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "text",
+              "text": "2. Udhibiti wa unyevu",
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "version": 1
+            }
+          ],
+          "direction": "ltr"
+        },
+        {
+          "type": "paragraph",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "text",
+              "text": "Unyevu hudhibiti upotevu wa maji kutoka kwenye yai na huathiri ukubwa wa sehemu ya hewa wakati wa kutotoa. Ukiwa mdogo sana, vifaranga hushikamana na ganda; ukiwa mkubwa sana, huzama au hutotoa kwa kuchelewa. Fuatilia upotevu wa uzito kulingana na mzingo unaotarajiwa na urekebishe uingizaji wa maji kwenye chumba cha kuangulia badala ya kukisia kwa hisia.",
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "version": 1
+            }
+          ],
+          "direction": "ltr",
+          "textStyle": "",
+          "textFormat": 0
+        },
+        {
+          "type": "heading",
+          "tag": "h2",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "text",
+              "text": "3. Kugeuza mayai kwa usahihi",
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "version": 1
+            }
+          ],
+          "direction": "ltr"
+        },
+        {
+          "type": "paragraph",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "text",
+              "text": "Kugeuza huzuia embryo kushikamana na utando wa ganda na husaidia matumizi sawa ya virutubisho. Geuza angalau kila baada ya masaa mawili katika siku 18 za kwanza, kisha acha kugeuza kwenye chumba cha kutotoa. Mfululizo wa kugeuza mara kwa mara ni muhimu zaidi kuliko pembe kamili inayotumiwa na mashine.",
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "version": 1
+            }
+          ],
+          "direction": "ltr",
+          "textStyle": "",
+          "textFormat": 0
+        },
+        {
+          "type": "heading",
+          "tag": "h2",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "text",
+              "text": "4. Hewa safi na udhibiti wa CO₂",
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "version": 1
+            }
+          ],
+          "direction": "ltr"
+        },
+        {
+          "type": "paragraph",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "text",
+              "text": "Embryo hutumia oksijeni na hutoa kaboni dioksidi. Uingizaji hewa lazima uongezeke kadri embryo inavyokua na kadri mashine inavyojazwa. Katika mashine za hatua nyingi, linganisha ubadilishanaji wa hewa na idadi ya mayai ili embryo za mapema zisikumbwe na shida kutokana na CO₂ kutoka kwa mayai ya hatua za baadaye.",
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "version": 1
+            }
+          ],
+          "direction": "ltr",
+          "textStyle": "",
+          "textFormat": 0
+        },
+        {
+          "type": "heading",
+          "tag": "h2",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "text",
+              "text": "5. Usafi na utunzaji wa mayai",
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "version": 1
+            }
+          ],
+          "direction": "ltr"
+        },
+        {
+          "type": "paragraph",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "text",
+              "text": "Mayai safi kutoka viota safi hutoa matokeo bora. Osha tu inapohitajika na kwa joto sahihi la maji, kwa sababu utunzaji mchafu au kuosha kwa maji baridi huingiza bakteria ndani ya ganda. Safisha kwa kuua viini chumba cha kuangulia, chumba cha kutotoa na trei kati ya makundi, na weka rekodi ili kundi baya liweze kufuatiliwa hadi hatua iliyolisababisha.",
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "version": 1
+            }
+          ],
+          "direction": "ltr",
+          "textStyle": "",
+          "textFormat": 0
+        }
+      ],
+      "direction": "ltr"
+    }
+  }
+}

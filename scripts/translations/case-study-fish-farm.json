@@ -1,0 +1,52 @@
+{
+  "ru": {
+    "title": "Комплект оборудования для рыбной фермы",
+    "subtitle": "Гибкая поддержка оборудованием для малых и средних рыбоводных хозяйств.",
+    "summary": "Комплект для аквакультуры в Юго-Восточной Азии, объединяющий циркуляцию воды, подачу кислорода, садки и сети.",
+    "farm_name": "Комплект оборудования для аквакультуры",
+    "location": "Юго-Восточная Азия",
+    "key_result": "Циркуляция воды, подача кислорода и гибкое оборудование для садков поставлены одним согласованным комплектом.",
+    "equipment": "Водяной насос, аэратор, рыболовная сеть, плавучий садок и базовые вспомогательные изделия.",
+    "application": "Гибкий комплект оборудования для малых и средних рыбоводных хозяйств."
+  },
+  "fr": {
+    "title": "Ensemble d'équipements pour pisciculture",
+    "subtitle": "Un accompagnement matériel flexible pour les exploitations piscicoles petites et moyennes.",
+    "summary": "Un ensemble aquacole pour l'Asie du Sud-Est combinant circulation de l'eau, apport d'oxygène, cages et filets.",
+    "farm_name": "Ensemble d'équipements d'aquaculture",
+    "location": "Asie du Sud-Est",
+    "key_result": "Circulation de l'eau, apport d'oxygène et cages flexibles fournis en un seul ensemble coordonné.",
+    "equipment": "Pompe à eau, aérateur, filet de pêche, cage flottante et produits de support de base.",
+    "application": "Ensemble d'équipements flexible pour les exploitations piscicoles petites et moyennes."
+  },
+  "es": {
+    "title": "Paquete de equipos para piscifactoría",
+    "subtitle": "Soporte flexible de equipos para operaciones piscícolas pequeñas y medianas.",
+    "summary": "Un paquete de acuicultura para el Sudeste Asiático que combina circulación de agua, aporte de oxígeno, jaulas y redes.",
+    "farm_name": "Paquete de equipos de acuicultura",
+    "location": "Sudeste Asiático",
+    "key_result": "Circulación de agua, aporte de oxígeno y jaulas flexibles suministrados en un único paquete coordinado.",
+    "equipment": "Bomba de agua, aireador, red de pesca, jaula flotante y productos de soporte básicos.",
+    "application": "Paquete de equipos flexible para operaciones piscícolas pequeñas y medianas."
+  },
+  "sw": {
+    "title": "Kifurushi cha vifaa vya shamba la samaki",
+    "subtitle": "Msaada rahisi wa vifaa kwa shughuli ndogo na za kati za ufugaji wa samaki.",
+    "summary": "Kifurushi cha ufugaji wa samaki cha Asia ya Kusini-Mashariki kinachounganisha mzunguko wa maji, msaada wa oksijeni, ngome na wavu.",
+    "farm_name": "Kifurushi cha vifaa vya ufugaji wa samaki",
+    "location": "Asia ya Kusini-Mashariki",
+    "key_result": "Mzunguko wa maji, msaada wa oksijeni na ngome rahisi zilitolewa kwa kifurushi kimoja kilichoratibiwa.",
+    "equipment": "Pampu ya maji, kifaa cha kupitisha hewa, wavu wa samaki, ngome inayoelea na bidhaa za msingi za msaada.",
+    "application": "Kifurushi rahisi cha vifaa kwa shughuli ndogo na za kati za ufugaji wa samaki."
+  },
+  "ar": {
+    "title": "حزمة معدات لمزرعة أسماك",
+    "subtitle": "دعم مرن بالمعدات للعمليات الصغيرة والمتوسطة في تربية الأسماك.",
+    "summary": "حزمة استزراع مائي في جنوب شرق آسيا تجمع تدوير المياه ودعم الأكسجين ومعدات الأقفاص والشباك.",
+    "farm_name": "حزمة معدات الاستزراع المائي",
+    "location": "جنوب شرق آسيا",
+    "key_result": "تدوير المياه ودعم الأكسجين وأقفاص مرنة وُّردت ضمن حزمة واحدة منسّقة.",
+    "equipment": "مضخة مياه، جهاز تهوية، شبكة صيد، قفص عائم ومنتجات دعم أساسية.",
+    "application": "حزمة معدات مرنة للعمليات الصغيرة والمتوسطة في تربية الأسماك."
+  }
+}

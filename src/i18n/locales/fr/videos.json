@@ -1,0 +1,16 @@
+{
+  "breadcrumb": {
+    "home": "Accueil",
+    "videos": "Vidéos"
+  },
+  "hero": {
+    "title": "Vidéothèque",
+    "description": "Voyez l'équipement Agricon en action — installations, projets agricoles, démonstrations produits et fabrication."
+  },
+  "watchOnYoutube": "Regarder sur YouTube",
+  "watchOnTiktok": "Regarder sur TikTok",
+  "noVideos": "Les vidéos sont en préparation. Revenez bientôt ou contactez-nous pour une démonstration.",
+  "ctaTitle": "Besoin d'une démonstration en direct ?",
+  "ctaDescription": "Contactez notre équipe pour organiser un appel vidéo ou des démonstrations enregistrées d'équipements spécifiques.",
+  "ctaButton": "Demander une démo"
+}

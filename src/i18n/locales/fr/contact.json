@@ -1,0 +1,148 @@
+{
+  "breadcrumb": {
+    "home": "Accueil",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Nous contacter",
+    "description": "Contactez notre équipe pour toute demande de produit, de tarif, d'assistance technique ou d'opportunité de partenariat."
+  },
+  "contactMethods": {
+    "email": {
+      "title": "Email",
+      "description": "Envoyez votre demande à l'adresse e-mail indiquée. Le délai de réponse dépend des heures d'ouverture et de la complexité de la demande.",
+      "actionText": "Envoyer un e-mail"
+    },
+    "phone": {
+      "title": "Téléphone",
+      "description": "Disponible du lundi au samedi, de 8h00 à 18h00 (GMT+8).",
+      "actionText": "Appeler maintenant"
+    },
+    "whatsapp": {
+      "title": "WhatsApp",
+      "description": "Réponses rapides pour les demandes de produits, les tarifs et le suivi des commandes.",
+      "actionText": "Discuter maintenant"
+    }
+  },
+  "inquiryForm": {
+    "title": "Envoyez-nous votre demande",
+    "description": "Remplissez le formulaire ci-dessous. Notre équipe examinera vos besoins et vous contactera avec les coordonnées que vous avez indiquées.",
+    "companyName": "Nom de l'entreprise",
+    "contactName": "Nom du contact",
+    "emailAddress": "Adresse e-mail",
+    "country": "Pays",
+    "selectCountry": "Sélectionnez votre pays",
+    "interestedProducts": "Produits qui vous intéressent",
+    "selectProductsHint": "Sélectionnez tous les produits qui vous intéressent :",
+    "message": "Message",
+    "messagePlaceholder": "Décrivez les besoins de votre projet, les quantités prévues ou les questions que vous vous posez...",
+    "submit": "Envoyer la demande",
+    "submitting": "Envoi en cours...",
+    "errorGeneric": "Une erreur s'est produite. Veuillez réessayer ou nous contacter directement.",
+    "errorNetwork": "Erreur réseau. Veuillez réessayer ou nous contacter via WhatsApp.",
+    "errorRateLimit": "Trop d'envois depuis cette adresse. Veuillez patienter quelques minutes et réessayer, ou nous contacter par e-mail.",
+    "errorRejected": "Cet envoi a été rejeté par notre filtre anti-spam. Veuillez nous contacter par e-mail."
+  },
+  "success": {
+    "title": "Demande envoyée avec succès",
+    "description": "Merci. Votre demande a été transmise pour examen technique et commercial.",
+    "browseProducts": "Parcourir les produits"
+  },
+  "whatsappPrompt": {
+    "title": "Vous préférez discuter directement ?",
+    "description": "Envoyez-nous un message WhatsApp pour obtenir rapidement des informations sur la disponibilité des produits, les tarifs et l'état des commandes. Nous répondons généralement en quelques minutes pendant les heures d'ouverture.",
+    "openChat": "Ouvrir la discussion WhatsApp"
+  },
+  "responseInfo": {
+    "title": "À quoi vous attendre",
+    "items": {
+      "response": {
+        "title": "Réponse sous 24 heures",
+        "description": "Chaque demande est examinée selon ses exigences techniques et commerciales."
+      },
+      "consultation": {
+        "title": "Analyse des besoins",
+        "description": "Bénéficiez gratuitement de conseils d'experts sur le choix du matériel et l'aménagement de la ferme."
+      },
+      "quotation": {
+        "title": "Devis détaillé",
+        "description": "Recevez un devis complet avec les prix, les caractéristiques techniques et les conditions d'expédition."
+      }
+    }
+  },
+  "countries": [
+    "Nigeria",
+    "Kenya",
+    "Tanzania",
+    "South Africa",
+    "Ghana",
+    "Ethiopia",
+    "Uganda",
+    "Vietnam",
+    "Philippines",
+    "Indonesia",
+    "Thailand",
+    "Myanmar",
+    "Cambodia",
+    "Brazil",
+    "Colombia",
+    "Peru",
+    "Ecuador",
+    "Argentina",
+    "India",
+    "Pakistan",
+    "Bangladesh",
+    "Egypt",
+    "Sudan",
+    "Other"
+  ],
+  "productOptions": [
+    "H-Type Layer Cage",
+    "A-Type Layer Cage",
+    "Broiler Cage",
+    "Chick Cage",
+    "Automatic Feeding System",
+    "Egg Collection System",
+    "Manure Removal System",
+    "Ventilation Fan",
+    "Cooling Pad",
+    "Feed Pellet Machine",
+    "Feed Mixer",
+    "Grinding Machine",
+    "Green House",
+    "Farm Fence",
+    "Cattle Panel",
+    "Other"
+  ],
+  "diagnostics": {
+    "phone": "Téléphone",
+    "phonePlaceholder": "+33 0 00 00 00 00",
+    "application": "Application",
+    "currentSetup": "Installation actuelle",
+    "purchaseType": "Type d'achat",
+    "select": "Sélectionnez...",
+    "applications": {
+      "layerFarm": "Ferme de poules pondeuses (œufs)",
+      "broilerFarm": "Élevage de poulets de chair",
+      "breederHatchery": "Élevage de reproducteurs / couvoir",
+      "pigFarm": "Élevage porcin",
+      "cattleFarm": "Élevage bovin",
+      "feedPlant": "Usine de fabrication d'aliments",
+      "distributor": "Distributeur / revendeur",
+      "other": "Autre"
+    },
+    "setups": {
+      "newProject": "Nouveau projet",
+      "replacing": "Remplacement d'équipement ancien",
+      "expanding": "Extension de la ferme existante",
+      "automation": "Mise à niveau pour l'automatisation",
+      "other": "Autre"
+    },
+    "purchaseTypes": {
+      "comparing": "Besoin d’un devis pour comparaison",
+      "ready": "Prêt à commander",
+      "researching": "Étude des options",
+      "partnership": "Partenariat à long terme"
+    }
+  }
+}

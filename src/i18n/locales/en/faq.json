@@ -10,6 +10,14 @@
   },
   "allCategory": "All",
   "noQuestions": "No questions found in this category.",
+  "categoryChips": {
+    "ordering": "Ordering & MOQ",
+    "shipping": "Shipping & Export",
+    "quality": "Quality Control",
+    "projects": "Farm Projects",
+    "distributors": "Distributors",
+    "afterSales": "After-sales"
+  },
   "relatedSupport": {
     "title": "Additional Support Resources",
     "items": {

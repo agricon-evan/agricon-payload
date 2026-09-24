@@ -1,0 +1,179 @@
+{
+  "about": {
+    "meta": {
+      "title": "Kuhusu Sisi",
+      "description": "Agricon inasambaza vifaa vya kuku, mifugo na mashine za kilimo kwa mashamba ya kibiashara duniani kote. Ona jinsi tunavyofanya kazi, tunachotengeneza na nani unashughulika naye."
+    },
+    "hero": {
+      "description": "Vifaa vya vitendo, ugavi uliounganishwa na msaada wa usafirishaji wa nje kwa mashamba na miradi ya kilimo."
+    },
+    "sections": {
+      "story": {
+        "eyebrow": "Historia Yetu",
+        "title": "Tunajenga Msingi wa Mashamba ya Kisasa",
+        "p1": "AGRICON hutoa suluhisho kamili za vifaa vya kilimo kwa mashamba, waagizaji, wasambazaji na wanunuzi wa miradi ya kilimo duniani kote.",
+        "p2": "AGRICON hufanya kazi na washirika wa viwanda maalum ili kuratibu upatikanaji wa vifaa, upatanisho wa mradi, udhibiti wa ubora na maandalizi ya usafirishaji wa nje kwa wanunuzi wa ng'ambo.",
+        "p3": "Kuanzia maagizo ya vifaa binafsi hadi vifurushi kamili vya mradi, tunahuisha bidhaa za vitendo na mahitaji halisi ya shamba katika ufugaji wa kuku na mifugo, usindikaji, miundombinu na matumizi ya mashine."
+      },
+      "principles": {
+        "eyebrow": "Kanuni Zetu za Uendeshaji",
+        "title": "Jinsi Tunavyofanya Biashara",
+        "description": "Kanuni sita zinaongoza kila mradi — kuanzia swali la kwanza hadi huduma baada ya mauzo"
+      },
+      "ecosystem": {
+        "eyebrow": "Mfumo wa Bidhaa",
+        "titleLead": "Mfumo",
+        "titleAccent": "wa Vifaa Uliounganishwa",
+        "description": "Uzalishaji, ulishaji, makazi, usindikaji na shughuli za kila siku za shamba — kupitia dirisha moja la ugavi lililoratibiwa."
+      },
+      "commitments": {
+        "eyebrow": "Ahadi Zetu",
+        "titleLead": "Ahadi",
+        "titleAccent": "za Vitendo",
+        "description": "Jinsi AGRICON inavyosaidia ugavi na uwasilishaji wa vifaa kwa mashamba na miradi ya kilimo duniani kote."
+      },
+      "process": {
+        "eyebrow": "Mchakato Wetu",
+        "title": "Kuanzia Swali hadi Msaada wa Muda Mrefu"
+      },
+      "delivery": {
+        "eyebrow": "Utayari wa Uwasilishaji",
+        "title": "Tumejiandaa kwa Maagizo ya Kimataifa",
+        "description": "AGRICON huratibu maelezo ya kivitendo yanayosaidia wanunuzi wa ng'ambo kutoka agizo lililothibitishwa hadi usafirishaji."
+      }
+    },
+    "values": {
+      "items": {
+        "integratedSupply": {
+          "title": "Ugavi Uliounganishwa",
+          "description": "Aina mbalimbali za vifaa vya kilimo zilizoratibiwa kupitia dirisha moja la ugavi."
+        },
+        "projectMatching": {
+          "title": "Upatanisho wa Mradi",
+          "description": "Uchaguzi wa vifaa kulingana na aina ya shamba, uwezo, hali ya eneo na mahitaji ya matumizi."
+        },
+        "exportSupport": {
+          "title": "Msaada wa Usafirishaji wa Nje",
+          "description": "Ufungashaji, upakiaji, nyaraka na uratibu wa usafirishaji kwa wanunuzi wa ng'ambo."
+        },
+        "longTermCooperation": {
+          "title": "Ushirikiano wa Muda Mrefu",
+          "description": "Maagizo ya mara kwa mara, miradi ya upanuzi na msaada ulioratibiwa wa wasambazaji kwa shughuli zinazokua."
+        }
+      }
+    },
+    "principles": {
+      "items": {
+        "coordinatedSourcing": {
+          "title": "Upatikanaji Uliyoratibiwa",
+          "description": "Kuku, mifugo, usindikaji wa chakula, ufugaji wa samaki, miundombinu na mashine kupitia dirisha moja la ugavi."
+        },
+        "qualityControl": {
+          "title": "Ubora na Udhibiti wa Agizo",
+          "description": "Wigo wa bidhaa, vipimo, idadi na maeneo muhimu ya ukaguzi huthibitishwa kabla ya usafirishaji."
+        },
+        "projectSelection": {
+          "title": "Uchaguzi kwa Msingi wa Mradi",
+          "description": "Suluhisho zinazolingana na aina ya shamba, uwezo, hali ya eneo, mahitaji ya uendeshaji na bajeti."
+        },
+        "exportDelivery": {
+          "title": "Uwasilishaji Uliotayari kwa Usafirishaji wa Nje",
+          "description": "Ufungashaji wa nje, utambuzi wa bidhaa, mipango ya upakiaji, uratibu wa kontena na nyaraka za usafirishaji."
+        },
+        "distributorSupport": {
+          "title": "Msaada kwa Wasambazaji",
+          "description": "Mchanganyiko rahisi wa bidhaa, msaada wa maagizo ya mara kwa mara na usaidizi wa kukuza soko la ndani."
+        },
+        "partnership": {
+          "title": "Ushirikiano wa Kivitendo",
+          "description": "Kuanzia maagizo ya vifaa binafsi hadi vifurushi kamili vya mradi na msaada wa upanuzi wa baadaye."
+        }
+      }
+    },
+    "commitments": {
+      "items": {
+        "integratedSupply": {
+          "title": "Ugavi Uliounganishwa wa Vifaa",
+          "description": "Kuku, mifugo, usindikaji wa chakula, ufugaji wa samaki, miundombinu na mashine huratibiwa kupitia dirisha moja la ugavi."
+        },
+        "exportReadyDelivery": {
+          "title": "Uwasilishaji Uliotayari kwa Usafirishaji wa Nje",
+          "description": "Ufungashaji wa nje, utambuzi wa bidhaa, mipango ya upakiaji, uratibu wa kontena na nyaraka za usafirishaji kwa wanunuzi wa ng'ambo."
+        },
+        "galvanized": {
+          "title": "Uti wa Bati kwa Moto",
+          "description": "Uhai wa matumizi wa miaka 15–20 (chuma kilichotiwa bati kwa moto)."
+        }
+      }
+    },
+    "process": {
+      "items": {
+        "inquiry": {
+          "title": "Swali",
+          "description": "Kuelewa aina ya shamba, uwezo, bidhaa zinazovutia, mazingira ya matumizi na lengo la ununuzi."
+        },
+        "analysis": {
+          "title": "Uchambuzi",
+          "description": "Kupitia hali za mradi, malengo ya uendeshaji, mahitaji ya eneo na matarajio ya bajeti."
+        },
+        "matching": {
+          "title": "Upatanisho",
+          "description": "Kuchagua vifaa, mistari ya bidhaa na vifurushi vya vifaa vya ziada vinavyofaa mradi halisi."
+        },
+        "confirmation": {
+          "title": "Uthibitisho",
+          "description": "Kukamilisha modeli za bidhaa, idadi, vipimo, upakiaji na mpango wa usafirishaji."
+        },
+        "delivery": {
+          "title": "Uwasilishaji",
+          "description": "Kuratibu ufungashaji wa nje, mipango ya upakiaji, nyaraka na msaada wa usafirishaji wa kimataifa."
+        },
+        "support": {
+          "title": "Msaada",
+          "description": "Kuendelea na taarifa za bidhaa, spare parts, maagizo ya mara kwa mara na upanuzi wa mradi."
+        }
+      }
+    },
+    "delivery": {
+      "items": {
+        "orderConfirmation": {
+          "title": "Uthibitisho wa Agizo",
+          "description": "Vipimo, idadi na mahitaji ya usafirishaji hupitiwa."
+        },
+        "exportPacking": {
+          "title": "Ufungashaji wa Nje",
+          "description": "Bidhaa zimefungwa na kuwekwa lebo wazi kwa usafirishaji wa kimataifa."
+        },
+        "containerLoading": {
+          "title": "Upakiaji wa Kontena",
+          "description": "Mipango ya upakiaji hupangwa kwa maagizo ya vifaa moja au mchanganyiko."
+        },
+        "shippingDocuments": {
+          "title": "Nyaraka za Usafirishaji",
+          "description": "Nyaraka za kibiashara huandaliwa kulingana na mahitaji ya agizo."
+        }
+      }
+    }
+  },
+  "caseStudies": {
+    "meta": {
+      "title": "Mifano ya Miradi",
+      "description": "Ufungaji halisi: jinsi mashamba yalivyochagua, kuagiza na kuanzisha mistari ya Agricon ya kuku, mifugo na mashine."
+    }
+  },
+  "products": {
+    "meta": {
+      "title": "Bidhaa",
+      "description": "Chunguza mistari ya Agricon ya kuku, mifugo, ufugaji wa samaki na mashine za kilimo — ngome, mifumo ya kulisha, incubators, vifaa vya usindikaji na zaidi."
+    }
+  },
+  "solutions": {
+    "meta": {
+      "title": "Suluhisho za Shamba",
+      "description": "Suluhisho kamili za shamba — nyumba za kuku, mabanda ya mifugo, mistari ya chakula na mipangilio ya usindikaji, iliyopangwa kuanzia mwanzo hadi mwisho."
+    },
+    "badge": "Suluhisho kamili",
+    "emptyTitle": "Suluhisho Zinakuja Hivi Karibuni",
+    "emptyDesc": "Vifurushi vyetu vya suluhisho vinaongezwa. Wasiliana nasi kujadili mradi wako."
+  }
+}

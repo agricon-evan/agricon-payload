@@ -1,0 +1,19 @@
+{
+  "breadcrumb": {
+    "home": "الرئيسية",
+    "search": "بحث"
+  },
+  "hero": {
+    "title": "بحث",
+    "description": "ابحث عن منتجات وحلول وموارد Agricon."
+  },
+  "placeholder": "ابحث عن المنتجات والحلول والموارد...",
+  "noResults": {
+    "title": "لا توجد نتائج",
+    "description": "جرّب كلمات مفتاحية أخرى أو تواصل معنا مباشرة."
+  },
+  "searching": "جارٍ البحث...",
+  "loading": "جارٍ التحميل...",
+  "typeProduct": "منتج",
+  "typeSolution": "حل"
+}

@@ -4,6 +4,7 @@
     "solutions": "Soluciones",
     "tradeSupport": "Soporte comercial",
     "caseStudies": "Casos de éxito",
+    "videos": "Videos",
     "blog": "Blog",
     "about": "Nosotros"
   },
@@ -20,8 +21,6 @@
   },
   "footer": {
     "brandDescription": "Soluciones de equipos avícolas y ganaderos. Equipos duraderos listos para exportación para granjas comerciales en todo el mundo.",
-    "email": "",
-    "phone": "",
     "copyright": "Agricon. Soluciones de equipos avícolas y ganaderos.",
     "columns": {
       "products": "Productos",
@@ -41,6 +40,7 @@
       "tradeSupport": "Soporte comercial",
       "aboutAgricon": "Sobre Agricon",
       "caseStudies": "Casos de éxito",
+      "videos": "Videos",
       "blog": "Blog",
       "distributors": "Distribuidores",
       "contact": "Contacto",
@@ -50,13 +50,135 @@
       "termsOfService": "Términos"
     }
   },
-  "home": {},
+  "home": {
+    "breadcrumb": {
+      "home": "Inicio"
+    },
+    "heroStats": {
+      "categories": "Categorías de productos",
+      "markets": "Mercados de exportación",
+      "projects": "Proyectos de granjas"
+    },
+    "series": {
+      "poultry": "Sistemas para ponedoras, pollos de engorde e incubación",
+      "livestock": "Alojamiento para bovinos, cerdos, cabras y conejos",
+      "machinery": "Alimento, procesamiento y maquinaria agrícola",
+      "vehicles": "Tractores, cosechadoras y transporte agrícola"
+    },
+    "categories": {
+      "titleLead": "Líneas completas de",
+      "titleAccent": "equipos para granjas",
+      "description": "Un ecosistema de equipos integrado que cubre la cría, la alimentación, el alojamiento, el procesamiento y la operación diaria de la granja."
+    },
+    "featured": {
+      "eyebrow": "Equipos destacados",
+      "titleLead": "Equipos",
+      "titleAccent": "más vendidos",
+      "description": "Máquinas y sistemas seleccionados, los que más piden nuestros clientes — verificados por el equipo de producto."
+    },
+    "solutions": {
+      "titleLead": "Soluciones",
+      "titleAccent": "integrales para granjas",
+      "description": "Combinamos la selección de proyectos, el suministro coordinado de equipos y el soporte de exportación para operaciones agrícolas prácticas."
+    },
+    "stats": {
+      "eyebrow": "Trayectoria comprobada",
+      "titleLead": "Números que",
+      "titleAccent": "hablan",
+      "titleTail": "por sí solos",
+      "description": "Una visión clara del alcance de los equipos de Agricon y de su experiencia en entregas internacionales."
+    },
+    "value": {
+      "eyebrow": "Valor, con números",
+      "titleLead": "No decimos calidad. Nosotros",
+      "titleAccent": "mostramos números.",
+      "description": "Cada afirmación que hacemos está respaldada por un resultado medible en su granja — porque la confianza se construye con evidencia, no con adjetivos."
+    },
+    "howWeWork": {
+      "eyebrow": "Cómo trabajamos",
+      "titleLead": "De la consulta al",
+      "titleAccent": "soporte",
+      "description": "Un proceso estructurado y basado en evidencia — diseñado para reducir su riesgo en cada primer pedido"
+    },
+    "whyChooseUs": {
+      "eyebrow": "Por qué Agricon",
+      "titleLead": "Un",
+      "titleAccent": "socio",
+      "titleTail": ", no solo un proveedor",
+      "description": "Seis razones por las que granjas comerciales de tres continentes construyen con Agricon"
+    },
+    "trust": {
+      "eyebrow": "Confianza y evidencia",
+      "titleLead": "Nosotros",
+      "titleAccent": "demostramos",
+      "titleTail": "lo que afirmamos",
+      "description": "Pídanos cualquier documento — informes de inspección, registros de trazabilidad, certificados de ensayo. Cada ventaja que mencionamos es verificable."
+    },
+    "coverage": {
+      "eyebrow": "Alcance global",
+      "titleLead": "Apoyamos a",
+      "titleAccent": "compradores en todo el mundo",
+      "description": "Suministro práctico de equipos y coordinación de exportaciones para granjas, importadores, distribuidores y proyectos agrícolas."
+    },
+    "testimonials": {
+      "eyebrow": "Testimonios",
+      "titleLead": "La confianza de",
+      "titleAccent": "agricultores",
+      "titleTail": "en todo el mundo",
+      "starRating": "Calificación de 5 estrellas"
+    },
+    "news": {
+      "eyebrow": "Noticias y análisis",
+      "titleLead": "Desde nuestro",
+      "titleAccent": "Blog"
+    },
+    "finalCta": {
+      "titleLead": "¿Listo para construir",
+      "titleAccent": "su granja?",
+      "description": "Obtenga una cotización personalizada con envío a su puerto — nuestros ingenieros diseñarán la distribución óptima para sus instalaciones.",
+      "primary": "Solicitar cotización",
+      "secondary": "Ver casos de éxito"
+    },
+    "newsletter": {
+      "eyebrow": "Novedades de Agricon",
+      "titleLead": "Reciba novedades prácticas",
+      "description": "Una novedad útil a la vez. Sin ruido innecesario.",
+      "chips": {
+        "product": "Novedades de productos",
+        "insights": "Análisis para la granja",
+        "export": "Soporte de exportación"
+      }
+    }
+  },
   "aria": {
     "toggleNavigation": "Alternar navegación",
     "switchToLightMode": "Cambiar a modo claro",
     "switchToDarkMode": "Cambiar a modo oscuro",
     "backToTop": "Volver arriba",
     "chatOnWhatsApp": "Chatear por WhatsApp",
-    "switchLanguage": "Cambiar idioma"
+    "switchLanguage": "Cambiar idioma",
+    "home": "Agricon — inicio",
+    "breadcrumb": "Ruta de navegación",
+    "previousImage": "Imagen anterior",
+    "nextImage": "Imagen siguiente",
+    "productImages": "Imágenes del producto",
+    "scrollLeft": "Desplazar a la izquierda",
+    "scrollRight": "Desplazar a la derecha",
+    "closeVideo": "Cerrar video"
+  },
+  "meta": {
+    "siteTitle": "Agricon - Soluciones de equipos avícolas y ganaderos",
+    "siteDescription": "Soluciones de equipos avícolas y ganaderos"
+  },
+  "productLine": {
+    "emptyTitle": "Productos próximamente",
+    "emptyDesc": "Estamos agregando los productos de esta línea. Contáctenos para recibir el catálogo más reciente.",
+    "equipmentLine": "Línea de equipos"
+  },
+  "notFound": {
+    "title": "Página no encontrada",
+    "description": "Es posible que la página se haya movido, renombrado o ya no esté disponible.",
+    "backHome": "Volver al inicio",
+    "browseProducts": "Ver productos"
   }
 }

@@ -4,6 +4,7 @@
     "solutions": "Suluhisho",
     "tradeSupport": "Msaada wa Biashara",
     "caseStudies": "Mafunzo ya Kesi",
+    "videos": "Video",
     "blog": "Blogu",
     "about": "Kuhusu"
   },
@@ -20,8 +21,6 @@
   },
   "footer": {
     "brandDescription": "Suluhisho za vifaa vya ufugaji wa kuku na mifugo. Vifaa vya kudumu vinavyoweza kusafirishwa kwa mashamba ya kibiashara duniani kote.",
-    "email": "",
-    "phone": "",
     "copyright": "Agricon. Suluhisho za vifaa vya ufugaji wa kuku na mifugo.",
     "columns": {
       "products": "Bidhaa",
@@ -41,6 +40,7 @@
       "tradeSupport": "Msaada wa Biashara",
       "aboutAgricon": "Kuhusu Agricon",
       "caseStudies": "Mafunzo ya Kesi",
+      "videos": "Video",
       "blog": "Blogu",
       "distributors": "Wasambazaji",
       "contact": "Wasiliana",
@@ -50,13 +50,135 @@
       "termsOfService": "Masharti ya Huduma"
     }
   },
-  "home": {},
+  "home": {
+    "breadcrumb": {
+      "home": "Nyumbani"
+    },
+    "heroStats": {
+      "categories": "Aina za Bidhaa",
+      "markets": "Masoko ya Nje",
+      "projects": "Miradi ya Shamba"
+    },
+    "series": {
+      "poultry": "Mifumo ya kuku wa mayai, wa nyama na vifaranga",
+      "livestock": "Mabanda ya ng’ombe, nguruwe, mbuzi na sungura",
+      "machinery": "Mashine za chakula, usindikaji na kilimo",
+      "vehicles": "Matrekta, mashine za mavuno na usafirishaji wa shamba"
+    },
+    "categories": {
+      "titleLead": "Mistari Kamili ya",
+      "titleAccent": "Vifaa vya Shamba",
+      "description": "Mfumo jumuishi wa vifaa unaojumuisha kuzaliana, kulisha, mabanda, usindikaji na uendeshaji wa shamba wa kila siku."
+    },
+    "featured": {
+      "eyebrow": "Vifaa Vilivyopendekezwa",
+      "titleLead": "Vifaa",
+      "titleAccent": "Vinavyouzwa Zaidi",
+      "description": "Mashine na mifumo iliyochaguliwa kwa uangalifu ambayo wateja wetu huagiza zaidi — imethibitishwa na timu ya bidhaa."
+    },
+    "solutions": {
+      "titleLead": "Suluhisho",
+      "titleAccent": "Kamili za Shamba",
+      "description": "Tunaunganisha ulinganishaji wa miradi, ugavi wa vifaa ulioratibiwa na msaada wa kuuza nje kwa shughuli za kilimo zinazotekelezeka."
+    },
+    "stats": {
+      "eyebrow": "Rekodi Iliyothibitishwa",
+      "titleLead": "Namba",
+      "titleAccent": "Zinazozungumza",
+      "titleTail": "Zenyewe",
+      "description": "Mwonekano wazi wa wigo wa vifaa vya Agricon na uzoefu wa usafirishaji wa kimataifa."
+    },
+    "value": {
+      "eyebrow": "Thamani Iliyohesabiwa",
+      "titleLead": "Hatusemi Ubora. Tunaonyesha",
+      "titleAccent": "Namba",
+      "description": "Kila dai tunalotoa linathibitishwa na matokeo yanayopimika kwenye shamba lako — kwa sababu uaminifu hujengwa kwa ushahidi, si kwa maneno matupu."
+    },
+    "howWeWork": {
+      "eyebrow": "Jinsi Tunavyofanya Kazi",
+      "titleLead": "Kutoka Swali hadi",
+      "titleAccent": "Msaada",
+      "description": "Mchakato uliopangwa na unaotegemea ushahidi — ulioundwa kupunguza hatari yako katika kila agizo la kwanza."
+    },
+    "whyChooseUs": {
+      "eyebrow": "Kwa Nini Agricon",
+      "titleLead": "Mshirika wa",
+      "titleAccent": "Kweli",
+      "titleTail": ", Si Msambazaji Tu",
+      "description": "Sababu sita zinazofanya mashamba ya kibiashara katika mabara matatu kujenga na Agricon."
+    },
+    "trust": {
+      "eyebrow": "Uaminifu na Ushahidi",
+      "titleLead": "Tunathibitisha",
+      "titleAccent": "Kila",
+      "titleTail": "Tunachodai",
+      "description": "Tuombe nyaraka yoyote — ripoti za ukaguzi, rekodi za ufuatiliaji, vyeti vya vipimo. Kila faida tunayotaja inaweza kuthibitishwa."
+    },
+    "coverage": {
+      "eyebrow": "Ufikiaji wa Kimataifa",
+      "titleLead": "Tunawasaidia",
+      "titleAccent": "Wanunuzi Duniani Kote",
+      "description": "Ugavi wa vifaa unaotekelezeka na uratibu wa kuuza nje kwa mashamba, waagizaji, wasambazaji na miradi ya kilimo."
+    },
+    "testimonials": {
+      "eyebrow": "Ushuhuda",
+      "titleLead": "Tunaaminiwa na",
+      "titleAccent": "Wakulima",
+      "titleTail": "Duniani Kote",
+      "starRating": "Ukadiriaji wa nyota 5"
+    },
+    "news": {
+      "eyebrow": "Habari na Maarifa",
+      "titleLead": "Kutoka kwenye",
+      "titleAccent": "Blogu"
+    },
+    "finalCta": {
+      "titleLead": "Uko Tayari Kujenga",
+      "titleAccent": "Shamba Lako?",
+      "description": "Pata quotation maalum ikijumuisha usafirishaji hadi bandari yako — wahandisi wetu watabuni mpangilio bora wa kituo chako.",
+      "primary": "Omba Bei",
+      "secondary": "Ona Mafunzo ya Kesi"
+    },
+    "newsletter": {
+      "eyebrow": "Masasisho ya AGRICON",
+      "titleLead": "Pata masasisho yenye manufaa",
+      "description": "Sasisho moja lenye manufaa kwa wakati mmoja. Bila kelele zisizo za lazima.",
+      "chips": {
+        "product": "Masasisho ya bidhaa",
+        "insights": "Maarifa ya shamba",
+        "export": "Msaada wa kuuza nje"
+      }
+    }
+  },
   "aria": {
     "toggleNavigation": "Geuza urambazaji",
     "switchToLightMode": "Badilisha hadi mwonekano mwepesi",
     "switchToDarkMode": "Badilisha hadi mwonekano mweusi",
     "backToTop": "Rudi juu",
     "chatOnWhatsApp": "Ongea kwenye WhatsApp",
-    "switchLanguage": "Badilisha lugha"
+    "switchLanguage": "Badilisha lugha",
+    "home": "Agricon — mwanzo",
+    "breadcrumb": "Njia ya urambazaji",
+    "previousImage": "Picha iliyotangulia",
+    "nextImage": "Picha inayofuata",
+    "productImages": "Picha za bidhaa",
+    "scrollLeft": "Sogeza kushoto",
+    "scrollRight": "Sogeza kulia",
+    "closeVideo": "Funga video"
+  },
+  "meta": {
+    "siteTitle": "Agricon - Suluhisho za vifaa vya ufugaji wa kuku na mifugo",
+    "siteDescription": "Suluhisho za vifaa vya ufugaji wa kuku na mifugo"
+  },
+  "productLine": {
+    "emptyTitle": "Bidhaa Zinakuja Hivi Karibuni",
+    "emptyDesc": "Bidhaa za mstari huu zinaongezwa. Wasiliana nasi kwa katalogi ya hivi karibuni.",
+    "equipmentLine": "Mstari wa vifaa"
+  },
+  "notFound": {
+    "title": "Ukurasa haupatikani",
+    "description": "Huenda ukurasa ulihamishwa, ukabadilishwa jina au haupo tena.",
+    "backHome": "Rudi mwanzo",
+    "browseProducts": "Tazama bidhaa"
   }
 }

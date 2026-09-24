@@ -1,0 +1,148 @@
+{
+  "breadcrumb": {
+    "home": "الرئيسية",
+    "contact": "اتصل بنا"
+  },
+  "hero": {
+    "title": "اتصل بنا",
+    "description": "تواصل مع فريقنا للاستفسار عن المنتجات أو الأسعار أو الدعم الفني أو فرص الشراكة."
+  },
+  "contactMethods": {
+    "email": {
+      "title": "Email",
+      "description": "أرسل استفسارك إلى عنوان البريد الإلكتروني المنشور. تعتمد مدة الرد على ساعات العمل ومدى تعقيد الطلب.",
+      "actionText": "أرسل بريدًا إلكترونيًا"
+    },
+    "phone": {
+      "title": "الهاتف",
+      "description": "متاح من الاثنين إلى السبت، من 8:00 صباحًا إلى 6:00 مساءً (بتوقيت GMT+8).",
+      "actionText": "اتصل الآن"
+    },
+    "whatsapp": {
+      "title": "WhatsApp",
+      "description": "ردود سريعة على استفسارات المنتجات والأسعار وتحديثات الطلبات.",
+      "actionText": "ابدأ المحادثة"
+    }
+  },
+  "inquiryForm": {
+    "title": "أرسل استفسارك",
+    "description": "املأ النموذج أدناه. سيراجع الفريق المتطلبات ويتواصل معك عبر البيانات المدخلة.",
+    "companyName": "اسم الشركة",
+    "contactName": "اسم جهة الاتصال",
+    "emailAddress": "البريد الإلكتروني",
+    "country": "الدولة",
+    "selectCountry": "اختر دولتك",
+    "interestedProducts": "المنتجات محل الاهتمام",
+    "selectProductsHint": "اختر جميع المنتجات التي تهمك:",
+    "message": "الرسالة",
+    "messagePlaceholder": "أخبرنا بمتطلبات مشروعك والكميات المتوقعة أو أي أسئلة لديك...",
+    "submit": "إرسال الاستفسار",
+    "submitting": "جارٍ الإرسال...",
+    "errorGeneric": "حدث خطأ ما. يرجى المحاولة مرة أخرى أو التواصل معنا مباشرة.",
+    "errorNetwork": "خطأ في الشبكة. يرجى المحاولة مرة أخرى أو التواصل معنا عبر واتساب.",
+    "errorRateLimit": "عدد كبير جدًا من الإرسالات من هذا العنوان. يرجى الانتظار بضع دقائق والمحاولة مرة أخرى، أو التواصل معنا عبر البريد الإلكتروني.",
+    "errorRejected": "تم رفض هذا الإرسال بواسطة مرشح الرسائل المزعجة. يرجى التواصل معنا عبر البريد الإلكتروني."
+  },
+  "success": {
+    "title": "تم إرسال الاستفسار بنجاح",
+    "description": "شكرًا لك. تم إرسال استفسارك للمراجعة الفنية والتجارية.",
+    "browseProducts": "تصفّح المنتجات"
+  },
+  "whatsappPrompt": {
+    "title": "تفضّل المحادثة المباشرة؟",
+    "description": "أرسل لنا رسالة على واتساب للحصول على ردود سريعة بشأن توافر المنتجات والأسعار وحالة الطلب. نرد عادةً خلال دقائق في ساعات العمل.",
+    "openChat": "افتح محادثة واتساب"
+  },
+  "responseInfo": {
+    "title": "ما يمكنك توقعه",
+    "items": {
+      "response": {
+        "title": "رد خلال 24 ساعة",
+        "description": "يدرس كل استفسار وفق متطلباته الفنية والتجارية."
+      },
+      "consultation": {
+        "title": "مراجعة المتطلبات",
+        "description": "احصل على مشورة متخصصة في اختيار المعدات وتخطيط المزرعة دون أي تكلفة."
+      },
+      "quotation": {
+        "title": "عرض سعر مفصّل",
+        "description": "احصل على عرض سعر شامل يتضمن الأسعار والمواصفات وتفاصيل الشحن."
+      }
+    }
+  },
+  "countries": [
+    "Nigeria",
+    "Kenya",
+    "Tanzania",
+    "South Africa",
+    "Ghana",
+    "Ethiopia",
+    "Uganda",
+    "Vietnam",
+    "Philippines",
+    "Indonesia",
+    "Thailand",
+    "Myanmar",
+    "Cambodia",
+    "Brazil",
+    "Colombia",
+    "Peru",
+    "Ecuador",
+    "Argentina",
+    "India",
+    "Pakistan",
+    "Bangladesh",
+    "Egypt",
+    "Sudan",
+    "Other"
+  ],
+  "productOptions": [
+    "H-Type Layer Cage",
+    "A-Type Layer Cage",
+    "Broiler Cage",
+    "Chick Cage",
+    "Automatic Feeding System",
+    "Egg Collection System",
+    "Manure Removal System",
+    "Ventilation Fan",
+    "Cooling Pad",
+    "Feed Pellet Machine",
+    "Feed Mixer",
+    "Grinding Machine",
+    "Green House",
+    "Farm Fence",
+    "Cattle Panel",
+    "Other"
+  ],
+  "diagnostics": {
+    "phone": "الهاتف",
+    "phonePlaceholder": "+966 00 000 0000",
+    "application": "التطبيق",
+    "currentSetup": "الوضع الحالي",
+    "purchaseType": "نوع الشراء",
+    "select": "اختر...",
+    "applications": {
+      "layerFarm": "مزرعة دجاج بياض (بيض)",
+      "broilerFarm": "مزرعة دجاج لاحم",
+      "breederHatchery": "مزرعة أمهات / مفقس",
+      "pigFarm": "مزرعة خنازير",
+      "cattleFarm": "مزرعة أبقار",
+      "feedPlant": "مصنع تصنيع الأعلاف",
+      "distributor": "موزع / بائع تجزئة",
+      "other": "أخرى"
+    },
+    "setups": {
+      "newProject": "مشروع جديد",
+      "replacing": "استبدال معدات قديمة",
+      "expanding": "توسيع مزرعة قائمة",
+      "automation": "ترقية إلى الأتمتة",
+      "other": "أخرى"
+    },
+    "purchaseTypes": {
+      "comparing": "أحتاج عرض سعر للمقارنة",
+      "ready": "جاهز للطلب",
+      "researching": "أدرس الخيارات",
+      "partnership": "شراكة طويلة الأمد"
+    }
+  }
+}

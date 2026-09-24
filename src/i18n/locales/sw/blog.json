@@ -1,0 +1,25 @@
+{
+  "breadcrumb": {
+    "blog": "Blog"
+  },
+  "hero": {
+    "title": "Blog",
+    "description": "Maarifa ya sekta, vidokezo vya ufugaji na habari za kampuni"
+  },
+  "meta": {
+    "title": "Blog",
+    "description": "Miongozo na maelezo ya shambani kuhusu nyumba za kuku, mifumo ya mifugo, usindikaji wa chakula na kuchagua vifaa sahihi vya shamba."
+  },
+  "badge": "Maelezo ya shambani",
+  "backToBlog": "Rudi kwenye Blogu",
+  "tocTitle": "Kwenye Ukurasa Huu",
+  "tocLabel": "Jedwali la yaliyomo",
+  "tags": {
+    "farm-machinery": "Mashine za Kilimo",
+    "feed-processing": "Usindikaji wa Chakula",
+    "incubators": "Incubators",
+    "breeding": "Uzalishaji",
+    "layer-cages": "Ngome za Tabaka",
+    "poultry-equipment": "Vifaa vya Kuku"
+  }
+}

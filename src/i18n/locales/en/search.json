@@ -1,0 +1,19 @@
+{
+  "breadcrumb": {
+    "home": "Home",
+    "search": "Search"
+  },
+  "hero": {
+    "title": "Search",
+    "description": "Search Agricon products, solutions, and resources."
+  },
+  "placeholder": "Search products, solutions, and resources...",
+  "noResults": {
+    "title": "No results found",
+    "description": "Try different keywords or contact us directly."
+  },
+  "searching": "Searching...",
+  "loading": "Loading...",
+  "typeProduct": "Product",
+  "typeSolution": "Solution"
+}

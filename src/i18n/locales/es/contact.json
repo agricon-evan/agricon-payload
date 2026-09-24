@@ -1,0 +1,148 @@
+{
+  "breadcrumb": {
+    "home": "Inicio",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "title": "Contáctenos",
+    "description": "Comuníquese con nuestro equipo para consultas de productos, precios, soporte técnico u oportunidades de colaboración."
+  },
+  "contactMethods": {
+    "email": {
+      "title": "Email",
+      "description": "Envíe su consulta a la dirección de correo publicada. El tiempo de respuesta depende del horario comercial y la complejidad de la solicitud.",
+      "actionText": "Enviar correo"
+    },
+    "phone": {
+      "title": "Teléfono",
+      "description": "Disponible de lunes a sábado, de 8:00 a 18:00 (GMT+8).",
+      "actionText": "Llamar ahora"
+    },
+    "whatsapp": {
+      "title": "WhatsApp",
+      "description": "Respuestas rápidas para consultas de productos, precios y estado de pedidos.",
+      "actionText": "Chatear ahora"
+    }
+  },
+  "inquiryForm": {
+    "title": "Envíenos su consulta",
+    "description": "Complete el siguiente formulario. El equipo revisará los requisitos y lo contactará con los datos proporcionados.",
+    "companyName": "Nombre de la empresa",
+    "contactName": "Nombre de contacto",
+    "emailAddress": "Correo electrónico",
+    "country": "País",
+    "selectCountry": "Seleccione su país",
+    "interestedProducts": "Productos de interés",
+    "selectProductsHint": "Seleccione todos los productos que le interesan:",
+    "message": "Mensaje",
+    "messagePlaceholder": "Cuéntenos los requisitos de su proyecto, las cantidades previstas o cualquier duda que tenga...",
+    "submit": "Enviar consulta",
+    "submitting": "Enviando...",
+    "errorGeneric": "Ocurrió un error. Inténtelo de nuevo o contáctenos directamente.",
+    "errorNetwork": "Error de red. Inténtelo de nuevo o contáctenos por WhatsApp.",
+    "errorRateLimit": "Demasiados envíos desde esta dirección. Espere unos minutos e inténtelo de nuevo, o contáctenos por correo electrónico.",
+    "errorRejected": "Este envío fue rechazado por nuestro filtro antispam. Contáctenos por correo electrónico."
+  },
+  "success": {
+    "title": "Consulta enviada correctamente",
+    "description": "Gracias. Su consulta se envió para revisión técnica y comercial.",
+    "browseProducts": "Ver productos"
+  },
+  "whatsappPrompt": {
+    "title": "¿Prefiere chatear directamente?",
+    "description": "Envíenos un mensaje por WhatsApp para obtener respuestas rápidas sobre disponibilidad de productos, precios y estado de pedidos. Solemos responder en minutos dentro del horario comercial.",
+    "openChat": "Abrir chat de WhatsApp"
+  },
+  "responseInfo": {
+    "title": "Qué puede esperar",
+    "items": {
+      "response": {
+        "title": "Respuesta en 24 horas",
+        "description": "Cada consulta se revisa según sus requisitos técnicos y comerciales."
+      },
+      "consultation": {
+        "title": "Revisión de requisitos",
+        "description": "Reciba asesoría experta sobre selección de equipos y planificación del diseño de su granja sin costo."
+      },
+      "quotation": {
+        "title": "Cotización detallada",
+        "description": "Reciba una cotización completa con precios, especificaciones y detalles de envío."
+      }
+    }
+  },
+  "countries": [
+    "Nigeria",
+    "Kenya",
+    "Tanzania",
+    "South Africa",
+    "Ghana",
+    "Ethiopia",
+    "Uganda",
+    "Vietnam",
+    "Philippines",
+    "Indonesia",
+    "Thailand",
+    "Myanmar",
+    "Cambodia",
+    "Brazil",
+    "Colombia",
+    "Peru",
+    "Ecuador",
+    "Argentina",
+    "India",
+    "Pakistan",
+    "Bangladesh",
+    "Egypt",
+    "Sudan",
+    "Other"
+  ],
+  "productOptions": [
+    "H-Type Layer Cage",
+    "A-Type Layer Cage",
+    "Broiler Cage",
+    "Chick Cage",
+    "Automatic Feeding System",
+    "Egg Collection System",
+    "Manure Removal System",
+    "Ventilation Fan",
+    "Cooling Pad",
+    "Feed Pellet Machine",
+    "Feed Mixer",
+    "Grinding Machine",
+    "Green House",
+    "Farm Fence",
+    "Cattle Panel",
+    "Other"
+  ],
+  "diagnostics": {
+    "phone": "Teléfono",
+    "phonePlaceholder": "+34 000 000 000",
+    "application": "Aplicación",
+    "currentSetup": "Instalación actual",
+    "purchaseType": "Tipo de compra",
+    "select": "Seleccione...",
+    "applications": {
+      "layerFarm": "Granja de ponedoras (huevo)",
+      "broilerFarm": "Granja de pollos de engorde",
+      "breederHatchery": "Granja de reproductores / incubadora",
+      "pigFarm": "Granja porcina",
+      "cattleFarm": "Granja de ganado vacuno",
+      "feedPlant": "Planta de procesamiento de piensos",
+      "distributor": "Distribuidor / revendedor",
+      "other": "Otro"
+    },
+    "setups": {
+      "newProject": "Proyecto nuevo",
+      "replacing": "Sustitución de equipos antiguos",
+      "expanding": "Ampliación de la granja existente",
+      "automation": "Actualización para automatización",
+      "other": "Otro"
+    },
+    "purchaseTypes": {
+      "comparing": "Necesito una cotización para comparar",
+      "ready": "Listo para pedir",
+      "researching": "Evaluando opciones",
+      "partnership": "Colaboración a largo plazo"
+    }
+  }
+}

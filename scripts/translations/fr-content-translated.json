@@ -1,0 +1,505 @@
+{
+  "products": {
+    "48-bird-half-set-layer-cage": {
+      "description": "Chaque cadre de cage et panneau de grillage subit une galvanisation à chaud avec un revêtement de zinc supérieur à 60 microns, qui résiste à la rouille, à la corrosion et à l'ammoniac dans les poulaillers humides.  La durée de vie dépasse 15 à 20 ans, ce qui réduit sensiblement"
+    },
+    "electric-peanut-sheller": {
+      "description": "Les moteurs à bobinage cuivre de 3kW et 4kW fonctionnent en monophasé 220V, la même alimentation qu'un appareil ménager.  Aucun câblage triphasé, aucun transformateur, aucun carburant."
+    },
+    "corn-peeling-and-shelling-machine": {
+      "description": "L'éplucheuse intégrée retire d'abord les spathes, puis l'égreneuse détache les grains de l'épi, pour obtenir un maïs propre prêt au séchage, au stockage ou à l'alimentation.  Aucune étape de décorticage séparée et aucune machine supplémentaire à acheter ou à entretenir."
+    },
+    "bean-thresher-200kg-h": {
+      "description": "Le soja, la fèverole et le haricot amer sont battus proprement sur cette machine, avec le riz et le blé en complément.  Les réglages du tambour conviennent aux gousses dures : les grains ressortent entiers plutôt que fendus ou écrasés."
+    },
+    "diesel-threshing-machine-8hp": {
+      "description": "Le moteur diesel refroidi à l'eau démarre à la main et fonctionne uniquement au carburant : le battage est donc possible au champ, dans les villages isolés et pendant les coupures de courant.  Le refroidissement à eau évite la surchauffe lors des longues journées de récolte, et le démarrage manuel"
+    },
+    "automatic-h-frame-broiler-cage": {
+      "description": "La conception en cages superposées élève plus de poulets de chair au mètre carré que les systèmes au sol, chaque étage fonctionnant comme une unité indépendante pour l'alimentation, l'abreuvement et la gestion des déjections ; des compartiments distincts facilitent l'inspection des oiseaux, le groupement"
+    },
+    "plastic-animal-ear-tags": {
+      "description": "Chiffres ou lettres imprimés au laser sur les deux faces avec un fort contraste, bien visibles à distance même dans des conditions poussiéreuses ou boueuses ; permet l'identification individuelle des animaux pour les registres de troupeau, le suivi de la reproduction, les calendriers de vaccination et"
+    },
+    "h-type-rabbit-cage": {
+      "description": "Cadre et grillage fabriqués en fil d'acier Q235 avec un revêtement galvanisé à chaud de 275 g/m² — excellente résistance à la corrosion face à l'urine, à l'humidité et à l'ammoniac, durée de vie allant jusqu'à 15 ans en bâtiment humide."
+    },
+    "farrowing-crate": {
+      "description": "Fabriquée en tube d'acier galvanisé à chaud renforcé, d'une épaisseur de 32x2."
+    },
+    "stainless-steel-chicken-plucker": {
+      "description": "Traite jusqu'à 200 volailles par heure avec un taux de plumaison de 96 pour cent.  Des doigts en caoutchouc réglables retirent délicatement les plumes en moins de 30 secondes par volaille, sans abîmer la peau."
+    },
+    "automatic-quail-cage": {
+      "description": "Le cadre de la cage à cailles est réalisé en tube d'acier galvanisé à chaud et les panneaux de grillage utilisent du fil d'acier doux à finition électrozinguée."
+    },
+    "pig-gestation-crate": {
+      "description": "Construction en acier galvanisé à chaud avec tubes à paroi épaisse, offrant une excellente résistance à la corrosion et à la rouille pour une grande durabilité en milieu humide et en usage intensif continu."
+    },
+    "poultry-water-pressure-regulator": {
+      "description": "Coque en plastique technique ABS haut de gamme, tige de valve en acier inoxydable et membrane en caoutchouc naturel plus durable que les membranes plastiques standard ; les vis en cuivre empêchent la rouille et assurent plus de 10 ans"
+    },
+    "automatic-poultry-feeding-line": {
+      "description": "Ligne d'alimentation entièrement automatique avec mangeoires à assiette et abreuvoirs à tétine, assurant une distribution régulière d'aliments et d'eau dans tout le poulailler 24 heures sur 24 et réduisant la main-d'œuvre manuelle jusqu'à 80 pour cent"
+    },
+    "poultry-nipple-drinking-cup": {
+      "description": "Abreuvoir automatique à tétine pour volailles : il distribue l'eau à la demande, sans électricité. La pression du conduit principal ouvre la valve lorsque les oiseaux picorent la tétine, ce qui garde l'eau fraîche et"
+    },
+    "chicken-drinking-bowl": {
+      "description": "Équipé d'une valve mécanique à ressort intégrée, l'abreuvoir détecte le poids de l'eau : lorsque les oiseaux boivent, le bol s'allège et le ressort se relève pour fermer la valve, évitant tout débordement ; lorsqu'il se remplit, son poids"
+    },
+    "plastic-poultry-transport-crate": {
+      "description": "Une grille de ventilation complète couvre le dessus, les quatre côtés et le fond pour une circulation d'air maximale pendant le transport.  Réduit le stress thermique et la mortalité des poulets, canards, pigeons et autres volailles — un point essentiel pour les expéditions longue distance de la ferme au marché."
+    },
+    "plasson-bell-drinker": {
+      "description": "Cette série d'abreuvoirs à cloche Plasson couvre tous les stades de la volaille.  Petit poussin : 11 cm de hauteur, 18 cm de diamètre, 200 pièces par carton."
+    },
+    "a-type-automatic-layer-cage": {
+      "description": "Le cadre et le grillage sont en acier galvanisé à chaud, offrant une durée de vie de 15 à 20 ans et une forte résistance à la corrosion dans les environnements avicoles humides et les régions côtières où la galvanisation électrolytique standard"
+    },
+    "h-frame-automatic-layer-cage": {
+      "description": "La cage de pondeuses utilise une structure en H robuste en fil d'acier galvanisé à chaud, offrant une résistance supérieure à la corrosion et une durée de vie de 15 à 20 ans, même dans des poulaillers humides."
+    },
+    "feed-mixing-and-grinding-machine": {
+      "description": "Cette machine à mélanger et à broyer réunit le mélange et le broyage des aliments en une seule unité compacte, ce qui supprime le besoin d'équipements séparés et simplifie toute votre production d'aliments"
+    },
+    "h-frame-broiler-cage": {
+      "description": "Revêtement de zinc de 275 g/m² (plus de 60 microns) sur acier Q235.  Résiste à l'ammoniac, à l'humidité et à la corrosion due aux déjections."
+    },
+    "h-type-layer-cage-battery-system": {
+      "description": "Un revêtement de zinc de plus de 60 microns résiste à la rouille, à la corrosion et à l'ammoniac.  Durée de vie de 15 à 20 ans — coûts de remplacement minimes."
+    },
+    "h-type-layer-cage-96-160-birds": {
+      "description": "La cage de pondeuses de type lingot se distingue par un cadre en forme de lingot qui offre une stabilité et une capacité de charge exceptionnelles, ce qui la rend idéale pour les installations à plusieurs étages dans les poulaillers commerciaux"
+    },
+    "compact-animal-feed-mixer": {
+      "description": "Disponible en six modèles de 50 kg à 300 kg par lot, adaptés aux différentes tailles de ferme et aux besoins quotidiens en aliments."
+    },
+    "large-chaff-cutter-5t-h": {
+      "description": "L'admission automatique de la matière combinée au pétrissage intégré assure une transformation régulière et sans main-d'œuvre du début à la fin.  Il suffit de charger la trémie — la machine alimente, pétrit et transforme automatiquement — sans pousser ni guider à la main"
+    },
+    "hammer-mill-grinder": {
+      "description": "Le système intégré de dépoussiérage cyclonique placé à la sortie capte les fines particules pendant le broyage.  Un environnement de travail propre et sain — il évite la dispersion de poussière dans l'air et protège la santé de l'opérateur tout en"
+    },
+    "4-8t-multi-function-chaff-cutter": {
+      "description": "Ce modèle 4."
+    },
+    "toothed-disc-mill-grinder": {
+      "description": "Des grilles interchangeables de 0,2 mm à 6 mm permettent un contrôle précis de la granulométrie pour divers besoins de transformation."
+    },
+    "agp-160-flat-die-pellet-machine": {
+      "description": "La sortie d'évacuation spacieuse est conçue avec des protections latérales intégrées qui empêchent les granulés de se disperser depuis la filière lors de la collecte, afin que votre espace de travail reste propre et ordonné à chaque"
+    },
+    "small-chaff-cutter-400kg-h": {
+      "description": "Une construction en lames d'alliage de titane haut de gamme offre une dureté et une résistance à l'usure exceptionnelles dans les environnements exigeants de transformation des aliments.  Durée de vie des lames prolongée et qualité de coupe constante — elles restent affûtées en usage intensif"
+    },
+    "64-400-egg-smart-incubator": {
+      "description": "Une chambre d'incubation de conception de précision maintient des conditions optimales pendant tout le cycle.  Taux d'éclosion jusqu'à 95 % et plus — des résultats constamment supérieurs aux méthodes manuelles traditionnelles."
+    },
+    "mini-plastic-home-incubator": {
+      "description": "Des capteurs avancés surveillent et ajustent en continu la chaleur et l'humidité pendant tout le cycle, créant des conditions favorables et stables pour le développement des embryons tout en réduisant le risque de variations de température"
+    },
+    "24-500-egg-automatic-incubator": {
+      "description": "Une chambre d'incubation avicole de conception de précision maintient des conditions optimales pour différentes espèces d'oiseaux, avec un taux de réussite pouvant atteindre quatre-vingt-dix-huit pour cent, constamment supérieur aux méthodes traditionnelles, tout en reproduisant"
+    },
+    "industrial-hatcher-incubator": {
+      "description": "Construction renforcée avec revêtement de zinc.  Anticorrosion — durable dans les environnements humides de couvoir."
+    },
+    "backpack-gasoline-brush-cutter": {
+      "description": "Comprend 10 têtes interchangeables telles que débroussailleuse, tronçonneuse, perche élagueuse, taille-haie et cultivateur, ce qui permet à un seul bloc moteur d'assurer de multiples tâches d'entretien sans acheter de machines séparées pour"
+    },
+    "poultry-feeding-and-watering-set": {
+      "description": "Une structure en plastique PE et PP haut de gamme garantit une sécurité non toxique adaptée à tous les types de volailles ; une composition sans BPA et inodore assure des conditions d'alimentation saines pour les poulets, canards, oies et autres"
+    },
+    "stainless-steel-bush-cutter": {
+      "description": "Moteur 2 temps / 4 temps à couple élevé — il coupe sans effort les herbes épaisses, les broussailles et les hautes herbes.  Une puissance fiable pour les travaux agricoles et de jardin intensifs."
+    },
+    "192-egg-incubator": {
+      "description": "Une chambre d'incubation de conception de précision maintient des conditions optimales pendant tout le cycle.  Taux d'éclosion jusqu'à 95 % et plus — des résultats constamment supérieurs aux méthodes manuelles traditionnelles."
+    },
+    "poultry-feeder-and-drinker-set": {
+      "description": "Ensemble mangeoire et abreuvoir pour volailles en matériau PE et PP de qualité alimentaire, non toxique, sans BPA et inodore — sans danger pour les poulets, canards, oies, cailles, dindes et pintades, du poussin à l'oiseau adulte."
+    },
+    "128-bird-4-tier-layer-cage": {
+      "description": "Un revêtement de zinc de plus de 60 microns résiste à la rouille, à la corrosion et à l'ammoniac.  Durée de vie de 15 à 20 ans — coûts de remplacement minimes."
+    },
+    "industrial-screw-conveyor-auger": {
+      "description": "Transporteur à vis et élévateur à vis entièrement personnalisables : diamètre de tube, pas de vis, longueur, puissance du moteur, position des entrées et sorties et revêtement de surface, pour répondre aux besoins précis des fermes, usines d'aliments, sites de transformation des céréales, brasseries et installations industrielles"
+    },
+    "48-96-egg-digital-incubator": {
+      "description": "Une chambre d'incubation de conception de précision maintient des conditions optimales pendant tout le cycle.  Taux d'éclosion jusqu'à 95 % et plus — des résultats constamment supérieurs aux méthodes manuelles traditionnelles."
+    }
+  },
+  "features": {
+    "Hot Dip Galvanized Surface Treatment For Long Lasting Durability": "Traitement de surface galvanisé à chaud pour une durabilité prolongée",
+    "Compact Half Set Design For 48 Laying Hens": "Conception compacte demi-ensemble pour 48 poules pondeuses",
+    "Manual Egg Collection With Smooth Rolling Channel": "Collecte manuelle des œufs avec gouttière de roulement lisse",
+    "Smooth Polished Wire Mesh Protects Hen Welfare": "Grillage poli et lisse, respectueux du bien-être des poules",
+    "Complete Accessories And Easy DIY Installation": "Accessoires complets et installation facile à réaliser soi-même",
+    "Plug-in shelling at home": "Égrenage sur simple prise, à la maison",
+    "Gentle rollers keep the seed whole": "Des rouleaux doux qui préservent les graines entières",
+    "300 or 600kg per hour": "300 ou 600 kg par heure",
+    "Clean separation, less sorting": "Séparation propre, moins de tri",
+    "Storage and shipping made easy": "Stockage et expédition facilités",
+    "Peel and shell in one pass": "Épluchage et égrenage en un seul passage",
+    "Husk and cob value, not waste": "Spathes et rafles valorisées, pas gaspillées",
+    "1500kg per hour, steady and even": "1500 kg par heure, régulier et uniforme",
+    "Home 220V power": "Alimentation domestique 220V",
+    "Simple mechanics, long service": "Mécanique simple, longue durée de service",
+    "Made for bean crops": "Conçue pour les cultures de légumineuses",
+    "Whole beans mean better prices": "Des grains entiers, de meilleurs prix",
+    "200kg per hour for the bean harvest": "200 kg par heure pour la récolte de légumineuses",
+    "Runs on 220V household power": "Fonctionne sur secteur domestique 220V",
+    "Three sizes for three scales": "Trois tailles pour trois échelles d'exploitation",
+    "8hp diesel power, no grid needed": "Moteur diesel 8hp, sans réseau électrique",
+    "One machine, many grains": "Une machine, de nombreuses céréales",
+    "Single or double fan cleaning": "Nettoyage à un ou deux ventilateurs",
+    "Trailer version moves with the harvest": "Version remorque qui suit la récolte",
+    "Compact and easy to ship": "Compacte et facile à expédier",
+    "Multi Tier Stacked Structure for High Density": "Structure superposée à plusieurs étages pour une forte densité",
+    "Integrated Automation Reduces Labor": "Automatisation intégrée qui réduit la main-d'œuvre",
+    "Anti Corrosion Galvanized Build": "Construction galvanisée anticorrosion",
+    "Flexible Configuration for Farm Scale": "Configuration flexible selon la taille de la ferme",
+    "Installation Support and Compatibility": "Accompagnement à l'installation et compatibilité",
+    "Laser Printed Both Sides": "Impression laser sur les deux faces",
+    "Durable TPU Material": "Matériau TPU durable",
+    "8 Colors and 3 Size": "8 couleurs et 3 tailles",
+    "Easy Installation": "Installation facile",
+    "Custom OEM Service": "Service OEM personnalisé",
+    "Hot Dip Galvanized Steel Wire Construction": "Construction en fil d'acier galvanisé à chaud",
+    "Rabbit Proof Floor Wire Spacing": "Espacement du grillage de sol empêchant les lapins de s'échapper",
+    "Heavy Duty Wire Diameter For Strength": "Diamètre de fil renforcé pour plus de solidité",
+    "Slide Out Galvanized Manure Tray": "Bac à fumier galvanisé coulissant",
+    "Complete Feeding And Watering System": "Système complet d'alimentation et d'abreuvement",
+    "Hot Dipped Galvanized Steel Frame": "Cadre en acier galvanisé à chaud",
+    "Easy Cleaning Slatted Flooring Design": "Plancher à caillebotis facile à nettoyer",
+    "Adjustable Sow Space Configuration": "Configuration ajustable de l'espace pour la truie",
+    "High Efficiency Automatic Plucking": "Plumaison automatique à haut rendement",
+    "Food Grade Stainless Steel Drum Body": "Tonneau en acier inoxydable de qualité alimentaire",
+    "Multi Species Compatibility": "Compatibilité multi-espèces",
+    "Simple Operation And Quick Setup": "Utilisation simple et mise en route rapide",
+    "OEM Customization And Global Shipping": "Personnalisation OEM et expédition mondiale",
+    "Galvanized Steel Wire for Rust Free Durability": "Fil d'acier galvanisé pour une durabilité sans rouille",
+    "Optimized Mesh Spacing for Quail Safety": "Maillage optimisé pour la sécurité des cailles",
+    "Multi Tier Design Maximizes Space and Capacity": "Conception à plusieurs étages qui maximise l'espace et la capacité",
+    "Automatic Egg Collection with Sloped Floor": "Collecte automatique des œufs avec sol incliné",
+    "Integrated Feeding and Watering System": "Système intégré d'alimentation et d'abreuvement",
+    "Customizable Tiers and OEM Available": "Étages personnalisables et OEM disponible",
+    "Heavy Duty Galvanized Steel Frame": "Cadre en acier galvanisé renforcé",
+    "Adjustable Sow Crate Design": "Cage de truie à conception réglable",
+    "Efficient Slatted Flooring System": "Système de plancher à caillebotis efficace",
+    "Smooth Welded Edges for Animal Safety": "Bords soudés lisses pour la sécurité des animaux",
+    "Modular Pen Configuration for Farm Expansion": "Configuration modulaire des cases pour l'expansion de la ferme",
+    "High Quality ABS Plastic And Rubber Diaphragm Construction": "Construction en plastique ABS de haute qualité et membrane en caoutchouc",
+    "Precise Adjustable Pressure Control 0 To 50 Cm Water Column Range": "Réglage précis de la pression, de 0 à 50 cm de colonne d'eau",
+    "Corrosion Resistant For Long Term Use And Bidirectional Wash Mode": "Résistant à la corrosion pour un usage durable, avec mode de lavage bidirectionnel",
+    "Wide Application For Chicken Duck Goose Turkey Quail And Pipe Types": "Large application : poulets, canards, oies, dindes, cailles et tous types de tuyaux",
+    "Quick Installation And OEM Customization With Free Sample": "Installation rapide et personnalisation OEM avec échantillon gratuit",
+    "Automatic Pan Feeding and Nipple Drinking System": "Système automatique d'alimentation à assiettes et d'abreuvement à tétines",
+    "Galvanized Steel and PP Construction": "Construction en acier galvanisé et PP",
+    "Programmable Auger Drive Motor System": "Système de moteur d'entraînement de vis programmable",
+    "Modular Design for Custom Layout": "Conception modulaire pour un agencement sur mesure",
+    "Easy Installation and Complete Set": "Installation facile et ensemble complet",
+    "Automatic Nipple And Cup Design": "Conception automatique à tétine et godet",
+    "Enclosed Water System For Hygiene": "Circuit d'eau fermé pour l'hygiène",
+    "Durable Food Grade Plastic Construction": "Construction en plastique durable de qualité alimentaire",
+    "Feature Gravity Valve Automatic Water Level Control": "Valve à gravité avec contrôle automatique du niveau d'eau",
+    "Material High Impact Engineering Grade Plastic UV Resistant": "Matériau : plastique technique haute résistance aux chocs, résistant aux UV",
+    "Installation Easy Mount on Water Bucket Pipe or Line": "Installation : montage facile sur seau, tuyau ou ligne d'eau",
+    "Application Versatile Cup for Chicken Duck Pigeon Turkey Quail": "Application : godet polyvalent pour poulets, canards, pigeons, dindes et cailles",
+    "Durability Long Service Life Farm Grade Construction": "Durabilité : longue durée de vie, construction de qualité agricole",
+    "Ventilated Grid Design for Live Bird Safety": "Grille ventilée pour la sécurité des volailles vivantes",
+    "Stackable Interlocking with Heavy Load Capacity": "Empilable et emboîtable, avec une forte capacité de charge",
+    "Durable PP/HDPE Construction with UV Stabilizers": "Construction durable en PP/HDPE avec stabilisants UV",
+    "Sliding Top Door with Secure Latch": "Porte supérieure coulissante avec loquet sécurisé",
+    "Lightweight from 4kg to 7kg, Multiple Size Options": "Léger, de 4 kg à 7 kg, plusieurs tailles disponibles",
+    "Complete Size Range Available": "Gamme complète de tailles disponible",
+    "Automatic Gravity Water System": "Système d'eau automatique par gravité",
+    "Classic Plasson Anti Spill Design": "Conception anti-débordement Plasson classique",
+    "Heavy Duty PP and Accessories": "PP renforcé et accessoires",
+    "Easy Install Factory Direct Supply": "Installation facile, approvisionnement direct d'usine",
+    "Hot Dipped Galvanized Steel Construction": "Construction en acier galvanisé à chaud",
+    "Full Automation System Integration": "Intégration complète du système d'automatisation",
+    "High Density A Type Tier Design": "Conception d'étages type A à haute densité",
+    "Scalable for Commercial Operations": "Évolutif pour les exploitations commerciales",
+    "Three Year Warranty and Fast Delivery": "Garantie de trois ans et livraison rapide",
+    "H Frame Hot Dipped Galvanized Steel Structure": "Structure en acier galvanisé à chaud à cadre H",
+    "Complete Automatic System Integration": "Intégration complète du système automatique",
+    "Space Efficient Layer Capacity Options": "Options de capacité de pondeuses économes en espace",
+    "Easy Modular Assembly for Quick Farm Setup": "Assemblage modulaire facile pour une installation rapide de la ferme",
+    "Safe Pallet Packing and Fast Production Lead Time": "Emballage sécurisé sur palette et délai de production court",
+    "Dual Function Design": "Conception à double fonction",
+    "High Throughput Performance": "Performances à haut débit",
+    "Flexible Power Configuration": "Configuration d'alimentation flexible",
+    "Robust Construction": "Construction robuste",
+    "Versatile Feed Processing": "Transformation polyvalente des aliments",
+    "Heavy-Duty Hot Dip Galvanized Frame": "Cadre renforcé galvanisé à chaud",
+    "Scalable Broiler Capacity": "Capacité poulets de chair évolutive",
+    "Automated Feeding & Drinking": "Alimentation et abreuvement automatisés",
+    "Optimized Ventilation & Hygiene": "Ventilation et hygiène optimisées",
+    "Stress-Free Animal Welfare": "Bien-être animal sans stress",
+    "Plug-and-Play Installation": "Installation prête à l'emploi",
+    "\\uD83C\\uDFED Certified Factory Partnerships": "\\uD83C\\uDFED Partenariats avec des usines certifiées",
+    "\\uD83D\\uDCCB Customized Solutions": "\\uD83D\\uDCCB Solutions personnalisées",
+    "\\uD83C\\uDF10 Professional Export Service": "\\uD83C\\uDF10 Service d'exportation professionnel",
+    "\\uD83D\\uDD27 Hot Dip Galvanized Construction": "\\uD83D\\uDD27 Construction galvanisée à chaud",
+    "\\uD83D\\uDCD0 Flexible Capacity Options": "\\uD83D\\uDCD0 Options de capacité flexibles",
+    "Automated Egg Collection": "Collecte automatique des œufs",
+    "\\uD83D\\uDEE1️ Animal Welfare Design": "\\uD83D\\uDEE1️ Conception respectueuse du bien-être animal",
+    "\\uD83D\\uDE80 Easy Installation": "\\uD83D\\uDE80 Installation facile",
+    "Ingot Type Structural Design": "Conception structurelle de type lingot",
+    "Hot Dipped Galvanized Construction": "Construction galvanisée à chaud",
+    "Automatic Feeding and Drinking Systems": "Systèmes automatiques d'alimentation et d'abreuvement",
+    "Efficient Egg Collection Design": "Conception de collecte efficace des œufs",
+    "Space Saving Multi Tier Configuration": "Configuration à plusieurs étages qui fait gagner de la place",
+    "Multiple Capacity Options": "Plusieurs options de capacité",
+    "Single Phase 220V Power Supply": "Alimentation monophasée 220V",
+    "Iron and Stainless Steel Frame Options": "Options de cadre en fer et en acier inoxydable",
+    "Winch Hoist Loading System Available": "Système de chargement par treuil disponible",
+    "Auto Feeding with Kneading Function": "Alimentation automatique avec fonction de pétrissage",
+    "Thick Reinforced Gears — Built to Last, Never Jam": "Engrenages épais renforcés — conçus pour durer, sans bourrage",
+    "Manganese Steel Blades — Dual Cut & Crush Action": "Lames en acier au manganèse — double action de coupe et de broyage",
+    "Adjustable High-Spray Discharge Chute": "Goulotte d'évacuation réglable à projection haute",
+    "Production Ablity": "Capacité de production",
+    "Cyclone Outlet, Dust-Free": "Sortie cyclonique, sans poussière",
+    "Heavy Hammers, High Efficiency": "Marteaux lourds, haut rendement",
+    "Thick Liners, Wear-Resistant": "Revêtements épais, résistants à l'usure",
+    "Multi-Size Mesh Screens": "Grilles de tailles multiples",
+    "* Production Ablity": "* Capacité de production",
+    "* Stainless Steel Options": "* Options en acier inoxydable",
+    "Commercial Grade Three in One Chaff Cutting Kneading and Grinding Machine": "Machine trois en un de qualité commerciale : coupe, pétrissage et broyage du fourrage",
+    "Diesel Electric and Gasoline Triple Drive System for Uninterrupted Use": "Système d'entraînement triple diesel, électrique et essence pour un usage ininterrompu",
+    "4.8 Ton Per Hour Throughput with High Low Gear Shift and Replaceable Screen Mesh": "Débit de 4,8 tonnes par heure avec boîte à deux vitesses et grille interchangeable",
+    "Engineered for Ranch Feeding Commercial Feed Mills and Agricultural Cooperatives": "Conçue pour l'alimentation des ranchs, les usines d'aliments commerciales et les coopératives agricoles",
+    "Heavy Duty Chain Conveyor Feeding System with Integrated Cyclone Dust Collection": "Système d'alimentation à convoyeur à chaîne renforcé avec dépoussiérage cyclonique intégré",
+    "Adjustable Fineness, Precise Control": "Finesse réglable, contrôle précis",
+    "Hardened Toothed Disk, Long Service Life": "Disque denté trempé, longue durée de service",
+    "Wide Material Compatibility": "Large compatibilité de matériaux",
+    "Quick Screen Change, Minimal Downtime": "Changement de grille rapide, arrêts minimes",
+    "Spill Proof Outlet With Side Guards Design": "Sortie anti-déversement avec protections latérales",
+    "Quenched Manganese Alloy Roller and Die Set": "Ensemble rouleau et filière en alliage de manganèse trempé",
+    "Overheat Protected Motor With Thermal Shutdown": "Moteur protégé contre la surchauffe avec coupure thermique",
+    "Mid Range Pellet Machine for Livestock Feed Plants": "Presse à granulés de milieu de gamme pour usines d'aliments du bétail",
+    "Full Customization Options With OEM Support": "Options de personnalisation complètes avec accompagnement OEM",
+    "Titanium Alloy Blades, Superior Cutting Performance": "Lames en alliage de titane, performance de coupe supérieure",
+    "Rotary Rubbing Cutter, Efficient Material Processing": "Couteau rotatif à friction, traitement efficace des matières",
+    "Alloy Chain Conveyor, Reliable Material Feeding": "Convoyeur à chaîne en alliage, alimentation fiable en matière",
+    "Detachable Adjustable Bearing, Easy Maintenance": "Palier réglable démontable, entretien facile",
+    "Multiple Power Options, Flexible Operation": "Plusieurs options d'alimentation, fonctionnement flexible",
+    "Production Ablity:": "Capacité de production :",
+    "\\uD83E\\uDD5A High Hatch Rate": "\\uD83E\\uDD5A Taux d'éclosion élevé",
+    "\\uD83D\\uDC25 Superior Chick Quality": "\\uD83D\\uDC25 Qualité supérieure des poussins",
+    "\\uD83D\\uDCB0 30–50% Lower Labor Cost": "\\uD83D\\uDCB0 Coûts de main-d'œuvre réduits de 30 à 50 %",
+    "\\uD83C\\uDF21️ Automatic Temperature Control": "\\uD83C\\uDF21️ Contrôle automatique de la température",
+    "\\uD83D\\uDCA7 Automatic Water Supply": "\\uD83D\\uDCA7 Alimentation automatique en eau",
+    "Precise Digital Climate Management": "Gestion numérique précise du climat",
+    "Gentle Rotation Mechanism": "Mécanisme de rotation en douceur",
+    "Space-Saving Construction": "Construction compacte",
+    "Versatile Compatibility": "Compatibilité polyvalente",
+    "Intuitive Operation": "Utilisation intuitive",
+    "Exceptional Yield And Robust Offspring": "Rendement exceptionnel et poussins robustes",
+    "Smart Iot Connectivity And Precision Thermostat": "Connectivité IoT intelligente et thermostat de précision",
+    "Versatile Capacity And Self Refilling Hydration": "Capacité polyvalente et hydratation à remplissage automatique",
+    "Labor Saving Operation For Diverse Scenarios": "Fonctionnement économe en main-d'œuvre pour divers scénarios",
+    "Zero Manual Calibration And Effortless Management": "Aucun calibrage manuel et gestion sans effort",
+    "\\uD83D\\uDD27 Galvanized Steel Frame": "\\uD83D\\uDD27 Cadre en acier galvanisé",
+    "\\uD83D\\uDCA8 Built-in Circulation Fan": "\\uD83D\\uDCA8 Ventilateur de circulation intégré",
+    "\\uD83D\\uDCA7 Automatic Humidifying System": "\\uD83D\\uDCA7 Système d'humidification automatique",
+    "\\uD83C\\uDF21️ Precision Sensors": "\\uD83C\\uDF21️ Capteurs de précision",
+    "10 IN 1 MULTI-TOOL ATTACHMENT SYSTEM": "SYSTÈME D'ACCESSOIRES MULTIFONCTION 10 EN 1",
+    "ERGONOMIC BACKPACK DESIGN FOR EXTENDED USE": "CONCEPTION SAC À DOS ERGONOMIQUE POUR UN USAGE PROLONGÉ",
+    "POWERFUL 2 STROKE ENGINE WITH FUEL EFFICIENCY": "MOTEUR 2 TEMPS PUISSANT ET ÉCONOME EN CARBURANT",
+    "VERSATILE CUTTING WIDTH AND ADJUSTABLE HANDLE": "LARGEUR DE COUPE POLYVALENTE ET POIGNÉE RÉGLABLE",
+    "COMPLETE KIT WITH TOOLS AND EASY ASSEMBLY": "KIT COMPLET AVEC OUTILS ET MONTAGE FACILE",
+    "Food-grade Safe Material Construction": "Construction en matériau sûr de qualité alimentaire",
+    "Spill-proof Smart Edge Design": "Bord intelligent anti-débordement",
+    "Impact-resistant Durable Build": "Construction durable résistante aux chocs",
+    "Wide Range of Capacity Options": "Large gamme d'options de capacité",
+    "Simple to Use Budget-friendly Solution": "Solution simple à utiliser et économique",
+    "\\uD83D\\uDCAA Powerful Engine": "\\uD83D\\uDCAA Moteur puissant",
+    "\\uD83D\\uDD27 9-in-1 Multi-Function": "\\uD83D\\uDD27 Multifonction 9 en 1",
+    "\\uD83C\\uDF92 Ergonomic Backpack / Side-Mounted Design": "\\uD83C\\uDF92 Conception ergonomique sac à dos / port latéral",
+    "\\uD83C\\uDF21️ Excellent Heat Dissipation": "\\uD83C\\uDF21️ Excellente dissipation thermique",
+    "\\uD83D\\uDD04 Quick-Change Blade System": "\\uD83D\\uDD04 Système de lames à changement rapide",
+    "\\uD83C\\uDFED Direct Manufacturer": "\\uD83C\\uDFED Fabricant direct",
+    "\\uD83D\\uDD27 OEM & ODM Supported": "\\uD83D\\uDD27 OEM et ODM pris en charge",
+    "\\uD83C\\uDF3F Complete Agricultural Solution": "\\uD83C\\uDF3F Solution agricole complète",
+    "\\uD83D\\uDCE6 Fast Delivery & Reliable Logistics": "\\uD83D\\uDCE6 Livraison rapide et logistique fiable",
+    "\\uD83D\\uDEE0️ After-Sales Guarantee": "\\uD83D\\uDEE0️ Garantie après-vente",
+    "Premium Non Toxic Material": "Matériau haut de gamme non toxique",
+    "Leak Proof Water Saving Feature": "Étanchéité et économie d'eau",
+    "Impact Resistant Durable Construction": "Construction durable résistante aux chocs",
+    "Versatile Size Options For All Poultry": "Tailles polyvalentes pour toutes les volailles",
+    "Easy To Clean And Low Maintenance": "Facile à nettoyer et entretien réduit",
+    "Factory Customization Available": "Personnalisation en usine disponible",
+    "Versatile Material Handling Capability": "Capacité polyvalente de manutention des matières",
+    "Heavy Duty Durable Construction": "Construction robuste et durable",
+    "Efficient Conveying and Elevating Performance": "Performances efficaces de convoyage et d'élévation",
+    "Easy Installation and Low Maintenance": "Installation facile et entretien réduit",
+    "High Hatch Rate": "Taux d'éclosion élevé",
+    "Superior Chick Quality": "Qualité supérieure des poussins",
+    "30–50% Lower Labor Cost": "Coûts de main-d'œuvre réduits de 30 à 50 %",
+    "Automatic Temperature Control": "Contrôle automatique de la température",
+    "Automatic Water Supply": "Alimentation automatique en eau"
+  },
+  "specLabels": {
+    "use": "utilisation",
+    "animal cage type": "type de cage pour animaux",
+    "Material": "Matériau",
+    "warranty": "garantie",
+    "condition": "état",
+    "key selling points": "principaux arguments de vente",
+    "model number": "numéro de modèle",
+    "type": "type",
+    "place of origin": "lieu d'origine",
+    "weight": "poids",
+    "brand name": "nom de la marque",
+    "Applicable Industries": "Industries d'application",
+    "Capacity": "Capacité",
+    "Usage": "Utilisation",
+    "Cage type": "Type de cage",
+    "Surface treatment": "Traitement de surface",
+    "After-sales Service Provided": "Service après-vente assuré",
+    "Service life": "Durée de vie",
+    "Package": "Emballage",
+    "Customization": "Personnalisation",
+    "Capacity (kg/h)": "Capacité (kg/h)",
+    "Voltage": "Tension",
+    "core components": "composants essentiels",
+    "video outgoing-inspection": "inspection vidéo à la sortie d'usine",
+    "Product name": "Nom du produit",
+    "Motor": "Moteur",
+    "Power type": "Type d'alimentation",
+    "Suitable for": "Convient pour",
+    "Size": "Dimensions",
+    "Feature": "Caractéristique",
+    "After Warranty Service": "Service après garantie",
+    "Application": "Application",
+    "Advantage": "Avantage",
+    "size": "dimensions",
+    "machinery test report": "rapport d'essai de la machine",
+    "Model": "Modèle",
+    "Power source": "Source d'énergie",
+    "Function": "Fonction",
+    "Brand": "Marque",
+    "Engine": "Moteur",
+    "Capacity/set": "Capacité/ensemble",
+    "Technology Type": "Type de technologie",
+    "material": "matériau",
+    "Color": "Couleur",
+    "Weight": "Poids",
+    "Animals": "Animaux",
+    "MOQ": "MOQ",
+    "Custom ordered": "Commande personnalisée",
+    "Color Range": "Gamme de couleurs",
+    "Tier": "Étage",
+    "Accessories": "Accessoires",
+    "Life Time": "Durée de vie",
+    "Core Components": "Composants essentiels",
+    "weight (kg)": "poids (kg)",
+    "Layer": "Étages",
+    "Life Span": "Durée de vie",
+    "Floor": "Sol",
+    "Target Animal": "Animal cible",
+    "Feeder Type": "Type de mangeoire",
+    "Use for": "Utilisation",
+    "Volume": "Volume",
+    "Operation": "Fonctionnement",
+    "Target Animal Type": "Type d'animal cible",
+    "Drinker Type": "Type d'abreuvoir",
+    "Flow Rate": "Débit",
+    "Animal use": "Usage animal",
+    "Used for": "Utilisé pour",
+    "Packing": "Emballage",
+    "Certification": "Certification",
+    "Egg Collecting System": "Système de collecte des œufs",
+    "Warranty of core components": "Garantie des composants essentiels",
+    "capacity": "capacité",
+    "Feed Raw Material": "Matières premières pour aliments",
+    "Engine Type": "Type de moteur",
+    "Phase": "Phase",
+    "Pellet Size": "Taille des granulés",
+    "Number of molds": "Nombre de moules",
+    "Number of Rollers": "Nombre de rouleaux",
+    "Number Of Blades Included": "Nombre de lames incluses",
+    "dimension(l*w*h)": "dimensions (L x l x H)",
+    "voltage": "tension",
+    "Raw material": "Matière première",
+    "Max.Capactity": "Capacité max.",
+    "Final product": "Produit final",
+    "Processing Types": "Types de transformation",
+    "Keywords": "Mots-clés",
+    "Name": "Nom",
+    "Suit for": "Convient pour",
+    "usage": "usage",
+    "egg turning mode": "mode de retournement des œufs",
+    "hatching rate": "taux d'éclosion",
+    "Egg Tray": "Plateau à œufs",
+    "Temperature": "Température",
+    "Egg turning": "Retournement des œufs",
+    "Humidity": "Humidité",
+    "Control mode": "Mode de contrôle",
+    "Egg-Turning": "Retournement des œufs",
+    "Type": "Type",
+    "Accessories Included": "Accessoires inclus",
+    "Full-automatic Digital Eggs Incubator": "Incubateur d'œufs numérique entièrement automatique",
+    "Energy": "Énergie",
+    "Power": "Puissance"
+  },
+  "faqs": {
+    "1": {
+      "question": "Quel est le minimum de commande ? ",
+      "answer": ""
+    },
+    "2": {
+      "question": "Pouvez-vous nous aider pour le transport et les documents d'exportation ?",
+      "answer": ""
+    },
+    "3": {
+      "question": "Quelles conditions de paiement acceptez-vous ?",
+      "answer": ""
+    },
+    "4": {
+      "question": "Pouvez-vous fournir un projet de ferme complet, et pas seulement des machines isolées ?",
+      "answer": ""
+    },
+    "5": {
+      "question": "Comment garantissez-vous la qualité des produits avant l'expédition ?",
+      "answer": ""
+    },
+    "6": {
+      "question": "Accompagnez-vous les distributeurs et la coopération à long terme ?",
+      "answer": ""
+    },
+    "7": {
+      "question": "Qu'en est-il des pièces de rechange et du service après-vente ?",
+      "answer": ""
+    },
+    "8": {
+      "question": "Le matériel peut-il être personnalisé pour ma ferme ?",
+      "answer": ""
+    }
+  },
+  "blogPosts": {
+    "feed-mill-guide": {
+      "title": "Concevoir une ligne de production d'aliments rentable",
+      "excerpt": "Comment adapter les capacités de broyage, de mélange, de granulation et d'ensachage à votre ferme et à votre plan de marché."
+    },
+    "incubation-guide": {
+      "title": "Cinq facteurs à l'origine de meilleurs taux d'éclosion",
+      "excerpt": "Température, humidité, rotation, ventilation et assainissement — les détails de fonctionnement qui protègent vos résultats d'incubation."
+    },
+    "layer-cage-guide": {
+      "title": "Comment choisir le bon système de cage de couche",
+      "excerpt": "Un guide pratique sur les systèmes de type A et de type H, la planification de la capacité, le contrôle de la température et les coûts d'exploitation à long terme."
+    }
+  },
+  "blogTags": {
+    "farm-machinery": "Machines agricoles",
+    "feed-processing": "Transformation des aliments",
+    "incubators": "Incubateurs",
+    "breeding": "Élevage",
+    "layer-cages": "Cages pour pondeuses",
+    "poultry-equipment": "Équipement avicole"
+  }
+}

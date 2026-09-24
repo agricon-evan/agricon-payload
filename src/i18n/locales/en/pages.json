@@ -1,0 +1,179 @@
+{
+  "about": {
+    "meta": {
+      "title": "About Us",
+      "description": "Agricon supplies poultry, livestock and farm machinery to commercial farms worldwide. See how we work, what we build and who you deal with."
+    },
+    "hero": {
+      "description": "Practical equipment, integrated supply and global export support for farms and agricultural projects."
+    },
+    "sections": {
+      "story": {
+        "eyebrow": "Our Story",
+        "title": "Building the Backbone of Modern Farms",
+        "p1": "AGRICON provides integrated agricultural equipment solutions for farms, importers, distributors and agricultural project buyers worldwide.",
+        "p2": "AGRICON works with specialized manufacturing partners to coordinate equipment sourcing, project matching, quality control and export preparation for overseas buyers.",
+        "p3": "From individual equipment orders to complete project packages, we connect practical products with real farm requirements across farming, processing, infrastructure and machinery applications."
+      },
+      "principles": {
+        "eyebrow": "Our Operating Principles",
+        "title": "How We Do Business",
+        "description": "Six principles guide every project — from first inquiry to after-sales"
+      },
+      "ecosystem": {
+        "eyebrow": "Product Ecosystem",
+        "titleLead": "An Integrated",
+        "titleAccent": "Equipment Ecosystem",
+        "description": "Breeding, feeding, housing, processing and daily farm operation — all through one coordinated supply window."
+      },
+      "commitments": {
+        "eyebrow": "Our Commitments",
+        "titleLead": "Practical",
+        "titleAccent": "Commitments",
+        "description": "How AGRICON supports equipment supply and delivery for farms and agricultural projects worldwide."
+      },
+      "process": {
+        "eyebrow": "Our Process",
+        "title": "From Inquiry to Long-term Support"
+      },
+      "delivery": {
+        "eyebrow": "Delivery Readiness",
+        "title": "Prepared for International Orders",
+        "description": "AGRICON coordinates the practical details that help overseas buyers move from confirmed order to shipment."
+      }
+    },
+    "values": {
+      "items": {
+        "integratedSupply": {
+          "title": "Integrated Supply",
+          "description": "Multiple agricultural equipment categories coordinated through one supply window."
+        },
+        "projectMatching": {
+          "title": "Project Matching",
+          "description": "Equipment selection based on farm type, capacity, site conditions and application needs."
+        },
+        "exportSupport": {
+          "title": "Export Support",
+          "description": "Packing, loading, documentation and shipment coordination for overseas buyers."
+        },
+        "longTermCooperation": {
+          "title": "Long-term Cooperation",
+          "description": "Repeat orders, expansion projects and coordinated supplier support for growing operations."
+        }
+      }
+    },
+    "principles": {
+      "items": {
+        "coordinatedSourcing": {
+          "title": "Coordinated Sourcing",
+          "description": "Poultry, livestock, feed processing, aquaculture, infrastructure and machinery through one supply window."
+        },
+        "qualityControl": {
+          "title": "Quality & Order Control",
+          "description": "Product scope, specifications, quantities and key inspection points confirmed before shipment."
+        },
+        "projectSelection": {
+          "title": "Project-Based Selection",
+          "description": "Solutions matched to farm type, capacity, site conditions, operation requirements and budget."
+        },
+        "exportDelivery": {
+          "title": "Export-Ready Delivery",
+          "description": "Export packing, product identification, loading plans, container coordination and shipping documents."
+        },
+        "distributorSupport": {
+          "title": "Distributor Support",
+          "description": "Flexible product combinations, repeat-order support and local market development assistance."
+        },
+        "partnership": {
+          "title": "Practical Partnership",
+          "description": "From individual equipment orders to complete project packages and future expansion support."
+        }
+      }
+    },
+    "commitments": {
+      "items": {
+        "integratedSupply": {
+          "title": "Integrated Equipment Supply",
+          "description": "Poultry, livestock, feed processing, aquaculture, infrastructure and machinery coordinated through one supply window."
+        },
+        "exportReadyDelivery": {
+          "title": "Export-Ready Delivery",
+          "description": "Export packing, product identification, loading plans, container coordination and shipping documents for overseas buyers."
+        },
+        "galvanized": {
+          "title": "Hot-Dip Galvanized",
+          "description": "15–20 years service life (hot-dip galvanized steel)."
+        }
+      }
+    },
+    "process": {
+      "items": {
+        "inquiry": {
+          "title": "Inquiry",
+          "description": "Understand farm type, capacity, product interest, application scenario and purchasing purpose."
+        },
+        "analysis": {
+          "title": "Analysis",
+          "description": "Review project conditions, operating goals, site requirements and budget expectations."
+        },
+        "matching": {
+          "title": "Matching",
+          "description": "Select suitable equipment, product lines and accessory packages for the real project."
+        },
+        "confirmation": {
+          "title": "Confirmation",
+          "description": "Finalize product models, quantities, specifications, packing and shipment planning."
+        },
+        "delivery": {
+          "title": "Delivery",
+          "description": "Coordinate export packing, loading plans, documents and international shipment support."
+        },
+        "support": {
+          "title": "Support",
+          "description": "Continue with product information, spare parts, repeat orders and project expansion."
+        }
+      }
+    },
+    "delivery": {
+      "items": {
+        "orderConfirmation": {
+          "title": "Order Confirmation",
+          "description": "Specifications, quantities and shipping requirements reviewed."
+        },
+        "exportPacking": {
+          "title": "Export Packing",
+          "description": "Products packed and clearly labeled for international transportation."
+        },
+        "containerLoading": {
+          "title": "Container Loading",
+          "description": "Loading plans organized for single or mixed equipment orders."
+        },
+        "shippingDocuments": {
+          "title": "Shipping Documents",
+          "description": "Commercial documents prepared according to order requirements."
+        }
+      }
+    }
+  },
+  "caseStudies": {
+    "meta": {
+      "title": "Case Studies",
+      "description": "Real installations: how farms specified, ordered and commissioned Agricon poultry, livestock and machinery lines."
+    }
+  },
+  "products": {
+    "meta": {
+      "title": "Products",
+      "description": "Browse Agricon poultry, livestock, aquaculture and farm machinery lines — cages, feeding systems, incubators, processing equipment and more."
+    }
+  },
+  "solutions": {
+    "meta": {
+      "title": "Farm Solutions",
+      "description": "Turnkey farm solutions — poultry houses, livestock sheds, feed lines and processing setups, planned end to end."
+    },
+    "badge": "One-stop solution",
+    "emptyTitle": "Solutions Coming Soon",
+    "emptyDesc": "Our solution packages are being added. Contact us to discuss your project."
+  }
+}

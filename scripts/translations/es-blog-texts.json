@@ -1,0 +1,29 @@
+{
+  "feed-mill-guide": [
+    "Defina la capacidad antes de comprar el equipo",
+    "Una línea de alimentación es una cadena: molienda, mezclado, peletizado, enfriamiento y ensacado. Cada etapa debe manejar el rendimiento por hora objetivo; de lo contrario, el eslabón más débil limita toda la línea. Decida si alimenta solo su propia parvada o también vende alimento, porque eso cambia la capacidad necesaria y el nivel de automatización.",
+    "Molienda: ajuste la criba y la potencia al material",
+    "El molino de martillos o de discos debe corresponder a sus materias primas principales: maíz, trigo, yuca, subproductos del arroz. El tamaño de la criba controla el tamaño de partícula, que afecta la calidad del mezclado y la durabilidad del pellet. Para materias primas mezcladas, elija una máquina con cribas ajustables y potencia suficiente para evitar obstrucciones frecuentes.",
+    "Mezclado: la consistencia es el producto",
+    "La calidad del alimento se mide por su uniformidad. Una mezcladora vertical es práctica para granjas medianas; las mezcladoras de listones convienen a líneas continuas más grandes. Consulte el tiempo de mezclado en el manual y respételo: mezclar en exceso desperdicia energía y puede separar los ingredientes ligeros. Añada ingredientes líquidos solo con una mezcladora diseñada para ello.",
+    "Peletizado y enfriamiento",
+    "Los pellets reducen el desperdicio, mejoran la digestibilidad y facilitan el almacenamiento y el transporte del alimento. La peletizadora debe corresponder al tamaño de matriz para su especie objetivo: aves, cerdos o peces. Los pellets calientes deben enfriarse y secarse antes del ensacado; de lo contrario, la humedad provoca moho en el almacenamiento.",
+    "Molienda → mezclado → peletizado → enfriamiento → ensacado, con capacidad coordinada",
+    "El tamaño de la matriz y el tiempo de acondicionamiento dependen de la especie objetivo",
+    "El enfriamiento antes del ensacado evita el moho y prolonga la vida útil",
+    "Distribución, mano de obra y control de calidad",
+    "Mantenga el flujo lineal: recepción, molienda, mezclado, peletizado, ensacado, almacenamiento. Una distribución limpia reduce el acarreo manual y hace posible la limpieza diaria. Conserve muestras de cada lote, registre los cambios de formulación y calibre las balanzas con regularidad: en la producción de alimento, el cliente paga por la consistencia."
+  ],
+  "incubation-guide": [
+    "1. Temperatura estable",
+    "El desarrollo del embrión depende de una banda estrecha de temperatura. Las fluctuaciones durante la primera mitad de la incubación causan el mayor daño, por lo que la incubadora debe mantener la temperatura de consigna con una deriva mínima. Calibre los sensores con regularidad y evite colocar la máquina bajo la luz solar directa o cerca de corrientes fuertes.",
+    "2. Control de la humedad",
+    "La humedad controla la pérdida de agua del huevo y afecta el tamaño de la cámara de aire al momento de la eclosión. Si es demasiado baja, los pollitos se pegan a la cáscara; si es demasiado alta, se ahogan o eclosionan tarde. Siga la pérdida de peso respecto a la curva esperada y ajuste el aporte de agua a la incubadora en lugar de calcular a ojo.",
+    "3. Volteo correcto de los huevos",
+    "El volteo evita que el embrión se adhiera a la membrana de la cáscara y favorece un uso uniforme de los nutrientes. Voltee al menos cada dos horas durante los primeros 18 días y luego deje de voltear en la nacedora. La frecuencia constante de volteo importa más que el ángulo exacto que use la máquina.",
+    "4. Aire fresco y control de CO₂",
+    "Los embriones consumen oxígeno y liberan dióxido de carbono. La ventilación debe aumentar con la edad del embrión y con la carga de la máquina. En máquinas de varias etapas, ajuste el intercambio de aire al número de huevos para que los embriones tempranos no sufran por el CO₂ de los huevos en etapa tardía.",
+    "5. Sanidad y manejo de los huevos",
+    "Los huevos limpios de nidos limpios dan los mejores resultados. Lave solo cuando sea necesario y con la temperatura de agua correcta, porque el manejo sucio o el lavado con agua fría introduce bacterias en la cáscara. Desinfecte la incubadora, la nacedora y las bandejas entre lotes, y lleve registros para poder rastrear un lote defectuoso hasta la operación que lo causó."
+  ]
+}

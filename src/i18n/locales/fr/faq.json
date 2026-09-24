@@ -1,0 +1,48 @@
+{
+  "breadcrumb": {
+    "home": "Accueil",
+    "support": "Assistance",
+    "faq": "FAQ"
+  },
+  "hero": {
+    "title": "Questions fréquentes",
+    "description": "Trouvez les réponses aux questions courantes sur nos produits, le transport, l'installation, les conditions de paiement et l'assistance commerciale."
+  },
+  "allCategory": "Toutes",
+  "noQuestions": "Aucune question dans cette catégorie.",
+  "categoryChips": {
+    "ordering": "Commande et MOQ",
+    "shipping": "Expédition et export",
+    "quality": "Contrôle qualité",
+    "projects": "Projets de ferme",
+    "distributors": "Distributeurs",
+    "afterSales": "Service après-vente"
+  },
+  "relatedSupport": {
+    "title": "Ressources d'assistance complémentaires",
+    "items": {
+      "documentation": {
+        "title": "Documentation produit",
+        "description": "Consultez les guides d'installation, les spécifications techniques et les catalogues de tous les équipements Agricon.",
+        "href": "/support#download-center"
+      },
+      "videoTutorials": {
+        "title": "Tutoriels vidéo",
+        "description": "Regardez des vidéos pas à pas d'installation et de maintenance pour les systèmes de cages, les équipements d'alimentation et bien d'autres.",
+        "href": "/support#video-tutorials"
+      },
+      "contactSupport": {
+        "title": "Contacter l'assistance",
+        "description": "Contactez notre équipe technique par e-mail, par téléphone ou via WhatsApp pour une assistance personnalisée.",
+        "href": "/contact"
+      }
+    }
+  },
+  "cta": {
+    "title": "Vous avez encore des questions ?",
+    "description": "Envoyez-nous votre question : notre équipe l'examinera à partir des coordonnées que vous indiquez.",
+    "contactUs": "Nous contacter",
+    "chatWhatsApp": "Discuter sur WhatsApp"
+  },
+  "learnMore": "En savoir plus →"
+}

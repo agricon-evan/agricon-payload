@@ -1,0 +1,179 @@
+{
+  "about": {
+    "meta": {
+      "title": "Quiénes somos",
+      "description": "Agricon suministra maquinaria avícola, ganadera y agrícola a granjas comerciales de todo el mundo. Conozca cómo trabajamos, qué fabricamos y con quién trata."
+    },
+    "hero": {
+      "description": "Equipos prácticos, suministro integrado y apoyo a la exportación para granjas y proyectos agrícolas."
+    },
+    "sections": {
+      "story": {
+        "eyebrow": "Nuestra historia",
+        "title": "Construimos la base de las granjas modernas",
+        "p1": "AGRICON ofrece soluciones integrales de equipos agrícolas a granjas, importadores, distribuidores y compradores de proyectos agrícolas de todo el mundo.",
+        "p2": "AGRICON trabaja con fabricantes asociados especializados para coordinar el abastecimiento de equipos, el ajuste al proyecto, el control de calidad y la preparación de la exportación para compradores internacionales.",
+        "p3": "Desde pedidos individuales de equipos hasta paquetes de proyecto completos, conectamos productos prácticos con las necesidades reales de las granjas en producción avícola y ganadera, procesamiento, infraestructura y maquinaria."
+      },
+      "principles": {
+        "eyebrow": "Nuestros principios operativos",
+        "title": "Cómo hacemos negocios",
+        "description": "Seis principios guían cada proyecto, desde la primera consulta hasta el servicio posventa"
+      },
+      "ecosystem": {
+        "eyebrow": "Ecosistema de producto",
+        "titleLead": "Un ecosistema",
+        "titleAccent": "de equipos integrado",
+        "description": "Cría, alimentación, alojamiento, procesamiento y la operación diaria de la granja, todo a través de una única ventanilla de suministro coordinada."
+      },
+      "commitments": {
+        "eyebrow": "Nuestros compromisos",
+        "titleLead": "Compromisos",
+        "titleAccent": "prácticos",
+        "description": "Cómo AGRICON respalda el suministro y la entrega de equipos para granjas y proyectos agrícolas de todo el mundo."
+      },
+      "process": {
+        "eyebrow": "Nuestro proceso",
+        "title": "De la consulta al soporte a largo plazo"
+      },
+      "delivery": {
+        "eyebrow": "Preparación para la entrega",
+        "title": "Listos para pedidos internacionales",
+        "description": "AGRICON coordina los detalles prácticos que ayudan a los compradores internacionales a pasar del pedido confirmado al embarque."
+      }
+    },
+    "values": {
+      "items": {
+        "integratedSupply": {
+          "title": "Suministro integrado",
+          "description": "Varias categorías de equipos agrícolas coordinadas a través de una única ventanilla de suministro."
+        },
+        "projectMatching": {
+          "title": "Ajuste al proyecto",
+          "description": "Selección de equipos según el tipo de granja, la capacidad, las condiciones del sitio y las necesidades de aplicación."
+        },
+        "exportSupport": {
+          "title": "Apoyo a la exportación",
+          "description": "Embalaje, carga, documentación y coordinación de embarques para compradores internacionales."
+        },
+        "longTermCooperation": {
+          "title": "Cooperación a largo plazo",
+          "description": "Pedidos recurrentes, proyectos de ampliación y apoyo coordinado del proveedor para operaciones en crecimiento."
+        }
+      }
+    },
+    "principles": {
+      "items": {
+        "coordinatedSourcing": {
+          "title": "Abastecimiento coordinado",
+          "description": "Avícola, ganadero, procesamiento de piensos, acuicultura, infraestructura y maquinaria a través de una única ventanilla de suministro."
+        },
+        "qualityControl": {
+          "title": "Calidad y control de pedidos",
+          "description": "Alcance del producto, especificaciones, cantidades y puntos clave de inspección confirmados antes del embarque."
+        },
+        "projectSelection": {
+          "title": "Selección según el proyecto",
+          "description": "Soluciones ajustadas al tipo de granja, la capacidad, las condiciones del sitio, los requisitos de operación y el presupuesto."
+        },
+        "exportDelivery": {
+          "title": "Entrega lista para exportación",
+          "description": "Embalaje de exportación, identificación de productos, planes de carga, coordinación de contenedores y documentos de embarque."
+        },
+        "distributorSupport": {
+          "title": "Apoyo a distribuidores",
+          "description": "Combinaciones flexibles de productos, apoyo a pedidos recurrentes y asistencia para el desarrollo del mercado local."
+        },
+        "partnership": {
+          "title": "Alianza práctica",
+          "description": "Desde pedidos individuales de equipos hasta paquetes de proyecto completos y apoyo a futuras ampliaciones."
+        }
+      }
+    },
+    "commitments": {
+      "items": {
+        "integratedSupply": {
+          "title": "Suministro integrado de equipos",
+          "description": "Avícola, ganadero, procesamiento de piensos, acuicultura, infraestructura y maquinaria coordinados a través de una única ventanilla de suministro."
+        },
+        "exportReadyDelivery": {
+          "title": "Entrega lista para exportación",
+          "description": "Embalaje de exportación, identificación de productos, planes de carga, coordinación de contenedores y documentos de embarque para compradores internacionales."
+        },
+        "galvanized": {
+          "title": "Galvanizado en caliente",
+          "description": "Vida útil de 15 a 20 años (acero galvanizado en caliente)."
+        }
+      }
+    },
+    "process": {
+      "items": {
+        "inquiry": {
+          "title": "Consulta",
+          "description": "Conocemos el tipo de granja, la capacidad, los productos de interés, el escenario de aplicación y el objetivo de compra."
+        },
+        "analysis": {
+          "title": "Análisis",
+          "description": "Revisamos las condiciones del proyecto, los objetivos de operación, los requisitos del sitio y las expectativas de presupuesto."
+        },
+        "matching": {
+          "title": "Ajuste",
+          "description": "Seleccionamos los equipos, las líneas de producto y los paquetes de accesorios adecuados para el proyecto real."
+        },
+        "confirmation": {
+          "title": "Confirmación",
+          "description": "Definimos modelos, cantidades, especificaciones, embalaje y planificación del embarque."
+        },
+        "delivery": {
+          "title": "Entrega",
+          "description": "Coordinamos el embalaje de exportación, los planes de carga, los documentos y el apoyo al embarque internacional."
+        },
+        "support": {
+          "title": "Soporte",
+          "description": "Continuamos con información de producto, repuestos, pedidos recurrentes y ampliación del proyecto."
+        }
+      }
+    },
+    "delivery": {
+      "items": {
+        "orderConfirmation": {
+          "title": "Confirmación del pedido",
+          "description": "Se revisan las especificaciones, las cantidades y los requisitos de envío."
+        },
+        "exportPacking": {
+          "title": "Embalaje de exportación",
+          "description": "Productos embalados y claramente etiquetados para el transporte internacional."
+        },
+        "containerLoading": {
+          "title": "Carga de contenedores",
+          "description": "Planes de carga organizados para pedidos de equipos únicos o mixtos."
+        },
+        "shippingDocuments": {
+          "title": "Documentos de embarque",
+          "description": "Documentos comerciales preparados según los requisitos del pedido."
+        }
+      }
+    }
+  },
+  "caseStudies": {
+    "meta": {
+      "title": "Casos de éxito",
+      "description": "Instalaciones reales: cómo las granjas especificaron, pidieron y pusieron en marcha líneas avícolas, ganaderas y de maquinaria Agricon."
+    }
+  },
+  "products": {
+    "meta": {
+      "title": "Productos",
+      "description": "Explore las líneas avícolas, ganaderas, acuícolas y de maquinaria agrícola de Agricon: jaulas, sistemas de alimentación, incubadoras, equipos de procesamiento y más."
+    }
+  },
+  "solutions": {
+    "meta": {
+      "title": "Soluciones para granjas",
+      "description": "Soluciones integrales para granjas: naves avícolas, galpones ganaderos, líneas de alimento y plantas de procesamiento, planificadas de principio a fin."
+    },
+    "badge": "Solución integral",
+    "emptyTitle": "Soluciones próximamente",
+    "emptyDesc": "Estamos agregando nuestros paquetes de soluciones. Contáctenos para hablar de su proyecto."
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "breadcrumb": {
+    "home": "الرئيسية",
+    "support": "الدعم",
+    "faq": "FAQ"
+  },
+  "hero": {
+    "title": "الأسئلة الشائعة",
+    "description": "اعثر على إجابات للأسئلة الشائعة حول منتجاتنا والشحن والتركيب وشروط الدفع ودعم التجارة."
+  },
+  "allCategory": "الكل",
+  "noQuestions": "لا توجد أسئلة في هذه الفئة.",
+  "categoryChips": {
+    "ordering": "الطلب والحد الأدنى",
+    "shipping": "الشحن والتصدير",
+    "quality": "ضبط الجودة",
+    "projects": "مشروعات المزارع",
+    "distributors": "الموزعون",
+    "afterSales": "خدمة ما بعد البيع"
+  },
+  "relatedSupport": {
+    "title": "مصادر دعم إضافية",
+    "items": {
+      "documentation": {
+        "title": "وثائق المنتجات",
+        "description": "اطّلع على أدلة التركيب والمواصفات الفنية وكتالوجات المنتجات لجميع معدات Agricon.",
+        "href": "/support#download-center"
+      },
+      "videoTutorials": {
+        "title": "دروس بالفيديو",
+        "description": "شاهد فيديوهات خطوة بخطوة للتركيب والصيانة لأنظمة الأقفاص ومعدات التغذية وغيرها.",
+        "href": "/support#video-tutorials"
+      },
+      "contactSupport": {
+        "title": "تواصل مع الدعم",
+        "description": "تواصل مع فريقنا الفني عبر البريد الإلكتروني أو الهاتف أو واتساب للحصول على مساعدة مخصّصة.",
+        "href": "/contact"
+      }
+    }
+  },
+  "cta": {
+    "title": "هل لا تزال لديك أسئلة؟",
+    "description": "أرسل سؤالك وسيراجعه فريقنا باستخدام بيانات الاتصال التي تقدّمها.",
+    "contactUs": "اتصل بنا",
+    "chatWhatsApp": "المحادثة على واتساب"
+  },
+  "learnMore": "اعرف المزيد ←"
+}

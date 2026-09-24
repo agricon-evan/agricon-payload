@@ -9,6 +9,17 @@
     "description": "Submit your company profile for partnership review. Territory, pricing, branding, training, support, and warranty arrangements are valid only when confirmed in writing.",
     "applyNow": "Submit Company Profile"
   },
+  "sections": {
+    "benefits": {
+      "eyebrow": "Why Partner With Us",
+      "title": "A Partnership That Scales",
+      "description": "Agricon distributors enjoy competitive advantages designed for long-term growth."
+    },
+    "requirements": {
+      "eyebrow": "Ideal Partners",
+      "title": "What We Look For"
+    }
+  },
   "benefits": {
     "title": "Partnership Discussion Topics",
     "description": "The following areas may be discussed during due diligence. They are not commitments until included in an approved written agreement.",
@@ -25,6 +36,32 @@
         "title": "Technical Coordination",
         "description": "Product training, installation guidance, escalation responsibilities, and service boundaries are defined for the relevant partner agreement and project."
       }
+    },
+    "cards": {
+      "margins": {
+        "title": "Attractive Margins",
+        "description": "Competitive distributor pricing with volume-based tiered discounts. Your margins grow with your sales."
+      },
+      "marketingSupport": {
+        "title": "Marketing Support",
+        "description": "Product catalogs, brochures, display samples, and co-branded marketing materials included."
+      },
+      "technicalTraining": {
+        "title": "Technical Training",
+        "description": "Product knowledge training and installation basics for your sales team — on-site or online."
+      },
+      "territory": {
+        "title": "Territory Protection",
+        "description": "Exclusive distribution rights within your agreed region. No cross-competition from us."
+      },
+      "logistics": {
+        "title": "Drop-ship & Stock",
+        "description": "We ship directly to your customers or keep safety stock at your warehouse."
+      },
+      "localLanguage": {
+        "title": "Local-language Support",
+        "description": "English, French, Russian, Spanish, Swahili and Arabic sales support for your team."
+      }
     }
   },
   "requirements": {
@@ -39,7 +76,25 @@
       "A transparent market and service plan for the proposed territory",
       "Disclosure of warehouse, showroom, installation, or service resources where relevant",
       "Agreement to due diligence and written commercial terms before representing Agricon"
-    ]
+    ],
+    "cards": {
+      "establishedBusiness": {
+        "title": "Established Business",
+        "description": "Active business entity with a minimum of 2 years in agricultural or industrial equipment sales."
+      },
+      "showroom": {
+        "title": "Showroom or Distribution Center",
+        "description": "Physical location to display equipment and handle local customer inquiries."
+      },
+      "salesCapability": {
+        "title": "Sales Capability",
+        "description": "Demonstrated ability to sell and support equipment products in your target market."
+      },
+      "technicalInterest": {
+        "title": "Technical Interest",
+        "description": "Willingness to learn our products and provide basic technical guidance to customers."
+      }
+    }
   },
   "regions": {
     "title": "Market Coverage",

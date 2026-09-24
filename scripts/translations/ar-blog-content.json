@@ -1,0 +1,482 @@
+{
+  "feed-mill-guide": {
+    "root": {
+      "type": "root",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "children": [
+        {
+          "type": "heading",
+          "tag": "h2",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "text",
+              "text": "حدّد الطاقة الإنتاجية قبل شراء المعدات",
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "version": 1
+            }
+          ],
+          "direction": "ltr"
+        },
+        {
+          "type": "paragraph",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "text",
+              "text": "خط التغذية سلسلة متكاملة: الطحن، ثم الخلط، ثم تصنيع الأعلاف المضغوطة، ثم التبريد، ثم التعبئة في أكياس. ويجب أن تتحمّل كل مرحلة الطاقة الإنتاجية المستهدفة في الساعة، وإلا فإن الحلقة الأضعف تُحدّ من طاقة الخط بأكمله. وحدّد ما إذا كنت ستستخدم العلف لتغذية قطيعك فقط أم ستبيعه أيضًا، لأن ذلك يغيّر القدرة الإنتاجية المطلوبة ومستوى الأتمتة.",
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "version": 1
+            }
+          ],
+          "direction": "ltr",
+          "textStyle": "",
+          "textFormat": 0
+        },
+        {
+          "type": "heading",
+          "tag": "h2",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "text",
+              "text": "الطحن: مطابقة الغربال والقدرة للمادة الخام",
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "version": 1
+            }
+          ],
+          "direction": "ltr"
+        },
+        {
+          "type": "paragraph",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "text",
+              "text": "يجب أن تتناسب ماكينة الطحن بالمطارق أو ماكينة الطحن بالديسك مع موادك الخام الرئيسية — الذرة والقمح والكسافا ومنتجات الأرز الثانوية. ويتحكم حجم الغربال في حجم الجزيئات، وهو ما يؤثر على جودة الخلط ومتانة الأعلاف المضغوطة. وعند التعامل مع مواد خام مختلطة، اختر ماكينة مزوّدة بغرابيل قابلة للتعديل وبقدرة كافية لتجنّب الانسدادات المتكررة.",
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "version": 1
+            }
+          ],
+          "direction": "ltr",
+          "textStyle": "",
+          "textFormat": 0
+        },
+        {
+          "type": "heading",
+          "tag": "h2",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "text",
+              "text": "الخلط: التجانس هو المنتج",
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "version": 1
+            }
+          ],
+          "direction": "ltr"
+        },
+        {
+          "type": "paragraph",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "text",
+              "text": "تُقاس جودة العلف بمدى تجانسه. والخلاط العمودي عملي للمزارع المتوسطة، بينما تناسب الخلاطات الشريطية الخطوط الأكبر والخطوط المستمرة. وراجع زمن الخلط في دليل التشغيل والتزم به — فالخلط الزائد عن الحد يهدر الطاقة وقد يؤدي إلى انفصال المكوّنات الخفيفة. ولا تضف المكوّنات السائلة إلا باستخدام خلاط مصمّم لذلك.",
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "version": 1
+            }
+          ],
+          "direction": "ltr",
+          "textStyle": "",
+          "textFormat": 0
+        },
+        {
+          "type": "heading",
+          "tag": "h2",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "text",
+              "text": "تصنيع الأعلاف المضغوطة والتبريد",
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "version": 1
+            }
+          ],
+          "direction": "ltr"
+        },
+        {
+          "type": "paragraph",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "text",
+              "text": "تقلّل الأعلاف المضغوطة (pellets) الفاقد، وتحسّن قابلية الهضم، وتجعل تخزين العلف ونقله أسهل. ويجب أن تُطابَق ماكينة تصنيع الأعلاف المضغوطة مع حجم القالب المناسب للنوع المستهدف — الدواجن أو الخنازير أو الأسماك. كما يجب تبريد الأعلاف المضغوطة الساخنة وتجفيفها قبل التعبئة في أكياس، وإلا تسبّبت الرطوبة في ظهور العفن أثناء التخزين.",
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "version": 1
+            }
+          ],
+          "direction": "ltr",
+          "textStyle": "",
+          "textFormat": 0
+        },
+        {
+          "type": "list",
+          "tag": "ul",
+          "listType": "bullet",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "listitem",
+              "value": 1,
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "الطحن → الخلط → تصنيع الأعلاف المضغوطة → التبريد → التعبئة في أكياس، بقدرات إنتاجية متوافقة",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ],
+              "direction": "ltr"
+            },
+            {
+              "type": "listitem",
+              "value": 1,
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "يتوقف حجم القالب وزمن جهاز التكييف على النوع المستهدف",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ],
+              "direction": "ltr"
+            },
+            {
+              "type": "listitem",
+              "value": 1,
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "التبريد قبل التعبئة في أكياس يمنع العفن ويطيل مدة التخزين",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ],
+              "direction": "ltr"
+            }
+          ],
+          "direction": "ltr"
+        },
+        {
+          "type": "heading",
+          "tag": "h2",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "text",
+              "text": "تخطيط المصنع والعمالة ومراقبة الجودة",
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "version": 1
+            }
+          ],
+          "direction": "ltr"
+        },
+        {
+          "type": "paragraph",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "text",
+              "text": "حافظ على خط سير خطي: الاستلام، ثم الطحن، ثم الخلط، ثم تصنيع الأعلاف المضغوطة، ثم التعبئة في أكياس، ثم التخزين. والتخطيط النظيف يقلّل النقل اليدوي ويتيح التنظيف اليومي. واحتفظ بعيّنات من كل دفعة، وسجّل تغييرات التركيبة، وقُم بمعايرة الموازين بانتظام — ففي إنتاج الأعلاف، التجانس هو ما يدفع العملاء مقابله.",
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "version": 1
+            }
+          ],
+          "direction": "ltr",
+          "textStyle": "",
+          "textFormat": 0
+        }
+      ],
+      "direction": "ltr"
+    }
+  },
+  "incubation-guide": {
+    "root": {
+      "type": "root",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "children": [
+        {
+          "type": "heading",
+          "tag": "h2",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "text",
+              "text": "1. درجة حرارة مستقرة",
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "version": 1
+            }
+          ],
+          "direction": "ltr"
+        },
+        {
+          "type": "paragraph",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "text",
+              "text": "يعتمد نمو الجنين على نطاق ضيق من درجات الحرارة. وتُسبّب التقلّبات خلال النصف الأول من فترة التفريخ أكبر قدر من الضرر، لذلك يجب أن تحافظ ماكينة تفقيس على درجة الحرارة المحدّدة بأقل انحراف ممكن. وعايِر المستشعرات بانتظام، وتجنّب وضع الماكينة تحت أشعة الشمس المباشرة أو قرب تيارات هوائية قوية.",
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "version": 1
+            }
+          ],
+          "direction": "ltr",
+          "textStyle": "",
+          "textFormat": 0
+        },
+        {
+          "type": "heading",
+          "tag": "h2",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "text",
+              "text": "2. التحكم في الرطوبة",
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "version": 1
+            }
+          ],
+          "direction": "ltr"
+        },
+        {
+          "type": "paragraph",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "text",
+              "text": "تتحكم الرطوبة في معدل فقدان الماء من البيضة وتؤثر على حجم الكيس الهوائي عند الفقس. فإذا كانت منخفضة جدًا التصقت الكتاكيت بالقشور، وإذا كانت مرتفعة جدًا غرقت أو تأخّر فقسها. وتابع فقدان الوزن مقارنة بالمنحنى المتوقع، واضبط كمية المياه الداخلة إلى ماكينة تفقيس بدلًا من التخمين بالحسّ.",
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "version": 1
+            }
+          ],
+          "direction": "ltr",
+          "textStyle": "",
+          "textFormat": 0
+        },
+        {
+          "type": "heading",
+          "tag": "h2",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "text",
+              "text": "3. تقليب البيض الصحيح",
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "version": 1
+            }
+          ],
+          "direction": "ltr"
+        },
+        {
+          "type": "paragraph",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "text",
+              "text": "يمنع تقليب البيض الجنين من الالتصاق بالغشاء الداخلي للقشرة، ويدعم استخدامًا متوازنًا للعناصر الغذائية. وقَلِّب كل ساعتين على الأقل خلال الأيام 18 الأولى، ثم أوقف التقليب في ماكينة التفريخ. ويكون انتظام وتيرة التقليب أهم من الزاوية الدقيقة التي تستخدمها الماكينة.",
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "version": 1
+            }
+          ],
+          "direction": "ltr",
+          "textStyle": "",
+          "textFormat": 0
+        },
+        {
+          "type": "heading",
+          "tag": "h2",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "text",
+              "text": "4. الهواء النقي والتحكم في CO₂",
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "version": 1
+            }
+          ],
+          "direction": "ltr"
+        },
+        {
+          "type": "paragraph",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "text",
+              "text": "يستهلك الجنين الأكسجين ويطلق ثاني أكسيد الكربون. ويجب أن تزداد التهوية مع تقدّم عمر الجنين ومع زيادة الحمل داخل الماكينة. وفي الماكينات متعددة المراحل، طابِق معدل تبادل الهواء مع عدد البيض حتى لا تتأثر الأجنة المبكرة بالـ CO₂ المنبعث من البيض في المراحل المتأخرة.",
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "version": 1
+            }
+          ],
+          "direction": "ltr",
+          "textStyle": "",
+          "textFormat": 0
+        },
+        {
+          "type": "heading",
+          "tag": "h2",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "text",
+              "text": "5. النظافة والتعامل مع البيض",
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "version": 1
+            }
+          ],
+          "direction": "ltr"
+        },
+        {
+          "type": "paragraph",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "text",
+              "text": "البيض النظيف القادم من أعشاش نظيفة يعطي أفضل النتائج. ولا تغسل البيض إلا عند الضرورة وبدرجة حرارة ماء صحيحة، لأن التعامل غير النظيف أو الغسل بالماء البارد يدفع البكتيريا إلى داخل القشرة. وطَهِّر ماكينة تفقيس وماكينة التفريخ والصواني بين الدفعات، واحتفظ بالسجلات حتى يمكن تتبّع أي دفعة سيئة وصولًا إلى العملية التي تسبّبت فيها.",
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "version": 1
+            }
+          ],
+          "direction": "ltr",
+          "textStyle": "",
+          "textFormat": 0
+        }
+      ],
+      "direction": "ltr"
+    }
+  }
+}

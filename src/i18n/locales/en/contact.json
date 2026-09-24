@@ -39,7 +39,40 @@
     "submit": "Submit Inquiry",
     "submitting": "Submitting...",
     "errorGeneric": "Something went wrong. Please try again or contact us directly.",
-    "errorNetwork": "Network error. Please try again or contact us via WhatsApp."
+    "errorNetwork": "Network error. Please try again or contact us via WhatsApp.",
+    "errorRateLimit": "Too many submissions from this address. Please wait a few minutes and try again, or contact us by email.",
+    "errorRejected": "This submission was rejected by our spam filter. Please contact us by email instead."
+  },
+  "diagnostics": {
+    "phone": "Phone",
+    "phonePlaceholder": "+86 000 000 0000",
+    "application": "Application",
+    "currentSetup": "Current Setup",
+    "purchaseType": "Purchase Type",
+    "select": "Select...",
+    "applications": {
+      "layerFarm": "Layer (egg) farm",
+      "broilerFarm": "Broiler farm",
+      "breederHatchery": "Breeder / hatchery",
+      "pigFarm": "Pig farm",
+      "cattleFarm": "Cattle farm",
+      "feedPlant": "Feed processing plant",
+      "distributor": "Distributor / reseller",
+      "other": "Other"
+    },
+    "setups": {
+      "newProject": "New project",
+      "replacing": "Replacing old equipment",
+      "expanding": "Expanding existing farm",
+      "automation": "Upgrading for automation",
+      "other": "Other"
+    },
+    "purchaseTypes": {
+      "comparing": "Need a quote for comparison",
+      "ready": "Ready to order",
+      "researching": "Researching options",
+      "partnership": "Long-term partnership"
+    }
   },
   "success": {
     "title": "Inquiry Submitted Successfully",

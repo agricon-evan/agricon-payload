@@ -4,6 +4,7 @@
     "solutions": "Solutions",
     "tradeSupport": "Trade Support",
     "caseStudies": "Case Studies",
+    "videos": "Videos",
     "blog": "Blog",
     "about": "About"
   },
@@ -20,8 +21,6 @@
   },
   "footer": {
     "brandDescription": "Poultry & Livestock Equipment Solutions. Durable, export-ready equipment for commercial farms worldwide.",
-    "email": "",
-    "phone": "",
     "copyright": "Agricon. Poultry & Livestock Equipment Solutions.",
     "columns": {
       "products": "Products",
@@ -41,6 +40,7 @@
       "tradeSupport": "Trade Support",
       "aboutAgricon": "About Agricon",
       "caseStudies": "Case Studies",
+      "videos": "Videos",
       "blog": "Blog",
       "distributors": "Distributors",
       "contact": "Contact",
@@ -50,13 +50,128 @@
       "termsOfService": "Terms of Service"
     }
   },
-  "home": {},
+  "home": {
+    "breadcrumb": {
+      "home": "Home"
+    },
+    "heroStats": {
+      "categories": "Product Categories",
+      "markets": "Export Markets",
+      "projects": "Farm Projects"
+    },
+    "series": {
+      "poultry": "Layer, broiler & hatchery systems",
+      "livestock": "Cattle, pig, goat & rabbit housing",
+      "machinery": "Feed, processing & farm machinery",
+      "vehicles": "Tractors, harvesters & farm transport"
+    },
+    "categories": {
+      "titleLead": "Complete Farm",
+      "titleAccent": "Equipment Lines",
+      "description": "An integrated equipment ecosystem covering breeding, feeding, housing, processing and daily farm operation."
+    },
+    "featured": {
+      "eyebrow": "Featured Equipment",
+      "titleLead": "Best-Selling",
+      "titleAccent": "Equipment",
+      "description": "Hand-picked machines and systems our customers order most — verified by the product team."
+    },
+    "solutions": {
+      "titleLead": "Turnkey",
+      "titleAccent": "Farm Solutions",
+      "description": "We combine project matching, coordinated equipment supply and export support for practical agricultural operations."
+    },
+    "stats": {
+      "eyebrow": "Proven Track Record",
+      "titleLead": "Numbers That",
+      "titleAccent": "Speak",
+      "titleTail": "for Themselves",
+      "description": "A clear view of Agricon's equipment scope and international delivery experience."
+    },
+    "value": {
+      "eyebrow": "Value, Calculated",
+      "titleLead": "We Don't Say Quality. We",
+      "titleAccent": "Show Numbers.",
+      "description": "Every claim we make is backed by a measurable outcome on your farm — because trust is built with evidence, not adjectives."
+    },
+    "howWeWork": {
+      "eyebrow": "How We Work",
+      "titleLead": "From Inquiry to",
+      "titleAccent": "Support",
+      "description": "A structured, evidence-based process — designed to lower your risk on every first order"
+    },
+    "whyChooseUs": {
+      "eyebrow": "Why Agricon",
+      "titleLead": "A",
+      "titleAccent": "Partner",
+      "titleTail": ", Not Just a Supplier",
+      "description": "Six reasons commercial farms across three continents build with Agricon"
+    },
+    "trust": {
+      "eyebrow": "Trust & Evidence",
+      "titleLead": "We",
+      "titleAccent": "Prove",
+      "titleTail": "What We Claim",
+      "description": "Ask us for any document — inspection reports, traceability records, test certificates. Every advantage we state is verifiable."
+    },
+    "coverage": {
+      "eyebrow": "Global Reach",
+      "titleLead": "Supporting",
+      "titleAccent": "Buyers Worldwide",
+      "description": "Practical equipment supply and export coordination for farms, importers, distributors and agricultural projects."
+    },
+    "testimonials": {
+      "eyebrow": "Testimonials",
+      "titleLead": "Trusted by",
+      "titleAccent": "Farmers",
+      "titleTail": "Worldwide",
+      "starRating": "5 star rating"
+    },
+    "news": {
+      "eyebrow": "News & Insights",
+      "titleLead": "From Our",
+      "titleAccent": "Blog"
+    },
+    "finalCta": {
+      "titleLead": "Ready to Build",
+      "titleAccent": "Your Farm?",
+      "description": "Get a customized quotation with shipping to your port — our engineers will design the optimal layout for your facility.",
+      "primary": "Request a Quote",
+      "secondary": "See Case Studies"
+    },
+    "newsletter": {
+      "eyebrow": "AGRICON Updates",
+      "titleLead": "Get practical updates",
+      "description": "One useful update at a time. No unnecessary noise.",
+      "chips": {
+        "product": "Product updates",
+        "insights": "Farm insights",
+        "export": "Export support"
+      }
+    }
+  },
   "aria": {
     "toggleNavigation": "Toggle navigation",
     "switchToLightMode": "Switch to light mode",
     "switchToDarkMode": "Switch to dark mode",
     "backToTop": "Back to top",
     "chatOnWhatsApp": "Chat on WhatsApp",
-    "switchLanguage": "Switch language"
+    "switchLanguage": "Switch language",
+    "home": "Agricon Home"
+  },
+  "productLine": {
+    "emptyTitle": "Products Coming Soon",
+    "emptyDesc": "Products in this line are being added. Contact us for the latest catalog.",
+    "equipmentLine": "Equipment line"
+  },
+  "meta": {
+    "siteTitle": "Agricon - Poultry & Livestock Equipment Solutions",
+    "siteDescription": "Poultry & Livestock Equipment Solutions"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "description": "The page you are looking for may have been moved, renamed or is no longer available.",
+    "backHome": "Back to Home",
+    "browseProducts": "Browse Products"
   }
 }

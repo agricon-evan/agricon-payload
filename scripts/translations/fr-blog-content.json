@@ -1,0 +1,482 @@
+{
+  "feed-mill-guide": {
+    "root": {
+      "type": "root",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "children": [
+        {
+          "type": "heading",
+          "tag": "h2",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "text",
+              "text": "Définir la capacité avant d'acheter l'équipement",
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "version": 1
+            }
+          ],
+          "direction": "ltr"
+        },
+        {
+          "type": "paragraph",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "text",
+              "text": "Une ligne d'alimentation est une chaîne : broyage, mélange, granulation, refroidissement et ensachage. Chaque étape doit supporter le débit horaire visé, sinon le maillon le plus faible limite toute la ligne. Décidez si vous produisez uniquement pour votre propre troupeau ou si vous vendez aussi de l'aliment, car cela change la capacité requise et le niveau d'automatisation.",
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "version": 1
+            }
+          ],
+          "direction": "ltr",
+          "textStyle": "",
+          "textFormat": 0
+        },
+        {
+          "type": "heading",
+          "tag": "h2",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "text",
+              "text": "Broyage : adapter la grille et la puissance à la matière",
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "version": 1
+            }
+          ],
+          "direction": "ltr"
+        },
+        {
+          "type": "paragraph",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "text",
+              "text": "Le broyeur à marteaux ou le broyeur à disques doit correspondre à vos principales matières premières — maïs, blé, manioc, sous-produits du riz. La taille de la grille détermine la granulométrie, qui influence la qualité du mélange et la durabilité des granulés. Pour des matières premières mélangées, choisissez une machine à grilles réglables et suffisamment puissante pour éviter les blocages fréquents.",
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "version": 1
+            }
+          ],
+          "direction": "ltr",
+          "textStyle": "",
+          "textFormat": 0
+        },
+        {
+          "type": "heading",
+          "tag": "h2",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "text",
+              "text": "Mélange : l'homogénéité, c'est le produit",
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "version": 1
+            }
+          ],
+          "direction": "ltr"
+        },
+        {
+          "type": "paragraph",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "text",
+              "text": "La qualité de l'aliment se mesure à son homogénéité. Une mélangeuse verticale convient aux exploitations de taille moyenne ; les mélangeuses à rubans conviennent aux lignes continues plus grandes. Vérifiez le temps de mélange dans le manuel et respectez-le — un mélange excessif gaspille de l'énergie et peut séparer les ingrédients légers. N'ajoutez des ingrédients liquides qu'avec une mélangeuse conçue à cet effet.",
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "version": 1
+            }
+          ],
+          "direction": "ltr",
+          "textStyle": "",
+          "textFormat": 0
+        },
+        {
+          "type": "heading",
+          "tag": "h2",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "text",
+              "text": "Granulation et refroidissement",
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "version": 1
+            }
+          ],
+          "direction": "ltr"
+        },
+        {
+          "type": "paragraph",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "text",
+              "text": "Les granulés réduisent le gaspillage, améliorent la digestibilité et facilitent le stockage et le transport de l'aliment. La presse à granulés doit être adaptée à la taille de filière correspondant à votre espèce cible — volaille, porc ou poisson. Les granulés chauds doivent être refroidis et séchés avant l'ensachage, sinon l'humidité provoque des moisissures au stockage.",
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "version": 1
+            }
+          ],
+          "direction": "ltr",
+          "textStyle": "",
+          "textFormat": 0
+        },
+        {
+          "type": "list",
+          "tag": "ul",
+          "listType": "bullet",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "listitem",
+              "value": 1,
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Broyage → mélange → granulation → refroidissement → ensachage, avec des capacités harmonisées",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ],
+              "direction": "ltr"
+            },
+            {
+              "type": "listitem",
+              "value": 1,
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "La taille de la filière et le temps de conditionnement dépendent de l'espèce cible",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ],
+              "direction": "ltr"
+            },
+            {
+              "type": "listitem",
+              "value": 1,
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Le refroidissement avant l'ensachage prévient les moisissures et prolonge la durée de conservation",
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "version": 1
+                }
+              ],
+              "direction": "ltr"
+            }
+          ],
+          "direction": "ltr"
+        },
+        {
+          "type": "heading",
+          "tag": "h2",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "text",
+              "text": "Implantation, main-d'œuvre et contrôle qualité",
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "version": 1
+            }
+          ],
+          "direction": "ltr"
+        },
+        {
+          "type": "paragraph",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "text",
+              "text": "Gardez un flux linéaire : réception, broyage, mélange, granulation, ensachage, stockage. Une implantation propre réduit les manutentions manuelles et permet un nettoyage quotidien. Conservez des échantillons de chaque lot, consignez les changements de formulation et étalonnez régulièrement les balances — en production d'aliment, c'est la régularité que les clients paient.",
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "version": 1
+            }
+          ],
+          "direction": "ltr",
+          "textStyle": "",
+          "textFormat": 0
+        }
+      ],
+      "direction": "ltr"
+    }
+  },
+  "incubation-guide": {
+    "root": {
+      "type": "root",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "children": [
+        {
+          "type": "heading",
+          "tag": "h2",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "text",
+              "text": "1. Une température stable",
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "version": 1
+            }
+          ],
+          "direction": "ltr"
+        },
+        {
+          "type": "paragraph",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "text",
+              "text": "Le développement de l'embryon dépend d'une plage de température étroite. Les fluctuations pendant la première moitié de l'incubation causent le plus de dégâts ; l'incubateur doit donc maintenir la température de consigne avec une dérive minimale. Étalonnez régulièrement les capteurs et évitez d'installer la machine en plein soleil ou près de courants d'air forts.",
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "version": 1
+            }
+          ],
+          "direction": "ltr",
+          "textStyle": "",
+          "textFormat": 0
+        },
+        {
+          "type": "heading",
+          "tag": "h2",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "text",
+              "text": "2. La maîtrise de l'humidité",
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "version": 1
+            }
+          ],
+          "direction": "ltr"
+        },
+        {
+          "type": "paragraph",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "text",
+              "text": "L'humidité contrôle la perte d'eau de l'œuf et influence la taille de la chambre à air à l'éclosion. Trop faible, les poussins collent à la coquille ; trop élevée, ils se noient ou éclosent en retard. Suivez la perte de poids par rapport à la courbe attendue et ajustez l'apport d'eau dans l'incubateur plutôt que de deviner à l'instinct.",
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "version": 1
+            }
+          ],
+          "direction": "ltr",
+          "textStyle": "",
+          "textFormat": 0
+        },
+        {
+          "type": "heading",
+          "tag": "h2",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "text",
+              "text": "3. Un retournement correct des œufs",
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "version": 1
+            }
+          ],
+          "direction": "ltr"
+        },
+        {
+          "type": "paragraph",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "text",
+              "text": "Le retournement empêche l'embryon de coller à la membrane de la coquille et favorise une utilisation régulière des nutriments. Retournez les œufs au moins toutes les deux heures pendant les 18 premiers jours, puis arrêtez le retournement dans l'éclosoir. La régularité de la fréquence de retournement importe plus que l'angle exact utilisé par la machine.",
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "version": 1
+            }
+          ],
+          "direction": "ltr",
+          "textStyle": "",
+          "textFormat": 0
+        },
+        {
+          "type": "heading",
+          "tag": "h2",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "text",
+              "text": "4. Air frais et maîtrise du CO₂",
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "version": 1
+            }
+          ],
+          "direction": "ltr"
+        },
+        {
+          "type": "paragraph",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "text",
+              "text": "Les embryons consomment de l'oxygène et rejettent du dioxyde de carbone. La ventilation doit augmenter avec l'âge de l'embryon et avec la charge de la machine. Dans les machines multi-étages, adaptez le renouvellement d'air au nombre d'œufs afin que les embryons précoces ne soient pas stressés par le CO₂ provenant des œufs en fin d'incubation.",
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "version": 1
+            }
+          ],
+          "direction": "ltr",
+          "textStyle": "",
+          "textFormat": 0
+        },
+        {
+          "type": "heading",
+          "tag": "h2",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "text",
+              "text": "5. Salubrité et manipulation des œufs",
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "version": 1
+            }
+          ],
+          "direction": "ltr"
+        },
+        {
+          "type": "paragraph",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "text",
+              "text": "Des œufs propres issus de nids propres donnent les meilleurs résultats. Ne lavez que lorsque c'est nécessaire et avec une eau à la bonne température, car une manipulation sale ou un lavage à l'eau froide fait pénétrer les bactéries dans la coquille. Désinfectez l'incubateur, l'éclosoir et les plateaux entre les lots, et tenez des registres afin de pouvoir relier un mauvais lot à l'opération qui l'a causé.",
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "version": 1
+            }
+          ],
+          "direction": "ltr",
+          "textStyle": "",
+          "textFormat": 0
+        }
+      ],
+      "direction": "ltr"
+    }
+  }
+}

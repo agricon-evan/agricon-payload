@@ -1,0 +1,16 @@
+{
+  "breadcrumb": {
+    "home": "Inicio",
+    "videos": "Videos"
+  },
+  "hero": {
+    "title": "Videoteca",
+    "description": "Vea el equipo Agricon en acción — instalaciones, proyectos agrícolas, demostraciones de productos y fabricación."
+  },
+  "watchOnYoutube": "Ver en YouTube",
+  "watchOnTiktok": "Ver en TikTok",
+  "noVideos": "Los videos están en preparación. Vuelva pronto o contáctenos para una demostración.",
+  "ctaTitle": "¿Necesita una demostración en vivo?",
+  "ctaDescription": "Contáctenos para organizar una videollamada o enviarle demostraciones grabadas de equipos específicos.",
+  "ctaButton": "Solicitar una demo"
+}

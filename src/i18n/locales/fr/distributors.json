@@ -1,0 +1,173 @@
+{
+  "breadcrumb": {
+    "home": "Accueil",
+    "distributors": "Partenariat de distribution"
+  },
+  "hero": {
+    "badge": "Demande de partenariat",
+    "title": "Demander l'examen d'un partenariat de distribution",
+    "description": "Transmettez le profil de votre entreprise pour l'examen d'un partenariat. Les modalités de territoire, de prix, d'image de marque, de formation, d'assistance et de garantie ne sont valables que si elles sont confirmées par écrit.",
+    "applyNow": "Envoyer le profil de l'entreprise"
+  },
+  "sections": {
+    "benefits": {
+      "eyebrow": "Pourquoi nous choisir",
+      "title": "Un partenariat qui évolue avec vous",
+      "description": "Les distributeurs Agricon bénéficient d'avantages concurrentiels conçus pour une croissance durable."
+    },
+    "requirements": {
+      "eyebrow": "Partenaires idéaux",
+      "title": "Ce que nous recherchons"
+    }
+  },
+  "benefits": {
+    "title": "Thèmes de discussion du partenariat",
+    "description": "Les points suivants peuvent être abordés lors de l'évaluation. Ils ne constituent pas des engagements tant qu'ils ne figurent pas dans un accord écrit approuvé.",
+    "items": {
+      "territory": {
+        "title": "Examen du périmètre de marché",
+        "description": "Le territoire et le périmètre de distribution proposés sont examinés au regard de l'adéquation des produits, des exigences de conformité et des accords existants. Aucune exclusivité ne s'applique sans confirmation dans un accord signé."
+      },
+      "marketing": {
+        "title": "Supports commerciaux approuvés",
+        "description": "Les catalogues à jour, les spécifications, les éléments de marque et les informations tarifaires peuvent être fournis selon le périmètre de coopération approuvé et leur disponibilité."
+      },
+      "training": {
+        "title": "Coordination technique",
+        "description": "La formation produit, l'accompagnement à l'installation, les responsabilités d'escalade et les limites de service sont définis pour l'accord partenaire et le projet concernés."
+      }
+    },
+    "cards": {
+      "margins": {
+        "title": "Marges attractives",
+        "description": "Tarifs distributeurs compétitifs avec remises dégressives selon le volume. Vos marges progressent avec vos ventes."
+      },
+      "marketingSupport": {
+        "title": "Soutien marketing",
+        "description": "Catalogues produits, brochures, échantillons de démonstration et supports marketing co-brandés inclus."
+      },
+      "technicalTraining": {
+        "title": "Formation technique",
+        "description": "Formation aux produits et bases d’installation pour votre équipe commerciale — sur site ou en ligne."
+      },
+      "territory": {
+        "title": "Protection de territoire",
+        "description": "Droits de distribution exclusifs dans votre région convenue. Aucune concurrence de notre part."
+      },
+      "logistics": {
+        "title": "Expédition directe et stock",
+        "description": "Nous livrons directement à vos clients ou maintenons un stock de sécurité dans votre entrepôt."
+      },
+      "localLanguage": {
+        "title": "Assistance en langue locale",
+        "description": "Assistance commerciale en anglais, français, russe, espagnol, swahili et arabe pour votre équipe."
+      }
+    }
+  },
+  "requirements": {
+    "title": "Informations que nous examinons",
+    "description": "Les candidatures sont examinées à partir d'informations vérifiables sur l'entreprise, le marché, la conformité, les ventes et le service.",
+    "idealProfile": "Informations pour l'examen de la candidature",
+    "items": [
+      "Immatriculation d'entreprise vérifiable et coordonnées du contact responsable",
+      "Expérience pertinente du marché, de l'agriculture, de l'industrie ou du matériel",
+      "Capacité à traiter les demandes clients et à maintenir des informations produits exactes",
+      "Capacité applicable en matière d'importation, de fiscalité, de licences et de conformité",
+      "Un plan de marché et de service transparent pour le territoire proposé",
+      "Communication des ressources d'entrepôt, de showroom, d'installation ou de service lorsqu'elles sont pertinentes",
+      "Acceptation d'une due diligence et de conditions commerciales écrites avant de représenter Agricon"
+    ],
+    "cards": {
+      "establishedBusiness": {
+        "title": "Entreprise établie",
+        "description": "Entité commerciale active avec au moins 2 ans d'expérience dans la vente de matériel agricole ou industriel."
+      },
+      "showroom": {
+        "title": "Showroom ou centre de distribution",
+        "description": "Un lieu physique pour exposer le matériel et traiter les demandes des clients locaux."
+      },
+      "salesCapability": {
+        "title": "Capacité commerciale",
+        "description": "Capacité démontrée à vendre et à accompagner les produits sur votre marché cible."
+      },
+      "technicalInterest": {
+        "title": "Intérêt technique",
+        "description": "Volonté d'apprendre nos produits et de fournir des conseils techniques de base aux clients."
+      }
+    }
+  },
+  "regions": {
+    "title": "Couverture de marché",
+    "description": "Les candidatures de différents marchés peuvent être étudiées, sous réserve de conformité, d'adéquation des produits, d'accords existants et d'une approbation écrite.",
+    "items": {
+      "availability": {
+        "name": "Disponibilité par marché",
+        "countries": "Les candidatures peuvent être déposées depuis tout marché. La disponibilité dépend de la conformité commerciale, de l'adéquation des produits, des accords existants, de la capacité de service et d'une approbation écrite."
+      }
+    }
+  },
+  "support": {
+    "title": "Périmètre de coopération possible",
+    "description": "Le périmètre exact de coopération est convenu au cas par cas. Les descriptions du site ne créent aucune obligation de stock, de territoire, de marketing, de formation, de garantie ou de service.",
+    "items": {
+      "inventory": {
+        "title": "Informations produits et tarifs",
+        "description": "Les données produits approuvées, les conditions de devis, les quantités minimales de commande et les disponibilités sont fournies pour l'opportunité concernée et peuvent évoluer avant confirmation écrite."
+      },
+      "salesTraining": {
+        "title": "Périmètre d'intégration",
+        "description": "Toute formation aux ventes, aux produits, à l'installation ou au service est définie par le plan d'intégration approuvé et l'accord partenaire écrit."
+      },
+      "coBranding": {
+        "title": "Utilisation de la marque",
+        "description": "Les logos, catalogues, supports de campagne et communications publiques ne peuvent être utilisés que sous leur forme approuvée et dans le cadre de l'autorisation écrite accordée au partenaire."
+      },
+      "warranty": {
+        "title": "Coordination garantie et service",
+        "description": "Le périmètre de garantie, les responsabilités en matière de pièces de rechange, les voies d'escalade et les modalités de réponse s'appliquent uniquement selon les accords produits et partenaires applicables."
+      }
+    }
+  },
+  "applicationForm": {
+    "title": "Déposer une demande de partenariat",
+    "description": "Remplissez le formulaire pour examen. Le délai de réponse dépend des informations fournies, du marché et de la capacité d'examen actuelle.",
+    "companyName": "Nom de l'entreprise *",
+    "companyPlaceholder": "Nom officiel de l'entreprise",
+    "contactName": "Nom du contact *",
+    "contactPlaceholder": "Contact responsable",
+    "email": "E-mail professionnel *",
+    "emailPlaceholder": "nom@entreprise.com",
+    "phone": "Téléphone *",
+    "phonePlaceholder": "Indiquez l'indicatif du pays",
+    "country": "Pays / Marché *",
+    "countryPlaceholder": "Pays ou marché",
+    "businessType": "Type d'activité *",
+    "interestedCategories": "Catégories de produits recherchées *",
+    "introduction": "Profil de l'entreprise",
+    "introductionPlaceholder": "Décrivez votre entreprise, votre marché, votre expérience pertinente, vos capacités de vente et de service ainsi que le périmètre de coopération proposé.",
+    "submit": "Envoyer la candidature",
+    "submitting": "Envoi en cours...",
+    "errorGeneric": "L'envoi de la candidature a échoué. Veuillez réessayer.",
+    "errorNetwork": "Erreur réseau. Vérifiez votre connexion et réessayez."
+  },
+  "success": {
+    "title": "Candidature envoyée",
+    "description": "Merci d'avoir transmis le profil de votre entreprise. L'envoi ne crée aucun rendez-vous, droit d'exclusivité, droit de prix ni autre engagement commercial."
+  },
+  "businessTypes": [
+    "Agricultural Equipment Dealer",
+    "Farm Supply Business",
+    "Industrial Equipment Business",
+    "Installation or Service Provider",
+    "Import / Export Trading Company",
+    "Other"
+  ],
+  "categories": [
+    "Poultry Housing Equipment",
+    "Feeding Systems",
+    "Livestock Housing & Fencing",
+    "Feed Processing Equipment",
+    "Ventilation & Climate Equipment",
+    "Manure Management Equipment"
+  ]
+}

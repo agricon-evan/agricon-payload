@@ -1,0 +1,48 @@
+{
+  "breadcrumb": {
+    "home": "Inicio",
+    "support": "Soporte",
+    "faq": "FAQ"
+  },
+  "hero": {
+    "title": "Preguntas frecuentes",
+    "description": "Encuentre respuestas a las preguntas más comunes sobre nuestros productos, envíos, instalación, condiciones de pago y soporte comercial."
+  },
+  "allCategory": "Todas",
+  "noQuestions": "No se encontraron preguntas en esta categoría.",
+  "categoryChips": {
+    "ordering": "Pedidos y MOQ",
+    "shipping": "Envío y exportación",
+    "quality": "Control de calidad",
+    "projects": "Proyectos de granja",
+    "distributors": "Distribuidores",
+    "afterSales": "Posventa"
+  },
+  "relatedSupport": {
+    "title": "Recursos de soporte adicionales",
+    "items": {
+      "documentation": {
+        "title": "Documentación de productos",
+        "description": "Acceda a guías de instalación, especificaciones técnicas y catálogos de todos los equipos Agricon.",
+        "href": "/support#download-center"
+      },
+      "videoTutorials": {
+        "title": "Videos tutoriales",
+        "description": "Vea videos paso a paso de instalación y mantenimiento para sistemas de jaulas, equipos de alimentación y más.",
+        "href": "/support#video-tutorials"
+      },
+      "contactSupport": {
+        "title": "Contactar a soporte",
+        "description": "Comuníquese con nuestro equipo técnico por correo, teléfono o WhatsApp para recibir asistencia personalizada.",
+        "href": "/contact"
+      }
+    }
+  },
+  "cta": {
+    "title": "¿Aún tiene preguntas?",
+    "description": "Envíenos su pregunta y nuestro equipo la revisará usando los datos de contacto que proporcione.",
+    "contactUs": "Contáctenos",
+    "chatWhatsApp": "Chatear por WhatsApp"
+  },
+  "learnMore": "Más información →"
+}

@@ -4,6 +4,7 @@
     "solutions": "الحلول",
     "tradeSupport": "دعم التجارة",
     "caseStudies": "دراسات الحالة",
+    "videos": "الفيديوهات",
     "blog": "المدونة",
     "about": "من نحن"
   },
@@ -20,8 +21,6 @@
   },
   "footer": {
     "brandDescription": "حلول معدات الدواجن والثروة الحيوانية. معدات متينة جاهزة للتصدير للمزارع التجارية حول العالم.",
-    "email": "",
-    "phone": "",
     "copyright": "Agricon. حلول معدات الدواجن والثروة الحيوانية.",
     "columns": {
       "products": "المنتجات",
@@ -35,12 +34,13 @@
       "feedProcessing": "تصنيع الأعلاف",
       "farmInfrastructure": "البنية التحتية للمزرعة",
       "viewAllProducts": "جميع المنتجات",
-      "poultryFarmSetup": "הקמת مزرعة دواجن",
-      "livestockFarmSetup": "הקמת مزرعة مواشي",
+      "poultryFarmSetup": "إنشاء مزرعة دواجن",
+      "livestockFarmSetup": "إنشاء مزرعة مواشي",
       "feedProcessingSetup": "خط إنتاج الأعلاف",
       "tradeSupport": "دعم التجارة",
       "aboutAgricon": "عن Agricon",
       "caseStudies": "دراسات الحالة",
+      "videos": "الفيديوهات",
       "blog": "المدونة",
       "distributors": "الموزعون",
       "contact": "اتصل بنا",
@@ -50,13 +50,135 @@
       "termsOfService": "شروط الخدمة"
     }
   },
-  "home": {},
+  "home": {
+    "breadcrumb": {
+      "home": "الرئيسية"
+    },
+    "heroStats": {
+      "categories": "فئات المنتجات",
+      "markets": "أسواق التصدير",
+      "projects": "مشروعات المزارع"
+    },
+    "series": {
+      "poultry": "أنظمة البياض والتسمين والتفقيس",
+      "livestock": "إسكان الأبقار والخنازير والماعز والأرانب",
+      "machinery": "معدات الأعلاف والتصنيع والآلات الزراعية",
+      "vehicles": "الجرارات والحصّادات والنقل الزراعي"
+    },
+    "categories": {
+      "titleLead": "خطوط معدات",
+      "titleAccent": "المزرعة المتكاملة",
+      "description": "منظومة معدات متكاملة تغطي التربية والتغذية والإسكان والتصنيع والتشغيل اليومي للمزرعة."
+    },
+    "featured": {
+      "eyebrow": "معدات مختارة",
+      "titleLead": "المعدات",
+      "titleAccent": "الأكثر مبيعًا",
+      "description": "آلات وأنظمة مختارة بعناية هي الأكثر طلبًا لدى عملائنا — يتحقق منها فريق المنتجات."
+    },
+    "solutions": {
+      "titleLead": "حلول المزارع",
+      "titleAccent": "المتكاملة",
+      "description": "نجمع بين مطابقة المشروعات وتوريد المعدات المنسّق ودعم التصدير لعمليات زراعية عملية."
+    },
+    "stats": {
+      "eyebrow": "سجلّ حافل بالإنجازات",
+      "titleLead": "أرقام",
+      "titleAccent": "تتحدث",
+      "titleTail": "عن نفسها",
+      "description": "صورة واضحة عن نطاق معدات Agricon وخبرتها في التسليم الدولي."
+    },
+    "value": {
+      "eyebrow": "القيمة بالأرقام",
+      "titleLead": "لا نتحدث عن الجودة، بل",
+      "titleAccent": "نعرض الأرقام.",
+      "description": "كل ما نقدّمه يدعمه نتيجة قابلة للقياس في مزرعتك — لأن الثقة تُبنى بالأدلة لا بالصفات."
+    },
+    "howWeWork": {
+      "eyebrow": "كيف نعمل",
+      "titleLead": "من الاستفسار إلى",
+      "titleAccent": "الدعم",
+      "description": "عملية منظّمة قائمة على الأدلة — مصمّمة لتقليل مخاطرك في كل طلب أول"
+    },
+    "whyChooseUs": {
+      "eyebrow": "لماذا Agricon",
+      "titleLead": "نحن",
+      "titleAccent": "شريك",
+      "titleTail": "، وليس مجرد مورّد",
+      "description": "ستة أسباب تجعل المزارع التجارية في ثلاث قارات تبني مشروعاتها مع Agricon"
+    },
+    "trust": {
+      "eyebrow": "الثقة والأدلة",
+      "titleLead": "نحن",
+      "titleAccent": "نثبت",
+      "titleTail": "ما ندّعيه",
+      "description": "اطلب منا أي مستند — تقارير الفحص وسجلات التتبّع وشهادات الاختبار. وكل ميزة نذكرها قابلة للتحقق."
+    },
+    "coverage": {
+      "eyebrow": "الانتشار العالمي",
+      "titleLead": "ندعم",
+      "titleAccent": "المشترين حول العالم",
+      "description": "توريد عملي للمعدات وتنسيق للتصدير لصالح المزارع والمستوردين والموزّعين والمشروعات الزراعية."
+    },
+    "testimonials": {
+      "eyebrow": "شهادات العملاء",
+      "titleLead": "يثق بنا",
+      "titleAccent": "المزارعون",
+      "titleTail": "حول العالم",
+      "starRating": "تقييم 5 نجوم"
+    },
+    "news": {
+      "eyebrow": "الأخبار والرؤى",
+      "titleLead": "من",
+      "titleAccent": "المدونة"
+    },
+    "finalCta": {
+      "titleLead": "جاهز لبناء",
+      "titleAccent": "مزرعتك؟",
+      "description": "احصل على عرض سعر مخصّص مع الشحن إلى مينائك — وسيصمّم مهندسونا التخطيط الأمثل لمنشأتك.",
+      "primary": "اطلب عرض سعر",
+      "secondary": "اطّلع على دراسات الحالة"
+    },
+    "newsletter": {
+      "eyebrow": "تحديثات Agricon",
+      "titleLead": "احصل على تحديثات عملية",
+      "description": "تحديث مفيد واحد في كل مرة. بلا ضجيج غير ضروري.",
+      "chips": {
+        "product": "تحديثات المنتجات",
+        "insights": "رؤى زراعية",
+        "export": "دعم التصدير"
+      }
+    }
+  },
   "aria": {
     "toggleNavigation": "تبديل التنقل",
     "switchToLightMode": "التبديل إلى الوضع الفاتح",
     "switchToDarkMode": "التبديل إلى الوضع الداكن",
     "backToTop": "العودة للأعلى",
     "chatOnWhatsApp": "تحدث عبر واتساب",
-    "switchLanguage": "تغيير اللغة"
+    "switchLanguage": "تغيير اللغة",
+    "home": "Agricon — الصفحة الرئيسية",
+    "breadcrumb": "مسار التنقّل",
+    "previousImage": "الصورة السابقة",
+    "nextImage": "الصورة التالية",
+    "productImages": "صور المنتج",
+    "scrollLeft": "التمرير إلى اليسار",
+    "scrollRight": "التمرير إلى اليمين",
+    "closeVideo": "إغلاق الفيديو"
+  },
+  "meta": {
+    "siteTitle": "Agricon - حلول معدات الدواجن والثروة الحيوانية",
+    "siteDescription": "حلول معدات الدواجن والثروة الحيوانية"
+  },
+  "productLine": {
+    "emptyTitle": "منتجات قادمة قريبًا",
+    "emptyDesc": "يجري إضافة منتجات هذا الخط. تواصل معنا للحصول على أحدث كتالوج.",
+    "equipmentLine": "خط المعدات"
+  },
+  "notFound": {
+    "title": "الصفحة غير موجودة",
+    "description": "ربما نُقلت الصفحة أو تغيّر اسمها أو لم تعد متاحة.",
+    "backHome": "العودة للرئيسية",
+    "browseProducts": "تصفح المنتجات"
   }
 }

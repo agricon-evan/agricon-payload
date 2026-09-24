@@ -1,0 +1,19 @@
+{
+  "breadcrumb": {
+    "home": "Nyumbani",
+    "search": "Tafuta"
+  },
+  "hero": {
+    "title": "Tafuta",
+    "description": "Tafuta bidhaa, suluhisho, na rasilimali za Agricon."
+  },
+  "placeholder": "Tafuta bidhaa, suluhisho, na rasilimali...",
+  "noResults": {
+    "title": "Hakuna matokeo yaliyopatikana",
+    "description": "Jaribu maneno mengine ya utafutaji au wasiliana nasi moja kwa moja."
+  },
+  "searching": "Inatafuta...",
+  "loading": "Inapakia...",
+  "typeProduct": "Bidhaa",
+  "typeSolution": "Suluhisho"
+}

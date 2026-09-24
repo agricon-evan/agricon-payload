@@ -2,5 +2,158 @@
   "hero": {
     "title": "Trade Support",
     "description": "Review documentation, logistics, inspection, installation, and service requirements before order confirmation."
+  },
+  "sections": {
+    "services": {
+      "eyebrow": "What We Handle",
+      "title": "End-to-end Trade Support",
+      "description": "From manufacturing to your farm gate — we manage the logistics so you can focus on farming."
+    },
+    "export": {
+      "eyebrow": "Export & Trade Support",
+      "title": "From Order Confirmation to International Shipment",
+      "description": "AGRICON coordinates packing, loading, documentation and delivery support for overseas buyers — so your order arrives exactly as confirmed."
+    },
+    "process": {
+      "eyebrow": "How It Works",
+      "title": "From Inquiry to Installation"
+    },
+    "incoterms": {
+      "eyebrow": "Incoterms",
+      "title": "Shipping Terms We Offer",
+      "description": "Choose the term that works best for your import arrangement."
+    }
+  },
+  "services": {
+    "items": {
+      "logistics": {
+        "title": "Export Logistics",
+        "description": "Full export documentation, container loading supervision, and sea/air freight coordination to your port.",
+        "highlights": [
+          "Bill of Lading",
+          "Certificate of Origin",
+          "Phytosanitary Cert",
+          "Fumigation Cert"
+        ]
+      },
+      "oemOdm": {
+        "title": "OEM & ODM",
+        "description": "Custom branding, logo, color, and specifications on standard and custom equipment models.",
+        "highlights": [
+          "Private Labeling",
+          "Custom Colors",
+          "Custom Capacity",
+          "Logo Etching"
+        ]
+      },
+      "payment": {
+        "title": "Flexible Payment",
+        "description": "Secure international payment methods with options suitable for new and repeat customers.",
+        "highlights": [
+          "T/T Wire Transfer",
+          "L/C Letter of Credit",
+          "30% Deposit",
+          "Milestone Payments"
+        ]
+      },
+      "installation": {
+        "title": "Installation Support",
+        "description": "On-site technical support, installation drawings, video guidance, and training for your maintenance team.",
+        "highlights": [
+          "Video Tutorials",
+          "On-site Training",
+          "Spare Parts Kit",
+          "24/7 WhatsApp Support"
+        ]
+      },
+      "packaging": {
+        "title": "Packaging",
+        "description": "Equipment is packed for ocean freight — moisture-resistant, properly labeled, and optimized for container efficiency.",
+        "highlights": [
+          "Fumigated Wood",
+          "Moisture Barrier",
+          "Container Optimization",
+          "Custom Labeling"
+        ]
+      },
+      "warranty": {
+        "title": "After-sales Warranty",
+        "description": "Comprehensive warranty on all equipment with prompt replacement of any defective parts.",
+        "highlights": [
+          "18-Month Warranty",
+          "Lifetime Spare Parts",
+          "Remote Diagnostics",
+          "Response in 24h"
+        ]
+      }
+    }
+  },
+  "steps": {
+    "items": {
+      "consultation": {
+        "title": "Consultation",
+        "description": "Tell us your farm size, birds, and goals. We help you select the right equipment and layout."
+      },
+      "designQuote": {
+        "title": "Design & Quote",
+        "description": "Receive a detailed quotation with equipment list, 3D layout, and shipping estimate."
+      },
+      "orderManufacture": {
+        "title": "Order & Manufacture",
+        "description": "Upon confirmation, manufacturing begins with quality control checks at each stage."
+      },
+      "inspectionShipping": {
+        "title": "Inspection & Shipping",
+        "description": "Final inspection at our factory before loading. Full documentation provided for customs."
+      },
+      "installation": {
+        "title": "Installation",
+        "description": "Our technical team guides installation remotely or on-site, and trains your staff."
+      },
+      "afterSales": {
+        "title": "After-sales",
+        "description": "Lifetime spare parts supply and technical support. We stay with your farm as it grows."
+      }
+    }
+  },
+  "incoterms": {
+    "items": {
+      "fob": {
+        "title": "Free on Board",
+        "description": "Standard for most customers. We handle export; you handle shipping from our port."
+      },
+      "cif": {
+        "title": "Cost, Insurance, Freight",
+        "description": "We arrange shipping and insurance to your destination port."
+      },
+      "cfr": {
+        "title": "Cost and Freight",
+        "description": "Similar to CIF but without cargo insurance coverage."
+      }
+    }
+  },
+  "exportSteps": {
+    "items": {
+      "orderConfirmation": {
+        "title": "Order Confirmation",
+        "description": "All specifications, quantities and shipping requirements are reviewed and confirmed with the customer."
+      },
+      "exportPacking": {
+        "title": "Export Packing",
+        "description": "Products are securely packed and clearly labeled for international transportation."
+      },
+      "containerLoading": {
+        "title": "Container Loading",
+        "description": "Loading plans are organized based on product size and order volume to maximize space and stability."
+      },
+      "shippingSupport": {
+        "title": "Shipping Support",
+        "description": "All necessary documents and final shipment arrangements are coordinated before dispatch."
+      },
+      "deliverySupport": {
+        "title": "Delivery Support",
+        "description": "Shipment coordination from factory preparation to dispatch, including mixed-category orders."
+      }
+    }
   }
 }

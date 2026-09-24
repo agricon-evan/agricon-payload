@@ -1,0 +1,173 @@
+{
+  "breadcrumb": {
+    "home": "Inicio",
+    "distributors": "Alianza de distribución"
+  },
+  "hero": {
+    "badge": "Solicitud de alianza",
+    "title": "Solicite la evaluación de una alianza de distribución",
+    "description": "Envíe el perfil de su empresa para evaluación. El territorio, los precios, la marca, la capacitación, el soporte y la garantía solo son válidos cuando se confirman por escrito.",
+    "applyNow": "Enviar perfil de empresa"
+  },
+  "sections": {
+    "benefits": {
+      "eyebrow": "Por qué asociarse con nosotros",
+      "title": "Una alianza que crece con usted",
+      "description": "Los distribuidores de Agricon disfrutan de ventajas competitivas diseñadas para el crecimiento a largo plazo."
+    },
+    "requirements": {
+      "eyebrow": "Socios ideales",
+      "title": "Lo que buscamos"
+    }
+  },
+  "benefits": {
+    "title": "Temas de conversación sobre la alianza",
+    "description": "Los siguientes puntos pueden tratarse durante la debida diligencia. No constituyen compromisos hasta que se incluyan en un acuerdo escrito aprobado.",
+    "items": {
+      "territory": {
+        "title": "Revisión del alcance de mercado",
+        "description": "El territorio y el alcance de canal propuestos se evalúan según la idoneidad del producto, los requisitos de cumplimiento y los acuerdos vigentes. No aplica exclusividad salvo que se confirme en un acuerdo firmado."
+      },
+      "marketing": {
+        "title": "Materiales comerciales aprobados",
+        "description": "Los catálogos, especificaciones, recursos de marca e información de cotización vigentes pueden proporcionarse según el alcance de cooperación aprobado y la disponibilidad."
+      },
+      "training": {
+        "title": "Coordinación técnica",
+        "description": "La capacitación de producto, la orientación de instalación, las responsabilidades de escalamiento y los límites del servicio se definen para el acuerdo de socio y el proyecto correspondientes."
+      }
+    },
+    "cards": {
+      "margins": {
+        "title": "Márgenes atractivos",
+        "description": "Precios competitivos para distribuidores con descuentos escalonados por volumen. Sus márgenes crecen con sus ventas."
+      },
+      "marketingSupport": {
+        "title": "Apoyo de marketing",
+        "description": "Catálogos de producto, folletos, muestras de exposición y materiales de marketing de marca compartida incluidos."
+      },
+      "technicalTraining": {
+        "title": "Capacitación técnica",
+        "description": "Capacitación en producto y nociones básicas de instalación para su equipo de ventas, en sitio o en línea."
+      },
+      "territory": {
+        "title": "Protección de territorio",
+        "description": "Derechos exclusivos de distribución en su región acordada. Sin competencia por nuestra parte."
+      },
+      "logistics": {
+        "title": "Envío directo y stock",
+        "description": "Enviamos directamente a sus clientes o mantenemos stock de seguridad en su almacén."
+      },
+      "localLanguage": {
+        "title": "Soporte en idioma local",
+        "description": "Soporte de ventas en inglés, francés, ruso, español, suajili y árabe para su equipo."
+      }
+    }
+  },
+  "requirements": {
+    "title": "Información que evaluamos",
+    "description": "Las solicitudes se evalúan con información verificable sobre la empresa, el mercado, el cumplimiento, las ventas y el servicio.",
+    "idealProfile": "Información para la evaluación de la solicitud",
+    "items": [
+      "Registro de empresa verificable y datos de contacto del responsable",
+      "Experiencia relevante en mercado, agricultura, industria o equipos",
+      "Capacidad para atender consultas de clientes y mantener información de producto precisa",
+      "Capacidad aplicable en importación, impuestos, licencias y cumplimiento",
+      "Un plan transparente de mercado y servicio para el territorio propuesto",
+      "Divulgación de recursos de almacén, sala de exposición, instalación o servicio cuando corresponda",
+      "Aceptación de la debida diligencia y de condiciones comerciales por escrito antes de representar a Agricon"
+    ],
+    "cards": {
+      "establishedBusiness": {
+        "title": "Empresa consolidada",
+        "description": "Entidad comercial activa con un mínimo de 2 años en la venta de equipos agrícolas o industriales."
+      },
+      "showroom": {
+        "title": "Sala de exposición o centro de distribución",
+        "description": "Ubicación física para exhibir equipos y atender las consultas de clientes locales."
+      },
+      "salesCapability": {
+        "title": "Capacidad de ventas",
+        "description": "Capacidad demostrada para vender y dar soporte a los equipos en su mercado objetivo."
+      },
+      "technicalInterest": {
+        "title": "Interés técnico",
+        "description": "Disposición a aprender nuestros productos y ofrecer orientación técnica básica a los clientes."
+      }
+    }
+  },
+  "regions": {
+    "title": "Cobertura de mercado",
+    "description": "Se pueden considerar solicitudes de distintos mercados, sujetas al cumplimiento, la idoneidad del producto, los acuerdos vigentes y la aprobación por escrito.",
+    "items": {
+      "availability": {
+        "name": "Disponibilidad de mercado",
+        "countries": "Se pueden enviar solicitudes desde cualquier mercado. La disponibilidad depende del cumplimiento comercial, la idoneidad del producto, los acuerdos vigentes, la capacidad de servicio y la aprobación por escrito."
+      }
+    }
+  },
+  "support": {
+    "title": "Posible alcance de cooperación",
+    "description": "El alcance exacto de la cooperación se acuerda caso por caso. Las descripciones del sitio web no generan obligaciones de inventario, territorio, marketing, capacitación, garantía ni servicio.",
+    "items": {
+      "inventory": {
+        "title": "Información de productos y precios",
+        "description": "Los datos de producto aprobados, las condiciones de cotización, las cantidades mínimas de pedido y la disponibilidad se proporcionan para la oportunidad específica y pueden cambiar antes de la confirmación por escrito."
+      },
+      "salesTraining": {
+        "title": "Alcance de la incorporación",
+        "description": "Toda capacitación de ventas, producto, instalación o servicio se define en el plan de incorporación aprobado y el acuerdo escrito de socio."
+      },
+      "coBranding": {
+        "title": "Uso de la marca",
+        "description": "Los logotipos, catálogos, materiales de campaña y afirmaciones públicas solo pueden usarse en su forma aprobada y dentro de la autorización escrita otorgada al socio."
+      },
+      "warranty": {
+        "title": "Coordinación de garantía y servicio",
+        "description": "El alcance de la garantía, las responsabilidades de repuestos, las vías de escalamiento y los acuerdos de respuesta aplican solo según lo indicado en los acuerdos de producto y de socio correspondientes."
+      }
+    }
+  },
+  "applicationForm": {
+    "title": "Enviar una solicitud de alianza",
+    "description": "Complete el formulario para su evaluación. El tiempo de respuesta depende de la información proporcionada, el mercado y la capacidad de evaluación actual.",
+    "companyName": "Nombre de la empresa *",
+    "companyPlaceholder": "Nombre legal de la empresa",
+    "contactName": "Nombre de contacto *",
+    "contactPlaceholder": "Persona de contacto responsable",
+    "email": "Correo corporativo *",
+    "emailPlaceholder": "nombre@empresa.com",
+    "phone": "Teléfono *",
+    "phonePlaceholder": "Incluya el código de país",
+    "country": "País / Mercado *",
+    "countryPlaceholder": "País o mercado",
+    "businessType": "Tipo de negocio *",
+    "interestedCategories": "Categorías de productos de interés *",
+    "introduction": "Perfil de la empresa",
+    "introductionPlaceholder": "Describa su empresa, su mercado, la experiencia relevante, la capacidad de ventas y servicio, y el alcance de cooperación propuesto.",
+    "submit": "Enviar solicitud",
+    "submitting": "Enviando...",
+    "errorGeneric": "No se pudo enviar la solicitud. Inténtelo de nuevo.",
+    "errorNetwork": "Error de red. Verifique su conexión e inténtelo de nuevo."
+  },
+  "success": {
+    "title": "Solicitud enviada",
+    "description": "Gracias por enviar el perfil de su empresa. El envío no genera un nombramiento, exclusividad, derecho de precios ni otro compromiso comercial."
+  },
+  "businessTypes": [
+    "Agricultural Equipment Dealer",
+    "Farm Supply Business",
+    "Industrial Equipment Business",
+    "Installation or Service Provider",
+    "Import / Export Trading Company",
+    "Other"
+  ],
+  "categories": [
+    "Poultry Housing Equipment",
+    "Feeding Systems",
+    "Livestock Housing & Fencing",
+    "Feed Processing Equipment",
+    "Ventilation & Climate Equipment",
+    "Manure Management Equipment"
+  ]
+}

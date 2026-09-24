@@ -1,0 +1,16 @@
+{
+  "breadcrumb": {
+    "home": "Nyumbani",
+    "videos": "Video"
+  },
+  "hero": {
+    "title": "Maktaba ya Video",
+    "description": "Ona vifaa vya Agricon vikifanya kazi — miongozo ya ufungaji, miradi ya shambani, maonyesho ya bidhaa na utengenezaji."
+  },
+  "watchOnYoutube": "Tazama kwenye YouTube",
+  "watchOnTiktok": "Tazama kwenye TikTok",
+  "noVideos": "Video zinaandaliwa. Tafadhali rudi baadaye au wasiliana nasi kwa maonyesho ya bidhaa.",
+  "ctaTitle": "Unahitaji Maonyesho ya Moja kwa Moja?",
+  "ctaDescription": "Wasiliana na timu yetu kupanga simu ya video au kutuma maonyesho yaliyorekodiwa ya vifaa maalum.",
+  "ctaButton": "Omba Maonyesho"
+}

@@ -1,0 +1,29 @@
+{
+  "feed-mill-guide": [
+    "Définir la capacité avant d'acheter l'équipement",
+    "Une ligne d'alimentation est une chaîne : broyage, mélange, granulation, refroidissement et ensachage. Chaque étape doit supporter le débit horaire visé, sinon le maillon le plus faible limite toute la ligne. Décidez si vous produisez uniquement pour votre propre troupeau ou si vous vendez aussi de l'aliment, car cela change la capacité requise et le niveau d'automatisation.",
+    "Broyage : adapter la grille et la puissance à la matière",
+    "Le broyeur à marteaux ou le broyeur à disques doit correspondre à vos principales matières premières — maïs, blé, manioc, sous-produits du riz. La taille de la grille détermine la granulométrie, qui influence la qualité du mélange et la durabilité des granulés. Pour des matières premières mélangées, choisissez une machine à grilles réglables et suffisamment puissante pour éviter les blocages fréquents.",
+    "Mélange : l'homogénéité, c'est le produit",
+    "La qualité de l'aliment se mesure à son homogénéité. Une mélangeuse verticale convient aux exploitations de taille moyenne ; les mélangeuses à rubans conviennent aux lignes continues plus grandes. Vérifiez le temps de mélange dans le manuel et respectez-le — un mélange excessif gaspille de l'énergie et peut séparer les ingrédients légers. N'ajoutez des ingrédients liquides qu'avec une mélangeuse conçue à cet effet.",
+    "Granulation et refroidissement",
+    "Les granulés réduisent le gaspillage, améliorent la digestibilité et facilitent le stockage et le transport de l'aliment. La presse à granulés doit être adaptée à la taille de filière correspondant à votre espèce cible — volaille, porc ou poisson. Les granulés chauds doivent être refroidis et séchés avant l'ensachage, sinon l'humidité provoque des moisissures au stockage.",
+    "Broyage → mélange → granulation → refroidissement → ensachage, avec des capacités harmonisées",
+    "La taille de la filière et le temps de conditionnement dépendent de l'espèce cible",
+    "Le refroidissement avant l'ensachage prévient les moisissures et prolonge la durée de conservation",
+    "Implantation, main-d'œuvre et contrôle qualité",
+    "Gardez un flux linéaire : réception, broyage, mélange, granulation, ensachage, stockage. Une implantation propre réduit les manutentions manuelles et permet un nettoyage quotidien. Conservez des échantillons de chaque lot, consignez les changements de formulation et étalonnez régulièrement les balances — en production d'aliment, c'est la régularité que les clients paient."
+  ],
+  "incubation-guide": [
+    "1. Une température stable",
+    "Le développement de l'embryon dépend d'une plage de température étroite. Les fluctuations pendant la première moitié de l'incubation causent le plus de dégâts ; l'incubateur doit donc maintenir la température de consigne avec une dérive minimale. Étalonnez régulièrement les capteurs et évitez d'installer la machine en plein soleil ou près de courants d'air forts.",
+    "2. La maîtrise de l'humidité",
+    "L'humidité contrôle la perte d'eau de l'œuf et influence la taille de la chambre à air à l'éclosion. Trop faible, les poussins collent à la coquille ; trop élevée, ils se noient ou éclosent en retard. Suivez la perte de poids par rapport à la courbe attendue et ajustez l'apport d'eau dans l'incubateur plutôt que de deviner à l'instinct.",
+    "3. Un retournement correct des œufs",
+    "Le retournement empêche l'embryon de coller à la membrane de la coquille et favorise une utilisation régulière des nutriments. Retournez les œufs au moins toutes les deux heures pendant les 18 premiers jours, puis arrêtez le retournement dans l'éclosoir. La régularité de la fréquence de retournement importe plus que l'angle exact utilisé par la machine.",
+    "4. Air frais et maîtrise du CO₂",
+    "Les embryons consomment de l'oxygène et rejettent du dioxyde de carbone. La ventilation doit augmenter avec l'âge de l'embryon et avec la charge de la machine. Dans les machines multi-étages, adaptez le renouvellement d'air au nombre d'œufs afin que les embryons précoces ne soient pas stressés par le CO₂ provenant des œufs en fin d'incubation.",
+    "5. Salubrité et manipulation des œufs",
+    "Des œufs propres issus de nids propres donnent les meilleurs résultats. Ne lavez que lorsque c'est nécessaire et avec une eau à la bonne température, car une manipulation sale ou un lavage à l'eau froide fait pénétrer les bactéries dans la coquille. Désinfectez l'incubateur, l'éclosoir et les plateaux entre les lots, et tenez des registres afin de pouvoir relier un mauvais lot à l'opération qui l'a causé."
+  ]
+}

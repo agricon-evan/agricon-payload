@@ -48,11 +48,13 @@ async function main() {
     { icon: 'zap', title: 'Global Delivery', items: [{ label: 'Export markets', value: '30+' }, { label: 'Container shipments', value: '500+' }, { label: 'Delivery support', value: 'End-to-end' }] },
     { icon: 'shield', title: 'Project Fit', items: [{ label: 'Selection basis', value: 'Farm type' }, { label: 'Capacity and site', value: 'Matched' }, { label: 'Supply window', value: 'One partner' }] },
   ]
+  // `items` became an array field (one row per point) when the homepage content
+  // was made localizable — see docs/MAINTENANCE.md §8.
   if (!doc.homeTrustEvidence) data.homeTrustEvidence = [
-    { icon: 'shield', title: 'Quality & Order Control', items: ['Product scope confirmed', 'Specifications and quantities checked', 'Key inspection points agreed', 'Production follow-up coordinated'] },
-    { icon: 'clipboard', title: 'Project Matching', items: ['Farm type and capacity reviewed', 'Site conditions considered', 'Equipment and accessories matched', 'Practical configuration proposed'] },
-    { icon: 'briefcase', title: 'Coordinated Supply', items: ['Multiple categories through one window', 'Flexible equipment combinations', 'Individual orders or project packages', 'Repeat-order support for distributors'] },
-    { icon: 'file-text', title: 'Export-Ready Delivery', items: ['Export packing and labeling', 'Container loading plans', 'Shipping document preparation', 'Shipment coordination to dispatch'] },
+    { icon: 'shield', title: 'Quality & Order Control', items: ['Product scope confirmed', 'Specifications and quantities checked', 'Key inspection points agreed', 'Production follow-up coordinated'].map((text) => ({ text })) },
+    { icon: 'clipboard', title: 'Project Matching', items: ['Farm type and capacity reviewed', 'Site conditions considered', 'Equipment and accessories matched', 'Practical configuration proposed'].map((text) => ({ text })) },
+    { icon: 'briefcase', title: 'Coordinated Supply', items: ['Multiple categories through one window', 'Flexible equipment combinations', 'Individual orders or project packages', 'Repeat-order support for distributors'].map((text) => ({ text })) },
+    { icon: 'file-text', title: 'Export-Ready Delivery', items: ['Export packing and labeling', 'Container loading plans', 'Shipping document preparation', 'Shipment coordination to dispatch'].map((text) => ({ text })) },
   ]
 
   if (Object.keys(data).length === 0) {

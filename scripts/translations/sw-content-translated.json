@@ -1,0 +1,505 @@
+{
+  "products": {
+    "48-bird-half-set-layer-cage": {
+      "description": "Kila fremu ya ngome na paneli ya waya wa mazimba huchomewa moto kwa mipako ya zinki inayozidi mikroni 60, ikipinga kutu, mmomonyoko na amonia katika nyumba za kuku zenye unyevu. Huongeza maisha ya huduma hadi zaidi ya miaka 15-20, ikipunguza kwa kiasi kikubwa gharama za uingizwaji wa vifaa."
+    },
+    "electric-peanut-sheller": {
+      "description": "Motor za shaba za 3kW na 4kW zinafanya kazi kwa single phase 220V, umeme huo huo unaotumika na kifaa cha nyumbani. Hakuna wiring ya three phase, hakuna transformer, hakuna mafuta."
+    },
+    "corn-peeling-and-shelling-machine": {
+      "description": "Kifaa kilichounganishwa huanza kwa kuondoa maganda, kisha sheller huondoa punje kutoka kwenye cob, na kutoa mahindi safi tayari kwa kukausha, kuhifadhi au chakula. Hakuna hatua tofauti ya kuondoa maganda na hakuna mashine ya ziada ya kununua au kutunza."
+    },
+    "bean-thresher-200kg-h": {
+      "description": "Soya, fava bean na bitter bean hupurwa vizuri kwenye mashine hii, huku mpunga na ngano vikiwa nyongeza. Mipangilio ya drum inafaa maganda magumu ya maharagwe, hivyo maharagwe hutoka mazima badala ya kupasuka au kupondwa."
+    },
+    "diesel-threshing-machine-8hp": {
+      "description": "Injini ya dizeli iliyopozwa kwa maji huanzishwa kwa mkono na inatumia mafuta pekee, hivyo kupura kunawezekana shambani, vijijini na wakati wa kukatika kwa umeme. Kupoeza kwa maji huzuia injini kuungua katika siku ndefu za mavuno, na kuanzisha kwa mkono humaanisha hakuna betri ya kutegemea."
+    },
+    "automatic-h-frame-broiler-cage": {
+      "description": "Muundo wa ngome zenye tabaka huinua kuku wa nyama wengi zaidi kwa kila mita ya mraba kuliko mifumo ya sakafu, huku kila tabaka likifanya kazi kama kitengo huru cha kulisha, kunywa na kusimamia taka; vyumba tofauti huruhusu ukaguzi rahisi wa ndege na usimamizi wa makundi."
+    },
+    "plastic-animal-ear-tags": {
+      "description": "Namba au herufi zilizochapishwa kwa laser pande zote mbili kwa utofautishaji mkubwa, zinaonekana wazi kutoka mbali hata katika hali ya vumbi na matope; husaidia kutambua mnyama mmoja mmoja kwa rekodi za mifugo, ufuatiliaji wa kuzaliana na ratiba za chanjo."
+    },
+    "h-type-rabbit-cage": {
+      "description": "Fremu na waya wa mazimba umetengenezwa kwa waya wa chuma Q235 wenye mipako ya kuchomea moto ya 275 g/m² — upinzani bora dhidi ya mkojo, unyevu na amonia, na maisha ya huduma hadi miaka 15 katika mabanda yenye unyevu."
+    },
+    "farrowing-crate": {
+      "description": "Imetengenezwa kwa bomba la chuma cha kuchomea moto chenye ukubwa wa 32x2."
+    },
+    "stainless-steel-chicken-plucker": {
+      "description": "Hushughulikia hadi kuku 200 kwa saa kwa kiwango cha 96% cha kuondoa manyoya. Vidole vya mpira vinavyoweza kubadilishwa huondoa manyoya kwa upole ndani ya sekunde 30 kwa kila kuku bila kuharibu ngozi."
+    },
+    "automatic-quail-cage": {
+      "description": "Fremu ya ngome ya kware imejengwa kwa bomba la chuma cha kuchomea moto, na paneli za mazimba zinatumia waya wa chuma cha kaboni ya chini wenye mwako wa kielektroniki."
+    },
+    "pig-gestation-crate": {
+      "description": "Ujenzi wa chuma cha kuchomea moto chenye kuta nene za bomba hutoa upinzani bora wa mmomonyoko na kutu kwa uimara wa muda mrefu katika mazingira ya shamba yenye unyevu na matumizi mazito ya kila siku."
+    },
+    "poultry-water-pressure-regulator": {
+      "description": "Imetengenezwa kwa sheli ya plastiki ya ABS ya hali ya juu, shina la vali la chuma cha pua na diaphragm ya mpira wa asili inayodumu zaidi ya diaphragm za plastiki za kawaida; skrubu za shaba huzuia kutu na kuhakikisha zaidi ya miaka 10 ya matumizi."
+    },
+    "automatic-poultry-feeding-line": {
+      "description": "Mstari kamili wa kulisha wa kiotomatiki wenye vilishio vya pan na vinywaji vya chuchu hutoa usambazaji thabiti wa chakula na maji katika nyumba yote ya kuku masaa 24 kwa siku, ikipunguza kazi ya mikono kwa hadi 80%."
+    },
+    "poultry-nipple-drinking-cup": {
+      "description": "Kikombe cha kunywa cha kuku cha kiotomatiki chenye vali ya chuchu huwanywesha ndege wanapohitaji; hakihitaji umeme, na shinikizo la maji kutoka bomba kuu hufungua vali ndege wanapogusa chuchu, kikihifadhi maji safi na yenye usafi."
+    },
+    "chicken-drinking-bowl": {
+      "description": "Kikombe cha kunywa kilichojengwa kwa vali ya spring ya mitambo huhisi uzito wa maji; ndege wanapokunywa kikombe huwa chepesi, spring huinuka kufunga vali na kuzuia kumwagika; kikombe kinapojazwa tena uzito wake hurejea na mtiririko hufunguka tena."
+    },
+    "plastic-poultry-transport-crate": {
+      "description": "Gridi kamili ya uingizaji hewa hufunika juu, pande zote nne na chini kwa mtiririko wa juu wa hewa wakati wa usafirishaji. Hupunguza msongo wa joto na vifo kwa kuku, bata, njiwa na ndege wengine — muhimu kwa usafirishaji wa umbali mrefu kutoka shambani hadi sokoni."
+    },
+    "plasson-bell-drinker": {
+      "description": "Mfululizo huu wa vinywaji vya Plasson hushughulikia kila hatua ya ukuaji wa kuku. Kifaranga kidogo: urefu wa 11cm, kipenyo cha 18cm, vipande 200 kwa katoni."
+    },
+    "a-type-automatic-layer-cage": {
+      "description": "Fremu na waya wa mazimba zinatumia chuma cha kuchomea moto kinachotoa maisha ya huduma ya miaka 15 hadi 20 na upinzani mkubwa wa mmomonyoko katika mazingira ya unyevu ya shamba la kuku na maeneo ya pwani ambapo chuma cha kawaida cha kielektroniki hushindwa haraka."
+    },
+    "h-frame-automatic-layer-cage": {
+      "description": "Ngome ya tabaka inatumia muundo imara wa H frame na waya wa chuma cha kuchomea moto, ikitoa upinzani bora wa mmomonyoko na maisha ya huduma ya miaka 15 hadi 20 hata katika mazingira ya unyevu ya nyumba za kuku."
+    },
+    "feed-mixing-and-grinding-machine": {
+      "description": "Mashine hii ya kuchanganya na kusaga inaunganisha uwezo wa kuchanganya na kusaga chakula katika kitengo kimoja chenye ukubwa mdogo, ikiondoa hitaji la vifaa tofauti na kurahisisha uzalishaji wako wote wa chakula."
+    },
+    "h-frame-broiler-cage": {
+      "description": "Mipako ya zinki ya 275g/m² (zaidi ya mikroni 60) kwenye chuma Q235. Inapinga amonia, unyevu na mmomonyoko wa kinyesi."
+    },
+    "h-type-layer-cage-battery-system": {
+      "description": "Mipako ya zinki ya zaidi ya mikroni 60 inapinga kutu, mmomonyoko na amonia. Maisha ya miaka 15-20 — gharama ndogo za uingizwaji."
+    },
+    "h-type-layer-cage-96-160-birds": {
+      "description": "Ngome ya tabaka ya aina ya ingot ina fremu ya kipekee yenye umbo la ingot inayotoa utulivu wa kipekee na uwezo mkubwa wa kubeba mzigo, ikifaa kwa usanikishaji wa tabaka nyingi katika nyumba za kuku za kibiashara."
+    },
+    "compact-animal-feed-mixer": {
+      "description": "Inapatikana katika mifano sita kutoka 50kg hadi 300kg kwa batch ili kulingana na ukubwa tofauti wa shamba na mahitaji ya chakula ya kila siku."
+    },
+    "large-chaff-cutter-5t-h": {
+      "description": "Uingizaji wa malighafi wa kiotomatiki pamoja na kukanda vilivyounganishwa hutoa usindikaji thabiti bila kazi ya mikono kuanzia mwanzo hadi mwisho. Pakia tu hopa — mashine hulisha, hukanda na kusindika yenyewe — hakuna kusukuma au kuongoza kwa mikono."
+    },
+    "hammer-mill-grinder": {
+      "description": "Mfumo wa kukusanya vumbi wa kimbunga uliounganishwa kwenye sehemu ya kutolea hukamata chembe ndogo wakati wa kusaga. Mazingira safi ya kazi — huzuia vumbi kuenea hewani na kulinda afya ya mtumiaji."
+    },
+    "4-8t-multi-function-chaff-cutter": {
+      "description": "Mashine hii ya tani 4.8 kwa saa inakata majani, kukanda na kusaga kwa mpigo mmoja."
+    },
+    "toothed-disc-mill-grinder": {
+      "description": "Skrini za mazimba zinazoweza kubadilishwa kuanzia 0.2mm hadi 6mm huruhusu udhibiti sahihi wa ukubwa wa pato kwa mahitaji mbalimbali ya usindikaji."
+    },
+    "agp-160-flat-die-pellet-machine": {
+      "description": "Sehemu ya kutolea iliyo wazi imeundwa kwa walinzi wa kando waliounganishwa wanaozuia pellet kumwagika kutoka kwenye die wakati wa kukusanya, hivyo eneo lako la kazi hubaki safi na lipangwe vizuri kwa kila pellet."
+    },
+    "small-chaff-cutter-400kg-h": {
+      "description": "Blade za aloi ya titanium za hali ya juu hutoa ugumu wa kipekee na upinzani wa kuvaa kwa mazingira yenye mahitaji makubwa ya usindikaji wa chakula. Maisha marefu ya blade na ubora thabiti wa kukata — hudumisha ukali katika matumizi mazito."
+    },
+    "64-400-egg-smart-incubator": {
+      "description": "Chumba cha kuangulia kilichoundwa kwa usahihi hudumisha hali bora katika mzunguko wote. Kiwango cha kutotoa hadi 95%+ — huzidi kwa uthabiti njia za jadi za mikono."
+    },
+    "mini-plastic-home-incubator": {
+      "description": "Sensorer za kisasa hufuatilia na kurekebisha viwango vya joto na unyevu katika mzunguko wote, zikitengeneza hali nzuri na thabiti kwa embryos zinazokua huku zikipunguza hatari ya mabadiliko ya ghafla ya joto."
+    },
+    "24-500-egg-automatic-incubator": {
+      "description": "Chumba cha kuzaliana ndege kilichoundwa kwa usahihi hudumisha hali bora kwa aina mbalimbali za ndege, kikitoa mafanikio ya hadi asilimia tisini na nane na kuzidi kwa uthabiti njia za jadi huku teknolojia ya kibaiomimiki ikilinda viwango."
+    },
+    "industrial-hatcher-incubator": {
+      "description": "Ujenzi mzito wenye mipako ya zinki. Inapinga mmomonyoko — hudumu katika mazingira ya unyevu ya kiwanda cha kutotoa vifaranga."
+    },
+    "backpack-gasoline-brush-cutter": {
+      "description": "Inajumuisha vichwa 10 vinavyoweza kubadilishwa kama kikata nyasi, chainsaw, msumeno wa pole, kikata hedge na cultivator, ikiruhusu injini moja kushughulikia kazi mbalimbali za mandhari bila kununua mashine tofauti."
+    },
+    "poultry-feeding-and-watering-set": {
+      "description": "Muundo wa plastiki wa PE na PP wa hali ya juu huhakikisha usalama usio na sumu unaofaa aina zote za kuku, bila BPA na bila harufu, ukihakikisha hali nzuri za kulisha kwa kuku, bata, bata wa bukini na wengine."
+    },
+    "stainless-steel-bush-cutter": {
+      "description": "Injini ya 2-stroke / 4-stroke yenye torque kubwa — hukata magugu manene, vichaka na nyasi ndefu bila taabu. Nguvu ya kuaminika kwa kazi nzito za shamba na bustani."
+    },
+    "192-egg-incubator": {
+      "description": "Chumba cha kuangulia kilichoundwa kwa usahihi hudumisha hali bora katika mzunguko wote. Kiwango cha kutotoa hadi 95%+ — huzidi kwa uthabiti njia za jadi za mikono."
+    },
+    "poultry-feeder-and-drinker-set": {
+      "description": "Seti ya vilishio na vinywaji vya kuku iliyotengenezwa kwa nyenzo za PE na PP zinazofaa chakula, zisizo na sumu, bila BPA na bila harufu — salama kwa kuku, bata, bata wa bukini, kware, batamzinga na kanga kutoka vifaranga hadi ndege wazima."
+    },
+    "128-bird-4-tier-layer-cage": {
+      "description": "Mipako ya zinki ya zaidi ya mikroni 60 inapinga kutu, mmomonyoko na amonia. Maisha ya miaka 15-20 — gharama ndogo za uingizwaji."
+    },
+    "industrial-screw-conveyor-auger": {
+      "description": "Mfumo wa conveyor ya screw na elevator ya auger unaoweza kubadilishwa kikamilifu kwa kipenyo cha bomba, lami ya screw, urefu, nguvu ya motor, nafasi ya kuingiza na kutolea, na mipako ya uso ili kulingana na shamba maalum, kiwanda cha chakula, usindikaji wa nafaka, kiwanda cha bia na matumizi ya viwandani."
+    },
+    "48-96-egg-digital-incubator": {
+      "description": "Chumba cha kuangulia kilichoundwa kwa usahihi hudumisha hali bora katika mzunguko wote. Kiwango cha kutotoa hadi 95%+ — huzidi kwa uthabiti njia za jadi za mikono."
+    }
+  },
+  "features": {
+    "Hot Dip Galvanized Surface Treatment For Long Lasting Durability": "Matibabu ya uso kwa kuchomea moto kwa uimara wa muda mrefu",
+    "Compact Half Set Design For 48 Laying Hens": "Muundo wa half set wa kukamilika kwa kuku 48 wa mayai",
+    "Manual Egg Collection With Smooth Rolling Channel": "Kukusanya mayai kwa mkono kwa njia laini ya kuviringisha",
+    "Smooth Polished Wire Mesh Protects Hen Welfare": "Waya wa mazimba uliong'arishwa laini hulinda ustawi wa kuku",
+    "Complete Accessories And Easy DIY Installation": "Vifaa kamili na ufungaji rahisi wa DIY",
+    "Plug-in shelling at home": "Kumenya kwa kuziba kwenye umeme wa nyumbani",
+    "Gentle rollers keep the seed whole": "Rola laini huweka mbegu mzima",
+    "300 or 600kg per hour": "300 au 600kg kwa saa",
+    "Clean separation, less sorting": "Kutenganisha safi, kupanga kidogo",
+    "Storage and shipping made easy": "Kuhifadhi na kusafirisha kwa urahisi",
+    "Peel and shell in one pass": "Kuondoa maganda na kumenya kwa mpigo mmoja",
+    "Husk and cob value, not waste": "Maganda na cob ni thamani, si taka",
+    "1500kg per hour, steady and even": "1500kg kwa saa, thabiti na sawa",
+    "Home 220V power": "Umeme wa nyumbani wa 220V",
+    "Simple mechanics, long service": "Mitambo rahisi, huduma ndefu",
+    "Made for bean crops": "Imetengenezwa kwa mazao ya maharagwe",
+    "Whole beans mean better prices": "Maharagwe mazima huleta bei bora",
+    "200kg per hour for the bean harvest": "200kg kwa saa kwa mavuno ya maharagwe",
+    "Runs on 220V household power": "Inatumia umeme wa nyumbani wa 220V",
+    "Three sizes for three scales": "Ukubwa tatu kwa viwango vitatu",
+    "8hp diesel power, no grid needed": "Nguvu ya dizeli ya 8hp, hakuna hitaji la gridi",
+    "One machine, many grains": "Mashine moja, nafaka nyingi",
+    "Single or double fan cleaning": "Usafishaji kwa feni moja au mbili",
+    "Trailer version moves with the harvest": "Toleo la trailer husafiri na mavuno",
+    "Compact and easy to ship": "Imekamilika na rahisi kusafirisha",
+    "Multi Tier Stacked Structure for High Density": "Muundo wa tabaka nyingi kwa msongamano mkubwa",
+    "Integrated Automation Reduces Labor": "Uendeshaji wa kiotomatiki uliounganishwa hupunguza kazi",
+    "Anti Corrosion Galvanized Build": "Ujenzi wa kuchomea moto unaopinga mmomonyoko",
+    "Flexible Configuration for Farm Scale": "Mpangilio unaobadilika kulingana na ukubwa wa shamba",
+    "Installation Support and Compatibility": "Msaada wa ufungaji na upatanisho",
+    "Laser Printed Both Sides": "Imechapishwa kwa laser pande zote mbili",
+    "Durable TPU Material": "Nyenzo imara za TPU",
+    "8 Colors and 3 Size": "Rangi 8 na ukubwa 3",
+    "Easy Installation": "Ufungaji rahisi",
+    "Custom OEM Service": "Huduma maalum ya OEM",
+    "Hot Dip Galvanized Steel Wire Construction": "Ujenzi wa waya wa chuma cha kuchomea moto",
+    "Rabbit Proof Floor Wire Spacing": "Nafasi ya waya wa sakafu isiyoruhusu sungura kupita",
+    "Heavy Duty Wire Diameter For Strength": "Kipenyo cha waya kizito kwa uimara",
+    "Slide Out Galvanized Manure Tray": "Trei ya kinyesi ya kuchomea moto inayotolewa kwa kuteleza",
+    "Complete Feeding And Watering System": "Mfumo kamili wa kulisha na kunywesha",
+    "Hot Dipped Galvanized Steel Frame": "Fremu ya chuma cha kuchomea moto",
+    "Easy Cleaning Slatted Flooring Design": "Muundo wa sakafu ya mbao unaosafishika kwa urahisi",
+    "Adjustable Sow Space Configuration": "Mpangilio wa nafasi ya nguruwe mama unaoweza kubadilishwa",
+    "High Efficiency Automatic Plucking": "Kunyonya manyoya kwa kiotomatiki kwa ufanisi mkubwa",
+    "Food Grade Stainless Steel Drum Body": "Mwili wa drum wa chuma cha pua unaofaa chakula",
+    "Multi Species Compatibility": "Upatanisho wa aina nyingi za ndege na wanyama",
+    "Simple Operation And Quick Setup": "Uendeshaji rahisi na usanidi wa haraka",
+    "OEM Customization And Global Shipping": "Ubinafsishaji wa OEM na usafirishaji wa kimataifa",
+    "Galvanized Steel Wire for Rust Free Durability": "Waya wa chuma cha kuchomea moto kwa uimara bila kutu",
+    "Optimized Mesh Spacing for Quail Safety": "Nafasi ya mazimba iliyoboreshwa kwa usalama wa kware",
+    "Multi Tier Design Maximizes Space and Capacity": "Muundo wa tabaka nyingi huongeza nafasi na uwezo",
+    "Automatic Egg Collection with Sloped Floor": "Kukusanya mayai kwa kiotomatiki kwa sakafu yenye mteremko",
+    "Integrated Feeding and Watering System": "Mfumo wa kulisha na kunywesha uliounganishwa",
+    "Customizable Tiers and OEM Available": "Tabaka zinazoweza kubadilishwa na OEM inapatikana",
+    "Heavy Duty Galvanized Steel Frame": "Fremu nzito ya chuma cha kuchomea moto",
+    "Adjustable Sow Crate Design": "Muundo wa kreta ya nguruwe mama unaoweza kubadilishwa",
+    "Efficient Slatted Flooring System": "Mfumo mzuri wa sakafu ya mbao",
+    "Smooth Welded Edges for Animal Safety": "Pembe laini za kuchomelewa kwa usalama wa wanyama",
+    "Modular Pen Configuration for Farm Expansion": "Mpangilio wa zizi la moduli kwa upanuzi wa shamba",
+    "High Quality ABS Plastic And Rubber Diaphragm Construction": "Ujenzi wa plastiki ya ABS ya hali ya juu na diaphragm ya mpira",
+    "Precise Adjustable Pressure Control 0 To 50 Cm Water Column Range": "Udhibiti sahihi wa shinikizo unaoweza kubadilishwa 0 hadi 50 cm ya safu ya maji",
+    "Corrosion Resistant For Long Term Use And Bidirectional Wash Mode": "Inapinga mmomonyoko kwa matumizi ya muda mrefu na hali ya kuosha pande zote mbili",
+    "Wide Application For Chicken Duck Goose Turkey Quail And Pipe Types": "Matumizi mapana kwa kuku, bata, bata wa bukini, batamzinga, kware na aina za mabomba",
+    "Quick Installation And OEM Customization With Free Sample": "Ufungaji wa haraka na ubinafsishaji wa OEM na sampuli ya bure",
+    "Automatic Pan Feeding and Nipple Drinking System": "Mfumo wa kulisha kwa pan na kunywa kwa chuchu wa kiotomatiki",
+    "Galvanized Steel and PP Construction": "Ujenzi wa chuma cha kuchomea moto na PP",
+    "Programmable Auger Drive Motor System": "Mfumo wa motor ya auger inayoweza kupangwa",
+    "Modular Design for Custom Layout": "Muundo wa moduli kwa mpangilio maalum",
+    "Easy Installation and Complete Set": "Ufungaji rahisi na seti kamili",
+    "Automatic Nipple And Cup Design": "Muundo wa chuchu na kikombe wa kiotomatiki",
+    "Enclosed Water System For Hygiene": "Mfumo wa maji uliofungwa kwa usafi",
+    "Durable Food Grade Plastic Construction": "Ujenzi imara wa plastiki unaofaa chakula",
+    "Feature Gravity Valve Automatic Water Level Control": "Vali ya mvuto hudhibiti kiwango cha maji kiotomatiki",
+    "Material High Impact Engineering Grade Plastic UV Resistant": "Nyenzo: plastiki ya uhandisi inayostahimili mgongano na UV",
+    "Installation Easy Mount on Water Bucket Pipe or Line": "Ufungaji: kuweka kwa urahisi kwenye ndoo ya maji, bomba au mstari",
+    "Application Versatile Cup for Chicken Duck Pigeon Turkey Quail": "Matumizi: kikombe kinachofaa kuku, bata, njiwa, batamzinga na kware",
+    "Durability Long Service Life Farm Grade Construction": "Uimara: maisha marefu ya huduma kwa ujenzi wa kiwango cha shamba",
+    "Ventilated Grid Design for Live Bird Safety": "Muundo wa gridi ya uingizaji hewa kwa usalama wa ndege walio hai",
+    "Stackable Interlocking with Heavy Load Capacity": "Inaweza kupangwa kwa tabaka na kushikamana kwa uwezo mkubwa wa mzigo",
+    "Durable PP/HDPE Construction with UV Stabilizers": "Ujenzi imara wa PP/HDPE wenye vidhibiti vya UV",
+    "Sliding Top Door with Secure Latch": "Mlango wa juu unaoteleza wenye kifunga imara",
+    "Lightweight from 4kg to 7kg, Multiple Size Options": "Mepesi kutoka 4kg hadi 7kg, chaguo nyingi za ukubwa",
+    "Complete Size Range Available": "Ukubwa kamili unapatikana",
+    "Automatic Gravity Water System": "Mfumo wa maji wa mvuto wa kiotomatiki",
+    "Classic Plasson Anti Spill Design": "Muundo wa kawaida wa Plasson wa kuzuia kumwagika",
+    "Heavy Duty PP and Accessories": "PP nzito na vifaa vya ziada",
+    "Easy Install Factory Direct Supply": "Ufungaji rahisi, usambazaji wa moja kwa moja kutoka kiwandani",
+    "Hot Dipped Galvanized Steel Construction": "Ujenzi wa chuma cha kuchomea moto",
+    "Full Automation System Integration": "Muunganisho kamili wa mfumo wa kiotomatiki",
+    "High Density A Type Tier Design": "Muundo wa tabaka za aina A wa msongamano mkubwa",
+    "Scalable for Commercial Operations": "Inaweza kupanuliwa kwa uendeshaji wa kibiashara",
+    "Three Year Warranty and Fast Delivery": "Dhamana ya miaka mitatu na usambazaji wa haraka",
+    "H Frame Hot Dipped Galvanized Steel Structure": "Muundo wa chuma cha kuchomea moto wa H frame",
+    "Complete Automatic System Integration": "Muunganisho kamili wa mfumo wa kiotomatiki",
+    "Space Efficient Layer Capacity Options": "Chaguo za uwezo wa tabaka zinazotumia nafasi vizuri",
+    "Easy Modular Assembly for Quick Farm Setup": "Mkutano rahisi wa moduli kwa kuanzisha shamba haraka",
+    "Safe Pallet Packing and Fast Production Lead Time": "Ufungaji salama wa pallet na muda mfupi wa uzalishaji",
+    "Dual Function Design": "Muundo wa kazi mbili",
+    "High Throughput Performance": "Utendaji wa uwezo mkubwa",
+    "Flexible Power Configuration": "Mpangilio wa nishati unaobadilika",
+    "Robust Construction": "Ujenzi imara",
+    "Versatile Feed Processing": "Usindikaji wa chakula wa matumizi mbalimbali",
+    "Heavy-Duty Hot Dip Galvanized Frame": "Fremu nzito ya kuchomea moto",
+    "Scalable Broiler Capacity": "Uwezo wa kuku wa nyama unaoweza kupanuliwa",
+    "Automated Feeding & Drinking": "Kulisha na kunywa kwa kiotomatiki",
+    "Optimized Ventilation & Hygiene": "Uingizaji hewa na usafi ulioboreshwa",
+    "Stress-Free Animal Welfare": "Ustawi wa wanyama bila msongo",
+    "Plug-and-Play Installation": "Ufungaji wa plug-and-play",
+    "\\uD83C\\uDFED Certified Factory Partnerships": "\\uD83C\\uDFED Ushirikiano wa viwanda vilivyoidhinishwa",
+    "\\uD83D\\uDCCB Customized Solutions": "\\uD83D\\uDCCB Suluhisho maalum",
+    "\\uD83C\\uDF10 Professional Export Service": "\\uD83C\\uDF10 Huduma ya kitaalamu ya usafirishaji nje",
+    "\\uD83D\\uDD27 Hot Dip Galvanized Construction": "\\uD83D\\uDD27 Ujenzi wa kuchomea moto",
+    "\\uD83D\\uDCD0 Flexible Capacity Options": "\\uD83D\\uDCD0 Chaguo za uwezo zinazobadilika",
+    "Automated Egg Collection": "Kukusanya mayai kwa kiotomatiki",
+    "\\uD83D\\uDEE1️ Animal Welfare Design": "\\uD83D\\uDEE1️ Muundo unaozingatia ustawi wa wanyama",
+    "\\uD83D\\uDE80 Easy Installation": "\\uD83D\\uDE80 Ufungaji rahisi",
+    "Ingot Type Structural Design": "Muundo wa kimuundo wa aina ya ingot",
+    "Hot Dipped Galvanized Construction": "Ujenzi wa kuchomea moto",
+    "Automatic Feeding and Drinking Systems": "Mifumo ya kulisha na kunywa ya kiotomatiki",
+    "Efficient Egg Collection Design": "Muundo mzuri wa kukusanya mayai",
+    "Space Saving Multi Tier Configuration": "Mpangilio wa tabaka nyingi unaookoa nafasi",
+    "Multiple Capacity Options": "Chaguo nyingi za uwezo",
+    "Single Phase 220V Power Supply": "Umeme wa single phase 220V",
+    "Iron and Stainless Steel Frame Options": "Chaguo za fremu za chuma na chuma cha pua",
+    "Winch Hoist Loading System Available": "Mfumo wa kupakia kwa winch unapatikana",
+    "Auto Feeding with Kneading Function": "Kulisha kwa kiotomatiki na kazi ya kukanda",
+    "Thick Reinforced Gears — Built to Last, Never Jam": "Gia nene zilizoimarishwa — hudumu, hazikwami",
+    "Manganese Steel Blades — Dual Cut & Crush Action": "Blade za chuma cha manganese — kukata na kuponda kwa mpigo mmoja",
+    "Adjustable High-Spray Discharge Chute": "Njia ya kutolea inayonyunyiza juu inayoweza kubadilishwa",
+    "Production Ablity": "Uwezo wa uzalishaji",
+    "Cyclone Outlet, Dust-Free": "Kibonge cha kutolea, bila vumbi",
+    "Heavy Hammers, High Efficiency": "Nyundo nzito, ufanisi mkubwa",
+    "Thick Liners, Wear-Resistant": "Liners nene, zinazopinga kuvaa",
+    "Multi-Size Mesh Screens": "Skrini za mazimba za ukubwa mbalimbali",
+    "* Production Ablity": "* Uwezo wa uzalishaji",
+    "* Stainless Steel Options": "* Chaguo za chuma cha pua",
+    "Commercial Grade Three in One Chaff Cutting Kneading and Grinding Machine": "Mashine ya kukata majani, kukanda na kusaga ya kiwango cha kibiashara",
+    "Diesel Electric and Gasoline Triple Drive System for Uninterrupted Use": "Mfumo wa triple drive wa dizeli, umeme na petroli kwa matumizi yasiyokatika",
+    "4.8 Ton Per Hour Throughput with High Low Gear Shift and Replaceable Screen Mesh": "Uwezo wa tani 4.8 kwa saa na gear ya juu na chini inayobadilika na skrini ya mazimba inayoweza kubadilishwa",
+    "Engineered for Ranch Feeding Commercial Feed Mills and Agricultural Cooperatives": "Imeundwa kwa malisho ya ranch, viwanda vya chakula vya kibiashara na vyama vya ushirika vya kilimo",
+    "Heavy Duty Chain Conveyor Feeding System with Integrated Cyclone Dust Collection": "Mfumo mzito wa kulisha kwa conveyor ya mnyororo na ukusanyaji wa vumbi wa kimbunga uliounganishwa",
+    "Adjustable Fineness, Precise Control": "Usawa unaoweza kubadilishwa, udhibiti sahihi",
+    "Hardened Toothed Disk, Long Service Life": "Disk ya meno iliyoimarishwa, maisha marefu ya huduma",
+    "Wide Material Compatibility": "Upatanisho mpana wa malighafi",
+    "Quick Screen Change, Minimal Downtime": "Kubadilisha skrini haraka, muda mfupi wa kusimama",
+    "Spill Proof Outlet With Side Guards Design": "Kibonge cha kutolea kisichomwagika chenye walinzi wa kando",
+    "Quenched Manganese Alloy Roller and Die Set": "Seti ya roller na die ya aloi ya manganese iliyotiwa maji",
+    "Overheat Protected Motor With Thermal Shutdown": "Motor inayolindwa dhidi ya joto kupita kiasi na kuzima kwa joto",
+    "Mid Range Pellet Machine for Livestock Feed Plants": "Mashine ya pellet ya kiwango cha kati kwa viwanda vya chakula cha mifugo",
+    "Full Customization Options With OEM Support": "Chaguo kamili za ubinafsishaji na msaada wa OEM",
+    "Titanium Alloy Blades, Superior Cutting Performance": "Blade za aloi ya titanium, utendaji bora wa kukata",
+    "Rotary Rubbing Cutter, Efficient Material Processing": "Kikata cha kusugua kinachozunguka, usindikaji mzuri wa malighafi",
+    "Alloy Chain Conveyor, Reliable Material Feeding": "Conveyor ya mnyororo wa aloi, ulishaji wa malighafi wa kuaminika",
+    "Detachable Adjustable Bearing, Easy Maintenance": "Bearing inayoweza kutolewa na kubadilishwa, matengenezo rahisi",
+    "Multiple Power Options, Flexible Operation": "Chaguo nyingi za nishati, uendeshaji unaobadilika",
+    "Production Ablity:": "Uwezo wa uzalishaji:",
+    "\\uD83E\\uDD5A High Hatch Rate": "\\uD83E\\uDD5A Kiwango kikubwa cha kutotoa",
+    "\\uD83D\\uDC25 Superior Chick Quality": "\\uD83D\\uDC25 Ubora bora wa vifaranga",
+    "\\uD83D\\uDCB0 30–50% Lower Labor Cost": "\\uD83D\\uDCB0 Gharama za kazi chini kwa 30–50%",
+    "\\uD83C\\uDF21️ Automatic Temperature Control": "\\uD83C\\uDF21️ Udhibiti wa joto wa kiotomatiki",
+    "\\uD83D\\uDCA7 Automatic Water Supply": "\\uD83D\\uDCA7 Ugavi wa maji wa kiotomatiki",
+    "Precise Digital Climate Management": "Usimamizi sahihi wa hali ya hewa kwa kidijitali",
+    "Gentle Rotation Mechanism": "Mitambo laini ya kuzungusha",
+    "Space-Saving Construction": "Ujenzi unaookoa nafasi",
+    "Versatile Compatibility": "Upatanisho wa matumizi mbalimbali",
+    "Intuitive Operation": "Uendeshaji rahisi kuelewa",
+    "Exceptional Yield And Robust Offspring": "Mazao ya kipekee na vifaranga imara",
+    "Smart Iot Connectivity And Precision Thermostat": "Muunganisho wa IoT wa kisasa na thermostat sahihi",
+    "Versatile Capacity And Self Refilling Hydration": "Uwezo wa matumizi mbalimbali na kujaza maji yenyewe",
+    "Labor Saving Operation For Diverse Scenarios": "Uendeshaji unaookoa kazi kwa hali mbalimbali",
+    "Zero Manual Calibration And Effortless Management": "Hakuna upangaji wa mikono na usimamizi rahisi",
+    "\\uD83D\\uDD27 Galvanized Steel Frame": "\\uD83D\\uDD27 Fremu ya chuma cha kuchomea moto",
+    "\\uD83D\\uDCA8 Built-in Circulation Fan": "\\uD83D\\uDCA8 Feni ya mzunguko iliyojengwa ndani",
+    "\\uD83D\\uDCA7 Automatic Humidifying System": "\\uD83D\\uDCA7 Mfumo wa kuongeza unyevu wa kiotomatiki",
+    "\\uD83C\\uDF21️ Precision Sensors": "\\uD83C\\uDF21️ Sensorer sahihi",
+    "10 IN 1 MULTI-TOOL ATTACHMENT SYSTEM": "MFUMO WA VIFAA 10 KWA 1",
+    "ERGONOMIC BACKPACK DESIGN FOR EXTENDED USE": "MUUNDO WA BACKPACK UNAOFAA MWILI KWA MATUMIZI MAREFU",
+    "POWERFUL 2 STROKE ENGINE WITH FUEL EFFICIENCY": "INJINI INAYO NA NGUVU YA 2 STROKE INAYOTUMIA MAFUTA KWA UCHUMI",
+    "VERSATILE CUTTING WIDTH AND ADJUSTABLE HANDLE": "UPANA WA KUKATA UNAOBADILIKA NA KIPINI KINACHOWEZA KUBADILISHWA",
+    "COMPLETE KIT WITH TOOLS AND EASY ASSEMBLY": "SETI KAMILI NA ZANA NA MKUTANO RAHISI",
+    "Food-grade Safe Material Construction": "Ujenzi wa nyenzo salama zinazofaa chakula",
+    "Spill-proof Smart Edge Design": "Muundo wa ukingo wa kisasa usiomwagika",
+    "Impact-resistant Durable Build": "Ujenzi imara unaostahimili mgongano",
+    "Wide Range of Capacity Options": "Aina mbalimbali za chaguo za uwezo",
+    "Simple to Use Budget-friendly Solution": "Suluhisho rahisi kutumia kwa gharama nafuu",
+    "\\uD83D\\uDCAA Powerful Engine": "\\uD83D\\uDCAA Injini yenye nguvu",
+    "\\uD83D\\uDD27 9-in-1 Multi-Function": "\\uD83D\\uDD27 Kazi 9 kwa 1",
+    "\\uD83C\\uDF92 Ergonomic Backpack / Side-Mounted Design": "\\uD83C\\uDF92 Muundo wa backpack unaofaa mwili / wa kubebwa ubavuni",
+    "\\uD83C\\uDF21️ Excellent Heat Dissipation": "\\uD83C\\uDF21️ Utoaji bora wa joto",
+    "\\uD83D\\uDD04 Quick-Change Blade System": "\\uD83D\\uDD04 Mfumo wa kubadilisha blade haraka",
+    "\\uD83C\\uDFED Direct Manufacturer": "\\uD83C\\uDFED Kiwanda cha moja kwa moja",
+    "\\uD83D\\uDD27 OEM & ODM Supported": "\\uD83D\\uDD27 OEM na ODM vinasaidiwa",
+    "\\uD83C\\uDF3F Complete Agricultural Solution": "\\uD83C\\uDF3F Suluhisho kamili la kilimo",
+    "\\uD83D\\uDCE6 Fast Delivery & Reliable Logistics": "\\uD83D\\uDCE6 Usafirishaji wa haraka na usafirishaji wa kuaminika",
+    "\\uD83D\\uDEE0️ After-Sales Guarantee": "\\uD83D\\uDEE0️ Udhamini wa baada ya mauzo",
+    "Premium Non Toxic Material": "Nyenzo za hali ya juu zisizo na sumu",
+    "Leak Proof Water Saving Feature": "Kipengele cha kuzuia uvujaji na kuokoa maji",
+    "Impact Resistant Durable Construction": "Ujenzi imara unaostahimili mgongano",
+    "Versatile Size Options For All Poultry": "Chaguo za ukubwa kwa kuku wa aina zote",
+    "Easy To Clean And Low Maintenance": "Rahisi kusafisha na matengenezo madogo",
+    "Factory Customization Available": "Ubinafsishaji wa kiwandani unapatikana",
+    "Versatile Material Handling Capability": "Uwezo wa kushughulikia malighafi mbalimbali",
+    "Heavy Duty Durable Construction": "Ujenzi mzito na imara",
+    "Efficient Conveying and Elevating Performance": "Utendaji mzuri wa kusafirisha na kuinua",
+    "Easy Installation and Low Maintenance": "Ufungaji rahisi na matengenezo madogo",
+    "High Hatch Rate": "Kiwango kikubwa cha kutotoa",
+    "Superior Chick Quality": "Ubora bora wa vifaranga",
+    "30–50% Lower Labor Cost": "Gharama za kazi chini kwa 30–50%",
+    "Automatic Temperature Control": "Udhibiti wa joto wa kiotomatiki",
+    "Automatic Water Supply": "Ugavi wa maji wa kiotomatiki"
+  },
+  "specLabels": {
+    "use": "matumizi",
+    "animal cage type": "aina ya ngome ya wanyama",
+    "Material": "Nyenzo",
+    "warranty": "Dhamana",
+    "condition": "hali",
+    "key selling points": "sifa kuu za mauzo",
+    "model number": "namba ya modeli",
+    "type": "aina",
+    "place of origin": "mahali pa kutokea",
+    "weight": "uzito",
+    "brand name": "jina la chapa",
+    "Applicable Industries": "Viwanda vinavyofaa",
+    "Capacity": "Uwezo",
+    "Usage": "Matumizi",
+    "Cage type": "Aina ya ngome",
+    "Surface treatment": "Matibabu ya uso",
+    "After-sales Service Provided": "Huduma ya baada ya mauzo inayotolewa",
+    "Service life": "Maisha ya huduma",
+    "Package": "Ufungaji",
+    "Customization": "Ubinafsishaji",
+    "Capacity (kg/h)": "Uwezo (kg/h)",
+    "Voltage": "Voltage",
+    "core components": "vifaa vikuu",
+    "video outgoing-inspection": "video ya ukaguzi wa kutoka",
+    "Product name": "Jina la bidhaa",
+    "Motor": "Motor",
+    "Power type": "Aina ya nishati",
+    "Suitable for": "Inafaa kwa",
+    "Size": "Ukubwa",
+    "Feature": "Kipengele",
+    "After Warranty Service": "Huduma ya baada ya dhamana",
+    "Application": "Matumizi",
+    "Advantage": "Faida",
+    "size": "ukubwa",
+    "machinery test report": "ripoti ya majaribio ya mashine",
+    "Model": "Modeli",
+    "Power source": "Chanzo cha nishati",
+    "Function": "Kazi",
+    "Brand": "Chapa",
+    "Engine": "Injini",
+    "Capacity/set": "Uwezo/seti",
+    "Technology Type": "Aina ya teknolojia",
+    "material": "nyenzo",
+    "Color": "Rangi",
+    "Weight": "Uzito",
+    "Animals": "Wanyama",
+    "MOQ": "MOQ",
+    "Custom ordered": "Imeagizwa maalum",
+    "Color Range": "Aina za rangi",
+    "Tier": "Tabaka",
+    "Accessories": "Vifaa vya ziada",
+    "Life Time": "Muda wa matumizi",
+    "Core Components": "Vifaa vikuu",
+    "weight (kg)": "uzito (kg)",
+    "Layer": "Tabaka",
+    "Life Span": "Maisha ya matumizi",
+    "Floor": "Sakafu",
+    "Target Animal": "Mnyama lengwa",
+    "Feeder Type": "Aina ya kilishio",
+    "Use for": "Inatumika kwa",
+    "Volume": "Ujazo",
+    "Operation": "Uendeshaji",
+    "Target Animal Type": "Aina ya mnyama lengwa",
+    "Drinker Type": "Aina ya kinywaji",
+    "Flow Rate": "Kiwango cha mtiririko",
+    "Animal use": "Matumizi ya wanyama",
+    "Used for": "Inatumika kwa",
+    "Packing": "Ufungaji",
+    "Certification": "Uthibitisho",
+    "Egg Collecting System": "Mfumo wa kukusanya mayai",
+    "Warranty of core components": "Dhamana ya vifaa vikuu",
+    "capacity": "uwezo",
+    "Feed Raw Material": "Malighafi ya chakula",
+    "Engine Type": "Aina ya injini",
+    "Phase": "Phase",
+    "Pellet Size": "Ukubwa wa pellet",
+    "Number of molds": "Idadi ya mold",
+    "Number of Rollers": "Idadi ya roller",
+    "Number Of Blades Included": "Idadi ya blade zilizojumuishwa",
+    "dimension(l*w*h)": "vipimo (u*up*ku)",
+    "voltage": "voltage",
+    "Raw material": "Malighafi",
+    "Max.Capactity": "Uwezo wa juu",
+    "Final product": "Bidhaa ya mwisho",
+    "Processing Types": "Aina za usindikaji",
+    "Keywords": "Maneno muhimu",
+    "Name": "Jina",
+    "Suit for": "Inafaa kwa",
+    "usage": "matumizi",
+    "egg turning mode": "hali ya kugeuza mayai",
+    "hatching rate": "kiwango cha kutotoa",
+    "Egg Tray": "Trei ya mayai",
+    "Temperature": "Joto",
+    "Egg turning": "Kugeuza mayai",
+    "Humidity": "Unyevu",
+    "Control mode": "Hali ya udhibiti",
+    "Egg-Turning": "Kugeuza mayai",
+    "Type": "Aina",
+    "Accessories Included": "Vifaa vya ziada vilivyojumuishwa",
+    "Full-automatic Digital Eggs Incubator": "Incubator ya mayai ya kiotomatiki kwa kidijitali",
+    "Energy": "Nishati",
+    "Power": "Nguvu"
+  },
+  "faqs": {
+    "1": {
+      "question": "Kiasi cha chini cha agizo (MOQ) ni kipi?",
+      "answer": "MOQ inategemea aina ya bidhaa na mipangilio inayohitajika. Tutathibitisha kiasi cha chini kwa quotation baada ya kupitia bidhaa na kiasi unachohitaji."
+    },
+    "2": {
+      "question": "Je, mnaweza kusaidia kuhusu usafirishaji na nyaraka za kuuza nje?",
+      "answer": "Ndiyo. Tunasaidia usafirishaji wa baharini na wa angani na tunaandaa nyaraka za kuuza nje kama invoice, packing list na hati nyingine zinazohitajika kwa uagizaji."
+    },
+    "3": {
+      "question": "Mnakubali masharti gani ya malipo?",
+      "answer": "Tunakubali T/T na L/C, na masharti ya malipo yanathibitishwa kwa maandishi katika quotation na mkataba kabla ya uzalishaji kuanza."
+    },
+    "4": {
+      "question": "Je, mnaweza kusambaza mradi kamili wa shamba, si mashine moja moja tu?",
+      "answer": "Ndiyo. Tunaweza kupanga mradi kamili — ngome, mifumo ya kulisha na kunywa, incubators, vifaa vya usindikaji na usaidizi wa kiufundi wa ufungaji."
+    },
+    "5": {
+      "question": "Mnathibitishaje ubora wa bidhaa kabla ya usafirishaji?",
+      "answer": "Kila kundi hupitiwa kabla ya kufungwa, na tunaweza kutoa ripoti ya majaribio ya mashine na video ya ukaguzi wa kutoka kwa bidhaa yako."
+    },
+    "6": {
+      "question": "Je, mnasaidia wasambazaji na ushirikiano wa muda mrefu?",
+      "answer": "Ndiyo. Tunakaribisha wasambazaji na washirika wa muda mrefu, na tunaweza kujadili eneo, mafunzo, nyenzo za masoko na mipango ya huduma kwa makubaliano ya maandishi."
+    },
+    "7": {
+      "question": "Vipi kuhusu spare parts na msaada wa baada ya mauzo?",
+      "answer": "Spare parts za kawaida zinapatikana, na tunatoa msaada wa kiufundi kwa barua pepe, simu au WhatsApp kulingana na makubaliano ya bidhaa na dhamana."
+    },
+    "8": {
+      "question": "Je, vifaa vinaweza kubinafsishwa kwa shamba langu?",
+      "answer": "Ndiyo. Uwezo, vipimo, nyenzo na mipangilio vinaweza kubadilishwa kulingana na mahitaji ya shamba lako, na tunatoa huduma ya OEM na ODM."
+    }
+  },
+  "blogPosts": {
+    "feed-mill-guide": {
+      "title": "Kupanga Mstari wa Usindikaji wa Chakula wenye Faida",
+      "excerpt": "Jinsi ya kulinganisha uwezo wa kusaga, kuchanganya, pellet na kufungia na mpango wa shamba lako na soko lako."
+    },
+    "incubation-guide": {
+      "title": "Mambo Matano Yanayoboresha Kiwango cha Kutotoa",
+      "excerpt": "Joto, unyevu, kugeuza mayai, uingizaji hewa na usafi — maelezo ya uendeshaji yanayolinda matokeo yako ya kuangulia."
+    },
+    "layer-cage-guide": {
+      "title": "Jinsi ya Kuchagua Mfumo Sahihi wa Ngome ya Tabaka",
+      "excerpt": "Mwongozo wa vitendo wa mifumo ya aina ya A na H, upangaji wa uwezo, udhibiti wa hali ya hewa na gharama ya uendeshaji wa muda mrefu."
+    }
+  },
+  "blogTags": {
+    "farm-machinery": "Mashine za Kilimo",
+    "feed-processing": "Usindikaji wa Chakula",
+    "incubators": "Incubators",
+    "breeding": "Uzalishaji",
+    "layer-cages": "Ngome za Tabaka",
+    "poultry-equipment": "Vifaa vya Kuku"
+  }
+}

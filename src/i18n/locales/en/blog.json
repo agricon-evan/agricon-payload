@@ -1,0 +1,25 @@
+{
+  "breadcrumb": {
+    "blog": "Blog"
+  },
+  "hero": {
+    "title": "Blog",
+    "description": "Industry insights, farm tips, and company news"
+  },
+  "meta": {
+    "title": "Blog",
+    "description": "Guides and field notes on poultry housing, livestock systems, feed processing and choosing the right farm equipment."
+  },
+  "badge": "Field notes",
+  "backToBlog": "Back to Blog",
+  "tocTitle": "On This Page",
+  "tocLabel": "Table of contents",
+  "tags": {
+    "farm-machinery": "Farm Machinery",
+    "feed-processing": "Feed Processing",
+    "incubators": "Incubators",
+    "breeding": "Breeding",
+    "layer-cages": "Layer Cages",
+    "poultry-equipment": "Poultry Equipment"
+  }
+}

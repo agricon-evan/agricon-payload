@@ -1,0 +1,173 @@
+{
+  "breadcrumb": {
+    "home": "Nyumbani",
+    "distributors": "Ushirikiano wa Usambazaji"
+  },
+  "hero": {
+    "badge": "Maombi ya Ushirikiano",
+    "title": "Omba Ukaguzi wa Ushirikiano wa Usambazaji",
+    "description": "Tuma wasifu wa kampuni yako kwa ukaguzi wa ushirikiano. Eneo, bei, chapa, mafunzo, msaada na mipango ya dhamana hutumika tu pale inapothibitishwa kwa maandishi.",
+    "applyNow": "Tuma Wasifu wa Kampuni"
+  },
+  "sections": {
+    "benefits": {
+      "eyebrow": "Kwa Nini Kushirikiana Nasi",
+      "title": "Ushirikiano Unaokua Pamoja Nawe",
+      "description": "Wasambazaji wa Agricon hupata faida za ushindani zilizoundwa kwa ukuaji wa muda mrefu."
+    },
+    "requirements": {
+      "eyebrow": "Washirika Bora",
+      "title": "Tunachotafuta"
+    }
+  },
+  "benefits": {
+    "title": "Mada za Majadiliano ya Ushirikiano",
+    "description": "Maeneo yafuatayo yanaweza kujadiliwa wakati wa ukaguzi wa kina. Hayakuwi ahadi hadi yaingizwe katika makubaliano ya maandishi yaliyoidhinishwa.",
+    "items": {
+      "territory": {
+        "title": "Ukaguzi wa Ukubwa wa Soko",
+        "description": "Eneo linalopendekezwa na ukubwa wa njia za usambazaji hupitiwa kwa kuzingatia upatanisho wa bidhaa, mahitaji ya kufuata kanuni na makubaliano yaliyopo. Hakuna haki ya kipekee isipokuwa ithibitishwe katika makubaliano yaliyotiwa sahihi."
+      },
+      "marketing": {
+        "title": "Nyenzo za Kibiashara Zilizoidhinishwa",
+        "description": "Katalogi za sasa, vipimo, nyenzo za chapa na taarifa za quotation zinaweza kutolewa kulingana na ukubwa wa ushirikiano ulioidhinishwa na upatikanaji."
+      },
+      "training": {
+        "title": "Uratibu wa Kiufundi",
+        "description": "Mafunzo ya bidhaa, mwongozo wa ufungaji, majukumu ya kutatua matatizo na mipaka ya huduma hufafanuliwa kwa makubaliano ya ushirikiano na mradi husika."
+      }
+    },
+    "cards": {
+      "margins": {
+        "title": "Faida ya Kuvutia",
+        "description": "Bei za usambazaji zenye ushindani na punguzo la hatua kulingana na kiasi. Faida yako hukua na mauzo yako."
+      },
+      "marketingSupport": {
+        "title": "Msaada wa Masoko",
+        "description": "Katalogi za bidhaa, vipeperushi, sampuli za maonyesho na nyenzo za masoko za chapa ya pamoja zimejumuishwa."
+      },
+      "technicalTraining": {
+        "title": "Mafunzo ya Kiufundi",
+        "description": "Mafunzo ya ujuzi wa bidhaa na misingi ya ufungaji kwa timu yako ya mauzo — eneo la kazi au mtandaoni."
+      },
+      "territory": {
+        "title": "Ulinzi wa Eneo",
+        "description": "Haki za kipekee za usambazaji katika eneo mlilokubaliana. Hakuna ushindani kutoka kwetu."
+      },
+      "logistics": {
+        "title": "Usafirishaji wa Moja kwa Moja na Stoo",
+        "description": "Tunasafirisha moja kwa moja kwa wateja wako au tunahifadhi stoo ya usalama kwenye ghala lako."
+      },
+      "localLanguage": {
+        "title": "Msaada wa Lugha ya Ndani",
+        "description": "Msaada wa mauzo kwa Kiingereza, Kifaransa, Kirusi, Kihispania, Kiswahili na Kiarabu kwa timu yako."
+      }
+    }
+  },
+  "requirements": {
+    "title": "Taarifa Tunazopitia",
+    "description": "Maombi hupitiwa kwa kutumia taarifa za kampuni, soko, kufuata kanuni, mauzo na huduma zinazoweza kuthibitishwa.",
+    "idealProfile": "Taarifa za Ukaguzi wa Maombi",
+    "items": [
+      "Usajili wa kampuni unaoweza kuthibitishwa na taarifa za mtu anayehusika",
+      "Uzoefu unaohusika wa soko, kilimo, viwanda au vifaa",
+      "Uwezo wa kushughulikia maswali ya wateja na kudumisha taarifa sahihi za bidhaa",
+      "Uwezo unaohitajika wa uagizaji, kodi, leseni na kufuata kanuni",
+      "Mpango wazi wa soko na huduma kwa eneo linalopendekezwa",
+      "Kutaja rasilimali za ghala, chumba cha maonyesho, ufungaji au huduma inapohusika",
+      "Kukubali ukaguzi wa kina na masharti ya kibiashara ya maandishi kabla ya kuwakilisha Agricon"
+    ],
+    "cards": {
+      "establishedBusiness": {
+        "title": "Biashara Iliyoimarika",
+        "description": "Kampuni inayofanya kazi kwa angalau miaka 2 katika mauzo ya vifaa vya kilimo au viwandani."
+      },
+      "showroom": {
+        "title": "Chumba cha Maonyesho au Kituo cha Usambazaji",
+        "description": "Eneo halisi la kuonyesha vifaa na kushughulikia maswali ya wateja wa ndani."
+      },
+      "salesCapability": {
+        "title": "Uwezo wa Mauzo",
+        "description": "Uwezo uliodhihirika wa kuuza na kusaidia vifaa katika soko lako lengwa."
+      },
+      "technicalInterest": {
+        "title": "Nia ya Kiufundi",
+        "description": "Utayari wa kujifunza bidhaa zetu na kutoa mwongozo wa kiufundi wa msingi kwa wateja."
+      }
+    }
+  },
+  "regions": {
+    "title": "Ufikiaji wa Masoko",
+    "description": "Maombi yanaweza kuzingatiwa kutoka masoko mbalimbali, kwa kuzingatia kufuata kanuni, upatanisho wa bidhaa, makubaliano yaliyopo na idhini ya maandishi.",
+    "items": {
+      "availability": {
+        "name": "Upatikanaji Sokoni",
+        "countries": "Maombi yanaweza kutumwa kutoka soko lolote. Upatikanaji unategemea kufuata kanuni za biashara, upatanisho wa bidhaa, makubaliano yaliyopo, uwezo wa huduma na idhini ya maandishi."
+      }
+    }
+  },
+  "support": {
+    "title": "Ukubwa Unaowezekana wa Ushirikiano",
+    "description": "Ukubwa kamili wa ushirikiano hukubaliwa kwa kila kesi. Maelezo kwenye tovuti hayaundi majukumu ya bidhaa zilizopo, eneo, masoko, mafunzo, dhamana au huduma.",
+    "items": {
+      "inventory": {
+        "title": "Taarifa za Bidhaa na Bei",
+        "description": "Taarifa za bidhaa zilizoidhinishwa, masharti ya quotation, MOQ na upatikanaji hutolewa kwa fursa husika na zinaweza kubadilika kabla ya uthibitisho wa maandishi."
+      },
+      "salesTraining": {
+        "title": "Ukubwa wa Mafunzo ya Kuanza",
+        "description": "Mafunzo yoyote ya mauzo, bidhaa, ufungaji au huduma hufafanuliwa na mpango wa kuanza ulioidhinishwa na makubaliano ya maandishi ya ushirikiano."
+      },
+      "coBranding": {
+        "title": "Matumizi ya Chapa",
+        "description": "Nembo, katalogi, nyenzo za matangazo na madai ya umma zinaweza kutumika tu katika umbo lake lililoidhinishwa na ndani ya idhini ya maandishi aliyopewa mshirika."
+      },
+      "warranty": {
+        "title": "Uratibu wa Dhamana na Huduma",
+        "description": "Ukubwa wa dhamana, majukumu ya spare parts, njia za kutatua matatizo na mipango ya kujibu hutumika tu kama ilivyoelezwa katika makubaliano ya bidhaa na ushirikiano yanayohusika."
+      }
+    }
+  },
+  "applicationForm": {
+    "title": "Tuma Maombi ya Ushirikiano",
+    "description": "Jaza fomu kwa ukaguzi. Muda wa kujibu unategemea taarifa ulizotoa, soko na uwezo wa ukaguzi wa sasa.",
+    "companyName": "Jina la Kampuni *",
+    "companyPlaceholder": "Jina la kampuni lililosajiliwa",
+    "contactName": "Jina la Mtu wa Kuwasiliana *",
+    "contactPlaceholder": "Mtu anayehusika",
+    "email": "Barua Pepe ya Biashara *",
+    "emailPlaceholder": "jina@kampuni.com",
+    "phone": "Simu *",
+    "phonePlaceholder": "Weka namba ya nchi",
+    "country": "Nchi / Soko *",
+    "countryPlaceholder": "Nchi au soko",
+    "businessType": "Aina ya Biashara *",
+    "interestedCategories": "Aina za Bidhaa Unazovutiwa Nazo *",
+    "introduction": "Wasifu wa Kampuni",
+    "introductionPlaceholder": "Eleza kampuni yako, soko, uzoefu unaohusika, uwezo wa mauzo na huduma, na ukubwa wa ushirikiano unaopendekeza.",
+    "submit": "Tuma Maombi",
+    "submitting": "Inatuma...",
+    "errorGeneric": "Imeshindwa kutuma maombi. Tafadhali jaribu tena.",
+    "errorNetwork": "Hitilafu ya mtandao. Tafadhali angalia muunganisho wako na ujaribu tena."
+  },
+  "success": {
+    "title": "Maombi Yametumwa",
+    "description": "Asante kwa kutuma wasifu wa kampuni yako. Kutuma hakuundi uteuzi, haki ya kipekee, haki ya bei au ahadi nyingine ya kibiashara."
+  },
+  "businessTypes": [
+    "Agricultural Equipment Dealer",
+    "Farm Supply Business",
+    "Industrial Equipment Business",
+    "Installation or Service Provider",
+    "Import / Export Trading Company",
+    "Other"
+  ],
+  "categories": [
+    "Poultry Housing Equipment",
+    "Feeding Systems",
+    "Livestock Housing & Fencing",
+    "Feed Processing Equipment",
+    "Ventilation & Climate Equipment",
+    "Manure Management Equipment"
+  ]
+}

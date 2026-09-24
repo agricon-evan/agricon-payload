@@ -4,6 +4,7 @@
     "solutions": "Solutions",
     "tradeSupport": "Support commercial",
     "caseStudies": "Études de cas",
+    "videos": "Vidéos",
     "blog": "Blog",
     "about": "À propos"
   },
@@ -20,14 +21,12 @@
   },
   "footer": {
     "brandDescription": "Solutions d'équipements avicoles et d'élevage. Équipement durable prêt à l'export pour les fermes commerciales du monde entier.",
-    "email": "",
-    "phone": "",
     "copyright": "Agricon. Solutions d'équipements avicoles et d'élevage.",
     "columns": {
       "products": "Produits",
       "solutions": "Solutions",
       "company": "Entreprise",
-      "support": "Support"
+      "support": "Assistance"
     },
     "links": {
       "poultrySolutions": "Solutions avicoles",
@@ -41,6 +40,7 @@
       "tradeSupport": "Support commercial",
       "aboutAgricon": "À propos d'Agricon",
       "caseStudies": "Études de cas",
+      "videos": "Vidéos",
       "blog": "Blog",
       "distributors": "Distributeurs",
       "contact": "Contact",
@@ -50,13 +50,135 @@
       "termsOfService": "Conditions"
     }
   },
-  "home": {},
+  "home": {
+    "breadcrumb": {
+      "home": "Accueil"
+    },
+    "heroStats": {
+      "categories": "Catégories de produits",
+      "markets": "Marchés d'exportation",
+      "projects": "Projets agricoles"
+    },
+    "series": {
+      "poultry": "Systèmes pour pondeuses, poulets de chair et couvoirs",
+      "livestock": "Bâtiments pour bovins, porcs, chèvres et lapins",
+      "machinery": "Aliments, transformation et machines agricoles",
+      "vehicles": "Tracteurs, moissonneuses et transport agricole"
+    },
+    "categories": {
+      "titleLead": "Des gammes complètes",
+      "titleAccent": "d'équipement agricole",
+      "description": "Un écosystème d'équipement intégré couvrant l'élevage, l'alimentation, le logement, la transformation et l'exploitation quotidienne de la ferme."
+    },
+    "featured": {
+      "eyebrow": "Équipements en vedette",
+      "titleLead": "Équipements",
+      "titleAccent": "les plus vendus",
+      "description": "Des machines et des systèmes sélectionnés parmi les plus commandés par nos clients — vérifiés par l'équipe produit."
+    },
+    "solutions": {
+      "titleLead": "Solutions agricoles",
+      "titleAccent": "clés en main",
+      "description": "Nous combinons analyse du projet, fourniture coordonnée des équipements et accompagnement à l'export pour des exploitations agricoles concrètes."
+    },
+    "stats": {
+      "eyebrow": "Résultats éprouvés",
+      "titleLead": "Des chiffres qui",
+      "titleAccent": "parlent",
+      "titleTail": "d'eux-mêmes",
+      "description": "Un aperçu clair de l'étendue de l'équipement Agricon et de son expérience de livraison à l'international."
+    },
+    "value": {
+      "eyebrow": "La valeur, calculée",
+      "titleLead": "Nous ne parlons pas de qualité. Nous",
+      "titleAccent": "montrons des chiffres.",
+      "description": "Chaque affirmation que nous faisons s'appuie sur un résultat mesurable dans votre ferme — car la confiance se construit avec des preuves, pas avec des adjectifs."
+    },
+    "howWeWork": {
+      "eyebrow": "Notre méthode",
+      "titleLead": "De la demande",
+      "titleAccent": "au suivi",
+      "description": "Un processus structuré et fondé sur des preuves — conçu pour réduire votre risque à chaque première commande"
+    },
+    "whyChooseUs": {
+      "eyebrow": "Pourquoi Agricon",
+      "titleLead": "Un",
+      "titleAccent": "partenaire",
+      "titleTail": ", pas un simple fournisseur",
+      "description": "Six raisons pour lesquelles des fermes commerciales de trois continents construisent avec Agricon"
+    },
+    "trust": {
+      "eyebrow": "Confiance et preuves",
+      "titleLead": "Nous",
+      "titleAccent": "prouvons",
+      "titleTail": "ce que nous affirmons",
+      "description": "Demandez-nous n'importe quel document — rapports d'inspection, registres de traçabilité, certificats d'essai. Chaque avantage que nous annonçons est vérifiable."
+    },
+    "coverage": {
+      "eyebrow": "Présence mondiale",
+      "titleLead": "Au service",
+      "titleAccent": "des acheteurs du monde entier",
+      "description": "Fourniture pratique d'équipements et coordination des exportations pour les fermes, les importateurs, les distributeurs et les projets agricoles."
+    },
+    "testimonials": {
+      "eyebrow": "Témoignages",
+      "titleLead": "La confiance des",
+      "titleAccent": "agriculteurs",
+      "titleTail": "du monde entier",
+      "starRating": "Note de 5 étoiles"
+    },
+    "news": {
+      "eyebrow": "Actualités et analyses",
+      "titleLead": "Depuis notre",
+      "titleAccent": "Blog"
+    },
+    "finalCta": {
+      "titleLead": "Prêt à construire",
+      "titleAccent": "votre ferme ?",
+      "description": "Recevez un devis personnalisé avec expédition jusqu'à votre port — nos ingénieurs concevront l'aménagement optimal de vos installations.",
+      "primary": "Demander un devis",
+      "secondary": "Voir les études de cas"
+    },
+    "newsletter": {
+      "eyebrow": "Actualités Agricon",
+      "titleLead": "Recevez des informations pratiques",
+      "description": "Une information utile à la fois. Sans bruit inutile.",
+      "chips": {
+        "product": "Nouveautés produits",
+        "insights": "Conseils agricoles",
+        "export": "Support à l'export"
+      }
+    }
+  },
   "aria": {
     "toggleNavigation": "Basculer la navigation",
     "switchToLightMode": "Passer au mode clair",
     "switchToDarkMode": "Passer au mode sombre",
     "backToTop": "Retour en haut",
     "chatOnWhatsApp": "Chatter sur WhatsApp",
-    "switchLanguage": "Changer de langue"
+    "switchLanguage": "Changer de langue",
+    "home": "Agricon — accueil",
+    "breadcrumb": "Fil d'Ariane",
+    "previousImage": "Image précédente",
+    "nextImage": "Image suivante",
+    "productImages": "Images du produit",
+    "scrollLeft": "Défiler vers la gauche",
+    "scrollRight": "Défiler vers la droite",
+    "closeVideo": "Fermer la vidéo"
+  },
+  "meta": {
+    "siteTitle": "Agricon - Solutions d'équipements avicoles et d'élevage",
+    "siteDescription": "Solutions d'équipements avicoles et d'élevage"
+  },
+  "productLine": {
+    "emptyTitle": "Produits bientôt disponibles",
+    "emptyDesc": "Les produits de cette gamme sont en cours d'ajout. Contactez-nous pour obtenir le dernier catalogue.",
+    "equipmentLine": "Gamme d'équipements"
+  },
+  "notFound": {
+    "title": "Page introuvable",
+    "description": "La page recherchée a peut-être été déplacée, renommée ou n'est plus disponible.",
+    "backHome": "Retour à l'accueil",
+    "browseProducts": "Voir les produits"
   }
 }

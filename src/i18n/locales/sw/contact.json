@@ -1,0 +1,148 @@
+{
+  "breadcrumb": {
+    "home": "Nyumbani",
+    "contact": "Wasiliana Nasi"
+  },
+  "hero": {
+    "title": "Wasiliana Nasi",
+    "description": "Wasiliana na timu yetu kwa maswali kuhusu bidhaa, bei, msaada wa kiufundi au fursa za ushirikiano."
+  },
+  "contactMethods": {
+    "email": {
+      "title": "Email",
+      "description": "Tuma swali lako kwa barua pepe iliyotolewa. Muda wa kujibu unategemea saa za kazi na ugumu wa ombi.",
+      "actionText": "Tuma Barua Pepe"
+    },
+    "phone": {
+      "title": "Simu",
+      "description": "Inapatikana Jumatatu hadi Jumamosi, 8:00 asubuhi - 6:00 jioni (GMT+8).",
+      "actionText": "Piga Simu Sasa"
+    },
+    "whatsapp": {
+      "title": "WhatsApp",
+      "description": "Majibu ya haraka kwa maswali ya bidhaa, bei na taarifa za maagizo.",
+      "actionText": "Ongea Sasa"
+    }
+  },
+  "inquiryForm": {
+    "title": "Tuma Swali Lako",
+    "description": "Jaza fomu iliyo hapa chini. Timu itapitia mahitaji na kuwasiliana nawe kwa taarifa ulizotoa.",
+    "companyName": "Jina la Kampuni",
+    "contactName": "Jina la Mtu wa Kuwasiliana",
+    "emailAddress": "Barua Pepe",
+    "country": "Nchi",
+    "selectCountry": "Chagua nchi yako",
+    "interestedProducts": "Bidhaa Unazovutiwa Nazo",
+    "selectProductsHint": "Chagua bidhaa zote unazovutiwa nazo:",
+    "message": "Ujumbe",
+    "messagePlaceholder": "Tuambie kuhusu mahitaji ya mradi wako, kiasi unachotarajia au maswali yoyote uliyo nayo...",
+    "submit": "Tuma Swali",
+    "submitting": "Inatuma...",
+    "errorGeneric": "Kuna hitilafu imetokea. Tafadhali jaribu tena au wasiliana nasi moja kwa moja.",
+    "errorNetwork": "Hitilafu ya mtandao. Tafadhali jaribu tena au wasiliana nasi kupitia WhatsApp.",
+    "errorRateLimit": "Umetuma mara nyingi sana kutoka anwani hii. Tafadhali subiri dakika chache na ujaribu tena, au wasiliana nasi kwa barua pepe.",
+    "errorRejected": "Uwasilishaji huu ulikataliwa na kichujio chetu cha barua taka. Tafadhali wasiliana nasi kwa barua pepe."
+  },
+  "success": {
+    "title": "Swali Limetumwa kwa Mafanikio",
+    "description": "Asante. Swali lako limetumwa kwa ukaguzi wa kiufundi na kibiashara.",
+    "browseProducts": "Chunguza Bidhaa"
+  },
+  "whatsappPrompt": {
+    "title": "Unapendelea Kuongea Moja kwa Moja?",
+    "description": "Tutumie ujumbe wa WhatsApp kwa majibu ya haraka kuhusu upatikanaji wa bidhaa, bei na hali ya maagizo. Kwa kawaida tunajibu ndani ya dakika chache wakati wa saa za kazi.",
+    "openChat": "Fungua Mazungumzo ya WhatsApp"
+  },
+  "responseInfo": {
+    "title": "Unachotarajia",
+    "items": {
+      "response": {
+        "title": "Jibu la Saa 24",
+        "description": "Kila swali hupitiwa kulingana na mahitaji yake ya kiufundi na kibiashara."
+      },
+      "consultation": {
+        "title": "Ukaguzi wa Mahitaji",
+        "description": "Pata ushauri wa kitaalamu kuhusu kuchagua vifaa na kupanga eneo la shamba bila malipo."
+      },
+      "quotation": {
+        "title": "Quotation ya Kina",
+        "description": "Pata quotation kamili yenye bei, vipimo na maelezo ya usafirishaji."
+      }
+    }
+  },
+  "countries": [
+    "Nigeria",
+    "Kenya",
+    "Tanzania",
+    "South Africa",
+    "Ghana",
+    "Ethiopia",
+    "Uganda",
+    "Vietnam",
+    "Philippines",
+    "Indonesia",
+    "Thailand",
+    "Myanmar",
+    "Cambodia",
+    "Brazil",
+    "Colombia",
+    "Peru",
+    "Ecuador",
+    "Argentina",
+    "India",
+    "Pakistan",
+    "Bangladesh",
+    "Egypt",
+    "Sudan",
+    "Other"
+  ],
+  "productOptions": [
+    "H-Type Layer Cage",
+    "A-Type Layer Cage",
+    "Broiler Cage",
+    "Chick Cage",
+    "Automatic Feeding System",
+    "Egg Collection System",
+    "Manure Removal System",
+    "Ventilation Fan",
+    "Cooling Pad",
+    "Feed Pellet Machine",
+    "Feed Mixer",
+    "Grinding Machine",
+    "Green House",
+    "Farm Fence",
+    "Cattle Panel",
+    "Other"
+  ],
+  "diagnostics": {
+    "phone": "Simu",
+    "phonePlaceholder": "+255 000 000 000",
+    "application": "Matumizi",
+    "currentSetup": "Hali ya sasa",
+    "purchaseType": "Aina ya ununuzi",
+    "select": "Chagua...",
+    "applications": {
+      "layerFarm": "Shamba la kuku wa mayai",
+      "broilerFarm": "Shamba la kuku wa nyama",
+      "breederHatchery": "Shamba la kuzaliana / kiwanda cha vifaranga",
+      "pigFarm": "Shamba la nguruwe",
+      "cattleFarm": "Shamba la ng’ombe",
+      "feedPlant": "Kiwanda cha kusindika chakula",
+      "distributor": "Msambazaji / muuzaji",
+      "other": "Nyingine"
+    },
+    "setups": {
+      "newProject": "Mradi mpya",
+      "replacing": "Kubadilisha vifaa vya zamani",
+      "expanding": "Kupanua shamba lililopo",
+      "automation": "Kuboresha kwa mitambo ya kiotomatiki",
+      "other": "Nyingine"
+    },
+    "purchaseTypes": {
+      "comparing": "Nahitaji bei kwa kulinganisha",
+      "ready": "Tayari kuagiza",
+      "researching": "Nachunguza chaguo",
+      "partnership": "Ushirikiano wa muda mrefu"
+    }
+  }
+}

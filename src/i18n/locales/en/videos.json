@@ -1,0 +1,16 @@
+{
+  "breadcrumb": {
+    "home": "Home",
+    "videos": "Videos"
+  },
+  "hero": {
+    "title": "Video Library",
+    "description": "See Agricon equipment in action — installation walkthroughs, farm projects, product demonstrations and manufacturing insights."
+  },
+  "watchOnYoutube": "Watch on YouTube",
+  "watchOnTiktok": "Watch on TikTok",
+  "noVideos": "Videos are being prepared. Please check back soon or contact us for a product demonstration.",
+  "ctaTitle": "Want a Live Demonstration?",
+  "ctaDescription": "Contact our team to arrange a live video call or send you recorded demonstrations of specific equipment.",
+  "ctaButton": "Request a Demo"
+}

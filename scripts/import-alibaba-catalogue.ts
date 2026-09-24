@@ -24,6 +24,7 @@ import 'dotenv/config'
 import fs from 'node:fs'
 import path from 'node:path'
 import { getPayload } from 'payload'
+import { describeFromSpecs, isCrossSellText, stripSupplierBoilerplate, summarizeCopy } from '../src/lib/supplier-text'
 
 process.env.PAYLOAD_PUSH_SCHEMA = 'false'
 
@@ -207,86 +208,26 @@ function uniqueSlug(name: string, used: Set<string>): string {
  * Some products have no supplier description block at all. What gets captured instead is
  * Alibaba's cross-sell widget — "Frequently bought together" followed by OTHER products'
  * titles and prices. That must never be shown as this product's description.
+ *
+ * The detector lives in `src/lib/supplier-text.ts` so the import and the
+ * post-hoc cleanup of already-stored rows agree on what counts as junk.
  */
-function isCrossSellJunk(raw: string): boolean {
-  const head = (raw || '').slice(0, 400)
-  return /Frequently bought together|Video Description|You may also like/i.test(head)
-}
+const isCrossSellJunk = isCrossSellText
 
 /** First sentence-ish of the supplier blurb, for the product header. Null when unusable. */
-function shortDesc(raw: string, fallback: string): string | null {
+function shortDesc(raw: string): string | null {
   if (!raw || isCrossSellJunk(raw)) return null
-  const t = raw
-    .replace(/\s+/g, ' ')
-    // strip the supplier's section labels, which otherwise leak into the header
-    .replace(/^(Report abuse|Highlights at a glance|Highlights|Product Description)\s*/gi, '')
-    .trim()
-  if (!t) return null
-  const cut = t.slice(0, 260)
-  const end = cut.lastIndexOf('. ')
-  return (end > 80 ? cut.slice(0, end + 1) : cut).trim() || null
+  // Sentence/word-boundary aware, and it strips the supplier's widget labels
+  // ("Product descriptions from the supplier Report abuse Highlights at a
+  // glance …"), which otherwise leak into the product header as sentence one.
+  return summarizeCopy(raw)
 }
 
 /**
- * When the supplier page has no description at all, build a short factual summary from the
- * Key attributes we did capture. Only spec values are used — nothing is invented.
- * Returns null when there is no usable "type" spec, in which case the page keeps its own
- * generic copy (a keyword-stuffed product name reads badly mid-sentence).
+ * When the supplier page has no description at all, `describeFromSpecs()` (in
+ * `src/lib/supplier-text.ts`, shared with `import-links.ts`) builds a short factual
+ * summary from the Key attributes — spec values only, nothing invented.
  */
-function describeFromSpecs(specs: Array<{ label: string; value: string }>): string | null {
-  const get = (...keys: string[]) => {
-    for (const k of keys) {
-      const hit = specs.find((s) => (s.label || '').toLowerCase().trim() === k.toLowerCase())
-      if (hit?.value) return hit.value.trim()
-    }
-    return ''
-  }
-
-  // Spec values arrive in Title Case; mid-sentence they must be lowercased, but keep
-  // acronyms (ABS, PVC, H). Split on spaces AND slashes so "Diesel/Gasoline" lowercases.
-  const smartLower = (s: string) =>
-    s
-      .split(/([ /])/)
-      .map((chunk) => {
-        if (!chunk.trim() || chunk === '/') return chunk
-        const core = chunk.replace(/[^A-Za-z]/g, '')
-        if (core.length >= 1 && core === core.toUpperCase()) return chunk
-        return chunk.charAt(0).toLowerCase() + chunk.slice(1)
-      })
-      .join('')
-
-  const type = get('type', 'animal cage type')
-  const cageType = get('animal cage type')
-  const capacity = get('capacity')
-  const selling = get('key selling points')
-  const engine = get('Engine Type', 'engine type')
-  const use = get('use')
-  const condition = get('condition')
-  const warranty = get('warranty')
-
-  const GENERIC = /^(home|other|new|none|automatic|digital|manual|yes|no)$/i
-  const typeUseful = type && type.length > 3 && !GENERIC.test(type)
-  if (!cageType && !typeUseful) return null
-
-  const subject = cageType
-    ? [capacity, smartLower(cageType), use ? smartLower(use) : '', 'cage'].filter(Boolean).join(' ')
-    : [capacity, smartLower(type), use ? `for ${smartLower(use)}` : ''].filter(Boolean).join(' ')
-
-  const clauses: string[] = []
-  if (selling && !GENERIC.test(selling)) clauses.push(smartLower(selling))
-  if (engine) clauses.push(`powered by ${smartLower(engine)}`)
-  if (condition && warranty) clauses.push(`${smartLower(condition)} and supplied with a ${smartLower(warranty)} warranty`)
-  else if (warranty) clauses.push(`supplied with a ${smartLower(warranty)} warranty`)
-  else if (condition) clauses.push(smartLower(condition))
-
-  let text = subject
-  if (clauses.length) text += ', ' + clauses.join(', ')
-  text += '. Send your capacity and site requirements for a matched quotation.'
-
-  text = text.replace(/\s+/g, ' ').replace(/,\s*\./g, '.').replace(/\s+,/g, ',').trim()
-  text = text.charAt(0).toUpperCase() + text.slice(1)
-  return text.length > 40 ? text : null
-}
 
 /**
  * The supplier blurb is one long run of text with inline "Heading: body" labels.
@@ -294,8 +235,10 @@ function describeFromSpecs(specs: Array<{ label: string; value: string }>): stri
  * follows a word with no period, which drops most of the headings if you require one.
  */
 function toOverviewHtml(raw: string): string {
-  let t = (raw || '').trim()
-  t = t.replace(/^Report abuse\s*/i, '').replace(/^Highlights at a glance\s*/i, '')
+  // Drops the captured widget labels first: the anchor-based strips below used
+  // to fail because the blob starts with "Product descriptions from the
+  // supplier", so "Report abuse" was never at index 0 and shipped to the page.
+  let t = stripSupplierBoilerplate(raw).trim()
   t = t.replace(/\s*\n\s*/g, ' ').replace(/\s{2,}/g, ' ').trim()
   if (!t) return ''
 
@@ -555,7 +498,14 @@ async function main() {
           slug,
           subcategory: subIds[g2s[r.group]],
           // Supplier blurb when there is one; otherwise a factual summary from the specs.
-          description: shortDesc(r.description, name) || describeFromSpecs(mergedSpecs) || undefined,
+          // The FULL detail text is preferred over `r.description`: the products
+          // scrape truncates descriptions at 900 characters, and summarizing that
+          // cut is what produced mid-word product headers ("…by up to 80 perce").
+          description:
+            summarizeCopy(detailByIdx.get(r.idx) as string) ||
+            shortDesc(r.description) ||
+            describeFromSpecs(mergedSpecs) ||
+            undefined,
           overviewHtml: detailByIdx.get(r.idx) && !isCrossSellJunk(detailByIdx.get(r.idx) as string)
             ? toOverviewHtml(detailByIdx.get(r.idx) as string) || undefined
             : undefined,

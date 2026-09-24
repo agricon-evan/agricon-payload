@@ -1,0 +1,159 @@
+{
+  "hero": {
+    "title": "Assistance commerciale",
+    "description": "Passez en revue les exigences de documentation, de logistique, d'inspection, d'installation et de service avant la confirmation de la commande."
+  },
+  "sections": {
+    "services": {
+      "eyebrow": "Ce que nous prenons en charge",
+      "title": "Une assistance commerciale de bout en bout",
+      "description": "De la fabrication jusqu'à l'entrée de votre ferme — nous gérons la logistique pour que vous puissiez vous concentrer sur votre élevage."
+    },
+    "export": {
+      "eyebrow": "Export et assistance commerciale",
+      "title": "De la confirmation de commande à l'expédition internationale",
+      "description": "AGRICON coordonne l'emballage, le chargement, la documentation et l'accompagnement à la livraison pour les acheteurs étrangers — pour que votre commande arrive exactement telle que confirmée."
+    },
+    "process": {
+      "eyebrow": "Comment ça marche",
+      "title": "De la demande à l'installation"
+    },
+    "incoterms": {
+      "eyebrow": "Incoterms",
+      "title": "Conditions d'expédition proposées",
+      "description": "Choisissez la condition la mieux adaptée à votre schéma d'importation."
+    }
+  },
+  "services": {
+    "items": {
+      "logistics": {
+        "title": "Logistique export",
+        "description": "Documentation export complète, supervision du chargement des conteneurs et coordination du fret maritime et aérien jusqu'à votre port.",
+        "highlights": [
+          "Connaissement (B/L)",
+          "Certificat d'origine",
+          "Certificat phytosanitaire",
+          "Certificat de fumigation"
+        ]
+      },
+      "oemOdm": {
+        "title": "OEM et ODM",
+        "description": "Image de marque, logo, couleur et spécifications personnalisés sur les modèles standard et sur mesure.",
+        "highlights": [
+          "Marque privée",
+          "Couleurs personnalisées",
+          "Capacité personnalisée",
+          "Gravure du logo"
+        ]
+      },
+      "payment": {
+        "title": "Paiement flexible",
+        "description": "Des moyens de paiement internationaux sécurisés, adaptés aux clients nouveaux comme aux clients fidèles.",
+        "highlights": [
+          "Virement T/T",
+          "Crédit documentaire (L/C)",
+          "Acompte de 30 %",
+          "Paiements par étapes"
+        ]
+      },
+      "installation": {
+        "title": "Assistance à l'installation",
+        "description": "Assistance technique sur site, plans d'installation, tutoriels vidéo et formation de votre équipe de maintenance.",
+        "highlights": [
+          "Tutoriels vidéo",
+          "Formation sur site",
+          "Kit de pièces de rechange",
+          "Assistance WhatsApp 24/7"
+        ]
+      },
+      "packaging": {
+        "title": "Emballage",
+        "description": "Le matériel est emballé pour le fret maritime : résistant à l'humidité, correctement étiqueté et optimisé pour le conteneur.",
+        "highlights": [
+          "Bois fumigué",
+          "Barrière d'humidité",
+          "Optimisation des conteneurs",
+          "Étiquetage personnalisé"
+        ]
+      },
+      "warranty": {
+        "title": "Garantie après-vente",
+        "description": "Garantie complète sur tout le matériel, avec remplacement rapide de toute pièce défectueuse.",
+        "highlights": [
+          "Garantie 18 mois",
+          "Pièces de rechange à vie",
+          "Diagnostic à distance",
+          "Réponse sous 24 h"
+        ]
+      }
+    }
+  },
+  "steps": {
+    "items": {
+      "consultation": {
+        "title": "Consultation",
+        "description": "Indiquez la taille de votre ferme, vos effectifs et vos objectifs. Nous vous aidons à choisir le matériel et l'agencement."
+      },
+      "designQuote": {
+        "title": "Conception et devis",
+        "description": "Recevez un devis détaillé avec la liste du matériel, un plan 3D et une estimation d'expédition."
+      },
+      "orderManufacture": {
+        "title": "Commande et fabrication",
+        "description": "Dès la confirmation, la fabrication démarre avec des contrôles qualité à chaque étape."
+      },
+      "inspectionShipping": {
+        "title": "Inspection et expédition",
+        "description": "Inspection finale dans notre usine avant chargement. Documentation complète fournie pour la douane."
+      },
+      "installation": {
+        "title": "Installation",
+        "description": "Notre équipe technique vous guide à distance ou sur site et forme votre personnel."
+      },
+      "afterSales": {
+        "title": "Après-vente",
+        "description": "Fourniture de pièces de rechange à vie et assistance technique. Nous restons aux côtés de votre ferme au fil de sa croissance."
+      }
+    }
+  },
+  "incoterms": {
+    "items": {
+      "fob": {
+        "title": "Franco à bord",
+        "description": "La norme pour la plupart des clients. Nous prenons en charge l'export ; vous organisez le transport depuis notre port."
+      },
+      "cif": {
+        "title": "Coût, assurance et fret",
+        "description": "Nous organisons le transport et l'assurance jusqu'à votre port de destination."
+      },
+      "cfr": {
+        "title": "Coût et fret",
+        "description": "Similaire au CIF, mais sans assurance de la marchandise."
+      }
+    }
+  },
+  "exportSteps": {
+    "items": {
+      "orderConfirmation": {
+        "title": "Confirmation de commande",
+        "description": "Toutes les spécifications, quantités et exigences d'expédition sont vérifiées et confirmées avec le client."
+      },
+      "exportPacking": {
+        "title": "Emballage export",
+        "description": "Les produits sont emballés de manière sûre et clairement étiquetés pour le transport international."
+      },
+      "containerLoading": {
+        "title": "Chargement des conteneurs",
+        "description": "Les plans de chargement sont organisés selon la taille des produits et le volume de la commande afin de maximiser l'espace et la stabilité."
+      },
+      "shippingSupport": {
+        "title": "Assistance à l'expédition",
+        "description": "Tous les documents nécessaires et les arrangements finaux d'expédition sont coordonnés avant le départ."
+      },
+      "deliverySupport": {
+        "title": "Assistance à la livraison",
+        "description": "Coordination de l'expédition, de la préparation en usine à l'envoi, y compris les commandes de catégories mixtes."
+      }
+    }
+  }
+}

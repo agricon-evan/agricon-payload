@@ -1,20 +1,25 @@
 {
-  "breadcrumb": { "blog": "Blogue" },
+  "breadcrumb": {
+    "blog": "Blogue"
+  },
   "hero": {
     "title": "Centre de connaissances Agricon",
-    "description": "Avis d'experts sur l'elevage de volailles, les equipements pour le betail et l'agriculture commerciale pour les marches emergents.",
-    "ctaBrowseProducts": "Voir les produits",
-    "ctaContactUs": "Nous contacter"
+    "description": "Avis d'experts sur l'élevage de volailles, les équipements pour le bétail et l'agriculture commerciale pour les marchés émergents."
   },
-  "categories": ["Tous", "Conseils agricoles", "Guides d'achat", "Etudes de cas", "Actualites du secteur"],
-  "featuredArticle": "Article en vedette",
-  "latestArticles": "Derniers articles",
-  "readMore": "Lire la suite",
-  "newsletter": {
-    "title": "Restez informe",
-    "description": "Recevez les derniers conseils agricoles, guides d'equipements et analyses de marche dans votre boite de reception chaque semaine.",
-    "emailPlaceholder": "Entrez votre adresse e-mail",
-    "submit": "S'abonner",
-    "disclaimer": "Pas de spam. Desabonnement a tout moment. Rejoignez plus de 2 400 agriculteurs."
+  "meta": {
+    "title": "Blog",
+    "description": "Guides et notes de terrain sur le logement avicole, les systèmes d'élevage, la transformation des aliments et le choix du bon matériel agricole."
+  },
+  "badge": "Notes de terrain",
+  "backToBlog": "Retour au blog",
+  "tocTitle": "Sur cette page",
+  "tocLabel": "Table des matières",
+  "tags": {
+    "farm-machinery": "Machines agricoles",
+    "feed-processing": "Transformation des aliments",
+    "incubators": "Incubateurs",
+    "breeding": "Élevage",
+    "layer-cages": "Cages pour pondeuses",
+    "poultry-equipment": "Équipement avicole"
   }
 }

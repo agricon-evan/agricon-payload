@@ -1,0 +1,179 @@
+{
+  "about": {
+    "meta": {
+      "title": "À propos",
+      "description": "Agricon fournit du matériel avicole, d'élevage et agricole aux fermes commerciales du monde entier. Découvrez notre méthode de travail, ce que nous fabriquons et à qui vous avez affaire."
+    },
+    "hero": {
+      "description": "Du matériel pratique, un approvisionnement intégré et un accompagnement à l'export pour les fermes et les projets agricoles."
+    },
+    "sections": {
+      "story": {
+        "eyebrow": "Notre histoire",
+        "title": "Bâtir l'ossature des fermes modernes",
+        "p1": "AGRICON propose des solutions intégrées de matériel agricole aux fermes, importateurs, distributeurs et porteurs de projets agricoles du monde entier.",
+        "p2": "AGRICON travaille avec des partenaires industriels spécialisés pour coordonner le sourcing du matériel, l'adéquation au projet, le contrôle qualité et la préparation à l'export pour les acheteurs étrangers.",
+        "p3": "De la commande de matériel isolée aux projets complets clés en main, nous associons des produits pratiques aux besoins réels des fermes, en aviculture et en élevage comme pour la transformation, les infrastructures et les machines."
+      },
+      "principles": {
+        "eyebrow": "Nos principes de fonctionnement",
+        "title": "Notre façon de travailler",
+        "description": "Six principes guident chaque projet — de la première demande au service après-vente"
+      },
+      "ecosystem": {
+        "eyebrow": "Écosystème produits",
+        "titleLead": "Un écosystème",
+        "titleAccent": "d'équipements intégré",
+        "description": "Élevage, alimentation, bâtiments, transformation et travail quotidien de la ferme — via une seule fenêtre d'approvisionnement coordonnée."
+      },
+      "commitments": {
+        "eyebrow": "Nos engagements",
+        "titleLead": "Des engagements",
+        "titleAccent": "concrets",
+        "description": "Comment AGRICON accompagne la fourniture et la livraison de matériel pour les fermes et les projets agricoles du monde entier."
+      },
+      "process": {
+        "eyebrow": "Notre processus",
+        "title": "De la demande à un accompagnement durable"
+      },
+      "delivery": {
+        "eyebrow": "Préparation à la livraison",
+        "title": "Prêts pour les commandes internationales",
+        "description": "AGRICON coordonne les détails pratiques qui aident les acheteurs étrangers à passer de la commande confirmée à l'expédition."
+      }
+    },
+    "values": {
+      "items": {
+        "integratedSupply": {
+          "title": "Approvisionnement intégré",
+          "description": "Plusieurs catégories de matériel agricole coordonnées via une seule fenêtre d'approvisionnement."
+        },
+        "projectMatching": {
+          "title": "Adéquation au projet",
+          "description": "Sélection du matériel selon le type de ferme, la capacité, les conditions du site et les besoins d'application."
+        },
+        "exportSupport": {
+          "title": "Accompagnement à l'export",
+          "description": "Emballage, chargement, documentation et coordination des expéditions pour les acheteurs étrangers."
+        },
+        "longTermCooperation": {
+          "title": "Coopération durable",
+          "description": "Commandes récurrentes, projets d'extension et soutien coordonné des fournisseurs pour les exploitations en croissance."
+        }
+      }
+    },
+    "principles": {
+      "items": {
+        "coordinatedSourcing": {
+          "title": "Sourcing coordonné",
+          "description": "Aviculture, élevage, transformation des aliments, aquaculture, infrastructures et machines via une seule fenêtre d'approvisionnement."
+        },
+        "qualityControl": {
+          "title": "Qualité et contrôle des commandes",
+          "description": "Périmètre produit, spécifications, quantités et points d'inspection clés confirmés avant expédition."
+        },
+        "projectSelection": {
+          "title": "Sélection par projet",
+          "description": "Des solutions adaptées au type de ferme, à la capacité, aux conditions du site, aux exigences d'exploitation et au budget."
+        },
+        "exportDelivery": {
+          "title": "Livraison prête pour l'export",
+          "description": "Emballage export, identification des produits, plans de chargement, coordination des conteneurs et documents d'expédition."
+        },
+        "distributorSupport": {
+          "title": "Soutien aux distributeurs",
+          "description": "Combinaisons de produits flexibles, accompagnement des commandes récurrentes et aide au développement du marché local."
+        },
+        "partnership": {
+          "title": "Partenariat concret",
+          "description": "Des commandes de matériel isolées aux projets complets et à l'accompagnement des extensions futures."
+        }
+      }
+    },
+    "commitments": {
+      "items": {
+        "integratedSupply": {
+          "title": "Fourniture intégrée de matériel",
+          "description": "Aviculture, élevage, transformation des aliments, aquaculture, infrastructures et machines coordonnés via une seule fenêtre d'approvisionnement."
+        },
+        "exportReadyDelivery": {
+          "title": "Livraison prête pour l'export",
+          "description": "Emballage export, identification des produits, plans de chargement, coordination des conteneurs et documents d'expédition pour les acheteurs étrangers."
+        },
+        "galvanized": {
+          "title": "Galvanisation à chaud",
+          "description": "Durée de service de 15 à 20 ans (acier galvanisé à chaud)."
+        }
+      }
+    },
+    "process": {
+      "items": {
+        "inquiry": {
+          "title": "Demande",
+          "description": "Comprendre le type de ferme, la capacité, les produits recherchés, le scénario d'application et l'objectif d'achat."
+        },
+        "analysis": {
+          "title": "Analyse",
+          "description": "Examiner les conditions du projet, les objectifs d'exploitation, les exigences du site et les attentes budgétaires."
+        },
+        "matching": {
+          "title": "Adéquation",
+          "description": "Sélectionner le matériel, les gammes et les accessoires adaptés au projet réel."
+        },
+        "confirmation": {
+          "title": "Confirmation",
+          "description": "Finaliser les modèles, les quantités, les spécifications, l'emballage et le plan d'expédition."
+        },
+        "delivery": {
+          "title": "Livraison",
+          "description": "Coordonner l'emballage export, les plans de chargement, les documents et l'accompagnement à l'expédition internationale."
+        },
+        "support": {
+          "title": "Assistance",
+          "description": "Poursuivre avec les informations produits, les pièces de rechange, les commandes récurrentes et l'extension du projet."
+        }
+      }
+    },
+    "delivery": {
+      "items": {
+        "orderConfirmation": {
+          "title": "Confirmation de commande",
+          "description": "Spécifications, quantités et exigences d'expédition vérifiées."
+        },
+        "exportPacking": {
+          "title": "Emballage export",
+          "description": "Produits emballés et clairement étiquetés pour le transport international."
+        },
+        "containerLoading": {
+          "title": "Chargement des conteneurs",
+          "description": "Plans de chargement organisés pour les commandes de matériel simples ou mixtes."
+        },
+        "shippingDocuments": {
+          "title": "Documents d'expédition",
+          "description": "Documents commerciaux préparés selon les exigences de la commande."
+        }
+      }
+    }
+  },
+  "caseStudies": {
+    "meta": {
+      "title": "Études de cas",
+      "description": "Des installations réelles : comment des fermes ont défini, commandé et mis en service des lignes avicoles, d'élevage et de machines Agricon."
+    }
+  },
+  "products": {
+    "meta": {
+      "title": "Produits",
+      "description": "Parcourez les gammes Agricon de matériel avicole, d'élevage, aquacole et agricole — cages, systèmes d'alimentation, incubateurs, équipements de transformation et plus encore."
+    }
+  },
+  "solutions": {
+    "meta": {
+      "title": "Solutions agricoles",
+      "description": "Solutions agricoles clés en main — poulaillers, bâtiments d'élevage, lignes d'aliments et installations de transformation, planifiés de bout en bout."
+    },
+    "badge": "Solution clé en main",
+    "emptyTitle": "Solutions bientôt disponibles",
+    "emptyDesc": "Nos offres de solutions sont en cours d'ajout. Contactez-nous pour discuter de votre projet."
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "breadcrumb": {
+    "home": "Inicio",
+    "search": "Buscar"
+  },
+  "hero": {
+    "title": "Buscar",
+    "description": "Busque productos, soluciones y recursos de Agricon."
+  },
+  "placeholder": "Buscar productos, soluciones y recursos...",
+  "noResults": {
+    "title": "No se encontraron resultados",
+    "description": "Pruebe con otras palabras clave o contáctenos directamente."
+  },
+  "searching": "Buscando...",
+  "loading": "Cargando...",
+  "typeProduct": "Producto",
+  "typeSolution": "Solución"
+}

@@ -1,0 +1,25 @@
+{
+  "breadcrumb": {
+    "blog": "Blog"
+  },
+  "hero": {
+    "title": "Blog",
+    "description": "Análisis del sector, consejos para la granja y noticias de la empresa"
+  },
+  "meta": {
+    "title": "Blog",
+    "description": "Guías y notas de campo sobre alojamiento avícola, sistemas ganaderos, procesamiento de alimento y cómo elegir el equipo agrícola adecuado."
+  },
+  "badge": "Notas de campo",
+  "backToBlog": "Volver al blog",
+  "tocTitle": "En esta página",
+  "tocLabel": "Tabla de contenidos",
+  "tags": {
+    "farm-machinery": "Maquinaria agrícola",
+    "feed-processing": "Procesamiento de alimento",
+    "incubators": "Incubadoras",
+    "breeding": "Cría",
+    "layer-cages": "Jaulas para ponedoras",
+    "poultry-equipment": "Equipos avícolas"
+  }
+}

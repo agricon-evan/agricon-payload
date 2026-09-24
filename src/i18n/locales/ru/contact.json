@@ -1,0 +1,148 @@
+{
+  "breadcrumb": {
+    "home": "Главная",
+    "contact": "Контакты"
+  },
+  "hero": {
+    "title": "Свяжитесь с нами",
+    "description": "Обратитесь к нашей команде по вопросам продукции, цен, технической поддержки или партнёрства."
+  },
+  "contactMethods": {
+    "email": {
+      "title": "Email",
+      "description": "Отправьте запрос на опубликованный адрес электронной почты. Срок ответа зависит от рабочего графика и сложности запроса.",
+      "actionText": "Отправить письмо"
+    },
+    "phone": {
+      "title": "Телефон",
+      "description": "Доступен с понедельника по субботу, с 8:00 до 18:00 (GMT+8).",
+      "actionText": "Позвонить"
+    },
+    "whatsapp": {
+      "title": "WhatsApp",
+      "description": "Быстрые ответы по вопросам продукции, цен и статуса заказов.",
+      "actionText": "Написать в чат"
+    }
+  },
+  "inquiryForm": {
+    "title": "Отправьте нам запрос",
+    "description": "Заполните форму ниже. Команда изучит требования и свяжется с вами по указанным контактам.",
+    "companyName": "Название компании",
+    "contactName": "Контактное лицо",
+    "emailAddress": "Адрес электронной почты",
+    "country": "Страна",
+    "selectCountry": "Выберите вашу страну",
+    "interestedProducts": "Интересующая продукция",
+    "selectProductsHint": "Выберите всю интересующую вас продукцию:",
+    "message": "Сообщение",
+    "messagePlaceholder": "Расскажите о требованиях к проекту, ожидаемых объёмах или задайте свои вопросы...",
+    "submit": "Отправить запрос",
+    "submitting": "Отправка...",
+    "errorGeneric": "Что-то пошло не так. Попробуйте ещё раз или свяжитесь с нами напрямую.",
+    "errorNetwork": "Ошибка сети. Попробуйте ещё раз или свяжитесь с нами через WhatsApp.",
+    "errorRateLimit": "Слишком много отправок с этого адреса. Подождите несколько минут и попробуйте снова или свяжитесь с нами по email.",
+    "errorRejected": "Эта отправка была отклонена фильтром спама. Пожалуйста, свяжитесь с нами по email."
+  },
+  "success": {
+    "title": "Запрос успешно отправлен",
+    "description": "Благодарим вас. Ваш запрос отправлен на техническую и коммерческую проверку.",
+    "browseProducts": "Смотреть продукцию"
+  },
+  "whatsappPrompt": {
+    "title": "Удобнее общаться в чате?",
+    "description": "Напишите нам в WhatsApp, чтобы быстро узнать о наличии продукции, ценах и статусе заказа. В рабочее время мы обычно отвечаем в течение нескольких минут.",
+    "openChat": "Открыть чат в WhatsApp"
+  },
+  "responseInfo": {
+    "title": "Чего ожидать",
+    "items": {
+      "response": {
+        "title": "Ответ в течение 24 часов",
+        "description": "Каждый запрос рассматривается с учётом его технических и коммерческих требований."
+      },
+      "consultation": {
+        "title": "Анализ требований",
+        "description": "Бесплатная консультация экспертов по подбору оборудования и планировке фермы."
+      },
+      "quotation": {
+        "title": "Подробное коммерческое предложение",
+        "description": "Вы получаете полное коммерческое предложение с ценами, характеристиками и условиями доставки."
+      }
+    }
+  },
+  "countries": [
+    "Nigeria",
+    "Kenya",
+    "Tanzania",
+    "South Africa",
+    "Ghana",
+    "Ethiopia",
+    "Uganda",
+    "Vietnam",
+    "Philippines",
+    "Indonesia",
+    "Thailand",
+    "Myanmar",
+    "Cambodia",
+    "Brazil",
+    "Colombia",
+    "Peru",
+    "Ecuador",
+    "Argentina",
+    "India",
+    "Pakistan",
+    "Bangladesh",
+    "Egypt",
+    "Sudan",
+    "Other"
+  ],
+  "productOptions": [
+    "H-Type Layer Cage",
+    "A-Type Layer Cage",
+    "Broiler Cage",
+    "Chick Cage",
+    "Automatic Feeding System",
+    "Egg Collection System",
+    "Manure Removal System",
+    "Ventilation Fan",
+    "Cooling Pad",
+    "Feed Pellet Machine",
+    "Feed Mixer",
+    "Grinding Machine",
+    "Green House",
+    "Farm Fence",
+    "Cattle Panel",
+    "Other"
+  ],
+  "diagnostics": {
+    "phone": "Телефон",
+    "phonePlaceholder": "+7 000 000 00 00",
+    "application": "Назначение",
+    "currentSetup": "Текущее состояние",
+    "purchaseType": "Тип закупки",
+    "select": "Выберите...",
+    "applications": {
+      "layerFarm": "Ферма кур-несушек (яйцо)",
+      "broilerFarm": "Бройлерная ферма",
+      "breederHatchery": "Племенная ферма / инкубатор",
+      "pigFarm": "Свиноферма",
+      "cattleFarm": "Ферма КРС",
+      "feedPlant": "Завод по производству кормов",
+      "distributor": "Дистрибьютор / перепродажа",
+      "other": "Другое"
+    },
+    "setups": {
+      "newProject": "Новый проект",
+      "replacing": "Замена старого оборудования",
+      "expanding": "Расширение существующей фермы",
+      "automation": "Модернизация с автоматизацией",
+      "other": "Другое"
+    },
+    "purchaseTypes": {
+      "comparing": "Нужна смета для сравнения",
+      "ready": "Готовы заказать",
+      "researching": "Изучаем варианты",
+      "partnership": "Долгосрочное партнёрство"
+    }
+  }
+}

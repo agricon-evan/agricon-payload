@@ -1,0 +1,48 @@
+{
+  "breadcrumb": {
+    "home": "Nyumbani",
+    "support": "Msaada",
+    "faq": "FAQ"
+  },
+  "hero": {
+    "title": "Maswali Yanayoulizwa Mara kwa Mara",
+    "description": "Pata majibu ya maswali ya kawaida kuhusu bidhaa zetu, usafirishaji, ufungaji, masharti ya malipo na msaada wa kibiashara."
+  },
+  "allCategory": "Zote",
+  "noQuestions": "Hakuna maswali yaliyopatikana katika aina hii.",
+  "categoryChips": {
+    "ordering": "Kuagiza na MOQ",
+    "shipping": "Usafirishaji na Uuzaji nje",
+    "quality": "Udhibiti wa Ubora",
+    "projects": "Miradi ya Shamba",
+    "distributors": "Wasambazaji",
+    "afterSales": "Huduma baada ya mauzo"
+  },
+  "relatedSupport": {
+    "title": "Nyenzo Nyingine za Msaada",
+    "items": {
+      "documentation": {
+        "title": "Nyaraka za Bidhaa",
+        "description": "Pata miongozo ya ufungaji, vipimo vya kiufundi na katalogi za bidhaa za vifaa vyote vya Agricon.",
+        "href": "/support#download-center"
+      },
+      "videoTutorials": {
+        "title": "Video za Mafunzo",
+        "description": "Tazama video za hatua kwa hatua za ufungaji na matengenezo za mifumo ya ngome, vifaa vya kulisha na zaidi.",
+        "href": "/support#video-tutorials"
+      },
+      "contactSupport": {
+        "title": "Wasiliana na Msaada",
+        "description": "Wasiliana na timu yetu ya kiufundi kwa barua pepe, simu au WhatsApp kwa msaada wa kibinafsi.",
+        "href": "/contact"
+      }
+    }
+  },
+  "cta": {
+    "title": "Bado Una Maswali?",
+    "description": "Tutumie swali lako na timu yetu itapitia kwa kutumia taarifa za kuwasiliana ulizotoa.",
+    "contactUs": "Wasiliana Nasi",
+    "chatWhatsApp": "Ongea kwenye WhatsApp"
+  },
+  "learnMore": "Jifunze Zaidi →"
+}

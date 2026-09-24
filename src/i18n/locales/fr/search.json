@@ -1,26 +1,19 @@
 {
-  "title": "Recherche",
+  "breadcrumb": {
+    "home": "Accueil",
+    "search": "Rechercher"
+  },
+  "hero": {
+    "title": "Rechercher",
+    "description": "Recherchez des produits, solutions et ressources Agricon."
+  },
   "placeholder": "Rechercher des produits, solutions, articles de blog...",
-  "tabs": {
-    "all": "Tous",
-    "product": "Produits",
-    "solution": "Solutions",
-    "blog": "Blogue",
-    "caseStudy": "Etudes de cas"
-  },
-  "badges": {
-    "product": "Produit",
-    "solution": "Solution",
-    "blog": "Blogue",
-    "caseStudy": "Etude de cas"
-  },
   "noResults": {
-    "title": "Aucun resultat trouve",
-    "description": "Nous n'avons rien trouve correspondant a \"{query}\". Essayez des mots-cles differents ou parcourez nos categories.",
-    "ctaBrowseProducts": "Voir les produits",
-    "ctaContactUs": "Nous contacter"
+    "title": "Aucun résultat trouvé",
+    "description": "Essayez d'autres mots-clés ou contactez-nous directement."
   },
-  "sidebar": {
-    "title": "Liens recommandes"
-  }
+  "searching": "Recherche en cours...",
+  "loading": "Chargement...",
+  "typeProduct": "Produit",
+  "typeSolution": "Solution"
 }

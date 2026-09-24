@@ -1,0 +1,159 @@
+{
+  "hero": {
+    "title": "Msaada wa Kibiashara",
+    "description": "Pitia mahitaji ya nyaraka, usafirishaji, ukaguzi, ufungaji na huduma kabla ya kuthibitisha agizo."
+  },
+  "sections": {
+    "services": {
+      "eyebrow": "Tunachoshughulikia",
+      "title": "Msaada wa Kibiashara wa Mwanzo hadi Mwisho",
+      "description": "Kuanzia uzalishaji hadi lango la shamba lako — tunasimamia usafirishaji ili wewe uweze kuzingatia ufugaji."
+    },
+    "export": {
+      "eyebrow": "Usafirishaji wa Nje na Msaada wa Kibiashara",
+      "title": "Kuanzia Uthibitisho wa Agizo hadi Usafirishaji wa Kimataifa",
+      "description": "AGRICON huratibu upakiaji, upakiaji wa kontena, nyaraka na msaada wa uwasilishaji kwa wanunuzi wa ng'ambo — ili agizo lako lifike kama lilivyothibitishwa."
+    },
+    "process": {
+      "eyebrow": "Inavyofanya Kazi",
+      "title": "Kuanzia Swali hadi Ufungaji"
+    },
+    "incoterms": {
+      "eyebrow": "Incoterms",
+      "title": "Masharti ya Usafirishaji Tunayotoa",
+      "description": "Chagua sharti linalofaa zaidi mpango wako wa uagizaji."
+    }
+  },
+  "services": {
+    "items": {
+      "logistics": {
+        "title": "Usafirishaji wa Nje",
+        "description": "Nyaraka kamili za usafirishaji wa nje, usimamizi wa upakiaji wa kontena na uratibu wa usafirishaji wa baharini na angani hadi bandari yako.",
+        "highlights": [
+          "Hati ya Usafirishaji (B/L)",
+          "Cheti cha Asili",
+          "Cheti cha Fitosanitaria",
+          "Cheti cha Ufukizaji"
+        ]
+      },
+      "oemOdm": {
+        "title": "OEM na ODM",
+        "description": "Chapa, nembo, rangi na vipimo vya kawaida kwa modeli za kawaida na maalum.",
+        "highlights": [
+          "Lebo ya Kipekee",
+          "Rangi za Kawaida",
+          "Uwezo wa Kawaida",
+          "Kuchonga Nembo"
+        ]
+      },
+      "payment": {
+        "title": "Malipo Yanayobadilika",
+        "description": "Njia salama za malipo ya kimataifa zenye chaguo zinazofaa wateja wapya na wa mara kwa mara.",
+        "highlights": [
+          "Uhamisho wa Benki (T/T)",
+          "Barua ya Mikopo (L/C)",
+          "Amana ya 30%",
+          "Malipo kwa Hatua"
+        ]
+      },
+      "installation": {
+        "title": "Msaada wa Ufungaji",
+        "description": "Msaada wa kiufundi eneo la kazi, michoro ya ufungaji, mwongozo wa video na mafunzo kwa timu yako ya matengenezo.",
+        "highlights": [
+          "Video za Mafunzo",
+          "Mafunzo ya Eneo",
+          "Seti ya Spare Parts",
+          "Msaada wa WhatsApp 24/7"
+        ]
+      },
+      "packaging": {
+        "title": "Ufungashaji",
+        "description": "Vifaa hufungwa kwa usafirishaji wa baharini — vinastahimili unyevu, vimewekwa lebo vizuri na vimeboreshwa kwa kontena.",
+        "highlights": [
+          "Mbao Zilizofukizwa",
+          "Kizuizi cha Unyevu",
+          "Uboreshaji wa Kontena",
+          "Lebo za Kawaida"
+        ]
+      },
+      "warranty": {
+        "title": "Dhamana ya Baada ya Mauzo",
+        "description": "Dhamana kamili kwa vifaa vyote na ubadilishaji wa haraka wa sehemu yoyote yenye hitilafu.",
+        "highlights": [
+          "Dhamana ya Miezi 18",
+          "Spare Parts za Maisha Yote",
+          "Uchunguzi wa Mbali",
+          "Jibu ndani ya Saa 24"
+        ]
+      }
+    }
+  },
+  "steps": {
+    "items": {
+      "consultation": {
+        "title": "Ushauri",
+        "description": "Tuambie ukubwa wa shamba lako, idadi ya kuku na malengo yako. Tunakusaidia kuchagua vifaa na mpangilio sahihi."
+      },
+      "designQuote": {
+        "title": "Ubunifu na Bei",
+        "description": "Pata quotation ya kina yenye orodha ya vifaa, mpangilio wa 3D na makadirio ya usafirishaji."
+      },
+      "orderManufacture": {
+        "title": "Agizo na Uzalishaji",
+        "description": "Baada ya uthibitisho, uzalishaji huanza na ukaguzi wa ubora katika kila hatua."
+      },
+      "inspectionShipping": {
+        "title": "Ukaguzi na Usafirishaji",
+        "description": "Ukaguzi wa mwisho kwenye kiwanda chetu kabla ya upakiaji. Nyaraka kamili hutolewa kwa forodha."
+      },
+      "installation": {
+        "title": "Ufungaji",
+        "description": "Timu yetu ya kiufundi huongoza ufungaji kwa mbali au eneo la kazi, na kutoa mafunzo kwa wafanyakazi wako."
+      },
+      "afterSales": {
+        "title": "Baada ya Mauzo",
+        "description": "Ugavi wa spare parts wa maisha yote na msaada wa kiufundi. Tunabaki na shamba lako linapokua."
+      }
+    }
+  },
+  "incoterms": {
+    "items": {
+      "fob": {
+        "title": "Bila Malipo kwenye Meli",
+        "description": "Kiwango cha kawaida kwa wateja wengi. Tunashughulikia usafirishaji wa nje; wewe unashughulikia usafirishaji kutoka bandari yetu."
+      },
+      "cif": {
+        "title": "Gharama, Bima na Usafirishaji",
+        "description": "Tunapanga usafirishaji na bima hadi bandari yako ya marudio."
+      },
+      "cfr": {
+        "title": "Gharama na Usafirishaji",
+        "description": "Sawa na CIF lakini bila bima ya mizigo."
+      }
+    }
+  },
+  "exportSteps": {
+    "items": {
+      "orderConfirmation": {
+        "title": "Uthibitisho wa Agizo",
+        "description": "Vipimo vyote, idadi na mahitaji ya usafirishaji hupitiwa na kuthibitishwa na mteja."
+      },
+      "exportPacking": {
+        "title": "Ufungashaji wa Nje",
+        "description": "Bidhaa hufungwa kwa usalama na kuwekwa lebo wazi kwa usafirishaji wa kimataifa."
+      },
+      "containerLoading": {
+        "title": "Upakiaji wa Kontena",
+        "description": "Mipango ya upakiaji hupangwa kulingana na ukubwa wa bidhaa na kiasi cha agizo ili kutumia nafasi vizuri na kwa uthabiti."
+      },
+      "shippingSupport": {
+        "title": "Msaada wa Usafirishaji",
+        "description": "Nyaraka zote muhimu na mipango ya mwisho ya usafirishaji huratibiwa kabla ya kuondoka."
+      },
+      "deliverySupport": {
+        "title": "Msaada wa Uwasilishaji",
+        "description": "Uratibu wa usafirishaji kuanzia maandalizi ya kiwandani hadi kuondoka, ikiwemo maagizo ya aina mchanganyiko."
+      }
+    }
+  }
+}

@@ -1,0 +1,159 @@
+{
+  "hero": {
+    "title": "Soporte comercial",
+    "description": "Revise los requisitos de documentación, logística, inspección, instalación y servicio antes de confirmar el pedido."
+  },
+  "sections": {
+    "services": {
+      "eyebrow": "De qué nos ocupamos",
+      "title": "Soporte comercial integral",
+      "description": "Desde la fabricación hasta la puerta de su granja: gestionamos la logística para que usted pueda centrarse en la producción."
+    },
+    "export": {
+      "eyebrow": "Exportación y soporte comercial",
+      "title": "De la confirmación del pedido al embarque internacional",
+      "description": "AGRICON coordina el embalaje, la carga, la documentación y el acompañamiento en la entrega para compradores internacionales, para que su pedido llegue exactamente como se confirmó."
+    },
+    "process": {
+      "eyebrow": "Cómo funciona",
+      "title": "De la consulta a la instalación"
+    },
+    "incoterms": {
+      "eyebrow": "Incoterms",
+      "title": "Términos de envío que ofrecemos",
+      "description": "Elija el término que mejor se adapte a su esquema de importación."
+    }
+  },
+  "services": {
+    "items": {
+      "logistics": {
+        "title": "Logística de exportación",
+        "description": "Documentación completa de exportación, supervisión de la carga de contenedores y coordinación de flete marítimo y aéreo hasta su puerto.",
+        "highlights": [
+          "Conocimiento de embarque (B/L)",
+          "Certificado de origen",
+          "Certificado fitosanitario",
+          "Certificado de fumigación"
+        ]
+      },
+      "oemOdm": {
+        "title": "OEM y ODM",
+        "description": "Marca, logotipo, color y especificaciones personalizados en modelos estándar y a medida.",
+        "highlights": [
+          "Marca privada",
+          "Colores personalizados",
+          "Capacidad personalizada",
+          "Grabado del logotipo"
+        ]
+      },
+      "payment": {
+        "title": "Pago flexible",
+        "description": "Métodos de pago internacionales seguros, con opciones para clientes nuevos y recurrentes.",
+        "highlights": [
+          "Transferencia T/T",
+          "Carta de crédito (L/C)",
+          "Anticipo del 30 %",
+          "Pagos por hitos"
+        ]
+      },
+      "installation": {
+        "title": "Apoyo en la instalación",
+        "description": "Soporte técnico en sitio, planos de instalación, guías en vídeo y capacitación para su equipo de mantenimiento.",
+        "highlights": [
+          "Videotutoriales",
+          "Capacitación en sitio",
+          "Kit de repuestos",
+          "Soporte por WhatsApp 24/7"
+        ]
+      },
+      "packaging": {
+        "title": "Embalaje",
+        "description": "El equipo se embala para flete marítimo: resistente a la humedad, correctamente etiquetado y optimizado para el contenedor.",
+        "highlights": [
+          "Madera fumigada",
+          "Barrera contra la humedad",
+          "Optimización de contenedores",
+          "Etiquetado personalizado"
+        ]
+      },
+      "warranty": {
+        "title": "Garantía posventa",
+        "description": "Garantía integral en todos los equipos, con sustitución rápida de cualquier pieza defectuosa.",
+        "highlights": [
+          "Garantía de 18 meses",
+          "Repuestos de por vida",
+          "Diagnóstico remoto",
+          "Respuesta en 24 h"
+        ]
+      }
+    }
+  },
+  "steps": {
+    "items": {
+      "consultation": {
+        "title": "Consulta",
+        "description": "Cuéntenos el tamaño de su granja, sus aves y sus objetivos. Le ayudamos a elegir el equipo y la distribución adecuados."
+      },
+      "designQuote": {
+        "title": "Diseño y cotización",
+        "description": "Reciba una cotización detallada con lista de equipos, distribución 3D y estimación de envío."
+      },
+      "orderManufacture": {
+        "title": "Pedido y fabricación",
+        "description": "Tras la confirmación, comienza la fabricación con controles de calidad en cada etapa."
+      },
+      "inspectionShipping": {
+        "title": "Inspección y embarque",
+        "description": "Inspección final en nuestra fábrica antes de la carga. Documentación completa para la aduana."
+      },
+      "installation": {
+        "title": "Instalación",
+        "description": "Nuestro equipo técnico guía la instalación de forma remota o en sitio y capacita a su personal."
+      },
+      "afterSales": {
+        "title": "Posventa",
+        "description": "Suministro de repuestos de por vida y soporte técnico. Acompañamos a su granja a medida que crece."
+      }
+    }
+  },
+  "incoterms": {
+    "items": {
+      "fob": {
+        "title": "Franco a bordo",
+        "description": "El estándar para la mayoría de los clientes. Nosotros gestionamos la exportación; usted el transporte desde nuestro puerto."
+      },
+      "cif": {
+        "title": "Costo, seguro y flete",
+        "description": "Organizamos el transporte y el seguro hasta su puerto de destino."
+      },
+      "cfr": {
+        "title": "Costo y flete",
+        "description": "Similar al CIF pero sin cobertura de seguro de la carga."
+      }
+    }
+  },
+  "exportSteps": {
+    "items": {
+      "orderConfirmation": {
+        "title": "Confirmación del pedido",
+        "description": "Todas las especificaciones, cantidades y requisitos de envío se revisan y confirman con el cliente."
+      },
+      "exportPacking": {
+        "title": "Embalaje de exportación",
+        "description": "Los productos se embalan de forma segura y se etiquetan claramente para el transporte internacional."
+      },
+      "containerLoading": {
+        "title": "Carga de contenedores",
+        "description": "Los planes de carga se organizan según el tamaño del producto y el volumen del pedido para maximizar el espacio y la estabilidad."
+      },
+      "shippingSupport": {
+        "title": "Apoyo al embarque",
+        "description": "Todos los documentos necesarios y los arreglos finales de envío se coordinan antes del despacho."
+      },
+      "deliverySupport": {
+        "title": "Apoyo a la entrega",
+        "description": "Coordinación del envío desde la preparación en fábrica hasta el despacho, incluidos los pedidos de categorías mixtas."
+      }
+    }
+  }
+}

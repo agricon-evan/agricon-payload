@@ -49,8 +49,9 @@ for (const p of products) {
   if (imgs.length === 0) flag(slug, 'no gallery images')
   if (imgs.length > 0 && imgs.length < 4) flag(slug, `only ${imgs.length} gallery image(s)`)
 
-  const detail = (p.detailImages as any[]) || []
-  const faqs = (p.faqs as any[]) || []
+  // NOTE: `p.detailImages` and `p.faqs` are assigned back to products by
+  // scripts/import-alibaba-catalogue.ts but are not audited here — reading them
+  // into unused locals only produced lint noise.
   const specs = (p.specs as any[]) || []
 
   if (!p.price) flag(slug, 'no price')
