@@ -1,0 +1,23 @@
+{
+  "_note": "2026-09-22：quail-cage 是全站最后一个简介仍是「X — agricultural equipment for modern farms.」模板句的子分类，换成与 poultry-equipment 其它卡片同风格的两句式（For <用途>. <补充>）。名字保持现状 Quail Cage（各语种未译），未在本次范围内。",
+  "quail-cage": {
+    "en": {
+      "description": "For quail keeping and egg production. Stacked quail cages support housing, feeding, drinking and egg collection on commercial quail farms."
+    },
+    "ru": {
+      "description": "Для содержания и разведения перепелов. Многоярусные перепелиные клетки обеспечивают размещение, кормление, поение и сбор яиц на коммерческих перепелиных фермах."
+    },
+    "fr": {
+      "description": "Pour l'élevage et la production d'œufs de caille. Les cages à cailles superposées assurent le logement, l'alimentation, l'abreuvement et la collecte des œufs en élevage commercial."
+    },
+    "es": {
+      "description": "Para la cría de codornices y la producción de huevos. Las jaulas superpuestas facilitan el alojamiento, la alimentación, el agua y la recogida de huevos en granjas comerciales."
+    },
+    "sw": {
+      "description": "Kwa kulea kodolea na kuzalisha mayai yao. Vizunzi vya kodolea vilivyopangwa hutoa makazi, ulishaji, kunywa na ukusanyaji wa mayai kwenye shamba la biashara."
+    },
+    "ar": {
+      "description": "لتربية السمان وإنتاج بيضه. توفر الأقفاص المتراكمة للسممان الإيواء والتغذية والشرب وجمع البيض في المزارع التجارية."
+    }
+  }
+}

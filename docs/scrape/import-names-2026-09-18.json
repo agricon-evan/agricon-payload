@@ -1,0 +1,72 @@
+{
+  "_note": "53 条链接的导入映射：sku -> [站点子分类 slug, 型号级名称]。名称由 Alibaba 标题裁到型号级（保留容量/层数/功率等型号信息，去掉关键词堆砌）。已在站的 14 条按同一名称改名。",
+  "_updated": "2026-09-21",
+  "_removed": {
+    "why": "客户点名删掉的条目。从映射里移除，否则重跑 import-links.ts 会把它们重新建回来。",
+    "items": {
+      "1601735205449": "A-Type Layer Cage 120 Birds（2026-09-21 表单删除）",
+      "1601915577837": "Half-Set Layer Cage 48–160 Birds（2026-09-21 表单删除）",
+      "1601831518613": "Adjustable Farrowing Crate（2026-09-21 表单删除）"
+    }
+  },
+  "products": {
+    "1601945180944": ["welded-wire-mesh", "Galvanized Welded Wire Mesh Roll"],
+    "1601944799327": ["cattle-fence", "Flexible Cattle Fence 4ft × 164ft"],
+    "1601944515834": ["chain-link-fence", "Galvanized Chain Link Fence"],
+    "1601944735172": ["hexagonal-wire-mesh", "Hexagonal Wire Mesh Roll"],
+
+    "1601933366926": ["tractor", "4WD Agricultural Wheel Tractor"],
+    "1601938151346": ["harvester", "Mini Crawler Combine Harvester"],
+    "1601933374240": ["tricycle", "Diesel Farm Tricycle"],
+    "1601933278692": ["walking-tractor", "8HP Walking Tractor"],
+
+    "1601824135974": ["plucker-machine", "Stainless Steel Chicken Plucker"],
+
+    "10000042141202": ["pellet-machine", "Diesel/Gasoline Feed Pellet Mill"],
+    "1601935108270": ["extruder-machine", "DGP Series Floating Fish Feed Extruder"],
+    "1601772737736": ["grinding-machine", "Hammer Mill Grinder with Cyclone"],
+    "1601913964470": ["grinding-machine", "Diesel Disk Mill Grinder 800kg/h"],
+    "1601768922710": ["grass-chaff-machine", "Electric Grass Chaff Cutter 0.5t/h"],
+    "10000042150053": ["grass-chaff-machine", "3-in-1 Chaff Cutter 1–10t/h"],
+    "1601768966984": ["grass-chaff-machine", "High-Ejection Chaff Cutter 5t/h"],
+    "1601779625220": ["mixing-machine", "Feed Mixing & Grinding Machine 250–2000kg"],
+    "1601779617450": ["mixing-machine", "Compact Animal Feed Mixer 50–300kg"],
+    "10000042134456": ["screw-conveyor", "Industrial Screw Conveyor Auger"],
+    "1601919763874": ["vibrating-screen", "Air Suction Crop Sizing Machine"],
+    "1601916649740": ["peanut-sheller", "Double Roller Peanut Sheller"],
+    "1601916496658": ["threshing-machine", "Grain Thresher 200kg/h"],
+    "1601916551061": ["threshing-machine", "Electric Corn Shelling Machine 2500kg/h"],
+    "1601916619740": ["threshing-machine", "Corn Sheller & Peeler 1500kg/h"],
+    "1601916605628": ["threshing-machine", "Diesel Corn Thresher 8HP"],
+
+    "1601822224721": ["farrow-pen", "Pig Gestation Crate"],
+    "1601838959014": ["rabbit-cage", "3-Tier H-Type Rabbit Cage"],
+    "1601822874275": ["rabbit-cage", "European-Style H-Type Rabbit Cage"],
+
+    "1601785527984": ["layer-cage", "H-Type Layer Cage"],
+    "1601785934191": ["layer-cage", "H-Type Layer Cage"],
+    "1601789038091": ["broiler-cage", "H-Frame Automatic Broiler Cage"],
+    "1601788933596": ["broiler-cage", "H-Type Broiler Battery Cage 96–160 Birds"],
+    "1601790432754": ["chick-cage", "H-Type Stacked Chick Cage"],
+    "1601807769415": ["automatic-cage", "A-Type Automatic Layer Cage"],
+    "1601805391441": ["automatic-cage", "H-Frame Automatic Layer Cage 128 Birds"],
+
+    "1601937988223": ["hatcher-equipment", "Goose & Ostrich Egg Incubator 70–420"],
+    "1601771332311": ["hatcher-equipment", "Automatic Plastic Egg Incubator 48–96"],
+    "1601728601889": ["hatcher-equipment", "Hatchery Incubator Equipment"],
+    "1601769255817": ["hatcher-equipment", "Automatic Plastic Egg Incubator 24–500"],
+    "10000041874070": ["hatcher-equipment", "Smart Poultry Egg Hatching Machine"],
+    "1601752319274": ["hatcher-equipment", "Fully Automatic Plastic Egg Incubator 24–500"],
+    "1601757418932": ["hatcher-equipment", "Smart Digital Egg Incubator 64–400"],
+
+    "1601915552344": ["floor-rearing-equipment", "Automatic Poultry Feeding Line"],
+    "1601939080774": ["floor-rearing-equipment", "10L Automatic Bell Drinker"],
+
+    "1601809108971": ["cage-accessories", "Plasson Bell Drinker"],
+    "1601809649562": ["breeding-accessories", "Automatic Chicken Drinking Bowl"],
+    "1601812264735": ["breeding-accessories", "Poultry Nipple Drinking Cup"],
+    "1601914188612": ["livestock-accessories", "Plastic Animal Ear Tags"],
+    "1601817218337": ["breeding-accessories", "Poultry Water Pressure Regulator"],
+    "1601809298094": ["breeding-accessories", "Plastic Poultry Transport Crate"]
+  }
+}

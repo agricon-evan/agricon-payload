@@ -1,0 +1,75 @@
+{
+  "_note": "2026-09-22 客户让 agriculture-machinery 卡片名对齐 taxonomy：Screw Conveyor→Screw Elevator、Threshing Machine→Multifunctional Thresher，其余 5 语种一起跟上。三条卡片的简介原本是「X — agricultural equipment for modern farms.」模板句，一并换成与同分类其它卡片同风格的说明（peanut-sheller 只换简介，名字不动）。用 scripts/set-subcategory-copy.ts 落库。",
+  "screw-conveyor": {
+    "en": {
+      "name": "Screw Elevator",
+      "description": "For lifting grain, mash and pellets between machines in a feed line."
+    },
+    "ru": {
+      "name": "Шнековые подъёмники",
+      "description": "Для подачи зерна, шрота и гранул между машинами линии."
+    },
+    "fr": {
+      "name": "Élévateurs à vis",
+      "description": "Pour transférer céréales, tourteaux et granulés entre les machines d'une ligne."
+    },
+    "es": {
+      "name": "Elevadores de tornillo",
+      "description": "Para transportar grano, torta y pellets entre las máquinas de una línea."
+    },
+    "sw": {
+      "name": "Vipandishi vya Skrubu",
+      "description": "Kwa kupandisha nafaka, mlo uliosagwa na pellet kati ya mashine za mstari."
+    },
+    "ar": {
+      "name": "الرافعات اللولبية",
+      "description": "لنقل الحبوب والأعلاف المطحونة والمحببات بين آلات خط الإنتاج."
+    }
+  },
+  "threshing-machine": {
+    "en": {
+      "name": "Multifunctional Thresher",
+      "description": "For threshing maize, wheat, rice, sorghum, soybean and beans."
+    },
+    "ru": {
+      "name": "Многофункциональные молотилки",
+      "description": "Для обмолота кукурузы, пшеницы, риса, сорго, сои и фасоли."
+    },
+    "fr": {
+      "name": "Batteuses multifonctions",
+      "description": "Pour battre le maïs, le blé, le riz, le sorgho, le soja et les haricots."
+    },
+    "es": {
+      "name": "Trilladoras multifuncionales",
+      "description": "Para trillar maíz, trigo, arroz, sorgo, soja y frijol."
+    },
+    "sw": {
+      "name": "Mashine za Kukota za Kazi Nyingi",
+      "description": "Kwa kukota mahindi, ngano, mchele, mtama, soya na hudhurishi."
+    },
+    "ar": {
+      "name": "آلات درس متعددة الوظائف",
+      "description": "لدرس الذرة والقمح والأرز والذرة الرفيعة وفول الصويا والبقوليات."
+    }
+  },
+  "peanut-sheller": {
+    "en": {
+      "description": "For shelling dried peanuts out of their husks in one pass."
+    },
+    "ru": {
+      "description": "Для лущения сушёного арахиса от скорлупы за один проход."
+    },
+    "fr": {
+      "description": "Pour décortiquer l'arachide séchée en une seule opération."
+    },
+    "es": {
+      "description": "Para descascarar el cacahuete seco en una sola pasada."
+    },
+    "sw": {
+      "description": "Kwa kuchana karanga zilizokaushwa na maganda yake kwa mpigo mmoja."
+    },
+    "ar": {
+      "description": "لفصل حبات الفول السوداني المجفف عن قشورها في عملية واحدة."
+    }
+  }
+}
