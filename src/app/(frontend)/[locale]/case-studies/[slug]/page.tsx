@@ -1,4 +1,5 @@
 import type { Locale } from '@/i18n/config'
+import { getTranslations } from '@/i18n/config'
 import { getCaseStudies, getSolutions } from '@/lib/payload'
 import { RichText } from '@payloadcms/richtext-lexical/react'
 import CtaSection from '@/components/CtaSection'
@@ -11,7 +12,7 @@ import { caseStudyImages, caseStudyGalleries } from '@/lib/images'
 import MediaImage from '@/components/ui/MediaImage'
 import ImageGallery from '@/components/ui/ImageGallery'
 import type { Metadata } from 'next'
-import { localizedAlternates } from '@/lib/seo'
+import { DEFAULT_OG_IMAGE, localizedAlternates } from '@/lib/seo'
 
 interface Props {
   params: Promise<{ locale: string; slug: string }>
@@ -32,16 +33,26 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const cs = cases.find((item) => item.slug === slug)
   const summary = (cs as { summary?: unknown } | undefined)?.summary
   const subtitle = (cs as { subtitle?: unknown } | undefined)?.subtitle
+  const tPages = getTranslations(locale as Locale, 'pages') as {
+    caseStudies?: { meta?: { title?: string; description?: string } }
+  }
   const desc =
     typeof summary === 'string' && summary.trim().length > 0
       ? summary.trim()
       : typeof subtitle === 'string' && subtitle.trim().length > 0
         ? subtitle.trim()
-        : 'How farms specified, ordered and commissioned Agricon equipment.'
+        : tPages.caseStudies?.meta?.description || 'How farms specified, ordered and commissioned Agricon equipment.'
+  const title = (cs as { title?: string } | undefined)?.title || tPages.caseStudies?.meta?.title || 'Case Studies'
   return {
-    title: (cs as { title?: string } | undefined)?.title || 'Case Studies',
+    title,
     description: desc,
     alternates: localizedAlternates(locale as Locale, `/case-studies/${slug}`),
+    openGraph: {
+      type: 'article',
+      title,
+      description: desc,
+      images: [{ url: DEFAULT_OG_IMAGE, width: 1200, height: 630, alt: 'Agricon' }],
+    },
   }
 }
 
@@ -67,6 +78,7 @@ export default async function CaseStudyDetailPage({ params }: Props) {
   return (
     <>
       <PageHero
+        locale={locale as Locale}
         title={cs.title}
         description={cs.subtitle || cs.summary || 'Real project, real results.'}
         breadcrumb={`${locale.toUpperCase()} / Case Studies / ${cs.title}`}
@@ -78,7 +90,7 @@ export default async function CaseStudyDetailPage({ params }: Props) {
         <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1.45fr)_minmax(300px,0.75fr)] gap-8 lg:gap-12 items-start">
           <Reveal>
             {caseImages.length > 0 ? (
-              <ImageGallery images={caseImages} aspect="4-3" priority />
+              <ImageGallery images={caseImages} aspect="4-3" priority locale={locale} />
             ) : (
               <div className="aspect-[4/3] rounded-lg bg-[var(--color-muted)] flex items-center justify-center">
                 <Icon name="compass" size={48} className="text-[var(--color-text-secondary)]/30" />

@@ -1,14 +1,23 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import type { Locale } from '@/i18n/config'
 import { getUiString } from '@/i18n/ui'
+import { HONEYPOT_FIELD, RENDERED_AT_FIELD } from '@/lib/anti-spam-constants'
 import Icon from '@/components/ui/Icon'
 
 export default function Newsletter({ locale }: { locale: Locale }) {
   const u = (key: string) => getUiString(locale, key)
   const [email, setEmail] = useState('')
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+  // Anti-spam: a hidden field no human fills, plus the time the form was first
+  // rendered (see lib/anti-spam.ts). A ref keeps this out of the render cycle.
+  const honeypotRef = useRef<HTMLInputElement>(null)
+  // Seeded in an effect — `Date.now()` during render is a purity violation.
+  const renderedAtRef = useRef<number>(0)
+  useEffect(() => {
+    renderedAtRef.current = Date.now()
+  }, [])
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
@@ -18,11 +27,18 @@ export default function Newsletter({ locale }: { locale: Locale }) {
       const res = await fetch('/api/newsletterSubscribers', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({
+          email,
+          [HONEYPOT_FIELD]: honeypotRef.current?.value ?? '',
+          [RENDERED_AT_FIELD]: String(renderedAtRef.current),
+        }),
       })
       if (!res.ok) throw new Error()
       setStatus('success')
       setEmail('')
+      // Refresh the token so a second signup in the same session is not flagged
+      // as a stale/replayed submission.
+      renderedAtRef.current = Date.now()
     } catch {
       setStatus('error')
     }
@@ -34,7 +50,7 @@ export default function Newsletter({ locale }: { locale: Locale }) {
         <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-8 lg:gap-16 items-center">
           {/* Editorial information block — flat, spacious, print-inspired */}
           <div>
-            <span className="eyebrow text-[var(--color-primary)]">AGRICON Updates</span>
+            <span className="eyebrow text-[var(--color-primary)]">{u('newsletterEyebrow')}</span>
             <h2 className="mt-3 text-3xl md:text-4xl font-bold leading-[1.08] tracking-[-0.015em] text-[var(--color-text)]">
               {u('newsletterTitle')}
             </h2>
@@ -43,9 +59,9 @@ export default function Newsletter({ locale }: { locale: Locale }) {
               {u('newsletterDesc')}
             </p>
             <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-xs font-medium uppercase tracking-[0.08em] text-[var(--color-primary-light)]">
-              <span>Product updates</span>
-              <span>Farm insights</span>
-              <span>Export support</span>
+              <span>{u('newsletterChipProduct')}</span>
+              <span>{u('newsletterChipInsights')}</span>
+              <span>{u('newsletterChipExport')}</span>
             </div>
           </div>
 
@@ -56,8 +72,8 @@ export default function Newsletter({ locale }: { locale: Locale }) {
                 <Icon name="mail" size={19} />
               </span>
               <div>
-                <h3 className="text-base md:text-lg font-semibold text-[var(--color-text)]">Get practical updates</h3>
-                <p className="mt-1 text-sm text-[var(--color-text-secondary)]">One useful update at a time. No unnecessary noise.</p>
+                <h3 className="text-base md:text-lg font-semibold text-[var(--color-text)]">{u('newsletterHeading')}</h3>
+                <p className="mt-1 text-sm text-[var(--color-text-secondary)]">{u('newsletterSub')}</p>
               </div>
             </div>
             <form onSubmit={handleSubmit} className="mt-6">
@@ -82,6 +98,20 @@ export default function Newsletter({ locale }: { locale: Locale }) {
                   {status === 'loading' ? '...' : u('newsletterSubscribe')}
                   {status !== 'loading' && <Icon name="arrow-right" size={16} className="text-[var(--color-accent-soft)]" />}
                 </button>
+              </div>
+              {/* Anti-spam honeypot. Hidden from sighted users AND from assistive
+                  technology (aria-hidden + tabIndex -1) so it never becomes a
+                  confusing required field. Bots that parse the DOM fill it in. */}
+              <div aria-hidden="true" className="hidden">
+                <label htmlFor="newsletter-company-website">Company website</label>
+                <input
+                  id="newsletter-company-website"
+                  ref={honeypotRef}
+                  type="text"
+                  name={HONEYPOT_FIELD}
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
               </div>
             </form>
             {status === 'success' && (

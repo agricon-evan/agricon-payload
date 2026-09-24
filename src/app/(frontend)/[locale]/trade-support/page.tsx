@@ -26,38 +26,50 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function TradeSupportPage({ params }: Props) {
   const { locale } = await params
-  const heroImage = await resolvePageHeroImage('trade-support', '/images/heroes/farm-machinery.jpg')
+  const heroImage = await resolvePageHeroImage('trade-support', '/images/heroes/farm-machinery.jpg', locale)
   const t = getTranslations(locale as Locale, 'common')
   const tTrade = getTranslations(locale as Locale, 'trade-support')
   const tHome = getTranslations(locale as Locale, 'home')
 
+  // 卡片文案来自 `trade-support.*.items.<key>`；`title`/`desc`/`highlights` 仅作为英文回退。
   const services = [
-    { icon: 'truck', title: 'Export Logistics', desc: 'Full export documentation, container loading supervision, and sea/air freight coordination to your port.', highlights: ['Bill of Lading', 'Certificate of Origin', 'Phytosanitary Cert', 'Fumigation Cert'] },
-    { icon: 'tag', title: 'OEM & ODM', desc: 'Custom branding, logo, color, and specifications on standard and custom equipment models.', highlights: ['Private Labeling', 'Custom Colors', 'Custom Capacity', 'Logo Etching'] },
-    { icon: 'credit-card', title: 'Flexible Payment', desc: 'Secure international payment methods with options suitable for new and repeat customers.', highlights: ['T/T Wire Transfer', 'L/C Letter of Credit', '30% Deposit', 'Milestone Payments'] },
-    { icon: 'gear', title: 'Installation Support', desc: 'On-site technical support, installation drawings, video guidance, and training for your maintenance team.', highlights: ['Video Tutorials', 'On-site Training', 'Spare Parts Kit', '24/7 WhatsApp Support'] },
-    { icon: 'box', title: 'Packaging', desc: 'Equipment is packed for ocean freight — moisture-resistant, properly labeled, and optimized for container efficiency.', highlights: ['Fumigated Wood', 'Moisture Barrier', 'Container Optimization', 'Custom Labeling'] },
-    { icon: 'shield', title: 'After-sales Warranty', desc: 'Comprehensive warranty on all equipment with prompt replacement of any defective parts.', highlights: ['18-Month Warranty', 'Lifetime Spare Parts', 'Remote Diagnostics', 'Response in 24h'] },
+    { key: 'logistics', icon: 'truck', title: 'Export Logistics', desc: 'Full export documentation, container loading supervision, and sea/air freight coordination to your port.', highlights: ['Bill of Lading', 'Certificate of Origin', 'Phytosanitary Cert', 'Fumigation Cert'] },
+    { key: 'oemOdm', icon: 'tag', title: 'OEM & ODM', desc: 'Custom branding, logo, color, and specifications on standard and custom equipment models.', highlights: ['Private Labeling', 'Custom Colors', 'Custom Capacity', 'Logo Etching'] },
+    { key: 'payment', icon: 'credit-card', title: 'Flexible Payment', desc: 'Secure international payment methods with options suitable for new and repeat customers.', highlights: ['T/T Wire Transfer', 'L/C Letter of Credit', '30% Deposit', 'Milestone Payments'] },
+    { key: 'installation', icon: 'gear', title: 'Installation Support', desc: 'On-site technical support, installation drawings, video guidance, and training for your maintenance team.', highlights: ['Video Tutorials', 'On-site Training', 'Spare Parts Kit', '24/7 WhatsApp Support'] },
+    { key: 'packaging', icon: 'box', title: 'Packaging', desc: 'Equipment is packed for ocean freight — moisture-resistant, properly labeled, and optimized for container efficiency.', highlights: ['Fumigated Wood', 'Moisture Barrier', 'Container Optimization', 'Custom Labeling'] },
+    { key: 'warranty', icon: 'shield', title: 'After-sales Warranty', desc: 'Comprehensive warranty on all equipment with prompt replacement of any defective parts.', highlights: ['18-Month Warranty', 'Lifetime Spare Parts', 'Remote Diagnostics', 'Response in 24h'] },
   ]
 
   const steps = [
-    { num: '01', title: 'Consultation', desc: 'Tell us your farm size, birds, and goals. We help you select the right equipment and layout.' },
-    { num: '02', title: 'Design & Quote', desc: 'Receive a detailed quotation with equipment list, 3D layout, and shipping estimate.' },
-    { num: '03', title: 'Order & Manufacture', desc: 'Upon confirmation, manufacturing begins with quality control checks at each stage.' },
-    { num: '04', title: 'Inspection & Shipping', desc: 'Final inspection at our factory before loading. Full documentation provided for customs.' },
-    { num: '05', title: 'Installation', desc: 'Our technical team guides installation remotely or on-site, and trains your staff.' },
-    { num: '06', title: 'After-sales', desc: 'Lifetime spare parts supply and technical support. We stay with your farm as it grows.' },
+    { key: 'consultation', num: '01', title: 'Consultation', desc: 'Tell us your farm size, birds, and goals. We help you select the right equipment and layout.' },
+    { key: 'designQuote', num: '02', title: 'Design & Quote', desc: 'Receive a detailed quotation with equipment list, 3D layout, and shipping estimate.' },
+    { key: 'orderManufacture', num: '03', title: 'Order & Manufacture', desc: 'Upon confirmation, manufacturing begins with quality control checks at each stage.' },
+    { key: 'inspectionShipping', num: '04', title: 'Inspection & Shipping', desc: 'Final inspection at our factory before loading. Full documentation provided for customs.' },
+    { key: 'installation', num: '05', title: 'Installation', desc: 'Our technical team guides installation remotely or on-site, and trains your staff.' },
+    { key: 'afterSales', num: '06', title: 'After-sales', desc: 'Lifetime spare parts supply and technical support. We stay with your farm as it grows.' },
   ]
 
+  // `code` (FOB/CIF/CFR) is an Incoterms acronym — identical in every language, so it stays literal.
   const incoterms = [
-    { code: 'FOB', title: 'Free on Board', desc: 'Standard for most customers. We handle export; you handle shipping from our port.' },
-    { code: 'CIF', title: 'Cost, Insurance, Freight', desc: 'We arrange shipping and insurance to your destination port.' },
-    { code: 'CFR', title: 'Cost and Freight', desc: 'Similar to CIF but without cargo insurance coverage.' },
+    { key: 'fob', code: 'FOB', title: 'Free on Board', desc: 'Standard for most customers. We handle export; you handle shipping from our port.' },
+    { key: 'cif', code: 'CIF', title: 'Cost, Insurance, Freight', desc: 'We arrange shipping and insurance to your destination port.' },
+    { key: 'cfr', code: 'CFR', title: 'Cost and Freight', desc: 'Similar to CIF but without cargo insurance coverage.' },
+  ]
+
+  // Export & trade support 五步卡片（画册出口流程）
+  const exportSteps = [
+    { key: 'orderConfirmation', title: 'Order Confirmation', desc: 'All specifications, quantities and shipping requirements are reviewed and confirmed with the customer.' },
+    { key: 'exportPacking', title: 'Export Packing', desc: 'Products are securely packed and clearly labeled for international transportation.' },
+    { key: 'containerLoading', title: 'Container Loading', desc: 'Loading plans are organized based on product size and order volume to maximize space and stability.' },
+    { key: 'shippingSupport', title: 'Shipping Support', desc: 'All necessary documents and final shipment arrangements are coordinated before dispatch.' },
+    { key: 'deliverySupport', title: 'Delivery Support', desc: 'Shipment coordination from factory preparation to dispatch, including mixed-category orders.' },
   ]
 
   return (
     <>
       <PageHero
+        locale={locale as Locale}
         title={t.nav?.tradeSupport || 'Trade Support'}
         description={tTrade.hero?.description || 'Complete export support for global farm equipment buyers'}
         breadcrumb={`${tHome.breadcrumb?.home || 'Home'} / ${t.nav?.tradeSupport || 'Trade Support'}`}
@@ -66,19 +78,19 @@ export default async function TradeSupportPage({ params }: Props) {
 
       <section className="max-w-7xl mx-auto px-6 py-16 md:py-24">
         <Reveal>
-          <SectionHeading eyebrow="What We Handle" title="End-to-end Trade Support" description="From manufacturing to your farm gate — we manage the logistics so you can focus on farming." />
+          <SectionHeading eyebrow={tTrade.sections?.services?.eyebrow || 'What We Handle'} title={tTrade.sections?.services?.title || 'End-to-end Trade Support'} description={tTrade.sections?.services?.description || 'From manufacturing to your farm gate — we manage the logistics so you can focus on farming.'} />
         </Reveal>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 mt-10">
           {services.map((s, i) => (
-            <Reveal key={s.title} delay={(i % 3) * 80} className="h-full">
+            <Reveal key={s.key} delay={(i % 3) * 80} className="h-full">
               <div className="card card-hover p-6 md:p-8 h-full">
                 <div className="w-11 h-11 rounded-md bg-[var(--color-primary)]/8 text-[var(--color-primary)] flex items-center justify-center mb-5">
                   <Icon name={s.icon} size={22} />
                 </div>
-                <h3 className="text-[var(--color-text)]">{s.title}</h3>
-                <p className="mt-2 text-sm text-[var(--color-text-secondary)] leading-relaxed">{s.desc}</p>
+                <h3 className="text-[var(--color-text)]">{tTrade.services?.items?.[s.key]?.title || s.title}</h3>
+                <p className="mt-2 text-sm text-[var(--color-text-secondary)] leading-relaxed">{tTrade.services?.items?.[s.key]?.description || s.desc}</p>
                 <ul className="mt-4 space-y-1.5">
-                  {s.highlights.map(h => (
+                  {(tTrade.services?.items?.[s.key]?.highlights || s.highlights).map((h: string) => (
                     <li key={h} className="text-xs text-[var(--color-text-secondary)] flex items-center gap-2">
                       <Icon name="check" size={12} className="text-[var(--color-primary)] flex-shrink-0" />
                       {h}
@@ -94,7 +106,7 @@ export default async function TradeSupportPage({ params }: Props) {
       <section className="bg-[var(--color-surface-alt)] py-16 md:py-24">
         <div className="max-w-4xl mx-auto px-6">
           <Reveal>
-            <SectionHeading eyebrow="Export & Trade Support" title="From Order Confirmation to International Shipment" description="AGRICON coordinates packing, loading, documentation and delivery support for overseas buyers — so your order arrives exactly as confirmed." />
+            <SectionHeading eyebrow={tTrade.sections?.export?.eyebrow || 'Export & Trade Support'} title={tTrade.sections?.export?.title || 'From Order Confirmation to International Shipment'} description={tTrade.sections?.export?.description || 'AGRICON coordinates packing, loading, documentation and delivery support for overseas buyers — so your order arrives exactly as confirmed.'} />
           </Reveal>
           {/* 画册出口实拍 — p121 */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-8">
@@ -103,18 +115,12 @@ export default async function TradeSupportPage({ params }: Props) {
             ))}
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-5 mt-10">
-          {[
-            { title: 'Order Confirmation', desc: 'All specifications, quantities and shipping requirements are reviewed and confirmed with the customer.' },
-            { title: 'Export Packing', desc: 'Products are securely packed and clearly labeled for international transportation.' },
-            { title: 'Container Loading', desc: 'Loading plans are organized based on product size and order volume to maximize space and stability.' },
-            { title: 'Shipping Support', desc: 'All necessary documents and final shipment arrangements are coordinated before dispatch.' },
-            { title: 'Delivery Support', desc: 'Shipment coordination from factory preparation to dispatch, including mixed-category orders.' },
-          ].map((s, i) => (
-            <Reveal key={s.title} delay={i * 70} className="h-full">
+          {exportSteps.map((s, i) => (
+            <Reveal key={s.key} delay={i * 70} className="h-full">
               <div className="card card-hover p-5 h-full">
                 <span className="text-xs font-bold text-[var(--color-primary)] tabular-nums">{String(i + 1).padStart(2, '0')}</span>
-                <h3 className="mt-2 text-sm font-semibold text-[var(--color-text)]">{s.title}</h3>
-                <p className="mt-2 text-xs text-[var(--color-text-secondary)] leading-relaxed">{s.desc}</p>
+                <h3 className="mt-2 text-sm font-semibold text-[var(--color-text)]">{tTrade.exportSteps?.items?.[s.key]?.title || s.title}</h3>
+                <p className="mt-2 text-xs text-[var(--color-text-secondary)] leading-relaxed">{tTrade.exportSteps?.items?.[s.key]?.description || s.desc}</p>
               </div>
             </Reveal>
           ))}
@@ -125,16 +131,16 @@ export default async function TradeSupportPage({ params }: Props) {
       <section className="bg-[var(--color-surface-alt)] py-16 md:py-24">
         <div className="max-w-4xl mx-auto px-6">
           <Reveal>
-            <SectionHeading eyebrow="How It Works" title="From Inquiry to Installation" />
+            <SectionHeading eyebrow={tTrade.sections?.process?.eyebrow || 'How It Works'} title={tTrade.sections?.process?.title || 'From Inquiry to Installation'} />
           </Reveal>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10">
             {steps.map((s, i) => (
-              <Reveal key={s.num} delay={(i % 2) * 80} className="h-full">
+              <Reveal key={s.key} delay={(i % 2) * 80} className="h-full">
                 <div className="card card-hover flex gap-5 p-6 h-full">
                   <span className="text-2xl font-bold text-[var(--color-primary)]/25 flex-shrink-0 tabular-nums">{s.num}</span>
                   <div>
-                    <h3 className="text-[var(--color-text)]">{s.title}</h3>
-                    <p className="mt-1 text-sm text-[var(--color-text-secondary)] leading-relaxed">{s.desc}</p>
+                    <h3 className="text-[var(--color-text)]">{tTrade.steps?.items?.[s.key]?.title || s.title}</h3>
+                    <p className="mt-1 text-sm text-[var(--color-text-secondary)] leading-relaxed">{tTrade.steps?.items?.[s.key]?.description || s.desc}</p>
                   </div>
                 </div>
               </Reveal>
@@ -145,7 +151,7 @@ export default async function TradeSupportPage({ params }: Props) {
 
       <section className="max-w-4xl mx-auto px-6 py-16 md:py-24">
         <Reveal>
-          <SectionHeading eyebrow="Incoterms" title="Shipping Terms We Offer" description="Choose the term that works best for your import arrangement." />
+          <SectionHeading eyebrow={tTrade.sections?.incoterms?.eyebrow || 'Incoterms'} title={tTrade.sections?.incoterms?.title || 'Shipping Terms We Offer'} description={tTrade.sections?.incoterms?.description || 'Choose the term that works best for your import arrangement.'} />
         </Reveal>
         <div className="space-y-4 mt-10">
           {incoterms.map((i, idx) => (
@@ -155,8 +161,8 @@ export default async function TradeSupportPage({ params }: Props) {
                   {i.code}
                 </span>
                 <div>
-                  <h3 className="text-[var(--color-text)]">{i.title}</h3>
-                  <p className="mt-1 text-sm text-[var(--color-text-secondary)] leading-relaxed">{i.desc}</p>
+                  <h3 className="text-[var(--color-text)]">{tTrade.incoterms?.items?.[i.key]?.title || i.title}</h3>
+                  <p className="mt-1 text-sm text-[var(--color-text-secondary)] leading-relaxed">{tTrade.incoterms?.items?.[i.key]?.description || i.desc}</p>
                 </div>
               </div>
             </Reveal>

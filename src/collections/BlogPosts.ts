@@ -19,7 +19,11 @@ export const BlogPosts: CollectionConfig = {
     { name: 'coverImage', type: 'relationship', relationTo: 'media' },
     { name: 'author', type: 'text' },
     { name: 'tags', type: 'relationship', relationTo: 'blogTags', hasMany: true },
-    { name: 'published', type: 'checkbox', defaultValue: false, admin: { position: 'sidebar', description: 'Unpublished posts are hidden from the website.' } },
+    // Indexed: every public read filters on this column
+    // (`where: { published: { equals: true } }` in lib/payload.ts and sitemap.ts).
+    // Payload auto-indexes unique/relationship/timestamp fields but not plain
+    // checkbox filters.
+    { name: 'published', type: 'checkbox', defaultValue: false, index: true, admin: { position: 'sidebar', description: 'Unpublished posts are hidden from the website.' } },
   ],
   timestamps: true,
 }

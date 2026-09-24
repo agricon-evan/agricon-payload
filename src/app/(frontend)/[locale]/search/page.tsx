@@ -33,6 +33,10 @@ export default async function SearchPage({ params }: Props) {
       noResultsTitle={t.noResults?.title || 'No results found'}
       noResultsDesc={t.noResults?.description || 'Try different keywords or contact us directly.'}
       contactCta={tNav.cta?.getQuote || 'Contact Us'}
+      searchingLabel={t.searching || 'Searching...'}
+      loadingLabel={t.loading || 'Loading...'}
+      typeProduct={t.typeProduct || 'Product'}
+      typeSolution={t.typeSolution || 'Solution'}
     />
   )
 }

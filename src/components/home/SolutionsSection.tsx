@@ -5,12 +5,14 @@ import { getTranslations } from '@/i18n/config'
 import Icon from '@/components/ui/Icon'
 import Reveal from '@/components/ui/Reveal'
 import SectionHeading from '@/components/ui/SectionHeading'
+import { homeCopy } from '@/lib/home-copy'
 
 interface Props {
   locale: Locale
 }
 
 export default async function SolutionsSection({ locale }: Props) {
+  const h = homeCopy(locale).solutions ?? {}
   const solutions = await getSolutions(locale)
   const t = getTranslations(locale, 'common')
   const lp = `/${locale}`
@@ -36,8 +38,8 @@ export default async function SolutionsSection({ locale }: Props) {
         <Reveal>
           <SectionHeading
             eyebrow={t.nav?.solutions || 'Solutions'}
-            title={<>Turnkey <span className="split-accent">Farm Solutions</span></>}
-            description="We combine project matching, coordinated equipment supply and export support for practical agricultural operations."
+            title={<>{h.titleLead || 'Turnkey'} <span className="split-accent">{h.titleAccent || 'Farm Solutions'}</span></>}
+            description={h.description || 'We combine project matching, coordinated equipment supply and export support for practical agricultural operations.'}
           />
         </Reveal>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 mt-10">

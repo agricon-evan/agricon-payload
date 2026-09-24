@@ -2,12 +2,14 @@ import Icon from '@/components/ui/Icon'
 import Reveal from '@/components/ui/Reveal'
 import SectionHeading from '@/components/ui/SectionHeading'
 import { getSiteSettings } from '@/lib/payload'
+import { homeCopy } from '@/lib/home-copy'
 
 // Homepage section — "Value, Calculated"
 // From company principle 04: 价值必须尽可能算出来 (Value must be calculated, not claimed)
 // We avoid "high quality / good service" adjectives and show measurable outcomes instead.
-export default async function ValueCalculated() {
-  const settings = await getSiteSettings()
+export default async function ValueCalculated({ locale }: { locale: string }) {
+  const h = homeCopy(locale).value ?? {}
+  const settings = await getSiteSettings(locale)
   const fallback = [
     {
       icon: 'trending-down',
@@ -48,9 +50,9 @@ export default async function ValueCalculated() {
     <section className="max-w-7xl mx-auto px-6 py-16 md:py-24">
       <Reveal>
         <SectionHeading
-          eyebrow="Value, Calculated"
-          title={<>We Don&apos;t Say Quality. We <span className="split-accent">Show Numbers.</span></>}
-          description="Every claim we make is backed by a measurable outcome on your farm — because trust is built with evidence, not adjectives."
+          eyebrow={h.eyebrow || 'Value, Calculated'}
+          title={<>{h.titleLead || "We Don't Say Quality. We"} <span className="split-accent">{h.titleAccent || 'Show Numbers.'}</span></>}
+          description={h.description || 'Every claim we make is backed by a measurable outcome on your farm — because trust is built with evidence, not adjectives.'}
         />
       </Reveal>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6 mt-10">

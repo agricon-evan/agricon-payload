@@ -2,9 +2,11 @@ import Reveal from '@/components/ui/Reveal'
 import Icon from '@/components/ui/Icon'
 import SectionHeading from '@/components/ui/SectionHeading'
 import { getSiteSettings } from '@/lib/payload'
+import { homeCopy } from '@/lib/home-copy'
 
-export default async function Testimonials() {
-  const settings = await getSiteSettings()
+export default async function Testimonials({ locale }: { locale: string }) {
+  const h = homeCopy(locale).testimonials ?? {}
+  const settings = await getSiteSettings(locale)
   const fallback = [
     {
       quote: 'Layer cages, feeding, drinking and poultry accessories coordinated for commercial egg production and farm expansion.',
@@ -29,13 +31,16 @@ export default async function Testimonials() {
     <section className="bg-[var(--color-surface-alt)] py-20 md:py-28">
       <div className="max-w-7xl mx-auto px-6">
         <Reveal>
-          <SectionHeading eyebrow="Testimonials" title={<>Trusted by <span className="split-accent">Farmers</span> Worldwide</>} />
+                  <SectionHeading
+          eyebrow={h.eyebrow || 'Testimonials'}
+          title={<>{h.titleLead || 'Trusted by'} <span className="split-accent">{h.titleAccent || 'Farmers'}</span> {h.titleTail || 'Worldwide'}</>}
+        />
         </Reveal>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6 mt-10">
           {testimonials.map((t, i) => (
             <Reveal key={t.name} delay={i * 100} className="h-full">
               <figure className="card card-hover p-6 md:p-8 h-full flex flex-col relative overflow-hidden">
-                <div className="absolute right-5 top-5 flex gap-0.5 text-[var(--color-accent)]" aria-label="5 star rating">
+                <div className="absolute right-5 top-5 flex gap-0.5 text-[var(--color-accent)]" aria-label={h.starRating || '5 star rating'}>
                   {[1, 2, 3, 4, 5].map(star => <Icon key={star} name="star" size={13} strokeWidth={2.2} />)}
                 </div>
                 <Icon name="quote" size={30} className="text-[var(--color-primary)]/30 mb-5" />

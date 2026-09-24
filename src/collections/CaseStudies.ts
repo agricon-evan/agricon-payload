@@ -29,7 +29,8 @@ export const CaseStudies: CollectionConfig = {
     { name: 'keyResult', type: 'text', localized: true, admin: { description: 'Headline result, e.g. “+30% egg production”.' } },
     { name: 'image', type: 'relationship', relationTo: 'media' },
     { name: 'featured', type: 'checkbox', defaultValue: false, admin: { position: 'sidebar' } },
-    { name: 'published', type: 'checkbox', defaultValue: true, admin: { position: 'sidebar' } },
+    // Indexed: filtered in every public read (lib/payload.ts, sitemap.ts).
+    { name: 'published', type: 'checkbox', defaultValue: true, index: true, admin: { position: 'sidebar' } },
     { name: 'sortOrder', type: 'number', defaultValue: 0, admin: { position: 'sidebar', description: 'Lower numbers appear first.' } },
   ],
   timestamps: true,

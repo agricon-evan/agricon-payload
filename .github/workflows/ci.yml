@@ -7,7 +7,7 @@ on:
 
 jobs:
   check:
-    name: Lint + Typecheck + Build
+    name: Lint + Typecheck + Test + Build
     runs-on: ubuntu-latest
     env:
       PAYLOAD_SECRET: ci-secret-for-build-only
@@ -39,6 +39,13 @@ jobs:
 
       - name: Lint
         run: pnpm lint
+
+      # Integration tests (vitest). These cover the pure logic that has no HTTP
+      # surface: anti-spam heuristics, the rate limiter, i18n namespace parity,
+      # JSON-LD builders and supplier-text cleaning. They need no populated
+      # content database, so unlike the E2E suite they run here.
+      - name: Integration tests
+        run: pnpm test:int
 
       - name: Build
         run: pnpm build

@@ -38,7 +38,8 @@ export const Videos: CollectionConfig = {
       admin: { description: 'Optional custom thumbnail — YouTube thumbnails are fetched automatically when empty.' },
     },
     { name: 'sortOrder', type: 'number', defaultValue: 0, admin: { position: 'sidebar', description: 'Lower numbers appear first.' } },
-    { name: 'published', type: 'checkbox', defaultValue: true, admin: { position: 'sidebar', description: 'Unpublished videos are hidden on the website.' } },
+    // Indexed: every public read filters on this column (see lib/payload.ts).
+    { name: 'published', type: 'checkbox', defaultValue: true, index: true, admin: { position: 'sidebar', description: 'Unpublished videos are hidden on the website.' } },
   ],
   timestamps: false,
 }

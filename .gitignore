@@ -59,3 +59,6 @@ yarn-error.log*
 *.tsbuildinfo
 .workbuddy
 .cache/
+
+# Regenerable scratch output of scripts/i18n-extract-todo.ts (do not commit)
+scripts/translations/_todo/

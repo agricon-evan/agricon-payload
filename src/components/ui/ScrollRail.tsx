@@ -2,11 +2,14 @@
 
 import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react'
 import Icon from '@/components/ui/Icon'
+import { getUiString, type UiLocale } from '@/i18n/ui'
 
 interface ScrollRailProps {
   children: ReactNode
   /** Accessible label for the scrollable region. */
   label: string
+  /** Locale for the arrow-button labels (see src/i18n/ui.ts). */
+  locale?: string
   /** Auto-advance interval in ms. Set to 0 to disable. Default 3000. */
   autoAdvanceMs?: number
   /** How long to hold autoplay after the user touches the rail, in ms. Default 8000. */
@@ -32,6 +35,7 @@ const GAP = 20
 export default function ScrollRail({
   children,
   label,
+  locale = 'en',
   autoAdvanceMs = 3000,
   manualHoldMs = 8000,
 }: ScrollRailProps) {
@@ -190,10 +194,10 @@ export default function ScrollRail({
           />
         </div>
         <div className="flex items-center gap-2">
-          <button type="button" onClick={() => onManual(-1)} disabled={atStart} aria-label="Scroll left" className={btn}>
+          <button type="button" onClick={() => onManual(-1)} disabled={atStart} aria-label={getUiString(locale as UiLocale, 'scrollLeft')} className={btn}>
             <Icon name="chevron-left" size={18} />
           </button>
-          <button type="button" onClick={() => onManual(1)} disabled={atEnd} aria-label="Scroll right" className={btn}>
+          <button type="button" onClick={() => onManual(1)} disabled={atEnd} aria-label={getUiString(locale as UiLocale, 'scrollRight')} className={btn}>
             <Icon name="chevron-right" size={18} />
           </button>
         </div>

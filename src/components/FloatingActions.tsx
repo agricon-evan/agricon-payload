@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import type { Locale } from '@/i18n/config'
+import { getUiString } from '@/i18n/ui'
 import Icon from '@/components/ui/Icon'
 
 interface FloatingActionsProps {
@@ -10,9 +11,10 @@ interface FloatingActionsProps {
 }
 
 /** Fixed customer actions: WhatsApp contact + return-to-top. */
-export default function FloatingActions({ whatsappNumber }: FloatingActionsProps) {
+export default function FloatingActions({ locale, whatsappNumber }: FloatingActionsProps) {
   const [showTop, setShowTop] = useState(false)
   const digits = whatsappNumber?.replace(/\D/g, '') || ''
+  const u = (key: string) => getUiString(locale, key)
 
   useEffect(() => {
     const onScroll = () => setShowTop(window.scrollY > 420)
@@ -32,8 +34,8 @@ export default function FloatingActions({ whatsappNumber }: FloatingActionsProps
           href={`https://wa.me/${digits}`}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="Chat with Agricon on WhatsApp"
-          title="Chat on WhatsApp"
+          aria-label={u('chatWhatsApp')}
+          title={u('chatOnWhatsApp')}
           className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[var(--color-primary)] text-white border-2 border-white flex items-center justify-center transition-transform hover:scale-105 press tap-target"
         >
           <Icon name="whatsapp" size={24} strokeWidth={1.8} />
@@ -42,8 +44,8 @@ export default function FloatingActions({ whatsappNumber }: FloatingActionsProps
       <button
         type="button"
         onClick={scrollToTop}
-        aria-label="Back to top"
-        title="Back to top"
+        aria-label={u('backToTop')}
+        title={u('backToTop')}
         className={`w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[var(--color-surface)] text-[var(--color-primary)] border border-[var(--color-border)] flex items-center justify-center transition-all press tap-target ${showTop ? 'opacity-100 translate-y-0' : 'opacity-0 pointer-events-none translate-y-2'}`}
       >
         <Icon name="arrow-up" size={18} />

@@ -10,6 +10,7 @@ import { caseStudyImages, caseStudyGalleries } from '@/lib/images'
 import MediaImage from '@/components/ui/MediaImage'
 import type { Metadata } from 'next'
 import { pageMetadata } from '@/lib/seo'
+import Link from 'next/link'
 
 interface Props {
   params: Promise<{ locale: string }>
@@ -45,6 +46,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params
   return pageMetadata(locale as Locale, {
     path: '/case-studies',
+    namespace: 'pages',
+    key: 'caseStudies',
     title: "Case Studies",
     description: "Real installations: how farms specified, ordered and commissioned Agricon poultry, livestock and machinery lines.",
   })
@@ -52,7 +55,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function CaseStudiesPage({ params }: Props) {
   const { locale } = await params
-  const heroImage = await resolvePageHeroImage('case-studies', '/images/heroes/farm-landscape.jpg')
+  const heroImage = await resolvePageHeroImage('case-studies', '/images/heroes/farm-landscape.jpg', locale)
   const t = getTranslations(locale as Locale, 'common')
   const tHome = getTranslations(locale as Locale, 'home')
   const cases = await getCaseStudies(locale)
@@ -100,6 +103,7 @@ export default async function CaseStudiesPage({ params }: Props) {
   return (
     <>
       <PageHero
+        locale={locale as Locale}
         title={t.nav?.caseStudies || 'Case Studies'}
         description="Real projects, real results — see how farms worldwide grow with Agricon"
         breadcrumb={`${tHome.breadcrumb?.home || 'Home'} / ${t.nav?.caseStudies || 'Case Studies'}`}
@@ -145,14 +149,14 @@ export default async function CaseStudiesPage({ params }: Props) {
                   <Reveal key={cs.id} delay={(index % 2) * 80} className="h-full">
                     <article className="card card-hover h-full overflow-hidden grid grid-cols-1 md:grid-cols-[1.08fr_0.92fr] group">
                       <div className="min-w-0">
-                        <a href={`${lp}/case-studies/${cs.slug}`} className="block relative aspect-[4/3] bg-[var(--color-muted)] overflow-hidden icon-zoom">
+                        <Link href={`${lp}/case-studies/${cs.slug}`} className="block relative aspect-[4/3] bg-[var(--color-muted)] overflow-hidden icon-zoom">
                           {cs.image ? (
                             <MediaImage src={cs.image} alt={cs.title} width={800} height={600} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
                           ) : (
                             <div className="w-full h-full flex items-center justify-center"><Icon name="compass" size={34} className="text-[var(--color-text-secondary)]/30" /></div>
                           )}
                           <span className="absolute left-4 bottom-4 px-2.5 py-1 bg-[rgba(35,31,32,0.72)] text-[10px] font-semibold uppercase tracking-[0.12em] text-white rounded-xs">Project proof</span>
-                        </a>
+                        </Link>
                         {cs.gallery.length > 1 && (
                           <div className="grid grid-cols-3 gap-2 p-3 bg-[var(--color-canvas-soft)]">
                             {cs.gallery.slice(1, 4).map((src, imageIndex) => (
@@ -176,9 +180,9 @@ export default async function CaseStudiesPage({ params }: Props) {
                           <div className="pair"><dt>Equipment</dt><dd className="line-clamp-2">{cs.equipment}</dd></div>
                           <div className="pair"><dt>Application</dt><dd className="line-clamp-2">{cs.application}</dd></div>
                         </dl>
-                        <a href={`${lp}/case-studies/${cs.slug}`} className="mt-auto pt-5 inline-flex items-center gap-2 text-sm font-semibold text-[var(--color-primary)]">
+                        <Link href={`${lp}/case-studies/${cs.slug}`} className="mt-auto pt-5 inline-flex items-center gap-2 text-sm font-semibold text-[var(--color-primary)]">
                           View project story <Icon name="arrow-right" size={15} className="text-[var(--color-accent)]" />
-                        </a>
+                        </Link>
                       </div>
                     </article>
                   </Reveal>

@@ -79,12 +79,14 @@ export const subcategoryImages: Record<string, string> = {
   "egg-conveyor-machine": "/catalog/products/egg-conveyor-machine.jpg",
   "egg-counting-machine": "/catalog/products/egg-counting-machine.jpg",
   "brick-making-machine": "/catalog/products/brick-making-machine.jpg",
-  "gestation-crate": "/catalog/products/gestation-crate.jpg",
-  "transport-crate": "/catalog/products/transport-crate.png",
   "quail-cage": "/catalog/products/quail-cage.jpg",
   "screw-conveyor": "/catalog/products/screw-conveyor.png",
   "peanut-sheller": "/catalog/products/peanut-sheller.jpg",
-  "threshing-machine": "/catalog/products/threshing-machine.jpg"
+  "threshing-machine": "/catalog/products/threshing-machine.jpg",
+  // Created 2026-09-18 by scripts/import-links.ts (the taxonomy had the
+  // subcategory, the seeded site did not). Photo is the category's product,
+  // "Air Suction Crop Sizing Machine" — no stock shot existed for it.
+  "vibrating-screen": "/catalog/products/vibrating-screen.jpg"
 }
 
 export const caseStudyImages: Record<string, string> = {

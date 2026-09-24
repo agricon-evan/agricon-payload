@@ -2,9 +2,11 @@ import Icon from '@/components/ui/Icon'
 import Reveal from '@/components/ui/Reveal'
 import SectionHeading from '@/components/ui/SectionHeading'
 import { getSiteSettings } from '@/lib/payload'
+import { homeCopy } from '@/lib/home-copy'
 
-export default async function GlobalCoverage() {
-  const settings = await getSiteSettings()
+export default async function GlobalCoverage({ locale }: { locale: string }) {
+  const h = homeCopy(locale).coverage ?? {}
+  const settings = await getSiteSettings(locale)
   const fallback = [
     { icon: 'building', title: 'Farm Operations', sub: 'Poultry, livestock, aquaculture and crop production equipment for daily operation.' },
     { icon: 'layers', title: 'Processing & Supply', sub: 'Feed preparation, pelletizing, machinery and mixed-category equipment sourcing.' },
@@ -19,9 +21,9 @@ export default async function GlobalCoverage() {
       <div className="max-w-7xl mx-auto px-6">
         <Reveal>
           <SectionHeading
-            eyebrow="Global Reach"
-            title={<>Supporting <span className="split-accent">Buyers Worldwide</span></>}
-            description="Practical equipment supply and export coordination for farms, importers, distributors and agricultural projects."
+            eyebrow={h.eyebrow || 'Global Reach'}
+            title={<>{h.titleLead || 'Supporting'} <span className="split-accent">{h.titleAccent || 'Buyers Worldwide'}</span></>}
+            description={h.description || 'Practical equipment supply and export coordination for farms, importers, distributors and agricultural projects.'}
           />
         </Reveal>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6 mt-10">

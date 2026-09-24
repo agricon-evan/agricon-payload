@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import type { Locale } from '@/i18n/config'
-import { getProducts } from '@/lib/payload'
+import { homeCopy } from '@/lib/home-copy'
+import { getProducts, resolveProductCategorySlug } from '@/lib/payload'
 import Reveal from '@/components/ui/Reveal'
 import SectionHeading from '@/components/ui/SectionHeading'
 import Icon from '@/components/ui/Icon'
@@ -12,13 +13,15 @@ import ScrollRail from '@/components/ui/ScrollRail'
  * Rendered on the homepage under the category grid.
  */
 export default async function FeaturedProducts({ locale }: { locale: Locale }) {
+  const h = homeCopy(locale).featured ?? {}
   const products = await getProducts(locale)
   // 12 cards: featured products first, topped up from the rest of the catalogue.
   // Only 10 products currently carry `featured: true` — mark two more in the CMS
   // to control which products fill the last two slots.
-  const featured = [...products.filter((p) => p.featured), ...products.filter((p) => !p.featured)]
-    .slice(0, 12)
-    .map((p) => {
+  const rows = (await Promise.all(
+    [...products.filter((p) => p.featured), ...products.filter((p) => !p.featured)]
+      .slice(0, 12)
+      .map(async (p) => {
       const sub = typeof p.subcategory === 'object' && p.subcategory !== null ? p.subcategory : null
       const cat = sub && typeof sub.category === 'object' && sub.category !== null ? sub.category : null
       const cover =
@@ -33,14 +36,20 @@ export default async function FeaturedProducts({ locale }: { locale: Locale }) {
         name: p.name,
         moq: p.moq || null,
         price: p.price || null,
-        categorySlug: cat?.slug || '',
+        // depth-1 products carry subcategory.category as a bare id, so resolve it
+        // against the subcategory list (same strategy as the solution pages).
+        categorySlug: cat?.slug || (await resolveProductCategorySlug(p, locale)),
         categoryName: (cat as { name?: string } | null)?.name || '',
         subcategorySlug: sub?.slug || '',
         subcategoryName: (sub as { name?: string } | null)?.name || '',
         image: cover,
       }
-    })
-    .filter((p) => p.slug)
+    }),
+  ))
+  // The old `|| 'poultry-equipment'` fallback stuffed every non-poultry product
+  // into a poultry URL — it rendered 200 only because the product route matches
+  // by slug, but the visible category segment was wrong.
+  const featured = rows.filter((p) => p.slug && p.categorySlug && p.subcategorySlug)
 
   if (featured.length === 0) return null
 
@@ -49,9 +58,9 @@ export default async function FeaturedProducts({ locale }: { locale: Locale }) {
       <div className="w-full max-w-7xl mx-auto px-6">
         <Reveal>
           <SectionHeading
-            eyebrow="Featured Equipment"
-            title={<>Best-Selling <span className="split-accent">Equipment</span></>}
-            description="Hand-picked machines and systems our customers order most — verified by the product team."
+            eyebrow={h.eyebrow || 'Featured Equipment'}
+            title={<>{h.titleLead || 'Best-Selling'} <span className="split-accent">{h.titleAccent || 'Equipment'}</span></>}
+            description={h.description || 'Hand-picked machines and systems our customers order most — verified by the product team.'}
           />
         </Reveal>
 
@@ -62,7 +71,7 @@ export default async function FeaturedProducts({ locale }: { locale: Locale }) {
           there is more. Prev/next controls + a progress bar live in ScrollRail, because
           horizontal scrolling with a mouse is otherwise awkward.
         */}
-        <ScrollRail label="Best-selling equipment">
+        <ScrollRail label={h.eyebrow || 'Featured equipment'} locale={locale}>
           {featured.map((p, i) => (
             <Reveal key={p.id} delay={i * 45} className="snap-start shrink-0 w-[280px] sm:w-[320px] lg:w-[360px]">
               <Link

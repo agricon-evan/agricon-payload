@@ -16,7 +16,8 @@ export const FAQs: CollectionConfig = {
     { name: 'question', type: 'text', required: true, localized: true },
     { name: 'answer', type: 'richText', required: true, localized: true },
     { name: 'sortOrder', type: 'number', defaultValue: 0, admin: { description: 'Lower numbers appear first.' } },
-    { name: 'published', type: 'checkbox', defaultValue: true, admin: { position: 'sidebar' } },
+    // Indexed: filtered in every public read (lib/payload.ts).
+    { name: 'published', type: 'checkbox', defaultValue: true, index: true, admin: { position: 'sidebar' } },
   ],
   timestamps: true,
 }

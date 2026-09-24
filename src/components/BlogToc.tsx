@@ -14,6 +14,10 @@ interface BlogTocProps {
   children: React.ReactNode
   /** SSR 预渲染的目录（服务端用与客户端相同的 slugify 生成 id） */
   initialSections?: TocSection[]
+  /** 目录标题（本地化），默认英文 */
+  title?: string
+  /** 目录导航的可访问名称（本地化），默认英文 */
+  label?: string
 }
 
 /**
@@ -21,7 +25,7 @@ interface BlogTocProps {
  * 桌面端 sticky 左侧导航（soft-card），移动端顶部卡片。
  * 当前章节以品牌绿高亮 + 橙色序号标识。
  */
-export default function BlogToc({ children, initialSections = [] }: BlogTocProps) {
+export default function BlogToc({ children, initialSections = [], title = 'On This Page', label = 'Table of contents' }: BlogTocProps) {
   const articleRef = useRef<HTMLDivElement>(null)
   const [items, setItems] = useState<TocSection[]>(initialSections)
   const [activeId, setActiveId] = useState<string>('')
@@ -30,31 +34,57 @@ export default function BlogToc({ children, initialSections = [] }: BlogTocProps
     const root = articleRef.current
     if (!root) return
 
-    const headings = Array.from(root.querySelectorAll('h2, h3'))
-    const seen = new Map<string, number>()
-    const list: TocSection[] = headings.map((h) => {
-      const text = (h.textContent || '').trim()
-      const base = slugifyHeading(text)
-      const n = seen.get(base) || 0
-      seen.set(base, n + 1)
-      const id = n > 0 ? `${base}-${n + 1}` : base
-      h.id = id
-      return { id, text, level: h.tagName === 'H2' ? 2 : 3 }
-    })
-    if (list.length) setItems(list)
+    let intersection: IntersectionObserver | null = null
+    let mutation: MutationObserver | null = null
 
-    if (!list.length || !('IntersectionObserver' in window)) return
+    /**
+     * Scans the article, (re)assigns anchor ids and refreshes the outline.
+     *
+     * It must be re-runnable: `<RichText>` (Lexical) replaces its whole subtree
+     * once it renders on the client, so ids written during the first pass end up
+     * on nodes that are no longer in the document. The table of contents then
+     * looked correct while every link scrolled nowhere — clicking a TOC entry
+     * changed the hash but left `window.scrollY` at 0. The MutationObserver below
+     * re-applies the ids whenever the article's DOM is replaced.
+     */
+    const sync = () => {
+      const headings = Array.from(root.querySelectorAll('h2, h3'))
+      const seen = new Map<string, number>()
+      const list: TocSection[] = headings.map((h) => {
+        const text = (h.textContent || '').trim()
+        const base = slugifyHeading(text)
+        const n = seen.get(base) || 0
+        seen.set(base, n + 1)
+        const id = n > 0 ? `${base}-${n + 1}` : base
+        if (h.id !== id) h.id = id
+        return { id, text, level: h.tagName === 'H2' ? 2 : 3 }
+      })
+      setItems((prev) => (JSON.stringify(prev) === JSON.stringify(list) ? prev : list))
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) setActiveId(entry.target.id)
-        }
-      },
-      { rootMargin: '-90px 0px -70% 0px', threshold: 0 },
-    )
-    headings.forEach((h) => observer.observe(h))
-    return () => observer.disconnect()
+      intersection?.disconnect()
+      if (headings.length && 'IntersectionObserver' in window) {
+        intersection = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (entry.isIntersecting) setActiveId((entry.target as HTMLElement).id)
+            }
+          },
+          { rootMargin: '-90px 0px -70% 0px', threshold: 0 },
+        )
+        headings.forEach((h) => intersection?.observe(h))
+      }
+    }
+
+    sync()
+    // childList only — assigning `h.id` above is an attribute change and must not
+    // re-trigger this observer (it would loop).
+    mutation = new MutationObserver(() => sync())
+    mutation.observe(root, { childList: true, subtree: true })
+
+    return () => {
+      mutation?.disconnect()
+      intersection?.disconnect()
+    }
   }, [])
 
   if (!items.length) {
@@ -66,10 +96,10 @@ export default function BlogToc({ children, initialSections = [] }: BlogTocProps
       {/* 页面大纲 — 左侧 sticky（桌面）/ 顶部卡片（移动） */}
       <aside className="mb-8 lg:mb-0">
         <nav
-          aria-label="Table of contents"
+          aria-label={label}
           className="lg:sticky lg:top-24 bg-[var(--color-canvas-soft)] border border-[var(--color-border)] rounded-lg p-5"
         >
-          <span className="eyebrow">On This Page</span>
+          <span className="eyebrow">{title}</span>
           <ol className="mt-4 space-y-0.5">
             {items.map((item, i) => (
               <li key={item.id}>

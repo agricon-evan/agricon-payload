@@ -26,7 +26,7 @@ export default async function ContactPage({ params, searchParams }: Props) {
   const { product: productSlug } = await searchParams
   const t = getTranslations(locale as Locale, 'contact')
   const tHome = getTranslations(locale as Locale, 'home')
-  const settings = await getSiteSettings()
+  const settings = await getSiteSettings(locale)
   const dbCountries = await getCountries()
 
   // 产品详情页的 “Request Quote” 带 ?product=slug — 解析成产品名并预选到询盘表单
@@ -47,6 +47,21 @@ export default async function ContactPage({ params, searchParams }: Props) {
 
   const methods = (t.contactMethods || {}) as Record<string, { title: string; description: string }>
   const responseItems = (t.responseInfo?.items ?? {}) as Record<string, { title: string; description: string }>
+
+  // Requirement-diagnosis labels/options come from the `diagnostics` block in the
+  // locale's contact namespace. Falls back to English via getTranslations() when a
+  // translation is missing, so the selects are never blank.
+  const diagnostics = {
+    phone: t.diagnostics?.phone || 'Phone',
+    phonePlaceholder: t.diagnostics?.phonePlaceholder || '',
+    application: t.diagnostics?.application || 'Application',
+    currentSetup: t.diagnostics?.currentSetup || 'Current Setup',
+    purchaseType: t.diagnostics?.purchaseType || 'Purchase Type',
+    select: t.diagnostics?.select || 'Select...',
+    applications: (t.diagnostics?.applications ?? {}) as Record<string, string>,
+    setups: (t.diagnostics?.setups ?? {}) as Record<string, string>,
+    purchaseTypes: (t.diagnostics?.purchaseTypes ?? {}) as Record<string, string>,
+  }
 
   // Override contact methods with real data from SiteSettings (from company catalog)
   const realMethods = {
@@ -90,7 +105,10 @@ export default async function ContactPage({ params, searchParams }: Props) {
             submit: t.inquiryForm?.submit || 'Submit Inquiry',
             submitting: t.inquiryForm?.submitting || 'Submitting...',
             errorNetwork: t.inquiryForm?.errorNetwork || 'Network error. Please try again.',
+            errorRateLimit: t.inquiryForm?.errorRateLimit || 'Too many submissions from this address. Please wait a few minutes and try again, or contact us by email.',
+            errorRejected: t.inquiryForm?.errorRejected || 'This submission was rejected by our spam filter. Please contact us by email instead.',
           }}
+          diagnostics={diagnostics}
           responseInfo={{
             title: t.responseInfo?.title || 'What to Expect',
             items: Object.values(responseItems),

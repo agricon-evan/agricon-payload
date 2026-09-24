@@ -2,14 +2,18 @@ version: '3'
 
 services:
   payload:
-    image: node:20-alpine
+    image: node:22-alpine
     ports:
       - '3000:3000'
     volumes:
       - .:/home/node/app
       - node_modules:/home/node/app/node_modules
     working_dir: /home/node/app/
-    command: sh -c "corepack enable && corepack prepare pnpm@9.0.0 --activate && pnpm install && pnpm dev"
+    # `corepack enable` alone is enough: it reads `packageManager` from
+    # package.json (pnpm@11.20.0). This previously pinned pnpm@9.0.0, which
+    # cannot read a lockfile written by pnpm 11 — `pnpm install` failed with a
+    # lockfileVersion error before the app ever started.
+    command: sh -c "corepack enable && pnpm install && pnpm dev"
     depends_on:
       - postgres
       # - mongo

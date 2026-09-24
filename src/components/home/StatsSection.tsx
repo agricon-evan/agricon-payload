@@ -1,11 +1,13 @@
 import { getSiteSettings } from '@/lib/payload'
 import type { Locale } from '@/i18n/config'
+import { homeCopy } from '@/lib/home-copy'
 import Reveal from '@/components/ui/Reveal'
 import SectionHeading from '@/components/ui/SectionHeading'
 
 // Four equal metric items. Hovering any item promotes it to the primary proof-point style.
-export default async function StatsSection({ locale: _locale }: { locale: Locale }) {
-  const settings = await getSiteSettings()
+export default async function StatsSection({ locale }: { locale: Locale }) {
+  const h = homeCopy(locale).stats ?? {}
+  const settings = await getSiteSettings(locale)
   const stats = (settings?.stats ?? {}) as { countriesServed?: string; farmProjects?: string; yearsInBusiness?: string; onTimeDelivery?: string; equipmentModels?: string }
 
   const items = [
@@ -26,9 +28,9 @@ export default async function StatsSection({ locale: _locale }: { locale: Locale
       <div className="max-w-7xl mx-auto px-6">
         <Reveal>
           <SectionHeading
-            eyebrow="Proven Track Record"
-            title={<>Numbers That <span className="split-accent">Speak</span> for Themselves</>}
-            description="A clear view of Agricon's equipment scope and international delivery experience."
+            eyebrow={h.eyebrow || 'Proven Track Record'}
+            title={<>{h.titleLead || 'Numbers That'} <span className="split-accent">{h.titleAccent || 'Speak'}</span> {h.titleTail || 'for Themselves'}</>}
+            description={h.description || "A clear view of Agricon's equipment scope and international delivery experience."}
           />
         </Reveal>
 

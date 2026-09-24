@@ -7,6 +7,8 @@ interface Props {
   locale: Locale
   /** 当前路径（含 locale 前缀），用于语言切换保持页面位置 */
   currentPath?: string
+  /** 当前查询串（含 `?`），用于语言切换时保留搜索条件 */
+  currentSearch?: string
   qrCodes?: {
     tiktok?: string
     instagram?: string
@@ -27,21 +29,21 @@ const SOCIAL_ICONS: Record<string, string> = {
   youtube: 'M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.5A3.02 3.02 0 0 0 .5 6.19 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 5.81 3.02 3.02 0 0 0 2.12 2.14c1.88.5 9.38.5 9.38.5s7.5 0 9.38-.5a3.02 3.02 0 0 0 2.12-2.14A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-5.81zM9.55 15.57V8.43L15.82 12z',
 }
 
-export default function Footer({ locale, currentPath = `/${locale}`, qrCodes, settings }: Props) {
+export default function Footer({ locale, currentPath = `/${locale}`, currentSearch = '', qrCodes, settings }: Props) {
   const t = getTranslations(locale, 'common')
   const lp = `/${locale}`
   const ft = t.footer || {}
   const links = ft.links || {}
   const cols = ft.columns || {}
 
-  // 语言切换时保留当前页面路径（/en/about → /ru/about）
+  // 语言切换时保留当前页面路径与查询串（/en/search?q=cage → /ru/search?q=cage）
   const localizedHref = (target: string): string => {
     let rest = currentPath
     for (const l of locales) {
       if (currentPath === `/${l}`) { rest = ''; break }
       if (currentPath.startsWith(`/${l}/`)) { rest = currentPath.slice(l.length + 1); break }
     }
-    return `/${target}${rest}`
+    return `/${target}${rest}${currentSearch}`
   }
 
   const productLinks = [
@@ -75,7 +77,7 @@ export default function Footer({ locale, currentPath = `/${locale}`, qrCodes, se
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-[1.1fr_1.9fr] gap-10 md:gap-20 lg:gap-28">
           {/* Brand */}
           <div className="sm:col-span-2 md:col-span-1">
-            <Link href={lp || '/en'} className="inline-flex items-center gap-3 mb-4" aria-label="Agricon Home">
+            <Link href={lp} className="inline-flex items-center gap-3 mb-4" aria-label={t.aria?.home || 'Agricon Home'}>
               <Image
                 src="/company-logo.svg"
                 alt="Agricon symbol"

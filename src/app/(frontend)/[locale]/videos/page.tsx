@@ -57,7 +57,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function VideosPage({ params }: Props) {
   const { locale } = await params
-  const heroImage = await resolvePageHeroImage('videos', '/images/heroes/farm-field.jpg')
+  const heroImage = await resolvePageHeroImage('videos', '/images/heroes/farm-field.jpg', locale)
   const t = getTranslations(locale as Locale, 'videos')
   const tHome = getTranslations(locale as Locale, 'home')
   const videos = await getVideos(locale)
@@ -83,6 +83,7 @@ export default async function VideosPage({ params }: Props) {
   return (
     <>
       <PageHero
+        locale={locale as Locale}
         title={t.hero?.title || 'Video Library'}
         description={t.hero?.description || 'See Agricon equipment in action.'}
         breadcrumb={`${tHome.breadcrumb?.home || 'Home'} / ${t.breadcrumb?.videos || 'Videos'}`}
@@ -94,7 +95,7 @@ export default async function VideosPage({ params }: Props) {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
             {cards.map((video, index) => (
               <Reveal key={video.id} delay={(index % 3) * 70} className="h-full">
-                <VideoCard video={video} index={index} />
+                <VideoCard video={video} index={index} locale={locale} />
               </Reveal>
             ))}
           </div>

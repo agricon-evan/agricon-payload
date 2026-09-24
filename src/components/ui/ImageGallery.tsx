@@ -1,5 +1,7 @@
 'use client'
 
+import { getUiString, type UiLocale } from '@/i18n/ui'
+
 import { useRef, useState } from 'react'
 import MediaImage from '@/components/ui/MediaImage'
 import Icon from '@/components/ui/Icon'
@@ -14,6 +16,8 @@ interface ImageGalleryProps {
   /** consistent crop behavior — {component.photo-matrix} */
   aspect?: 'square' | '4-3' | '3-2'
   priority?: boolean
+  /** Locale for the screen-reader labels (see src/i18n/ui.ts). */
+  locale?: string
   className?: string
 }
 
@@ -28,7 +32,8 @@ const ASPECT: Record<string, string> = {
  * prev/next arrows plus a single-row horizontally scrollable thumbnail strip.
  * Thumbnails act as selectors (>=72px) with a clear green selected state.
  */
-export default function ImageGallery({ images, aspect = '4-3', priority = false, className = '' }: ImageGalleryProps) {
+export default function ImageGallery({ images, aspect = '4-3', priority = false, className = '', locale = 'en' }: ImageGalleryProps) {
+  const ui = (key: string) => getUiString(locale as UiLocale, key)
   const [active, setActive] = useState(0)
   const stripRef = useRef<HTMLDivElement>(null)
   if (!images.length) return null
@@ -72,7 +77,7 @@ export default function ImageGallery({ images, aspect = '4-3', priority = false,
             <button
               type="button"
               onClick={prev}
-              aria-label="Previous image"
+              aria-label={ui('previousImage')}
               className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 inline-flex items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-sm transition-all hover:bg-black/65 tap-target press"
             >
               <Icon name="chevron-left" size={20} />
@@ -80,7 +85,7 @@ export default function ImageGallery({ images, aspect = '4-3', priority = false,
             <button
               type="button"
               onClick={next}
-              aria-label="Next image"
+              aria-label={ui('nextImage')}
               className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 inline-flex items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-sm transition-all hover:bg-black/65 tap-target press"
             >
               <Icon name="chevron-right" size={20} />
@@ -100,14 +105,14 @@ export default function ImageGallery({ images, aspect = '4-3', priority = false,
           ref={stripRef}
           className="flex gap-2.5 mt-2.5 overflow-x-auto scrollbar-none snap-x snap-mandatory px-1.5 -mx-1.5 py-1.5 -my-1.5"
           role="tablist"
-          aria-label="Product images"
+          aria-label={ui('productImages')}
         >
           {images.map((img, i) => (
             <button
               key={i}
               type="button"
               onClick={() => select(i)}
-              aria-label={`View image ${i + 1}`}
+              aria-label={`${ui('viewImage')} ${i + 1}`}
               role="tab"
               aria-selected={i === active}
               className={`relative w-20 sm:w-24 shrink-0 ${ASPECT[aspect]} overflow-hidden rounded-md bg-[var(--color-muted)] transition-all tap-target press snap-start ${

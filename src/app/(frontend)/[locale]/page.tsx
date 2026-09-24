@@ -1,6 +1,5 @@
 import type { Locale } from '@/i18n/config'
 import ProductCategories from '@/components/home/ProductCategories'
-import StatsSection from '@/components/home/StatsSection'
 import ProductSeriesScreens from '@/components/home/ProductSeriesScreens'
 import FeaturedProducts from '@/components/home/FeaturedProducts'
 import SolutionsSection from '@/components/home/SolutionsSection'
@@ -15,6 +14,7 @@ import Icon from '@/components/ui/Icon'
 import Reveal from '@/components/ui/Reveal'
 import MediaImage from '@/components/ui/MediaImage'
 import { getSiteSettings } from '@/lib/payload'
+import { homeCopy } from '@/lib/home-copy'
 
 interface Props {
   params: Promise<{ locale: string }>
@@ -22,6 +22,7 @@ interface Props {
 
 export default async function HomePage({ params }: Props) {
   const { locale } = await params
+  const h = homeCopy(locale)
   const settings = await getSiteSettings(locale)
   const stats = (settings?.stats ?? {}) as { countriesServed?: string; farmProjects?: string; yearsInBusiness?: string; onTimeDelivery?: string; equipmentModels?: string }
   const hero = (settings?.hero ?? {}) as {
@@ -34,9 +35,9 @@ export default async function HomePage({ params }: Props) {
     secondaryButton?: string | null
   }
   const heroStats = [
-    `${stats.equipmentModels || '10+'} Product Categories`,
-    `${stats.countriesServed || '30+'} Export Markets`,
-    `${stats.farmProjects || '100+'} Farm Projects`,
+    `${stats.equipmentModels || '10+'} ${h.heroStats?.categories || 'Product Categories'}`,
+    `${stats.countriesServed || '30+'} ${h.heroStats?.markets || 'Export Markets'}`,
+    `${stats.farmProjects || '100+'} ${h.heroStats?.projects || 'Farm Projects'}`,
   ]
   const heroImage = typeof hero.image === 'object' && hero.image?.url ? hero.image.url : '/images/home-hero-agricon.png'
 
@@ -110,13 +111,13 @@ export default async function HomePage({ params }: Props) {
 
       <ProductCategories locale={locale as Locale} />
       <FeaturedProducts locale={locale as Locale} />
-      <ValueCalculated />
+      <ValueCalculated locale={locale} />
       <SolutionsSection locale={locale as Locale} />
-      <HowWeWork />
-      <WhyChooseUs />
-      <TrustEvidence />
-      <GlobalCoverage />
-      <Testimonials />
+      <HowWeWork locale={locale} />
+      <WhyChooseUs locale={locale} />
+      <TrustEvidence locale={locale} />
+      <GlobalCoverage locale={locale} />
+      <Testimonials locale={locale} />
       <LatestNews locale={locale as Locale} />
 
       {/* ── Final CTA — flat brand-green panel with orange rule ── */}
@@ -124,12 +125,13 @@ export default async function HomePage({ params }: Props) {
         <div className="relative max-w-3xl mx-auto text-center">
           <Reveal>
             <h2 className="split-color-title text-3xl md:text-5xl font-bold tracking-[-0.015em] text-white">
-              Ready to Build <span className="split-accent !text-[var(--color-accent)]">Your Farm?</span>
+              {h.finalCta?.titleLead || 'Ready to Build'}{' '}
+              <span className="split-accent !text-[var(--color-accent)]">{h.finalCta?.titleAccent || 'Your Farm?'}</span>
             </h2>
           </Reveal>
           <Reveal delay={100}>
             <p className="mt-5 text-base md:text-lg text-white/80 max-w-xl mx-auto leading-relaxed">
-              Get a customized quotation with shipping to your port — our engineers will design the optimal layout for your facility.
+              {h.finalCta?.description || 'Get a customized quotation with shipping to your port — our engineers will design the optimal layout for your facility.'}
             </p>
           </Reveal>
           <Reveal delay={200}>
@@ -138,14 +140,14 @@ export default async function HomePage({ params }: Props) {
                 href={`/${locale}/contact`}
                 className="inline-flex items-center justify-center gap-2 px-10 py-4 bg-white text-[var(--color-primary)] font-bold rounded-sm min-h-[52px] press tap-target text-lg transition-all hover:bg-white/90"
               >
-                Request a Quote
+                {h.finalCta?.primary || 'Request a Quote'}
                 <Icon name="arrow-right" size={18} className="text-[var(--color-accent)]" />
               </a>
               <a
                 href={`/${locale}/case-studies`}
                 className="inline-flex items-center justify-center px-10 py-4 border border-white/30 text-white font-semibold rounded-sm min-h-[52px] press tap-target text-lg transition-all hover:bg-white/10"
               >
-                See Case Studies
+                {h.finalCta?.secondary || 'See Case Studies'}
               </a>
             </div>
           </Reveal>

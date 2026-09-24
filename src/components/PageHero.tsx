@@ -1,4 +1,5 @@
 import MediaImage from '@/components/ui/MediaImage'
+import { getTranslations, type Locale } from '@/i18n/config'
 
 interface PageHeroProps {
   title: string
@@ -6,6 +7,8 @@ interface PageHeroProps {
   image?: string | null
   breadcrumb?: string
   align?: 'left' | 'center'
+  /** Locale of the current page — used for the breadcrumb's accessible name. */
+  locale?: Locale
 }
 
 /**
@@ -13,7 +16,8 @@ interface PageHeroProps {
  * short orange underline, optional photo with brand-green overlay.
  * Flat, no gradients, no decorative rings.
  */
-export default function PageHero({ title, description, image, breadcrumb, align = 'left' }: PageHeroProps) {
+export default function PageHero({ title, description, image, breadcrumb, align = 'left', locale = 'en' }: PageHeroProps) {
+  const t = getTranslations(locale, 'common')
   return (
     <section className="hero-standard relative overflow-hidden bg-[var(--color-surface-brand)] text-white">
       {image && (
@@ -29,7 +33,7 @@ export default function PageHero({ title, description, image, breadcrumb, align 
           {breadcrumb && (
             <nav
               className="inline-flex text-xs md:text-sm text-white/75 mb-6 tracking-wide px-3 py-1.5 rounded-sm border border-white/20 bg-white/5"
-              aria-label="Breadcrumb"
+              aria-label={t.aria?.breadcrumb || 'Breadcrumb'}
             >
               {breadcrumb}
             </nav>

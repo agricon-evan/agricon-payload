@@ -1,7 +1,9 @@
 import type { Metadata, Viewport } from 'next'
 import { headers } from 'next/headers'
 import { getTranslations, locales, isRtl, type Locale } from '@/i18n/config'
-import { SITE_URL, localizedAlternates, stripLocaleFromPath } from '@/lib/seo'
+import { DEFAULT_OG_IMAGE, SITE_URL, localizedAlternates, ogLocale, stripLocaleFromPath } from '@/lib/seo'
+import { graph, organizationSchema, webSiteSchema } from '@/lib/structured-data'
+import JsonLd from '@/components/JsonLd'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import Newsletter from '@/components/Newsletter'
@@ -23,6 +25,12 @@ interface Props {
   children: React.ReactNode
   params: Promise<{ locale: string }>
 }
+
+/**
+ * Open Graph `og:locale` values live in `src/lib/seo.ts` (`OG_LOCALES`) so the
+ * layout and `pageMetadata()` cannot drift apart. See that file for why the
+ * naive `language_LANGUAGE` construction was wrong.
+ */
 
 // Render dynamically: DB-backed pages (products, blog, site settings, …) are
 // fetched at request time. This keeps `next build` from requiring a live
@@ -56,17 +64,22 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       template: `%s | Agricon`,
     },
     description: siteDescription,
-    alternates: localizedAlternates(locale as Locale, rel),    openGraph: {
+    alternates: localizedAlternates(locale as Locale, rel),
+    openGraph: {
       type: 'website',
-      locale: locale === 'en' ? 'en_US' : `${locale}_${(locale as string).toUpperCase()}`,
+      locale: ogLocale(locale),
       siteName: 'Agricon',
       title: siteTitle,
       description: siteDescription,
+      // Without this every page except product details shared with no image at
+      // all — `payload.config.ts`'s openGraph image only styles the admin panel.
+      images: [{ url: DEFAULT_OG_IMAGE, width: 1200, height: 630, alt: 'Agricon' }],
     },
     twitter: {
       card: 'summary_large_image',
       title: siteTitle,
       description: siteDescription,
+      images: [DEFAULT_OG_IMAGE],
     },
   }
 }
@@ -79,18 +92,24 @@ export default async function LocaleLayout({ children, params }: Props) {
   const { locale } = await params
   const dir = isRtl(locale as Locale) ? 'rtl' : 'ltr'
   const siteSettings = await getSiteSettings(locale)
-  // 当前请求路径（由 proxy.ts 注入），用于生成正确的 hreflang / canonical
+  // Current request path, injected by proxy.ts as `x-pathname`. Read once and
+  // reused for both the Footer language-switch target and nothing else — this
+  // used to call `headers()` three times in the same render.
   const h = await headers()
-  const _pathname = h.get('x-pathname') || ''
+  const currentPath = h.get('x-pathname') || `/${locale}`
+  const currentSearch = h.get('x-search') || ''
   type SiteSettingsWithQr = NonNullable<typeof siteSettings> & {
     tiktokQrCode?: number | { url?: string | null } | null
     instagramQrCode?: number | { url?: string | null } | null
   }
   const settingsWithQr = siteSettings as SiteSettingsWithQr | null
   const qrCodes = {
-    // 临时预览二维码：后台上传真实二维码后会自动覆盖
-    tiktok: (typeof settingsWithQr?.tiktokQrCode === 'object' ? settingsWithQr.tiktokQrCode?.url || undefined : undefined) || '/images/qr/tiktok-preview.png',
-    instagram: (typeof settingsWithQr?.instagramQrCode === 'object' ? settingsWithQr.instagramQrCode?.url || undefined : undefined) || '/images/qr/instagram-preview.png',
+    // Only real QR codes uploaded in the CMS are rendered. These previously
+    // fell back to `/images/qr/*-preview.png`, which put placeholder QR images
+    // (they do not resolve to the accounts) in the footer of the live site.
+    // Footer omits the whole block when both are undefined.
+    tiktok: typeof settingsWithQr?.tiktokQrCode === 'object' ? settingsWithQr.tiktokQrCode?.url || undefined : undefined,
+    instagram: typeof settingsWithQr?.instagramQrCode === 'object' ? settingsWithQr.instagramQrCode?.url || undefined : undefined,
   }
   const footerSettings = {
     siteTagline: settingsWithQr?.siteTagline,
@@ -103,12 +122,16 @@ export default async function LocaleLayout({ children, params }: Props) {
     contactPhone: settingsWithQr?.contactPhone,
   }
 
-  // 当前路径（由 proxy.ts 注入），传递给 Footer 以保持语言切换位置
-  const h2 = await headers()
-  const currentPath = h2.get('x-pathname') || `/${locale}`
-
   return (
     <>
+      {/* Site-wide structured data (schema.org). Products, FAQs and articles add
+          their own nodes on top of this graph. See src/lib/structured-data.ts. */}
+      <JsonLd
+        data={graph([
+          organizationSchema(settingsWithQr),
+          webSiteSchema(locale, settingsWithQr),
+        ])}
+      />
       {/* Skip link (WCAG 2.4.1) — first focusable element, off-screen until focused.
           Deliberately OUTSIDE the .page-enter wrapper: that wrapper's entry animation
           sets a transform, which makes it a containing block and neutralises `fixed`.
@@ -127,7 +150,7 @@ export default async function LocaleLayout({ children, params }: Props) {
           {children}
         </main>
         <Newsletter locale={locale as Locale} />
-        <Footer locale={locale as Locale} currentPath={currentPath} qrCodes={qrCodes} settings={footerSettings} />
+        <Footer locale={locale as Locale} currentPath={currentPath} currentSearch={currentSearch} qrCodes={qrCodes} settings={footerSettings} />
       </div>
       {/* Root page animation must not become the containing block for viewport-fixed actions. */}
       <FloatingActions locale={locale as Locale} whatsappNumber={siteSettings?.whatsappNumber} />

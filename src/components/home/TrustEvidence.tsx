@@ -2,12 +2,14 @@ import Icon from '@/components/ui/Icon'
 import Reveal from '@/components/ui/Reveal'
 import SectionHeading from '@/components/ui/SectionHeading'
 import { getSiteSettings } from '@/lib/payload'
+import { homeCopy } from '@/lib/home-copy'
 
 // From company principle 05: 信任靠证据，不靠形容词 (Trust is built on evidence, not adjectives)
 // And sales process 07 证据匹配 (Evidence matching — every customer concern has supporting documentation)
 // Claims are read from SiteSettings (admin-editable) so only verified statements ship.
-export default async function TrustEvidence() {
-  const settings = await getSiteSettings()
+export default async function TrustEvidence({ locale }: { locale: string }) {
+  const h = homeCopy(locale).trust ?? {}
+  const settings = await getSiteSettings(locale)
   const fallback = [
     {
       icon: 'shield',
@@ -31,16 +33,29 @@ export default async function TrustEvidence() {
     },
   ]
   const raw = (settings as { homeTrustEvidence?: unknown }).homeTrustEvidence
-  const evidence = (Array.isArray(raw) && raw.length > 0 ? raw : fallback) as Array<{ icon: string; title: string; items: string[] }>
+  // `items` is an array field in the CMS (one row per point, localized text) but a
+  // plain string[] in the in-code fallback below, so normalise both shapes.
+  const source = (Array.isArray(raw) && raw.length > 0 ? raw : fallback) as Array<{
+    icon: string
+    title: string
+    items: Array<string | { text?: string }>
+  }>
+  const evidence = source.map((card) => ({
+    icon: card.icon,
+    title: card.title,
+    items: (card.items ?? [])
+      .map((item) => (typeof item === 'string' ? item : item?.text || ''))
+      .filter(Boolean),
+  }))
 
   return (
     <section className="bg-[var(--color-surface-brand)] text-white py-20 md:py-28">
       <div className="max-w-7xl mx-auto px-6">
         <Reveal>
           <SectionHeading
-            eyebrow="Trust & Evidence"
-            title={<>We <span className="split-accent !text-[var(--color-accent)]">Prove</span> What We Claim</>}
-            description="Ask us for any document — inspection reports, traceability records, test certificates. Every advantage we state is verifiable."
+            eyebrow={h.eyebrow || 'Trust & Evidence'}
+            title={<>{h.titleLead || 'We'} <span className="split-accent !text-[var(--color-accent)]">{h.titleAccent || 'Prove'}</span> {h.titleTail || 'What We Claim'}</>}
+            description={h.description || 'Ask us for any document — inspection reports, traceability records, test certificates. Every advantage we state is verifiable.'}
             dark
           />
         </Reveal>

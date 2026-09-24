@@ -2,11 +2,13 @@ import Icon from '@/components/ui/Icon'
 import Reveal from '@/components/ui/Reveal'
 import SectionHeading from '@/components/ui/SectionHeading'
 import { getSiteSettings } from '@/lib/payload'
+import { homeCopy } from '@/lib/home-copy'
 
 // Six client-facing stages adapted directly from the Agricon catalog:
 // Inquiry, Analysis, Matching, Confirmation, Delivery and Support.
-export default async function HowWeWork() {
-  const settings = await getSiteSettings()
+export default async function HowWeWork({ locale }: { locale: string }) {
+  const h = homeCopy(locale).howWeWork ?? {}
+  const settings = await getSiteSettings(locale)
   const fallback = [
     { icon: 'users', title: 'Inquiry', desc: 'Understand farm type, capacity, product interest, application scenario and purchasing purpose.' },
     { icon: 'search', title: 'Analysis', desc: 'Review project conditions, operation goals, site requirements and budget expectations.' },
@@ -22,9 +24,9 @@ export default async function HowWeWork() {
     <section className="max-w-7xl mx-auto px-6 py-16 md:py-24">
       <Reveal>
         <SectionHeading
-          eyebrow="How We Work"
-          title={<>From Inquiry to <span className="split-accent">Support</span></>}
-          description="A structured, evidence-based process — designed to lower your risk on every first order"
+          eyebrow={h.eyebrow || 'How We Work'}
+          title={<>{h.titleLead || 'From Inquiry to'} <span className="split-accent">{h.titleAccent || 'Support'}</span></>}
+          description={h.description || 'A structured, evidence-based process — designed to lower your risk on every first order'}
         />
       </Reveal>
 

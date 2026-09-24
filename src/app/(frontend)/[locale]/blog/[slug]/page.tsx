@@ -1,4 +1,5 @@
 import type { Locale } from '@/i18n/config'
+import { getTranslations } from '@/i18n/config'
 import { getBlogPosts } from '@/lib/payload'
 import { getFallbackArticle } from '@/lib/blog-fallback'
 import { RichText } from '@payloadcms/richtext-lexical/react'
@@ -10,7 +11,7 @@ import BlogToc from '@/components/BlogToc'
 import { buildHeadingIds } from '@/lib/slugify'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
-import { localizedAlternates } from '@/lib/seo'
+import { DEFAULT_OG_IMAGE, localizedAlternates } from '@/lib/seo'
 
 interface Props {
   params: Promise<{ locale: string; slug: string }>
@@ -23,10 +24,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const posts = await getBlogPosts(locale)
   const post = posts.find((p) => p.slug === slug)
   const fallback = post ? null : getFallbackArticle(slug)
+  const tBlog = getTranslations(locale as Locale, 'blog')
   return {
-    title: post?.title || fallback?.title || 'Blog',
-    description: post?.excerpt || fallback?.excerpt || 'Guides and field notes from Agricon.',
+    title: post?.title || fallback?.title || tBlog.meta?.title || 'Blog',
+    description: post?.excerpt || fallback?.excerpt || tBlog.meta?.description || 'Guides and field notes from Agricon.',
     alternates: localizedAlternates(locale as Locale, `/blog/${slug}`),
+    openGraph: {
+      type: 'article',
+      title: post?.title || fallback?.title || tBlog.meta?.title || 'Blog',
+      description: post?.excerpt || fallback?.excerpt || tBlog.meta?.description || '',
+      images: [{ url: DEFAULT_OG_IMAGE, width: 1200, height: 630, alt: 'Agricon' }],
+    },
   }
 }
 
@@ -34,6 +42,8 @@ export default async function BlogPostPage({ params }: Props) {
   const { locale, slug } = await params
   const posts = await getBlogPosts(locale)
   const post = posts.find((p) => p.slug === slug)
+  const tBlog = getTranslations(locale as Locale, 'blog')
+  const tagLabels = (tBlog.tags ?? {}) as Record<string, string>
 
   // CMS 为空时的内置文章 — 保证博客详情可用（不跳转 contact）
   const fallback = post ? null : getFallbackArticle(slug)
@@ -57,9 +67,11 @@ export default async function BlogPostPage({ params }: Props) {
         {post && (post.tags || []).length > 0 && (
           <div className="flex flex-wrap gap-1.5 mt-4">
             {(post.tags || []).map((t) => {
-              const name = typeof t === 'object' && t !== null ? (t.name ?? '') : ''
+              if (typeof t !== 'object' || t === null) return null
+              const slug = (t as { slug?: string }).slug || ''
+              const name = tagLabels[slug] || (t as { name?: string }).name || ''
               return name ? (
-                <span key={name} className="px-2.5 py-1 rounded-full bg-[var(--color-primary)]/8 text-[var(--color-primary)] text-[11px] font-medium">{name}</span>
+                <span key={slug || name} className="px-2.5 py-1 rounded-full bg-[var(--color-primary)]/8 text-[var(--color-primary)] text-[11px] font-medium">{name}</span>
               ) : null
             })}
           </div>
@@ -76,7 +88,7 @@ export default async function BlogPostPage({ params }: Props) {
 
         {/* 页面大纲 + 正文 — 大纲自动扫描 h2/h3 生成锚点 */}
         <div className="mt-8">
-          <BlogToc initialSections={tocSections}>
+          <BlogToc initialSections={tocSections} title={tBlog.tocTitle || 'On This Page'} label={tBlog.tocLabel || 'Table of contents'}>
             {post?.content ? (
               <RichText
                 className="prose-agricon max-w-none"
@@ -110,7 +122,7 @@ export default async function BlogPostPage({ params }: Props) {
         <div className="mt-10 pt-6 border-t border-[var(--color-border)]">
           <a href={`/${locale}/blog`} className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--color-primary)] hover:underline">
             <Icon name="arrow-right" size={14} className="rotate-180" />
-            Back to Blog
+            {tBlog.backToBlog || 'Back to Blog'}
           </a>
         </div>
       </article>

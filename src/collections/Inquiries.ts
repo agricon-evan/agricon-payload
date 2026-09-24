@@ -1,7 +1,9 @@
 import type { CollectionConfig, Payload } from 'payload'
+import { antiSpamFields } from '@/lib/anti-spam'
+import { publicWriteGuard } from '@/lib/public-write-guard'
 
 interface InquiryDoc {
-  id: number
+  id: number | string
   name?: string | null
   email?: string | null
   company?: string | null
@@ -42,7 +44,15 @@ const notifySales = (payload: Payload, doc: InquiryDoc) => {
     to,
     subject: `[Agricon] New inquiry from ${doc.name || doc.email || 'website'}`,
     text: lines.join('\n'),
-  }).catch(() => {})
+  }).catch((err: unknown) => {
+    // Previously swallowed with `.catch(() => {})`, which made a failed SMTP
+    // delivery (misconfigured host, auth error, recipient rejected) completely
+    // invisible — sales would simply never see the lead. Always log it.
+    payload.logger.error(
+      { err: err instanceof Error ? err.message : String(err), to, inquiryId: doc.id },
+      'Inquiry saved but the sales notification email failed to send',
+    )
+  })
 }
 
 export const Inquiries: CollectionConfig = {
@@ -59,6 +69,11 @@ export const Inquiries: CollectionConfig = {
   defaultSort: '-createdAt',
   access: {
     read: ({ req }) => !!req.user,
+    // Public by design (anonymous contact form). The rate limit and the
+    // honeypot/timing heuristics live in the `beforeValidate` hook below, NOT
+    // here: Payload also evaluates `access.create` when it builds the admin
+    // panel's permissions, so anything that throws in this function takes the
+    // whole `/admin` down. See lib/public-write-guard.ts.
     create: () => true,
     update: ({ req }) => !!req.user,
     delete: ({ req }) => !!req.user,
@@ -85,6 +100,9 @@ export const Inquiries: CollectionConfig = {
       name: 'status',
       type: 'select',
       defaultValue: 'new',
+      // Indexed: the admin list filters and sorts on the pipeline stage, and the
+      // inquiries table is the one collection that grows without bound.
+      index: true,
       options: [
         { label: '🟢 New', value: 'new' },
         { label: '🔵 Contacted', value: 'contacted' },
@@ -96,8 +114,19 @@ export const Inquiries: CollectionConfig = {
       admin: { position: 'sidebar', description: 'Sales pipeline stage.' },
     },
     { name: 'notes', type: 'textarea', admin: { description: 'Internal follow-up notes (not shown to the customer).' } },
+    // Hidden anti-spam plumbing (virtual — never persisted). See lib/anti-spam.ts.
+    ...antiSpamFields,
   ],
   hooks: {
+    beforeValidate: [
+      publicWriteGuard({
+        scope: 'inquiry',
+        label: 'Inquiry submission',
+        rateLimitedMessage:
+          'Too many submissions from this address. Please try again later or contact us by email.',
+        rejectedMessage: 'This submission was rejected. Please contact us by email instead.',
+      }),
+    ],
     afterChange: [
       async ({ operation, doc, req }) => {
         // Notify sales only for new submissions (not admin edits)

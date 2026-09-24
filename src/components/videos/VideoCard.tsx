@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import Icon from '@/components/ui/Icon'
 import MediaImage from '@/components/ui/MediaImage'
+import { getUiString, type UiLocale } from '@/i18n/ui'
 
 export interface VideoCardData {
   id: number | string
@@ -19,7 +20,7 @@ export interface VideoCardData {
  * Client-side video card with an inline lightbox (YouTube embed).
  * TikTok / other platforms fall back to opening the video in a new tab.
  */
-export default function VideoCard({ video, index }: { video: VideoCardData; index: number }) {
+export default function VideoCard({ video, index, locale = 'en' }: { video: VideoCardData; index: number; locale?: string }) {
   const [open, setOpen] = useState(false)
 
   // Lock body scroll while lightbox is open
@@ -45,7 +46,7 @@ export default function VideoCard({ video, index }: { video: VideoCardData; inde
           type="button"
           onClick={handleOpen}
           className="relative block w-full aspect-video bg-[var(--color-muted)] overflow-hidden tap-target"
-          aria-label={`Play: ${video.title}`}
+          aria-label={`${getUiString(locale as UiLocale, 'playVideo')}: ${video.title}`}
         >
           {video.thumbnail ? (
             <MediaImage
@@ -71,7 +72,7 @@ export default function VideoCard({ video, index }: { video: VideoCardData; inde
           {/* Platform badge */}
           <span className="absolute top-3 right-3 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/55 text-white text-[11px] font-semibold uppercase tracking-wide">
             <Icon name={video.platform === 'youtube' ? 'youtube' : video.platform === 'tiktok' ? 'music' : 'external'} size={12} />
-            {video.platform === 'youtube' ? 'YouTube' : video.platform === 'tiktok' ? 'TikTok' : 'Video'}
+            {video.platform === 'youtube' ? 'YouTube' : video.platform === 'tiktok' ? 'TikTok' : getUiString(locale as UiLocale, 'videoLabel')}
           </span>
         </button>
 
@@ -109,7 +110,7 @@ export default function VideoCard({ video, index }: { video: VideoCardData; inde
             type="button"
             onClick={() => setOpen(false)}
             className="absolute top-4 right-4 w-11 h-11 flex items-center justify-center rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors tap-target"
-            aria-label="Close video"
+            aria-label={getUiString(locale as UiLocale, 'closeVideo')}
           >
             <Icon name="close" size={22} />
           </button>

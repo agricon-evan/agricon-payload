@@ -5,6 +5,7 @@ import Icon from '@/components/ui/Icon'
 import Reveal from '@/components/ui/Reveal'
 import MediaImage from '@/components/ui/MediaImage'
 import { FALLBACK_ARTICLES } from '@/lib/blog-fallback'
+import { homeCopy } from '@/lib/home-copy'
 
 interface Props {
   locale: Locale
@@ -20,6 +21,7 @@ interface NewsItem {
 }
 
 export default async function LatestNews({ locale }: Props) {
+  const h = homeCopy(locale).news ?? {}
   const posts = await getBlogPosts(locale)
   const lp = `/${locale}`
 
@@ -47,8 +49,8 @@ export default async function LatestNews({ locale }: Props) {
       <Reveal>
         <div className="flex items-end justify-between mb-10">
           <div>
-            <span className="eyebrow">News &amp; Insights</span>
-            <h2 className="mt-2 split-color-title text-[var(--color-text)]">From Our <span className="split-accent">Blog</span></h2>
+            <span className="eyebrow">{h.eyebrow || 'News & Insights'}</span>
+            <h2 className="mt-2 split-color-title text-[var(--color-text)]">{h.titleLead || 'From Our'} <span className="split-accent">{h.titleAccent || 'Blog'}</span></h2>
             <span className="orange-underline mt-3" aria-hidden="true" />
           </div>
           <Link href={`${lp}/blog`} className="hidden sm:inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--color-primary)] hover:underline">

@@ -112,9 +112,11 @@ export const SiteSettings: CollectionConfig = {
       label: 'Home · Testimonials',
       admin: { description: 'Customer testimonials on the homepage. Empty → built-in defaults.' },
       fields: [
-        { name: 'quote', type: 'textarea', required: true, admin: { description: 'Customer quote.' } },
+        // `quote` and `role` are localized so each language gets its own copy;
+        // `name` is a farm/customer proper noun and stays shared.
+        { name: 'quote', type: 'textarea', required: true, localized: true, admin: { description: 'Customer quote.' } },
         { name: 'name', type: 'text', required: true, admin: { placeholder: 'e.g. Kenya Layer Farm' } },
-        { name: 'role', type: 'text', admin: { placeholder: 'e.g. Layer poultry project' } },
+        { name: 'role', type: 'text', localized: true, admin: { placeholder: 'e.g. Layer poultry project' } },
       ],
     },
     {
@@ -124,8 +126,8 @@ export const SiteSettings: CollectionConfig = {
       admin: { description: 'Advantage cards. Empty → built-in defaults.' },
       fields: [
         { name: 'icon', type: 'text', admin: { description: 'Icon name (see src/components/ui/Icon.tsx).' } },
-        { name: 'title', type: 'text', required: true },
-        { name: 'desc', type: 'textarea', required: true },
+        { name: 'title', type: 'text', required: true, localized: true },
+        { name: 'desc', type: 'textarea', required: true, localized: true },
       ],
     },
     {
@@ -135,8 +137,8 @@ export const SiteSettings: CollectionConfig = {
       admin: { description: 'Process steps. Empty → built-in defaults.' },
       fields: [
         { name: 'icon', type: 'text', admin: { description: 'Icon name.' } },
-        { name: 'title', type: 'text', required: true },
-        { name: 'desc', type: 'textarea', required: true },
+        { name: 'title', type: 'text', required: true, localized: true },
+        { name: 'desc', type: 'textarea', required: true, localized: true },
       ],
     },
     {
@@ -146,8 +148,8 @@ export const SiteSettings: CollectionConfig = {
       admin: { description: 'Coverage cards. Empty → built-in defaults.' },
       fields: [
         { name: 'icon', type: 'text', admin: { description: 'Icon name.' } },
-        { name: 'title', type: 'text', required: true },
-        { name: 'sub', type: 'textarea', required: true },
+        { name: 'title', type: 'text', required: true, localized: true },
+        { name: 'sub', type: 'textarea', required: true, localized: true },
       ],
     },
     {
@@ -157,8 +159,20 @@ export const SiteSettings: CollectionConfig = {
       admin: { description: 'Value cards. Empty → built-in defaults.' },
       fields: [
         { name: 'icon', type: 'text', admin: { description: 'Icon name.' } },
-        { name: 'title', type: 'text', required: true },
-        { name: 'items', type: 'json', label: 'Items', admin: { description: 'JSON: [{ "label": "…", "value": "…" }]' } },
+        { name: 'title', type: 'text', required: true, localized: true },
+        {
+          // Was a `json` field. Payload cannot localize JSON, so the metric rows
+          // lived in English only; as an array each row carries its own
+          // per-locale label/value (see docs/MAINTENANCE.md §8).
+          name: 'items',
+          type: 'array',
+          label: 'Metrics',
+          admin: { description: 'One row per metric, e.g. "Product categories" → "10+".' },
+          fields: [
+            { name: 'label', type: 'text', required: true, localized: true },
+            { name: 'value', type: 'text', required: true, localized: true },
+          ],
+        },
       ],
     },
     {
@@ -168,8 +182,15 @@ export const SiteSettings: CollectionConfig = {
       admin: { description: 'Evidence cards. Empty → built-in defaults.' },
       fields: [
         { name: 'icon', type: 'text', admin: { description: 'Icon name.' } },
-        { name: 'title', type: 'text', required: true },
-        { name: 'items', type: 'json', label: 'Items', admin: { description: 'JSON array of strings: ["…", "…"]' } },
+        { name: 'title', type: 'text', required: true, localized: true },
+        {
+          // Was `type: 'json'` holding a string[] — same localization limitation.
+          name: 'items',
+          type: 'array',
+          label: 'Evidence points',
+          admin: { description: 'One row per evidence point.' },
+          fields: [{ name: 'text', type: 'text', required: true, localized: true }],
+        },
       ],
     },
   ],

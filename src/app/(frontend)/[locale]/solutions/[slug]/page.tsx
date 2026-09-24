@@ -1,5 +1,11 @@
 import type { Locale } from '@/i18n/config'
-import { getSolutions, getProducts, getCaseStudies } from '@/lib/payload'
+import { getTranslations } from '@/i18n/config'
+import {
+  getSolutions,
+  getProductsForSolution,
+  getCaseStudiesForSolution,
+  productHref,
+} from '@/lib/payload'
 import CtaSection from '@/components/CtaSection'
 import PageHero from '@/components/PageHero'
 import Reveal from '@/components/ui/Reveal'
@@ -10,16 +16,30 @@ import { caseStudyImages } from '@/lib/images'
 import type { Product } from '@/payload-types'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
-import { localizedAlternates } from '@/lib/seo'
+import { DEFAULT_OG_IMAGE, localizedAlternates } from '@/lib/seo'
+import Link from 'next/link'
 
 interface Props {
   params: Promise<{ locale: string; slug: string }>
 }
 
-function getProductPath(locale: string, product: Product) {
-  const subcategory = typeof product.subcategory === 'object' && product.subcategory ? product.subcategory : null
-  const category = subcategory && typeof subcategory.category === 'object' && subcategory.category ? subcategory.category : null
-  return `/${locale}/products/${category?.slug || ''}/${subcategory?.slug || ''}/${product.slug}`
+/**
+ * Resolves every product link for the page in one pass. Doing this inline in the
+ * JSX would make the component non-async per card.
+ *
+ * Products whose CMS relations cannot produce a complete URL are dropped rather
+ * than rendered. `productHref` returns `null` instead of a path containing an
+ * empty segment — this page used to build
+ * `/products/<category>/<empty>/<slug>`, which 404s, and it was the same bug
+ * class the product detail page guards against with `productPathBase`.
+ */
+async function withProductPaths(locale: string, products: Product[]) {
+  const resolved = await Promise.all(
+    products.map(async (p) => ({ product: p, href: await productHref(locale, p) })),
+  )
+  return resolved.filter(
+    (entry): entry is { product: Product; href: string } => entry.href !== null,
+  )
 }
 
 // 画册方案覆盖范围（factual scope from catalog category pages）— fallback 仅当 CMS 未填 features
@@ -86,13 +106,24 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const solutions = await getSolutions(locale)
   const solution = solutions.find((s) => s.slug === slug)
   const raw = (solution as { description?: unknown } | undefined)?.description
+  const tPages = getTranslations(locale as Locale, 'pages') as {
+    solutions?: { meta?: { title?: string; description?: string } }
+  }
+  const title = (solution as { name?: string } | undefined)?.name || tPages.solutions?.meta?.title || 'Farm Solutions'
+  const description =
+    typeof raw === 'string' && raw.trim().length > 0
+      ? raw.trim()
+      : tPages.solutions?.meta?.description || 'Turnkey farm solutions from Agricon — planned, supplied and commissioned end to end.'
   return {
-    title: (solution as { name?: string } | undefined)?.name || 'Farm Solutions',
-    description:
-      typeof raw === 'string' && raw.trim().length > 0
-        ? raw.trim()
-        : 'Turnkey farm solutions from Agricon — planned, supplied and commissioned end to end.',
+    title,
+    description,
     alternates: localizedAlternates(locale as Locale, `/solutions/${slug}`),
+    openGraph: {
+      type: 'website',
+      title,
+      description,
+      images: [{ url: DEFAULT_OG_IMAGE, width: 1200, height: 630, alt: 'Agricon' }],
+    },
   }
 }
 
@@ -106,18 +137,21 @@ export default async function SolutionDetailPage({ params }: Props) {
   }
 
   const s = solution
-  const [products, cases] = await Promise.all([getProducts(locale), getCaseStudies(locale)])
-
-  // 关联产品：产品 → solutions 关系（画册导入已按分类映射）
   const solutionId = s.id
-  const relatedProducts = products.filter((p) =>
-    (p.solutions || []).some((rel) => (typeof rel === 'object' && rel !== null ? rel.id === solutionId : rel === solutionId))
-  )
-  // 关联案例：优先使用数据库 caseStudies.solution 关系，不再依赖硬编码映射
-  const relatedCases = cases.filter((c) => {
-    const sol = (c as { solution?: number | { id: number } | null }).solution
-    return typeof sol === 'object' && sol !== null ? sol.id === solutionId : sol === solutionId
-  })
+
+  // Related products and case studies.
+  //
+  // These previously fetched EVERY product (43) and every case study just to
+  // filter them in memory, and only ever consulted the reverse relation, which
+  // is empty for solutions 3 (aquaculture) and 5 (breeding-house). The helpers
+  // query the declared `solutions.products` / `caseStudies.solution` relation
+  // first and fall back to the reverse one, so both layouts resolve and the
+  // common path no longer loads the whole catalog per request.
+  const [relatedProducts, relatedCases] = await Promise.all([
+    getProductsForSolution(solutionId, locale, s.slug),
+    getCaseStudiesForSolution(solutionId, locale),
+  ])
+  const productCards = await withProductPaths(locale, relatedProducts.slice(0, 8))
 
   const features =
     s.features && s.features.length > 0
@@ -129,6 +163,7 @@ export default async function SolutionDetailPage({ params }: Props) {
   return (
     <>
       <PageHero
+        locale={locale as Locale}
         title={s.name}
         description={s.description || 'A complete, practical system designed around your farm capacity and operating conditions.'}
         breadcrumb={`${locale.toUpperCase()} / Solutions / ${s.name}`}
@@ -175,9 +210,9 @@ export default async function SolutionDetailPage({ params }: Props) {
               />
             </Reveal>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
-              {relatedProducts.slice(0, 8).map((p, i) => (
+              {productCards.map(({ product: p, href }, i) => (
                 <Reveal key={p.id} delay={(i % 4) * 60} className="h-full">
-                  <a href={getProductPath(locale, p)} className="card card-hover h-full block group">
+                  <Link href={href} className="card card-hover h-full block group">
                     <div className="aspect-[4/3] bg-[var(--color-muted)] overflow-hidden flex items-center justify-center icon-zoom">
                       {p.images?.[0]?.image && typeof p.images[0].image === 'object' && p.images[0].image.url ? (
                         <MediaImage src={p.images[0].image.url} alt={p.name} width={400} height={300} className="w-full h-full object-cover" loading="lazy" />
@@ -188,7 +223,7 @@ export default async function SolutionDetailPage({ params }: Props) {
                     <div className="p-4">
                       <div className="text-sm font-medium text-[var(--color-text)] leading-snug group-hover:text-[var(--color-primary)] transition-colors">{p.name}</div>
                     </div>
-                  </a>
+                  </Link>
                 </Reveal>
               ))}
             </div>
@@ -208,7 +243,7 @@ export default async function SolutionDetailPage({ params }: Props) {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-8">
               {relatedCases.map((c, i) => (
                 <Reveal key={c.id} delay={(i % 3) * 80} className="h-full">
-                  <a href={`/${locale}/case-studies/${c.slug}`} className="card card-hover h-full block overflow-hidden group">
+                  <Link href={`/${locale}/case-studies/${c.slug}`} className="card card-hover h-full block overflow-hidden group">
                     {caseStudyImages[c.slug] && (
                       <div className="aspect-video bg-[var(--color-muted)] overflow-hidden icon-zoom">
                         <MediaImage src={caseStudyImages[c.slug]} alt={c.title} width={600} height={340} className="w-full h-full object-cover" loading="lazy" />
@@ -221,7 +256,7 @@ export default async function SolutionDetailPage({ params }: Props) {
                       <h3 className="mt-1.5 font-semibold text-[var(--color-text)] group-hover:text-[var(--color-primary)] transition-colors">{c.title}</h3>
                       <p className="mt-2 text-sm text-[var(--color-text-secondary)] line-clamp-2 leading-relaxed">{c.summary || c.subtitle}</p>
                     </div>
-                  </a>
+                  </Link>
                 </Reveal>
               ))}
             </div>

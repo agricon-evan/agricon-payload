@@ -1,7 +1,8 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Icon from '@/components/ui/Icon'
+import { HONEYPOT_FIELD, RENDERED_AT_FIELD } from '@/lib/anti-spam-constants'
 
 // Lightweight props — server passes only what client needs (NOT the full i18n module)
 interface ContactFormProps {
@@ -12,6 +13,30 @@ interface ContactFormProps {
     companyName: string; country: string; selectCountry: string
     interestedProducts: string; message: string; messagePlaceholder: string
     submit: string; submitting: string; errorNetwork: string
+    /**
+     * The two server-side rejections the public write guard can return. They were
+     * previously collapsed into `errorNetwork`, so a rate-limited visitor was
+     * told "network error, please try again" and retried immediately — each retry
+     * consuming another token and deepening the limit.
+     */
+    errorRateLimit: string; errorRejected: string
+  }
+  /**
+   * Requirement-diagnosis field labels and options (Application / Current Setup /
+   * Purchase Type). These used to be hard-coded English inside this component, so
+   * the fields the sales handbook cares most about were the only ones still in
+   * English on all six localised contact pages.
+   */
+  diagnostics: {
+    phone: string
+    phonePlaceholder: string
+    application: string
+    currentSetup: string
+    purchaseType: string
+    select: string
+    applications: Record<string, string>
+    setups: Record<string, string>
+    purchaseTypes: Record<string, string>
   }
   responseInfo: { title: string; items: { title: string; description: string }[] }
   countries: string[]
@@ -26,7 +51,7 @@ interface ContactFormProps {
 
 export default function ContactForm(props: ContactFormProps) {
   const {
-    locale, contactMethods, inquiryLabels: t, responseInfo, countries, productOptions,
+    locale, contactMethods, inquiryLabels: t, diagnostics: d, responseInfo, countries, productOptions,
     successTitle, successDesc, successBrowse,
     whatsappTitle, whatsappDesc, whatsappOpen, responseLabel, whatsappNumber,
     initialProduct,
@@ -42,6 +67,17 @@ export default function ContactForm(props: ContactFormProps) {
   const [interest, setInterest] = useState<string[]>(initialProduct ? [initialProduct] : [])
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
   const [error, setError] = useState('')
+  // Anti-spam: hidden honeypot field + the time this form first rendered.
+  // See lib/anti-spam.ts for the server-side heuristics these feed.
+  const honeypotRef = useRef<HTMLInputElement>(null)
+  // Seeded in an effect, not during render: `Date.now()` is impure and reading
+  // it in the render body is a React purity violation (and would change on every
+  // re-render). The effect runs right after mount, which is exactly the moment
+  // the visitor starts reading the form.
+  const renderedAtRef = useRef<number>(0)
+  useEffect(() => {
+    renderedAtRef.current = Date.now()
+  }, [])
 
   const update = (field: string) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
     setForm({ ...form, [field]: e.target.value })
@@ -51,6 +87,10 @@ export default function ContactForm(props: ContactFormProps) {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
+    // Re-entrancy guard. The `disabled` attribute alone is not enough: it does
+    // not stop a second Enter-key submit that was already queued, and a stalled
+    // request used to leave the form permanently un-submittable.
+    if (status === 'submitting' || status === 'success') return
     setStatus('submitting')
     try {
       const res = await fetch('/api/inquiries', {
@@ -59,10 +99,40 @@ export default function ContactForm(props: ContactFormProps) {
         body: JSON.stringify({
           ...form,
           productInterest: interest.map(p => ({ product: p })),
+          [HONEYPOT_FIELD]: honeypotRef.current?.value ?? '',
+          [RENDERED_AT_FIELD]: String(renderedAtRef.current),
         }),
       })
-      if (!res.ok) throw new Error('Failed')
+      if (!res.ok) {
+        // Distinguish the guard's two documented rejections instead of showing
+        // "network error" for all of them. The server already returns a
+        // human-readable message in the JSON body; prefer the localised string
+        // and fall back to the server text.
+        const localised =
+          res.status === 429 ? t.errorRateLimit
+          : res.status === 400 ? t.errorRejected
+          : t.errorNetwork
+        let serverMessage = ''
+        try {
+          const body = await res.json()
+          serverMessage =
+            (typeof body?.message === 'string' && body.message) ||
+            (Array.isArray(body?.errors) && typeof body.errors[0]?.message === 'string' && body.errors[0].message) ||
+            ''
+        } catch {
+          // Non-JSON error body — the localised string is enough.
+        }
+        setStatus('error')
+        setError(localised || serverMessage || t.errorNetwork)
+        // A stale timing token (>12h old tab) can never pass the guard, so give
+        // the visitor a fresh one rather than leaving them stuck.
+        renderedAtRef.current = Date.now()
+        return
+      }
       setStatus('success')
+      // Fresh token so a follow-up inquiry from the same visitor is not treated
+      // as a replayed/stale submission.
+      renderedAtRef.current = Date.now()
     } catch {
       setStatus('error')
       setError(t.errorNetwork)
@@ -118,8 +188,8 @@ export default function ContactForm(props: ContactFormProps) {
             </div>
           </div>
           <div>
-            <label htmlFor="contact-phone" className="block text-sm font-medium mb-1.5">Phone</label>
-            <input id="contact-phone" type="tel" value={form.phone} onChange={update('phone')} className={fieldClass} placeholder="+86 000 000 0000" />
+            <label htmlFor="contact-phone" className="block text-sm font-medium mb-1.5">{d.phone}</label>
+            <input id="contact-phone" type="tel" value={form.phone} onChange={update('phone')} className={fieldClass} placeholder={d.phonePlaceholder} />
           </div>
           <div>
             {/* Button group, not a labelled control — use a group + toggle semantics
@@ -140,38 +210,38 @@ export default function ContactForm(props: ContactFormProps) {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div>
-              <label htmlFor="contact-application" className="block text-sm font-medium mb-1.5">Application</label>
+              <label htmlFor="contact-application" className="block text-sm font-medium mb-1.5">{d.application}</label>
               <select id="contact-application" value={form.application} onChange={update('application')} className={fieldClass}>
-                <option value="">Select...</option>
-                <option>Layer (egg) farm</option>
-                <option>Broiler farm</option>
-                <option>Breeder / hatchery</option>
-                <option>Pig farm</option>
-                <option>Cattle farm</option>
-                <option>Feed processing plant</option>
-                <option>Distributor / reseller</option>
-                <option>Other</option>
+                <option value="">{d.select}</option>
+                <option>{d.applications.layerFarm}</option>
+                <option>{d.applications.broilerFarm}</option>
+                <option>{d.applications.breederHatchery}</option>
+                <option>{d.applications.pigFarm}</option>
+                <option>{d.applications.cattleFarm}</option>
+                <option>{d.applications.feedPlant}</option>
+                <option>{d.applications.distributor}</option>
+                <option>{d.applications.other}</option>
               </select>
             </div>
             <div>
-              <label htmlFor="contact-current-setup" className="block text-sm font-medium mb-1.5">Current Setup</label>
+              <label htmlFor="contact-current-setup" className="block text-sm font-medium mb-1.5">{d.currentSetup}</label>
               <select id="contact-current-setup" value={form.currentSetup} onChange={update('currentSetup')} className={fieldClass}>
-                <option value="">Select...</option>
-                <option>New project</option>
-                <option>Replacing old equipment</option>
-                <option>Expanding existing farm</option>
-                <option>Upgrading for automation</option>
-                <option>Other</option>
+                <option value="">{d.select}</option>
+                <option>{d.setups.newProject}</option>
+                <option>{d.setups.replacing}</option>
+                <option>{d.setups.expanding}</option>
+                <option>{d.setups.automation}</option>
+                <option>{d.setups.other}</option>
               </select>
             </div>
             <div>
-              <label htmlFor="contact-purchase-type" className="block text-sm font-medium mb-1.5">Purchase Type</label>
+              <label htmlFor="contact-purchase-type" className="block text-sm font-medium mb-1.5">{d.purchaseType}</label>
               <select id="contact-purchase-type" value={form.purchaseType} onChange={update('purchaseType')} className={fieldClass}>
-                <option value="">Select...</option>
-                <option>Need a quote for comparison</option>
-                <option>Ready to order</option>
-                <option>Researching options</option>
-                <option>Long-term partnership</option>
+                <option value="">{d.select}</option>
+                <option>{d.purchaseTypes.comparing}</option>
+                <option>{d.purchaseTypes.ready}</option>
+                <option>{d.purchaseTypes.researching}</option>
+                <option>{d.purchaseTypes.partnership}</option>
               </select>
             </div>
           </div>
@@ -180,23 +250,39 @@ export default function ContactForm(props: ContactFormProps) {
             <textarea id="contact-message" required rows={5} value={form.message} onChange={update('message')} className={`${fieldClass} resize-y`} placeholder={t.messagePlaceholder} />
           </div>
           {status === 'success' && (
-            <div className="p-5 bg-[var(--color-primary)]/6 border border-[var(--color-primary)]/20 rounded-md text-[var(--color-primary)]">
+            <div role="status" aria-live="polite" className="p-5 bg-[var(--color-primary)]/6 border border-[var(--color-primary)]/20 rounded-md text-[var(--color-primary)]">
               <div className="font-semibold">{successTitle}</div>
               <p className="mt-1 text-sm opacity-90">{successDesc}</p>
               <a href={`/${locale}/products`} className="inline-block mt-3 text-sm font-semibold underline">{successBrowse}</a>
             </div>
           )}
           {status === 'error' && (
-            <div className="p-5 bg-[var(--color-canvas-soft)] border border-[var(--color-accent)]/40 rounded-md">
+            <div role="alert" aria-live="assertive" className="p-5 bg-[var(--color-canvas-soft)] border border-[var(--color-accent)]/40 rounded-md">
               <p className="text-sm text-[var(--color-text)] font-medium flex items-start gap-2">
                 <Icon name="alert" size={16} className="text-[var(--color-accent)] mt-0.5 flex-shrink-0" />
                 {error}
               </p>
             </div>
           )}
-          <button type="submit" disabled={status === 'submitting'}
-            className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 bg-[var(--color-primary)] text-white font-semibold rounded-md min-h-[52px] press tap-target disabled:opacity-50 transition-colors hover:bg-[var(--color-primary-dark)]"
-          >{status === 'submitting' ? t.submitting : t.submit}{status !== 'submitting' && <Icon name="arrow-right" size={16} />}</button>
+          {/* Disabled after a successful submit. The form fields keep their
+              values, so leaving the button live meant a second Enter/click filed
+              a duplicate inquiry — the refreshed timing token (see handleSubmit)
+              passed the anti-spam check, so nothing stopped it. */}
+          <button type="submit" disabled={status === 'submitting' || status === 'success'}
+            className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 bg-[var(--color-primary)] text-white font-semibold rounded-md min-h-[52px] press tap-target disabled:opacity-50 disabled:cursor-not-allowed transition-colors hover:bg-[var(--color-primary-dark)]"
+          >{status === 'submitting' ? t.submitting : t.submit}{status === 'idle' && <Icon name="arrow-right" size={16} />}</button>
+          {/* Anti-spam honeypot — hidden from sighted users and assistive tech. */}
+          <div aria-hidden="true" className="hidden">
+            <label htmlFor="contact-company-website">Company website</label>
+            <input
+              id="contact-company-website"
+              ref={honeypotRef}
+              type="text"
+              name={HONEYPOT_FIELD}
+              tabIndex={-1}
+              autoComplete="off"
+            />
+          </div>
         </form>
 
         {/* Sidebar */}

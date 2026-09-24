@@ -24,7 +24,8 @@ export const Downloads: CollectionConfig = {
     { name: 'fileType', type: 'text', admin: { placeholder: 'e.g. PDF, DWG', description: 'Auto-filled from the file if left blank.' } },
     { name: 'fileSize', type: 'text', admin: { placeholder: 'e.g. 1.2 MB', description: 'Shown next to the download button.' } },
     { name: 'sortOrder', type: 'number', defaultValue: 0, admin: { position: 'sidebar', description: 'Lower numbers appear first.' } },
-    { name: 'published', type: 'checkbox', defaultValue: true, admin: { position: 'sidebar', description: 'Unpublished downloads are hidden on product pages.' } },
+    // Indexed: filtered when resolving the downloads shown on a product page.
+    { name: 'published', type: 'checkbox', defaultValue: true, index: true, admin: { position: 'sidebar', description: 'Unpublished downloads are hidden on product pages.' } },
   ],
   timestamps: false,
 }

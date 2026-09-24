@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { usePathname } from 'next/navigation'
+import { usePathname, useSearchParams } from 'next/navigation'
 import type { Locale } from '@/i18n/config'
 import { getUiString, uiLocaleNames as localeNames, uiLocales as locales } from '@/i18n/ui'
 import Icon from '@/components/ui/Icon'
@@ -16,17 +16,21 @@ export default function Header({ locale }: Props) {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [langOpen, setLangOpen] = useState(false)
   const pathname = usePathname()
+  const searchParams = useSearchParams()
   const lp = `/${locale}`
   const u = (key: string) => getUiString(locale, key)
 
-  // 切换语言时保留当前页面路径（/en/about → /ru/about）
+  // 切换语言时保留当前页面路径与查询串（/en/about?x=1 → /ru/about?x=1）。
+  // 之前只取 pathname，`/en/search?q=cage` 切到俄语会丢掉 `?q=cage`，
+  // 搜索结果变空。
   const localizedHref = (target: string): string => {
     let rest = pathname
     for (const l of locales) {
       if (pathname === `/${l}`) { rest = ''; break }
       if (pathname.startsWith(`/${l}/`)) { rest = pathname.slice(l.length + 1); break }
     }
-    return `/${target}${rest}`
+    const query = searchParams.toString()
+    return `/${target}${rest}${query ? `?${query}` : ''}`
   }
 
   const navItems = [
@@ -42,7 +46,7 @@ export default function Header({ locale }: Props) {
     <header className="sticky top-0 z-50 bg-[var(--color-bg)] border-b border-[var(--color-border)]">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-[72px]">
         {/* Brand mark */}
-        <Link href={lp || '/en'} className="flex items-center gap-3 tap-target" aria-label="Agricon Home">
+        <Link href={lp} className="flex items-center gap-3 tap-target" aria-label={u('home')}>
           <Image
             src="/company-logo.svg"
             alt="Agricon symbol"

@@ -10,6 +10,7 @@ import MediaImage from '@/components/ui/MediaImage'
 import { FALLBACK_ARTICLES } from '@/lib/blog-fallback'
 import type { Metadata } from 'next'
 import { pageMetadata } from '@/lib/seo'
+import Link from 'next/link'
 
 interface Props {
   params: Promise<{ locale: string }>
@@ -21,16 +22,22 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params
   return pageMetadata(locale as Locale, {
     path: '/blog',
-    title: "Blog",
-    description: "Guides and field notes on poultry housing, livestock systems, feed processing and choosing the right farm equipment.",
+    // `blog` carries its own meta title/description so the SEO copy can stay
+    // longer than the visible hero line, and both follow the locale.
+    namespace: 'blog',
+    title: 'Blog',
+    description:
+      'Guides and field notes on poultry housing, livestock systems, feed processing and choosing the right farm equipment.',
   })
 }
 
 export default async function BlogPage({ params }: Props) {
   const { locale } = await params
-  const heroImage = await resolvePageHeroImage('blog', '/images/heroes/farm-field.jpg')
+  const heroImage = await resolvePageHeroImage('blog', '/images/heroes/farm-field.jpg', locale)
   const t = getTranslations(locale as Locale, 'common')
   const tHome = getTranslations(locale as Locale, 'home')
+  const tBlog = getTranslations(locale as Locale, 'blog')
+  const tagLabels = (tBlog.tags ?? {}) as Record<string, string>
   const posts = await getBlogPosts(locale)
   const lp = `/${locale}`
   const fallbackPosts = FALLBACK_ARTICLES.map((a) => ({
@@ -49,23 +56,34 @@ export default async function BlogPage({ params }: Props) {
         excerpt: post.excerpt || '',
         year: post.createdAt ? new Date(post.createdAt).getFullYear().toString() : '2026',
         image: typeof post.coverImage === 'object' && post.coverImage?.url ? post.coverImage.url : null,
-        tags: (post.tags || []).map((t) => (typeof t === 'object' && t !== null ? (t.name ?? '') : '')).filter(Boolean) as string[],
+        // Tag labels are localized through the `blog` UI namespace keyed by slug
+        // (`blogTags.name` is not a localized CMS field — changing that needs a
+        // schema migration; see scripts/i18n-apply-todo.ts).
+        tags: (post.tags || [])
+          .map((t) => {
+            if (typeof t !== 'object' || t === null) return ''
+            const slug = (t as { slug?: string }).slug || ''
+            const name = (t as { name?: string }).name || ''
+            return tagLabels[slug] || name
+          })
+          .filter(Boolean) as string[],
       }))
     : fallbackPosts
 
   return (
     <>
       <PageHero
-        title={t.nav?.blog || 'Blog'}
-        description="Industry insights, farm tips, and company news"
-        breadcrumb={`${tHome.breadcrumb?.home || 'Home'} / ${t.nav?.blog || 'Blog'}`}
+        locale={locale as Locale}
+        title={tBlog.hero?.title || t.nav?.blog || 'Blog'}
+        description={tBlog.hero?.description || 'Industry insights, farm tips, and company news'}
+        breadcrumb={`${tHome.breadcrumb?.home || 'Home'} / ${tBlog.breadcrumb?.blog || t.nav?.blog || 'Blog'}`}
         image={heroImage}
       />
       <section className="max-w-7xl mx-auto px-6 py-16 md:py-24">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
           {displayPosts.map((post, i) => (
             <Reveal key={post.id} delay={(i % 3) * 80} className="h-full">
-              <a href={`${lp}/blog/${post.slug}`} className="card card-hover h-full block overflow-hidden group">
+              <Link href={`${lp}/blog/${post.slug}`} className="card card-hover h-full block overflow-hidden group">
                 <div className="relative aspect-video bg-[var(--color-muted)] flex items-center justify-center icon-zoom overflow-hidden">
                   {post.image ? (
                     <MediaImage src={post.image} alt={post.title} width={800} height={450} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
@@ -73,7 +91,7 @@ export default async function BlogPage({ params }: Props) {
                     <Icon name="file-text" size={32} className="text-[var(--color-text-secondary)]/30" />
                   )}
                   <div className="absolute inset-0 bg-black/40" />
-                  <span className="absolute bottom-4 left-5 text-xs font-semibold uppercase tracking-[0.14em] text-white/85">Field notes</span>
+                  <span className="absolute bottom-4 left-5 text-xs font-semibold uppercase tracking-[0.14em] text-white/85">{tBlog.badge || 'Field notes'}</span>
                 </div>
                 <div className="p-6">
                   <p className="text-xs text-[var(--color-text-secondary)]">{post.year}</p>
@@ -90,7 +108,7 @@ export default async function BlogPage({ params }: Props) {
                     </div>
                   )}
                 </div>
-              </a>
+              </Link>
             </Reveal>
           ))}
         </div>

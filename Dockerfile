@@ -1,5 +1,6 @@
-# To use this Dockerfile, you have to set `output: 'standalone'` in your next.config.mjs file.
-# From https://github.com/vercel/next.js/blob/canary/examples/with-docker/Dockerfile
+# Docker build. Requires `NEXT_OUTPUT=standalone`, which the builder stage below
+# sets — see next.config.ts. From
+# https://github.com/vercel/next.js/blob/canary/examples/with-docker/Dockerfile
 
 FROM node:22.17.0-alpine AS base
 
@@ -24,6 +25,9 @@ FROM base AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
+
+# Tells next.config.ts to emit `.next/standalone`, which the runner stage copies.
+ENV NEXT_OUTPUT standalone
 
 # Next.js collects completely anonymous telemetry data about general usage.
 # Learn more here: https://nextjs.org/telemetry

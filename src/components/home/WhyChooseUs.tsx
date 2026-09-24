@@ -2,9 +2,11 @@ import Icon from '@/components/ui/Icon'
 import Reveal from '@/components/ui/Reveal'
 import SectionHeading from '@/components/ui/SectionHeading'
 import { getSiteSettings } from '@/lib/payload'
+import { homeCopy } from '@/lib/home-copy'
 
-export default async function WhyChooseUs() {
-  const settings = await getSiteSettings()
+export default async function WhyChooseUs({ locale }: { locale: string }) {
+  const h = homeCopy(locale).whyChooseUs ?? {}
+  const settings = await getSiteSettings(locale)
   const fallback = [
     { icon: 'layers', title: 'Coordinated Sourcing', desc: 'Poultry, livestock, feed processing, aquaculture, infrastructure and machinery through one supply window.' },
     { icon: 'shield', title: 'Quality & Order Control', desc: 'Product scope, specifications, quantities and key inspection points are confirmed before shipment.' },
@@ -20,9 +22,9 @@ export default async function WhyChooseUs() {
     <section className="max-w-7xl mx-auto px-6 py-16 md:py-24">
       <Reveal>
         <SectionHeading
-          eyebrow="Why Agricon"
-          title={<>A <span className="split-accent">Partner</span>, Not Just a Supplier</>}
-          description="Six reasons commercial farms across three continents build with Agricon"
+          eyebrow={h.eyebrow || 'Why Agricon'}
+          title={<>{h.titleLead || 'A'} <span className="split-accent">{h.titleAccent || 'Partner'}</span>{h.titleTail || ', Not Just a Supplier'}</>}
+          description={h.description || 'Six reasons commercial farms across three continents build with Agricon'}
         />
       </Reveal>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 mt-10">

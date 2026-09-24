@@ -6,6 +6,8 @@ import PageHero from '@/components/PageHero'
 import Reveal from '@/components/ui/Reveal'
 import Icon from '@/components/ui/Icon'
 import { RichText } from '@payloadcms/richtext-lexical/react'
+import JsonLd from '@/components/JsonLd'
+import { faqPageSchema, graph, richTextToPlainText } from '@/lib/structured-data'
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import { pageMetadata } from '@/lib/seo'
@@ -28,7 +30,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function FaqPage({ params }: Props) {
   const { locale } = await params
-  const heroImage = await resolvePageHeroImage('faq', '/images/heroes/farm-field.jpg')
+  const heroImage = await resolvePageHeroImage('faq', '/images/heroes/farm-field.jpg', locale)
   const t = getTranslations(locale as Locale, 'faq')
   const tHome = getTranslations(locale as Locale, 'home')
   const faqs = await getFAQs(locale)
@@ -44,6 +46,18 @@ export default async function FaqPage({ params }: Props) {
     distributors: `${lp}/distributors`,
   }
   const supportIcon = ['file-text', 'video', 'headset', 'file-text', 'globe']
+
+  // CMS FAQ category names are stored in English only (see the chips block
+  // below). Map them to the localized `faq.categoryChips` keys.
+  const CHIP_KEY_BY_NAME: Record<string, string> = {
+    'Ordering & MOQ': 'ordering',
+    'Shipping & Export': 'shipping',
+    'Quality Control': 'quality',
+    'Farm Projects': 'projects',
+    'Distributors': 'distributors',
+    'After-sales': 'afterSales',
+  }
+  const chips = (t.categoryChips ?? {}) as Record<string, string>
 
   // 常见问题分类（当数据库为空时展示标准企业 FAQ，保证页面不空）
   const defaultFaqs = [
@@ -83,9 +97,22 @@ export default async function FaqPage({ params }: Props) {
 
   const displayFaqs = faqs.length > 0 ? faqs : defaultFaqs
 
+  // FAQPage rich result. Answers are rich text in the CMS, so they are flattened
+  // to plain text for the schema (Google does not parse HTML inside
+  // `acceptedAnswer.text`).
+  const faqSchemaItems = displayFaqs
+    .map((faq) => ({
+      question: String(faq.question || '').trim(),
+      answer:
+        typeof faq.answer === 'string' ? faq.answer.trim() : richTextToPlainText(faq.answer).trim(),
+    }))
+    .filter((item) => item.question && item.answer)
+
   return (
     <>
+      {faqSchemaItems.length > 0 && <JsonLd data={graph([faqPageSchema(faqSchemaItems)])} />}
       <PageHero
+        locale={locale as Locale}
         title={t.hero?.title || 'FAQ'}
         description={t.hero?.description || 'Answers to the questions buyers ask us most — from MOQ and shipping to quality control and support.'}
         breadcrumb={`${tHome.breadcrumb?.home || 'Home'} / ${t.breadcrumb?.faq || 'FAQ'}`}
@@ -93,7 +120,14 @@ export default async function FaqPage({ params }: Props) {
       />
 
       <section className="max-w-5xl mx-auto px-6 py-16 md:py-24">
-        {/* Quick category chips — driven by CMS FAQ categories */}
+        {/* Quick category chips — driven by CMS FAQ categories.
+            `faqCategories` is English-only in the CMS (the collection has no
+            slug field, so the stored English name is the only stable key), and
+            Payload's `fallback: true` returns that English name for every
+            locale — which leaked "Ordering & MOQ" onto the Russian, Arabic and
+            Swahili pages. Map the known names to UI translations and fall back
+            to the CMS value, so a newly added category still renders (and can be
+            translated in the CMS). */}
         <Reveal>
           <div className="flex flex-wrap gap-2 mb-10">
             {faqCategories.length > 0 ? (
@@ -103,13 +137,13 @@ export default async function FaqPage({ params }: Props) {
                   href="#faq-list"
                   className="px-4 py-2 rounded-full border border-[var(--color-border)] text-sm font-medium text-[var(--color-text-secondary)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] transition-colors tap-target"
                 >
-                  {cat.name}
+                  {CHIP_KEY_BY_NAME[cat.name] ? (chips[CHIP_KEY_BY_NAME[cat.name]] || cat.name) : cat.name}
                 </a>
               ))
             ) : (
-              ['Ordering & MOQ', 'Shipping & Export', 'Quality Control', 'Farm Projects', 'Distributors', 'After-sales'].map((chip) => (
-                <a key={chip} href="#faq-list" className="px-4 py-2 rounded-full border border-[var(--color-border)] text-sm font-medium text-[var(--color-text-secondary)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] transition-colors tap-target">
-                  {chip}
+              Object.entries(chips).map(([key, label]) => (
+                <a key={key} href="#faq-list" className="px-4 py-2 rounded-full border border-[var(--color-border)] text-sm font-medium text-[var(--color-text-secondary)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] transition-colors tap-target">
+                  {label}
                 </a>
               ))
             )}

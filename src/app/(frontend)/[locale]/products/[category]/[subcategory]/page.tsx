@@ -9,6 +9,7 @@ import Icon from '@/components/ui/Icon'
 import MediaImage from '@/components/ui/MediaImage'
 import { catalogProductImages } from '@/lib/catalog-images'
 import { notFound } from 'next/navigation'
+import Link from 'next/link'
 
 interface Props {
   params: Promise<{ locale: string; category: string; subcategory: string }>
@@ -32,17 +33,23 @@ export default async function SubcategoryPage({ params }: Props) {
   const sub = subs.find((s) => s.slug === subSlug)
   const cat = sub?.category
   const catObj = typeof cat === 'object' && cat !== null ? cat : null
-  const catSlugFromCat = catObj?.slug || catSlug
+
+  // The category segment must be this subcategory's actual parent. Previously
+  // only the leaf slug was matched and the URL's category segment was silently
+  // rewritten (`catObj?.slug || catSlug`), so `/en/products/<anything>/layer-cage`
+  // answered 200 with a self-referencing canonical — an unbounded set of
+  // indexable duplicates that also masked a broken CMS relation.
+  const parentCategorySlug = catObj?.slug
+  if (!sub || !parentCategorySlug || parentCategorySlug !== catSlug) {
+    notFound()
+  }
+  const catSlugFromCat = parentCategorySlug
   const lp = `/${locale}`
 
   const subProducts = products.filter((p) => {
     const s = p.subcategory
     return typeof s === 'object' && s?.slug === subSlug
   })
-
-  if (!sub) {
-    notFound()
-  }
 
   // 子分类 hero 图：优先使用后台配置的 heroImage，其次子分类图，最后通用占位
   const heroImage = (() => {
@@ -56,6 +63,7 @@ export default async function SubcategoryPage({ params }: Props) {
   return (
     <>
       <PageHero
+        locale={locale as Locale}
         title={sub.name}
         description={(sub as { subtitle?: string | null }).subtitle || (sub.description ?? undefined)}
         breadcrumb={`${tHome.breadcrumb?.home || 'Home'} / ${t.nav?.products || 'Products'} / ${catObj?.name || catSlug} / ${sub.name}`}
@@ -68,21 +76,21 @@ export default async function SubcategoryPage({ params }: Props) {
               <div className="w-14 h-14 rounded-md bg-[var(--color-primary)]/8 text-[var(--color-primary)] flex items-center justify-center mx-auto mb-5">
                 <Icon name="box" size={26} />
               </div>
-              <h2 className="text-xl font-bold text-[var(--color-text)]">Products Coming Soon</h2>
+              <h2 className="text-xl font-bold text-[var(--color-text)]">{t.productLine?.emptyTitle || 'Products Coming Soon'}</h2>
               <p className="mt-3 text-[var(--color-text-secondary)] max-w-md mx-auto">
-                Products in this line are being added. Contact us for the latest catalog.
+                {t.productLine?.emptyDesc || 'Products in this line are being added. Contact us for the latest catalog.'}
               </p>
-              <a href={`${lp}/contact`} className="inline-flex items-center justify-center gap-2 mt-6 px-8 py-3.5 bg-[var(--color-primary)] text-white font-semibold rounded-md min-h-[48px] press tap-target transition-colors hover:bg-[var(--color-primary-dark)]">
+              <Link href={`${lp}/contact`} className="inline-flex items-center justify-center gap-2 mt-6 px-8 py-3.5 bg-[var(--color-primary)] text-white font-semibold rounded-md min-h-[48px] press tap-target transition-colors hover:bg-[var(--color-primary-dark)]">
                 {t.cta?.getQuote || 'Contact Us'}
                 <Icon name="arrow-right" size={16} />
-              </a>
+              </Link>
             </div>
           </Reveal>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
             {subProducts.map((p, i) => (
               <Reveal key={p.id} delay={(i % 3) * 80} className="h-full">
-                <a href={`${lp}/products/${catSlugFromCat}/${subSlug}/${p.slug}`} className="card card-hover h-full block group">
+                <Link href={`${lp}/products/${catSlugFromCat}/${subSlug}/${p.slug}`} className="card card-hover h-full block group">
                   <div className="aspect-[4/3] bg-[var(--color-muted)] flex items-center justify-center overflow-hidden">
                     {p.images?.[0]?.image && typeof p.images[0].image === 'object' && p.images[0].image.url ? (
                       <MediaImage src={p.images[0].image.url} alt={p.name} width={800} height={500} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
@@ -96,7 +104,7 @@ export default async function SubcategoryPage({ params }: Props) {
                     <h2 className="text-[var(--color-text)] group-hover:text-[var(--color-primary)] transition-colors">{p.name}</h2>
                     {p.description && <p className="mt-2 text-sm text-[var(--color-text-secondary)] line-clamp-2 leading-relaxed">{p.description}</p>}
                   </div>
-                </a>
+                </Link>
               </Reveal>
             ))}
           </div>

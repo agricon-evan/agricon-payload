@@ -6,11 +6,13 @@ import Reveal from '@/components/ui/Reveal'
 import SectionHeading from '@/components/ui/SectionHeading'
 import Icon from '@/components/ui/Icon'
 import { categoryImages } from '@/lib/images'
+import { homeCopy } from '@/lib/home-copy'
 import MediaImage from '@/components/ui/MediaImage'
 
 interface Props { locale: Locale }
 
 export default async function ProductCategories({ locale }: Props) {
+  const h = homeCopy(locale).categories ?? {}
   const categories = await getCategories(locale)
   const t = getTranslations(locale, 'common')
   const lp = `/${locale}`
@@ -37,8 +39,8 @@ export default async function ProductCategories({ locale }: Props) {
         <Reveal>
           <SectionHeading
             eyebrow={t.nav?.products || 'Products'}
-            title={<>Complete Farm <span className="split-accent">Equipment Lines</span></>}
-            description="An integrated equipment ecosystem covering breeding, feeding, housing, processing and daily farm operation."
+            title={<>{h.titleLead || 'Complete Farm'} <span className="split-accent">{h.titleAccent || 'Equipment Lines'}</span></>}
+            description={h.description || 'An integrated equipment ecosystem covering breeding, feeding, housing, processing and daily farm operation.'}
           />
         </Reveal>
 

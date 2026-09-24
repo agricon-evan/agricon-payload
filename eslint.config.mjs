@@ -24,6 +24,25 @@ const eslintConfig = [
     },
   },
   {
+    // Local tooling under scripts/ is run directly with node/tsx, never bundled
+    // and never shipped, so the app-facing rules are noise here. `no-explicit-any`
+    // in particular fires ~28 times across the one-off import/audit scripts, which
+    // drowned out real findings in `eslint .` output. The remaining rules in the
+    // shared config still apply.
+    files: ['scripts/**/*.{ts,mts,cts,js,mjs,cjs}'],
+    rules: {
+      '@typescript-eslint/no-explicit-any': 'off',
+    },
+  },
+  {
+    // Explicit CommonJS extension — `require()` is the correct API in a .cjs file.
+    // This is the only lint *error* the project had.
+    files: ['**/*.cjs'],
+    rules: {
+      '@typescript-eslint/no-require-imports': 'off',
+    },
+  },
+  {
     ignores: [
       '.next/',
       'test-results/',
