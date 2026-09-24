@@ -233,6 +233,48 @@ console.log('OK'); await c.query('ROLLBACK')   // ← 关键
 - 生产 Postgres 连接偶发 `Connection terminated unexpectedly` / `timeout expired`，
   脚本里对连接和查询都加重试。
 
+### 3.8.2 回滚会"钉住"生产域名（部署成功但线上还是旧版）
+
+**症状**：`vercel ls` / Deployments 里最新一条已经是 `READY` 且 `target=production`，
+但线上仍旧是旧代码。本次事故收尾时踩到：`c49b771` 已经 READY，
+`www.agricon.cn` 却还在跑被回滚到的 `c3287fd`，`/api/products` 里看不到新字段。
+
+**原因**：Vercel 的 **Instant Rollback 会把这个项目的生产域名"钉"在回滚目标上**。
+之后的新生产部署**不会自动抢回域名**（Hobby 套餐下 `projects/{id}/rollback` 还会报
+`To rollback further than the previous production deployment, upgrade to pro`）。
+
+**怎么确认线上到底跑的是哪个版本**——不要靠猜，找只有新代码才有的东西：
+
+```bash
+# 8a8aee3 之后 products 才有 faqs / detailImages 字段
+curl -s "https://www.agricon.cn/api/products?limit=1&depth=0" | grep -o '"faqs"'
+```
+
+字段不在 → 线上就是旧版。也可以比对 `_locales` 是否生效
+（旧版 `homeTrustEvidence.items` 是 json 字符串数组，新版是 `[{text}]`）。
+
+**怎么修**：把域名显式指回新部署（或去 Dashboard 点 Promote）：
+
+```bash
+TOKEN='<Vercel token>'; TEAM='team_QndIkcpNjTARzSsZyENDs8kQ'
+UID=$(curl -s -H "Authorization: Bearer $TOKEN" \
+  "https://api.vercel.com/v6/deployments?teamId=$TEAM&limit=1&target=production" \
+  | python -c 'import sys,json;print(json.load(sys.stdin)["deployments"][0]["uid"])')
+for D in www.agricon.cn agricon.cn agricon-payload.vercel.app; do
+  curl -s -X POST -H "Authorization: Bearer $TOKEN" -H 'Content-Type: application/json' \
+    -d "{\"alias\":\"$D\"}" "https://api.vercel.com/v2/deployments/$UID/aliases?teamId=$TEAM"
+done
+```
+
+另外两个坑：
+
+- `vercel redeploy <url>` **默认是 preview**，必须显式加 `--target production`，
+  否则只会生成一个 `*-agricon.vercel.app` 的预览别名，线上纹丝不动。
+- **`/sitemap.xml` 是预渲染静态页，会被 CDN 长期缓存**：本次见到 `X-Vercel-Cache: HIT`
+  且 `Age ≈ 219955s`（约 61 小时），内容还是几天前的。判断代码行为**不要用 sitemap**；
+  加查询串也不一定能绕过（静态预渲染走同一缓存条目）。看 API 响应头里的
+  `X-Vercel-Cache` / `Age` 来判断新鲜度。
+
 ### 3.9 删除重复产品 / 调整分类归属
 
 抓取数据里同一个货源会被挂成两条产品（不同 Alibaba ID、**同规格同价格**），前台就出现两张
