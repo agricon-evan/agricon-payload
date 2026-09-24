@@ -1,13 +1,18 @@
-// Migrations are intentionally empty.
-//
-// This project deploys with Payload's runtime schema `push` (the config sets
-// `push: true` unless PAYLOAD_PUSH_SCHEMA=false). On first run Payload creates
-// the full schema in the production database (Vercel Postgres), so no checked-in
-// migration is required to build or deploy.
-//
-// If you later prefer explicit, repeatable migrations, run:
-//   pnpm payload migrate:create   # generates entries appended to this array
-// and keep PAYLOAD_PUSH_SCHEMA=false in production to enforce migrations-only.
-import type { Migration } from 'payload'
+import * as migration_20260924_120000_add_missing_production_tables from './20260924_120000_add_missing_production_tables'
 
-export const migrations: Migration[] = []
+/**
+ * Migrations must be registered here to run.
+ *
+ * `vercel-build` runs `payload migrate` before `next build`, and that is the ONLY
+ * mechanism that changes the production schema: the Postgres adapter disables
+ * schema `push` whenever `NODE_ENV === 'production'`
+ * (`@payloadcms/db-vercel-postgres/dist/connect.js`), so a config change with no
+ * migration here silently never reaches production.
+ */
+export const migrations = [
+  {
+    up: migration_20260924_120000_add_missing_production_tables.up,
+    down: migration_20260924_120000_add_missing_production_tables.down,
+    name: '20260924_120000_add_missing_production_tables',
+  },
+]

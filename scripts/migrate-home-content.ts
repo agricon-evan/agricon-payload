@@ -125,7 +125,27 @@ async function readLegacy(payload: Payload): Promise<HomeData> {
   const trustEvidence = await read(LEGACY.trustEvidence.table, ['title', 'items'])
   const valueCalculated = await read(LEGACY.valueCalculated.table, ['title', 'items'])
 
+  /**
+   * Normalises a legacy `items` value into an array.
+   *
+   * ⚠️ The two adapters hand this column back in *different shapes*: SQLite stores
+   * it as TEXT, so it arrives as a JSON string, while Postgres declares it `jsonb`
+   * and the driver returns an already-parsed array. An earlier version of this
+   * function accepted strings only:
+   *
+   *     if (typeof raw !== 'string' || !raw.trim()) return []
+   *
+   * so against Postgres every value fell through to `[]`. The nested homepage
+   * lists (trust-evidence points, value metrics) were therefore dropped silently
+   * — and because Payload re-creates array rows on write, the legacy `items`
+   * column was left NULL at the same time. The deployed component then crashed on
+   * `items.map`, taking the whole homepage down with a 500.
+   *
+   * Accepting both shapes is what makes this script safe to run against either
+   * database.
+   */
   const parseArray = (raw: unknown): unknown[] => {
+    if (Array.isArray(raw)) return raw
     if (typeof raw !== 'string' || !raw.trim()) return []
     try {
       const parsed = JSON.parse(raw)

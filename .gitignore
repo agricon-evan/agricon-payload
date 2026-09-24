@@ -36,6 +36,10 @@ layer-cage.html
 .env.test.local
 .env.production.local
 .env.*.local
+# `vercel env pull` writes real production credentials here. The `.tmp` suffix is
+# not covered by the patterns above, and this file must never be committed.
+.env.prod.tmp
+.env.*.tmp
 
 # Secrets handover doc — local only, NEVER commit
 docs/ENV-SECRETS.md

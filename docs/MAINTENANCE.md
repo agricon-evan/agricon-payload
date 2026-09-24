@@ -162,9 +162,76 @@ pnpm tsx scripts/backup-db.ts --keep=14 --no-media
 
 1. 环境变量见 README 的表格；`NEXT_PUBLIC_SITE_URL` 必须是正式域名（canonical/sitemap/robots 都用它）。
 2. `vercel-build` = `generate:types` → `generate:importmap` → `payload migrate` → `next build`。
-3. 首次部署由 Payload `push` 在 Postgres 建表（生产不设 `PAYLOAD_PUSH_SCHEMA=false`）。
+3. **改了 collection 字段就必须提交 migration**，否则生产库不会有这一列 —— 详见 §3.8.1。
 4. 生产库与开发 SQLite **是两套数据**：任何内容修复脚本都要在生产环境变量下再跑一次
    （`POSTGRES_URL=... pnpm tsx scripts/cleanup-supplier-copy.ts --apply`）。
+
+### 3.8.1 生产 schema 只能靠 migration（血泪教训）
+
+**`push` 在生产环境是彻底不生效的**，不是"首次部署靠 push"。
+`@payloadcms/db-vercel-postgres/dist/connect.js` 里写死了：
+
+```js
+// Only push schema if not in production
+if (process.env.NODE_ENV !== 'production' && ... && this.push !== false) {
+  await pushDevSchema(this)
+}
+```
+
+Vercel 上 `NODE_ENV=production`，所以 `payload.config.ts` 里的
+`push: process.env.PAYLOAD_PUSH_SCHEMA !== 'false'` 在生产**永远为假**。而当时
+`src/migrations/index.ts` 是空数组（`export const migrations = []`），
+于是：**建库之后所有的 schema 变更都没有进过生产库。**
+
+后果（2026-09-24 线上 500 事故）：`products.faqs`、`products.detailImages`
+以及六个 `siteSettings.home*` 本地化数组的表在生产库里不存在，
+部署读取它们的代码后 `/api/products` 与 `/api/siteSettings` 直接 500，
+所有依赖这两个接口的页面（`/en`、`/en/products` …）全部不可访问。
+本地因为 SQLite 一直在 push，所以完全正常 —— **本地能跑不代表生产能跑。**
+
+**规矩：任何字段增删改，都要跟着一条 migration。**
+
+```bash
+# 1) 先在本地改 config，然后对着生产库生成 migration（会 diff 出缺的表/列）
+POSTGRES_URL='<生产连接串>' PAYLOAD_SECRET='<...>' pnpm payload migrate:create <描述性名字>
+# 2) ⚠️ 生成的文件默认假设"空库"，用的是裸 CREATE TABLE，直接在生产跑会报 already exists。
+#    必须手工改成 CREATE TABLE IF NOT EXISTS / 加 DO $$ ... pg_constraint ... $$ 守卫，
+#    只保留真正缺的部分，并在事务里预演（见下）。
+# 3) 在事务里预演，确认能干净回滚
+# 4) 注册到 src/migrations/index.ts（不注册就不会执行）
+# 5) 应用
+POSTGRES_URL='<生产连接串>' PAYLOAD_SECRET='<...>' pnpm payload migrate:status   # 确认 pending
+POSTGRES_URL='<生产连接串>' PAYLOAD_SECRET='<...>' pnpm payload migrate
+```
+
+预演用的最小脚本（在生产上跑但最后 `ROLLBACK`，不改任何数据）：
+
+```ts
+import pg from 'pg'
+import { up } from '../src/migrations/<你的 migration>'
+const c = new pg.Client({ connectionString: process.env.POSTGRES_URL!, ssl: { rejectUnauthorized: false } })
+await c.connect()
+await c.query('BEGIN')
+const stmts: string[] = []
+const fake = { execute: async (q: any) => { stmts.push(q.queryChunks.map((x: any) => x.value ?? '').join('')) } }
+await up({ db: fake } as any)
+for (const s of stmts) await c.query(s)
+console.log('OK'); await c.query('ROLLBACK')   // ← 关键
+```
+
+几个坑：
+
+- `payload migrate` 在库里存在 `payload_migrations.name = 'dev'`（`batch = -1`，
+  早期 push 留下的标记）时会**交互式追问**"data loss will occur, proceed?"。
+  CI/脚本里用 `"y" | pnpm payload migrate` 喂进去即可。
+- 老的非本地化列（如 `site_settings_home_*.title/desc/sub/quote`）在字段改成
+  `localized` 之后仍然残留且是 `NOT NULL`，会让插入失败。**改成 nullable，别 drop**
+  —— `scripts/migrate-home-content.ts` 的 `readLegacy` 还要读它们来回填本地化表。
+  等回填跑完再考虑删除。
+- `vercel env pull` 会写出**真实生产凭据**到 `.env.prod.tmp`。已加进 `.gitignore`
+  （`.env.prod.tmp` / `.env.*.tmp`），用完**立刻删除**。
+- 生产 Postgres 连接偶发 `Connection terminated unexpectedly` / `timeout expired`，
+  脚本里对连接和查询都加重试。
 
 ### 3.9 删除重复产品 / 调整分类归属
 

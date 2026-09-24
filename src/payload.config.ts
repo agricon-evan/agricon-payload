@@ -137,9 +137,25 @@ export default buildConfig({
         pool: {
           connectionString: process.env.POSTGRES_URL,
         },
-        // Production: the checked-in migrations only cover the initial schema,
-        // so the first production deploy relies on push to build the full schema.
-        // Set PAYLOAD_PUSH_SCHEMA=false to force migrations-only mode.
+        // ⚠️ `push` does NOT apply in production. The Postgres adapter hard-disables
+        // it whenever NODE_ENV === 'production'
+        // (`@payloadcms/db-vercel-postgres/dist/connect.js`):
+        //
+        //     // Only push schema if not in production
+        //     if (process.env.NODE_ENV !== 'production' && ... && this.push !== false)
+        //
+        // An earlier comment here claimed "the first production deploy relies on
+        // push to build the full schema". That was wrong, and because
+        // `src/migrations/index.ts` was empty, no schema change after the initial
+        // database creation ever reached production. The tables for
+        // `products.faqs`, `products.detailImages` and the six localized
+        // `siteSettings.home*` arrays were therefore missing, and deploying the
+        // code that read them returned 500 on /api/products and /api/siteSettings
+        // — which took down every page.
+        //
+        // THE RULE: any change to a collection's fields needs a migration
+        // committed to `src/migrations/index.ts`. `vercel-build` runs
+        // `payload migrate` before `next build`. See docs/MAINTENANCE.md §3.8.
         push: process.env.PAYLOAD_PUSH_SCHEMA !== 'false',
       })
     : sqliteAdapter({
