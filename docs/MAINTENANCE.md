@@ -1124,3 +1124,115 @@ node -e "require('sharp')(<新图>).rotate().resize({width:1200,withoutEnlargeme
 意外落到子分类的 0 条；`tsc --noEmit` 0、`eslint` 0、集成测试 67/67。
 （另注意：产品路由按 slug 匹配、不校验分类归属，所以错误分类段的 URL 也会 200 —— 
 判断链接对错要看 URL 分类段，不能只看状态码。）
+
+## 12. 生产库目录同步 + 全站多语言补齐（2026-09-24，第五轮）
+
+### 12.1 背景：生产库与本地库是两个数据集
+
+**症状**：线上只有 **43 个产品**（本地 65），且除分类名之外几乎所有 CMS 内容（产品简介、
+SEO、功能点、参数、图片 alt、博客、案例、FAQ 分类、方案、子分类）**只有英文**；产品页长文
+`overviewHtml` 六语种全是英文。
+
+**根因**：本地 SQLite 一直是唯一在维护的数据集，生产 Postgres 从未被同步过 ——
+既不是代码问题，也不是缓存问题。另外生产 **schema 只能靠 migration**：`@payloadcms/db-vercel-postgres`
+的 push 被硬关掉（`connect.js` 里 `NODE_ENV !== 'production'` 才 push），所以配置里新声明的表
+不会自动出现在生产（那次 500 就是缺 14 张表，见 `20260924_120000_add_missing_production_tables.ts`）。
+
+**方向**：以**本地为准**补生产。生产独有的 11 个产品是被取代的旧 listing（每一个都在
+`next.config.ts` 里有 308），已确认后删除。
+
+### 12.2 两个同步脚本（都在 `scripts/`）
+
+| 脚本 | 通道 | 用途 |
+|---|---|---|
+| `sync-catalogue-to-prod.ts` | Payload Local API | 媒体、子分类、产品、归属迁移、内容、杂项、删除（`--steps=` 可分段跑） |
+| `sync-locales-sql.ts` | 直连 SQL（`pg` + `@libsql/client`） | 上面「内容」部分的快速版；同样幂等、可续跑 |
+
+`sync-locales-sql.ts` 存在的原因：**经 Payload API 每次 update 都要往返一次 Neon**
+（ap-southeast-1），全量 855 次文档更新 + 约 9000 次数组行更新要**一个多小时**；
+直连 SQL 几分钟就完成。两者结果等价，改完本地后用 `sync-locales-sql.ts` 推生产即可。
+
+### 12.3 跨库关联一律不能用 id
+
+两库的 `media` / `categories` / `subcategories` / `products` 编号**各自独立**（生产上还有
+Rollback 留下的空洞），所以：
+
+- 产品/分类/子分类 → 按 `slug` 匹配
+- 图片 → 按 `filename` 匹配
+- `faq_categories` **没有 slug 列** → 按英文名匹配
+
+**产品数组行（`images`/`features`/`specs`/`faqs`）两库也不共享 id**：Payload 数组行 id 在
+Postgres 是 24 位十六进制字符串（列类型 `character varying`），在 SQLite 有时是整数。
+所以数组行按 **`_order` 位置**配对 —— 两边出自同一次导入；长度不一致时**报出来而不是猜**。
+
+### 12.4 三个必须知道的坑
+
+1. **`payload.create` 不接受数组行带 `id`** —— 传了报 `The following field is invalid: id`，
+   而且**父文档已经写进去了**（嵌套数组留空）。所以"失败就删掉父文档重跑"不是无害的：
+   会连带删掉已经写好的其它字段。首次导入 33 个产品时踩过。
+2. **`Number()` 会把 Postgres 的数组行 id 变成 `NaN`** —— 进而 `RangeError: Only finite
+   numbers …`。两库数组行 id 类型不同（见 12.3），不要做数值化假设。
+3. **这个 Neon 端点在持续写入下会掉连接**（`Connection terminated unexpectedly`）。
+   `sync-locales-sql.ts` 的做法：每个查询重试 + 重连（最多 6 次），并且
+   **每个 product+array 块在五语种齐备时跳过**，所以中断后重跑是**续跑而不是重跑**。
+
+### 12.5 长文 `overviewHtml` 的多语言（新增译文，不是同步）
+
+`overviewHtml` 是产品页正文，**本地库原本也只有英文**，所以这一步是**新翻译**。
+60 篇文章共 963 段正文，去重后只有 **542 条不同字符串**（供应商样板文字最多重复 28 次），
+因此按**唯一字符串**翻译：样板段落只翻一次，28 处出现完全一致。
+
+```bash
+pnpm tsx scripts/overview-batches.ts        # 542 条按字符数均分成 6 批（_todo/ 已 gitignore）
+#   译者/LLM 产出 _todo/overview-tr/out/<lang>__batchNN.json
+pnpm tsx scripts/assemble-overview.ts       # 校验 key 对齐 → <lang>-overview-unique-adopted.json
+                                            #            → 按 map 展开成 <lang>-overview.json
+pnpm tsx scripts/i18n-overview.ts --check   # 结构校验（见下）
+pnpm tsx scripts/i18n-overview.ts --apply   # 写本地库
+# 再用 sync-locales-sql.ts 推生产
+```
+
+`i18n-overview.ts` 把 HTML 拆成「标签 / 文本」token 序列，**只翻文本 token**，再按原序列
+拼回 —— 标签因此是**逐字节不变**的。`--check` 断言：token 数一致、标签序列一致、
+重组英文原文能**逐字节还原**。俄语此前已完成 447/542，本次只补最后 95 条。
+
+> ⚠️ `i18n-overview.ts --apply` 写的是**本地库**（用 `payload.config.ts`）。
+> 推生产必须再跑 `sync-locales-sql.ts`（加了 `productOverview` 段；
+> 它单独成段是因为 `overviewHtml` 很大，且不能和 products 的续跑判据共用第一列）。
+
+### 12.6 结果（2026-09-24）
+
+| 项目 | 同步前 | 同步后 |
+|---|---|---|
+| 产品 | 43 | **65**（= 本地） |
+| 媒体 | 259 | **454**（= 本地，上传 195） |
+| 子分类 | 70 | **69**（删 2 个空分类、建 `vibrating-screen`） |
+| 博客 / 案例 / FAQ分类 / 方案 / 分类 | 3 / 12 / 6 / 6 / 10 | 一致 |
+| 产品 name / desc / seoTitle / seoDesc | 仅 en | **65 × 6 语种** |
+| 图片 alt / 功能点 / 参数 | 仅 en | **357 / 185 / 1318 × 6 语种** |
+| `overviewHtml` | 仅 en（60 篇） | **60 篇 × 6 语种** |
+
+核对：六语种各 13 条主要路由 **78/78 全 200**；全部 API 200；11 条旧产品 URL 与
+2 条旧子分类 URL 全部 **308** 且 `Location` 正确；sitemap **1068** 条、产品 URL 65×6、
+`/search` 0 条。
+
+### 12.7 ⚠️ 生产域名会被 Rollback「钉住」
+
+**症状**：push 后新部署 READY，但 `www.agricon.cn` 的 sitemap 一直是**旧数据**
+（65 个产品却只列 43 条），而产品页却是新的。
+
+**原因**：Vercel 的 **Instant Rollback 会把生产域名钉在回滚的那个部署上**，
+之后的新生产部署**不会自动收回域名**。动态路由（`ƒ`）每次查库所以看着是新的，
+而 `/sitemap.xml` 是**构建期预渲染**（`○`，`revalidate 1h`），于是冻在旧构建的数据上。
+
+**修法**：用 API 把三个域名重新指到最新部署：
+
+```bash
+curl -X POST "https://api.vercel.com/v2/deployments/<dpl_uid>/aliases?teamId=<orgId>" \
+  -H "Authorization: Bearer $VERCEL_TOKEN" -H 'Content-Type: application/json' \
+  -d '{"alias":"www.agricon.cn"}'          # 另两个：agricon.cn、agricon-payload.vercel.app
+```
+
+**自查**：`GET /v4/aliases?projectId=…` 看域名指向哪个部署的 URL；
+或对比 `agricon-payload-git-main-agricon.vercel.app`（总是指向最新的）与生产域名。
+**别只看页面能打开就以为发版成功** —— 预渲染的页面（sitemap/robots/icon）才暴露问题。

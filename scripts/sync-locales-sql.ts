@@ -145,6 +145,22 @@ const JOBS: Job[] = [
     ],
   },
   {
+    // `overviewHtml` is the product page's long-form article and is by far the
+    // largest localized field, so it gets its own job: the resume check above
+    // keys on the first column, and folding it into `products` would let a
+    // product whose name is already synced skip its article entirely.
+    //
+    // `name` rides along purely so the INSERT branch can satisfy the NOT NULL
+    // constraint when a locale row does not exist yet.
+    label: 'productOverview',
+    table: 'products_locales',
+    key: 'slug',
+    fields: [
+      ['overview_html', 'overview_html', 'text'],
+      ['name', 'name', 'text'],
+    ],
+  },
+  {
     label: 'blogPosts',
     table: 'blog_posts_locales',
     key: 'slug',
