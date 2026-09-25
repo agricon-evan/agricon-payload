@@ -221,9 +221,12 @@ console.log('OK'); await c.query('ROLLBACK')   // ← 关键
 
 几个坑：
 
-- `payload migrate` 在库里存在 `payload_migrations.name = 'dev'`（`batch = -1`，
-  早期 push 留下的标记）时会**交互式追问**"data loss will occur, proceed?"。
-  CI/脚本里用 `"y" | pnpm payload migrate` 喂进去即可。
+- ⚠️ **`payload_migrations` 里若有 `name='dev'`（`batch = -1`）的行，`payload migrate` 会交互式
+  追问"data loss will occur, proceed?"，而在 Vercel 构建这种没有 TTY 的环境里它会
+  `process.exit(0)` —— 迁移全部静默跳过、构建照样成功。**
+  正确做法不是喂 `"y"`（`vercel-build` 根本喂不进去），而是**删掉那一行**：
+  `DELETE FROM payload_migrations WHERE batch = -1 AND name = 'dev';`
+  详见 §12.8 —— 这是 2026-09-24 那次 500 事故的另一半原因。
 - 老的非本地化列（如 `site_settings_home_*.title/desc/sub/quote`）在字段改成
   `localized` 之后仍然残留且是 `NOT NULL`，会让插入失败。**改成 nullable，别 drop**
   —— `scripts/migrate-home-content.ts` 的 `readLegacy` 还要读它们来回填本地化表。
@@ -1236,3 +1239,78 @@ curl -X POST "https://api.vercel.com/v2/deployments/<dpl_uid>/aliases?teamId=<or
 **自查**：`GET /v4/aliases?projectId=…` 看域名指向哪个部署的 URL；
 或对比 `agricon-payload-git-main-agricon.vercel.app`（总是指向最新的）与生产域名。
 **别只看页面能打开就以为发版成功** —— 预渲染的页面（sitemap/robots/icon）才暴露问题。
+
+### 12.8 ⚠️⚠️ `payload_migrations` 里的 `dev` 行会让生产迁移**全部静默跳过**
+
+这是本轮挖出的**最危险**的一个坑，和 12.1 那次 500 是同一个病根。
+
+**症状**：本地跑 `payload migrate` 会弹一个交互式提问：
+
+```
+? It looks like you've run Payload in dev mode, meaning you've dynamically pushed changes to
+  your database. If you'd like to run migrations, data loss will occur. Would you like to
+  proceed? » (y/N)
+```
+
+**原因**（`@payloadcms/drizzle/dist/migrate.js`）：
+
+```js
+if (migrationsInDB.find((m) => m.batch === -1)) {
+  const { confirm } = await prompts({ … }, { onCancel: () => { process.exit(0) } })
+  if (!runMigrations) process.exit(0)
+}
+```
+
+生产库的 `payload_migrations` 里有一行 **`name='dev', batch=-1`** —— 建库初期有人在生产上
+跑过 dev push 留下的标记。**只要这一行在，每次 `payload migrate` 都会走这个 prompt。**
+
+**为什么在生产上是致命的**：`vercel-build` 里是 `payload migrate`，而 Vercel 构建**没有 TTY**。
+`prompts` 读不到输入就触发 `onCancel` → **`process.exit(0)`** —— 退出码 0，构建继续，
+**迁移一条都没跑**。也就是说：
+
+> 只要这行 `dev` 还在，any 提交的 migration 都不会在生产生效，而且**不会有任何报错**。
+
+这正是 12.1 那 14 张表缺失的原因之一：migration 写了、注册了，却从来没被执行过。
+
+**修法**（一次性，之后 `payload migrate` 不再交互）：
+
+```sql
+DELETE FROM payload_migrations WHERE batch = -1 AND name = 'dev';
+```
+
+**验证**：`SELECT name, batch FROM payload_migrations ORDER BY batch` 应当只有
+`batch >= 1` 的行；`payload migrate` 应当**直接输出** `Migrating: …` 而不提问。
+
+**以后每次加 migration，都要真的去看构建日志里有没有 `Migrated:` 那两行** ——
+没有就是被这里挡住了。
+
+### 12.9 六个「声明了索引但库里没有」的列（本轮补齐）
+
+`src/collections/*.ts` 给 6 个筛选列标了 `index: true`（注释写着
+"Payload auto-indexes unique/relationship/timestamp fields but not plain checkbox filters"），
+但**两个库里都没有这些索引**：
+
+| 表 | 列 | 索引名 |
+|---|---|---|
+| `blog_posts` / `case_studies` / `downloads` / `faqs` / `videos` | `published` | `<table>_published_idx` |
+| `inquiries` | `status` | `inquiries_status_idx` |
+
+`published` 是**每一次公开读取**都会筛的列（`lib/payload.ts`、`sitemap.ts`）；
+`inquiries.status` 是唯一会无限增长的表，后台列表按它排序筛选。
+
+**两个原因叠加，所以哪边都没有**：
+
+1. 生产拿不到 —— 12.8 那个 prompt 让迁移静默跳过；
+2. 本地也拿不到 —— **`.env` 里写着 `PAYLOAD_PUSH_SCHEMA=false`**，
+   `payload.config.ts` 把它变成 `push: false`，所以本地 `pnpm dev` **根本不推 schema**。
+
+**修法**：新增 migration `20260925_160000_add_filter_indexes`（已注册、已应用 → batch 2）。
+命名沿用 Payload 自己的 `buildIndexName` 规则（`<table>_<column>_idx`），
+这样将来生成的 migration 会认出它们、不会重复建。
+
+本地 SQLite 要单独建（迁移文件是 Postgres 方言，本地不走迁移），
+用同样的名字执行 `CREATE INDEX IF NOT EXISTS` 即可 —— 本次本地索引 147 → **153**。
+
+> 教训：**`index: true` 在配置里不代表库里真有索引。** 自查方法：
+> `SELECT indexdef FROM pg_indexes WHERE indexdef ILIKE '%(published)%'`，
+> 或对比 `src/collections/*.ts` 里 `index: true` 的字段清单与 `pg_indexes`。
