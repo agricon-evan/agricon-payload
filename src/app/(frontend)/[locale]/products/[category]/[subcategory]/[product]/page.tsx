@@ -8,7 +8,7 @@ import Icon from '@/components/ui/Icon'
 import ImageGallery from '@/components/ui/ImageGallery'
 import MediaImage from '@/components/ui/MediaImage'
 import { catalogProductImages, catalogProductGallery } from '@/lib/catalog-images'
-import { SITE_URL } from '@/lib/seo'
+import { localizedAlternates, SITE_URL } from '@/lib/seo'
 import { breadcrumbSchema, graph, productSchema } from '@/lib/structured-data'
 import JsonLd from '@/components/JsonLd'
 import Link from 'next/link'
@@ -18,10 +18,36 @@ interface Props {
   params: Promise<{ locale: string; category: string; subcategory: string; product: string }>
 }
 
-export const dynamic = 'force-dynamic'
+
+/**
+ * Prerenders every product page at build time — the bulk of the site (390 URLs
+ * across six locales). See the `[category]` route for why this matters: it is the
+ * difference between a database outage being invisible and it being a 500.
+ */
+export async function generateStaticParams({ params }: { params?: { locale?: string } }) {
+  try {
+    const locale = params?.locale ?? 'en'
+    const products = await getProducts(locale)
+    const out: Array<{ category: string; subcategory: string; product: string }> = []
+    for (const product of products) {
+      const path = await resolveProductPath(product, locale)
+      if (path && product.slug) {
+        out.push({
+          category: path.categorySlug,
+          subcategory: path.subcategorySlug,
+          product: product.slug,
+        })
+      }
+    }
+    return out
+  } catch (err) {
+    console.error('[products/.../[product]] generateStaticParams failed', err)
+    return []
+  }
+}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { locale, product: productSlug } = await params
+  const { locale, category, subcategory, product: productSlug } = await params
   const products = await getProducts(locale)
   const product = products.find((item) => item.slug === productSlug)
   if (!product) return { title: productSlug }
@@ -48,6 +74,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title,
     description,
     keywords: product.seoKeywords || undefined,
+    // The page 404s unless both ancestor segments match the product's real
+    // category and subcategory, so the requested URL is the canonical one.
+    // Not inherited from `[locale]/layout.tsx`: the layout can no longer read the
+    // request path, because doing so forced every page to render dynamically —
+    // see the comment there.
+    alternates: localizedAlternates(locale as Locale, `/products/${category}/${subcategory}/${productSlug}`),
     openGraph: {
       title,
       description,

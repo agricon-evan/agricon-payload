@@ -16,7 +16,6 @@ interface Props {
   params: Promise<{ locale: string }>
 }
 
-export const dynamic = 'force-dynamic'
 
 // 方案封面图（画册分类图）
 // Solution -> the product category it maps onto. Prefer the CMS category image (set for all

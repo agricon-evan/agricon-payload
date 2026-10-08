@@ -1,14 +1,11 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import type { Locale } from '@/i18n/config'
-import { getTranslations, locales } from '@/i18n/config'
+import { getTranslations } from '@/i18n/config'
+import LanguageLinks from '@/components/LanguageLinks'
 
 interface Props {
   locale: Locale
-  /** 当前路径（含 locale 前缀），用于语言切换保持页面位置 */
-  currentPath?: string
-  /** 当前查询串（含 `?`），用于语言切换时保留搜索条件 */
-  currentSearch?: string
   qrCodes?: {
     tiktok?: string
     instagram?: string
@@ -29,22 +26,12 @@ const SOCIAL_ICONS: Record<string, string> = {
   youtube: 'M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.5A3.02 3.02 0 0 0 .5 6.19 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 5.81 3.02 3.02 0 0 0 2.12 2.14c1.88.5 9.38.5 9.38.5s7.5 0 9.38-.5a3.02 3.02 0 0 0 2.12-2.14A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-5.81zM9.55 15.57V8.43L15.82 12z',
 }
 
-export default function Footer({ locale, currentPath = `/${locale}`, currentSearch = '', qrCodes, settings }: Props) {
+export default function Footer({ locale, qrCodes, settings }: Props) {
   const t = getTranslations(locale, 'common')
   const lp = `/${locale}`
   const ft = t.footer || {}
   const links = ft.links || {}
   const cols = ft.columns || {}
-
-  // 语言切换时保留当前页面路径与查询串（/en/search?q=cage → /ru/search?q=cage）
-  const localizedHref = (target: string): string => {
-    let rest = currentPath
-    for (const l of locales) {
-      if (currentPath === `/${l}`) { rest = ''; break }
-      if (currentPath.startsWith(`/${l}/`)) { rest = currentPath.slice(l.length + 1); break }
-    }
-    return `/${target}${rest}${currentSearch}`
-  }
 
   const productLinks = [
     { label: links.poultrySolutions || 'Poultry Solutions', href: `${lp}/solutions` },
@@ -169,17 +156,11 @@ export default function Footer({ locale, currentPath = `/${locale}`, currentSear
         {/* Bottom */}
         <div className="mt-12 pt-6 border-t border-white/15 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-white/65">
           <p>{ft.copyright || '© 2026 Agricon. All rights reserved.'}</p>
-          <div className="flex gap-4">
-            {locales.map(loc => (
-              <Link
-                key={loc}
-                href={localizedHref(loc)}
-                className={`tap-target inline-flex items-center uppercase tracking-wide text-xs ${loc === locale ? 'text-[var(--color-accent-soft)] font-semibold' : 'text-white/65 hover:text-white'}`}
-              >
-                {loc}
-              </Link>
-            ))}
-          </div>
+          <LanguageLinks
+            locale={locale}
+            className="tap-target inline-flex items-center uppercase tracking-wide text-xs text-white/65 hover:text-white"
+            activeClassName="text-[var(--color-accent-soft)] font-semibold"
+          />
         </div>
       </div>
     </footer>

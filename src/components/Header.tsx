@@ -3,9 +3,10 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { usePathname, useSearchParams } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import type { Locale } from '@/i18n/config'
 import { getUiString, uiLocaleNames as localeNames, uiLocales as locales } from '@/i18n/ui'
+import { useLocationSearch } from '@/lib/use-location-search'
 import Icon from '@/components/ui/Icon'
 
 interface Props {
@@ -16,7 +17,14 @@ export default function Header({ locale }: Props) {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [langOpen, setLangOpen] = useState(false)
   const pathname = usePathname()
-  const searchParams = useSearchParams()
+  // The query string, read from `window.location` rather than with
+  // `useSearchParams()`. That hook is a dynamic API which forced every storefront
+  // page to be `force-dynamic`, so nothing could be statically generated and a
+  // database outage took the whole site down. The value is only used to build the
+  // language-switch links, which cannot be clicked before hydration anyway.
+  // See src/lib/use-location-search.ts.
+  const search = useLocationSearch()
+
   const lp = `/${locale}`
   const u = (key: string) => getUiString(locale, key)
 
@@ -29,8 +37,7 @@ export default function Header({ locale }: Props) {
       if (pathname === `/${l}`) { rest = ''; break }
       if (pathname.startsWith(`/${l}/`)) { rest = pathname.slice(l.length + 1); break }
     }
-    const query = searchParams.toString()
-    return `/${target}${rest}${query ? `?${query}` : ''}`
+    return `/${target}${rest}${search}`
   }
 
   const navItems = [

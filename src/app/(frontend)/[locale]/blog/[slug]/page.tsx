@@ -1,7 +1,7 @@
 import type { Locale } from '@/i18n/config'
 import { getTranslations } from '@/i18n/config'
 import { getBlogPosts } from '@/lib/payload'
-import { getFallbackArticle } from '@/lib/blog-fallback'
+import { getFallbackArticle, FALLBACK_ARTICLES } from '@/lib/blog-fallback'
 import { RichText } from '@payloadcms/richtext-lexical/react'
 import CtaSection from '@/components/CtaSection'
 import Reveal from '@/components/ui/Reveal'
@@ -17,7 +17,27 @@ interface Props {
   params: Promise<{ locale: string; slug: string }>
 }
 
-export const dynamic = 'force-dynamic'
+
+/**
+ * Prerenders every blog article at build time. See the `[category]` route.
+ *
+ * The hard-coded fallback articles are included even when the database is
+ * unreachable: they render from local data alone, so they must still be
+ * prerendered — otherwise an outage would turn the only pages that could have
+ * survived it into 500s.
+ */
+export async function generateStaticParams({ params }: { params?: { locale?: string } }) {
+  const fallback = FALLBACK_ARTICLES.map((a) => a.slug)
+  try {
+    const posts = await getBlogPosts(params?.locale ?? 'en')
+    const slugs = new Set<string>(fallback)
+    for (const post of posts) if (post.slug) slugs.add(post.slug)
+    return [...slugs].map((slug) => ({ slug }))
+  } catch (err) {
+    console.error('[blog/[slug]] generateStaticParams failed; prerendering fallbacks only', err)
+    return fallback.map((slug) => ({ slug }))
+  }
+}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, slug } = await params

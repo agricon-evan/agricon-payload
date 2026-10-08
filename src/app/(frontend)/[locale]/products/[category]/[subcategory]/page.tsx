@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import type { Locale } from '@/i18n/config'
 import { getTranslations } from '@/i18n/config'
 import { getProducts, getSubcategories } from '@/lib/payload'
+import { localizedAlternates } from '@/lib/seo'
 import PageHero from '@/components/PageHero'
 import CtaSection from '@/components/CtaSection'
 import Reveal from '@/components/ui/Reveal'
@@ -15,13 +16,38 @@ interface Props {
   params: Promise<{ locale: string; category: string; subcategory: string }>
 }
 
-export const dynamic = 'force-dynamic'
+
+/** Prerenders every subcategory page at build time. See the `[category]` route. */
+export async function generateStaticParams({ params }: { params?: { locale?: string } }) {
+  try {
+    const subs = await getSubcategories(params?.locale ?? 'en')
+    return subs
+      .map((s) => {
+        const cat = s.category
+        const category = typeof cat === 'object' && cat !== null ? cat.slug : undefined
+        return category ? { category, subcategory: s.slug } : null
+      })
+      .filter((p): p is { category: string; subcategory: string } =>
+        Boolean(p && p.category && p.subcategory),
+      )
+  } catch (err) {
+    console.error('[products/[category]/[subcategory]] generateStaticParams failed', err)
+    return []
+  }
+}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { locale, subcategory } = await params
+  const { locale, category, subcategory } = await params
   const subs = await getSubcategories(locale)
   const sub = subs.find((s) => s.slug === subcategory)
-  return { title: (sub)?.name || subcategory, description: (sub)?.description || '' }
+  return {
+    title: sub?.name || subcategory,
+    description: sub?.description || '',
+    // Both ancestor segments are validated in the page itself (a mismatched
+    // category 404s), so the requested URL is the canonical one. See the note in
+    // the `[category]` route for why this is not inherited from the layout.
+    alternates: localizedAlternates(locale as Locale, `/products/${category}/${subcategory}`),
+  }
 }
 
 export default async function SubcategoryPage({ params }: Props) {

@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import type { Locale } from '@/i18n/config'
 import { getTranslations } from '@/i18n/config'
 import { getSubcategories, getCategories } from '@/lib/payload'
+import { localizedAlternates } from '@/lib/seo'
 import PageHero from '@/components/PageHero'
 import CtaSection from '@/components/CtaSection'
 import Reveal from '@/components/ui/Reveal'
@@ -15,13 +16,42 @@ interface Props {
   params: Promise<{ locale: string; category: string }>
 }
 
-export const dynamic = 'force-dynamic'
+
+/**
+ * Prerenders every category page at build time.
+ *
+ * Without this the route is `ƒ` (rendered on demand): the first visitor after
+ * each deploy — and after every cache expiry — waits on a database round trip,
+ * and if the database is unreachable at that moment the page 500s. Prerendered,
+ * it is served from the CDN, so an unreachable database cannot affect visitors.
+ *
+ * The `try`/`catch` is deliberate: a build must not fail because the database
+ * happens to be down. Returning `[]` degrades to the previous on-demand
+ * behaviour for this route only, and the deployment still ships.
+ */
+export async function generateStaticParams({ params }: { params?: { locale?: string } }) {
+  try {
+    const categories = await getCategories(params?.locale ?? 'en')
+    return categories.map((c) => ({ category: c.slug })).filter((p) => Boolean(p.category))
+  } catch (err) {
+    console.error('[products/[category]] generateStaticParams failed; using on-demand rendering', err)
+    return []
+  }
+}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, category } = await params
   const categories = await getCategories(locale)
   const cat = categories.find((c) => c.slug === category)
-  return { title: cat?.name || category, description: cat?.description || '' }
+  return {
+    title: cat?.name || category,
+    description: cat?.description || '',
+    // Declared per route rather than inherited from `[locale]/layout.tsx`. The
+    // layout used to derive canonical/hreflang from the request path via
+    // `headers()`, which forced every storefront page to render dynamically;
+    // removing that is what allows these pages to be statically generated.
+    alternates: localizedAlternates(locale as Locale, `/products/${category}`),
+  }
 }
 
 export default async function CategoryPage({ params }: Props) {

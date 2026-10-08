@@ -99,7 +99,17 @@ const SOLUTION_IMAGE: Record<string, string> = {
   'farm-machinery': '/images/heroes/farm-machinery.jpg',
 }
 
-export const dynamic = 'force-dynamic'
+
+/** Prerenders every solution page at build time. See the `[category]` route. */
+export async function generateStaticParams({ params }: { params?: { locale?: string } }) {
+  try {
+    const solutions = await getSolutions(params?.locale ?? 'en')
+    return solutions.map((s) => ({ slug: s.slug })).filter((p) => Boolean(p.slug))
+  } catch (err) {
+    console.error('[solutions/[slug]] generateStaticParams failed', err)
+    return []
+  }
+}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, slug } = await params

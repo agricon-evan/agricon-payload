@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from 'next'
-import { headers } from 'next/headers'
 import { getTranslations, locales, isRtl, type Locale } from '@/i18n/config'
-import { DEFAULT_OG_IMAGE, SITE_URL, localizedAlternates, ogLocale, stripLocaleFromPath } from '@/lib/seo'
+import { DEFAULT_OG_IMAGE, SITE_URL, localizedAlternates, ogLocale } from '@/lib/seo'
 import { graph, organizationSchema, webSiteSchema } from '@/lib/structured-data'
 import JsonLd from '@/components/JsonLd'
 import Header from '@/components/Header'
@@ -32,11 +31,22 @@ interface Props {
  * naive `language_LANGUAGE` construction was wrong.
  */
 
-// Render dynamically: DB-backed pages (products, blog, site settings, …) are
-// fetched at request time. This keeps `next build` from requiring a live
-// database at build time, so the app deploys cleanly to Vercel (and other
-// serverless platforms) where Payload pushes the schema to Postgres on first run.
-export const dynamic = 'force-dynamic'
+// Statically generated, with a six-hour revalidation window that matches the
+// data cache in `src/lib/payload.ts`.
+//
+// THIS USED TO BE `force-dynamic`, AND THAT IS WHY A DATABASE OUTAGE TOOK THE
+// WHOLE SITE DOWN. The reason was `headers()` below: it read the request path
+// injected by `src/proxy.ts` (`x-pathname`) to build hreflang/canonical and the
+// footer's language links. `headers()` is a dynamic API, so every page under this
+// layout rendered on every request and had to reach the database — when Neon's
+// plan quota ran out, every page answered 500 (docs/MAINTENANCE.md §13).
+//
+// The path now comes from the page itself (`pageMetadata()` in src/lib/seo.ts)
+// and from the client (`src/components/LanguageLinks.tsx`), so this layout no
+// longer reads request-scoped data. Pages are generated once and served from the
+// CDN; a database outage no longer affects visitors, because Vercel keeps serving
+// the last good page while it cannot regenerate.
+export const revalidate = 21600
 
 export async function generateStaticParams() {
   return locales.map((locale) => ({ locale }))
@@ -46,10 +56,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params
   const t = getTranslations(locale as Locale, 'common')
 
-  // 当前请求路径（由 proxy.ts 注入），用于生成正确的 hreflang / canonical
-  const h = await headers()
-  const pathname = h.get('x-pathname') || ''
-  const rel = stripLocaleFromPath(pathname, locale)
+  // Locale-root alternates, used only by pages that do not declare their own.
+  // Every real page calls `pageMetadata(locale, { path })`, which builds the
+  // canonical and hreflang set from its own route; the pages that do not are the
+  // homepage (whose path IS the locale root) and the catch-all. Deriving this
+  // from a request header instead is what forced dynamic rendering.
+  const rel = ''
 
   // SEO defaults from SiteSettings (admin-editable) with i18n fallback
   const settings = await getSiteSettings(locale)
@@ -92,12 +104,6 @@ export default async function LocaleLayout({ children, params }: Props) {
   const { locale } = await params
   const dir = isRtl(locale as Locale) ? 'rtl' : 'ltr'
   const siteSettings = await getSiteSettings(locale)
-  // Current request path, injected by proxy.ts as `x-pathname`. Read once and
-  // reused for both the Footer language-switch target and nothing else — this
-  // used to call `headers()` three times in the same render.
-  const h = await headers()
-  const currentPath = h.get('x-pathname') || `/${locale}`
-  const currentSearch = h.get('x-search') || ''
   type SiteSettingsWithQr = NonNullable<typeof siteSettings> & {
     tiktokQrCode?: number | { url?: string | null } | null
     instagramQrCode?: number | { url?: string | null } | null
@@ -150,7 +156,7 @@ export default async function LocaleLayout({ children, params }: Props) {
           {children}
         </main>
         <Newsletter locale={locale as Locale} />
-        <Footer locale={locale as Locale} currentPath={currentPath} currentSearch={currentSearch} qrCodes={qrCodes} settings={footerSettings} />
+        <Footer locale={locale as Locale} qrCodes={qrCodes} settings={footerSettings} />
       </div>
       {/* Root page animation must not become the containing block for viewport-fixed actions. */}
       <FloatingActions locale={locale as Locale} whatsappNumber={siteSettings?.whatsappNumber} />

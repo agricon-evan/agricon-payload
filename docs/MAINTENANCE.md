@@ -1427,28 +1427,95 @@ pnpm exec tsx scripts/copy-sqlite-to-postgres.ts --apply --mark-migrations
 **不要删旧项目**：等它额度重置后，里面的询盘（表单提交）还能单独捞出来补回去 ——
 本地副本是同步那一刻的快照，之后的表单提交只存在于旧库。
 
-### 13.6 还没做、但建议做的两件事
+### 13.6 全站改为静态生成（ISR）—— 已于本轮完成
 
-1. **页面改为静态/ISR**（最大的结构性改进）。
-   现在 13 个页面都是 `force-dynamic`，每次请求都服务端渲染。改成 ISR 后
-   Vercel 从 CDN 直接出静态 HTML：数据库只在构建和按需失效时被访问，
-   **而且数据库挂掉时访客照样能打开上一次构建好的页面** ——
-   一举同时解决额度和可用性两个问题。
-   变更点：`[locale]/layout.tsx` 的 `force-dynamic` 是为了迁就 `Header` 里的
-   `useSearchParams()`（Next 要求它包在 `Suspense` 里，否则整棵树退化为动态渲染）。
-   先把 Header 改造好，再逐个放开页面，别一次全改。
-2. **故障时返回 503 而不是 500**。错误边界无法改状态码，需要用 middleware 改写。
-   503 + `Retry-After` 才能让搜索引擎知道"暂时不可用，稍后再来"，
-   而持续 500 有掉收录风险。
+**这是本次事故最根本的修复**：页面不再在每次请求时查库，而是在构建期预渲染成静态 HTML，
+由 Vercel CDN 直接下发。数据库连不上时，访客照样能打开上一次构建好的页面。
 
-### 13.7 监控（强烈建议）
+**结果**：`next build` 预渲染 **1083 个页面**，所有内容路由都是 `●` SSG（6 小时重新验证）：
+
+```
+● /[locale]                                   6h
+● /[locale]/products/[category]/[subcategory]/[product]   6h   ← 390 个产品页
+● /[locale]/blog/[slug]  /case-studies/[slug]  /solutions/[slug]  6h
+● /[locale]/{about,products,faq,solutions,blog,…}          6h
+ƒ /[locale]/contact        ← 用 searchParams，本质动态
+ƒ /[locale]/[...rest]      ← 兜底 404
+ƒ /api/*, /admin/*         ← 后台与接口
+```
+
+**改了什么（以及为什么原来是动态的）**
+
+根因是 `[locale]/layout.tsx` 里的 `headers()`：它读 `proxy.ts` 注入的 `x-pathname`
+来生成 hreflang/canonical，并给 Footer 传当前路径。`headers()` 是动态 API，
+**它让整棵路由树每次请求都重新渲染** —— 所以 13 个页面全都写着 `force-dynamic`。
+
+| 原来 | 现在 |
+|---|---|
+| `Header` 用 `useSearchParams()` | `src/lib/use-location-search.ts`（`useSyncExternalStore`，见下） |
+| `Footer` 靠 `currentPath/currentSearch` 两个 header 值 | `src/components/LanguageLinks.tsx`（客户端读 `usePathname()` + `location.search`） |
+| layout 用 `headers()` 生成 alternates | 每个路由自己声明：列表页走 `pageMetadata()`，产品页走 `localizedAlternates()` |
+| `(frontend)/layout.tsx` 用 `headers()` 定 `<html lang>` | 静态默认 `en` + `src/components/HtmlLangSync.tsx` 在 hydration 后校正 |
+| `[locale]/not-found.tsx` 用 `headers()` | 客户端组件 + 内联四语词表（见下） |
+
+**两个容易踩的坑，都付了代价才找到：**
+
+1. **不能在 effect 里同步 `setState`**。第一版用 `useState` + `useEffect`
+   读 `window.location.search`，ESLint（React compiler 规则 `react-hooks/set-state-in-effect`）
+   直接报错。正解是 `useSyncExternalStore`：它就是为"读 React 之外的值"设计的，
+   还自带 hydration 安全的 server snapshot。
+2. **不能把 `@/i18n/config` 放进客户端组件**。它静态 import 了
+   6 语种 × 14 命名空间的 JSON —— 为了渲染 404 的四句话，会把整个译文语料发到每个访客。
+   所以 `not-found.tsx` 用内联词表（文案从 `common.json` 的 `notFound` 逐字抄来）。
+
+**关于 `<html lang>`**：根 layout 在 `[locale]` 之上，拿不到 locale 路由参数。
+静态 HTML 里是 `lang="en"`，由 `<HtmlLangSync />` 在 hydration 后按 URL 校正。
+**内容语言在服务端就是正确的** —— `[locale]/layout.tsx` 渲染的
+`<div lang={locale} dir={dir}>` 包住全部内容，而最近祖先的 `lang` 才是爬虫和读屏软件采用的。
+
+**构建期不再依赖数据库可用**：6 个 `generateStaticParams` 都包了 `try/catch`，
+库连不上时返回 `[]`、退回按需渲染，**部署不会失败**（这是刻意的：构建挂掉会让人无法发版）。
+
+**SEO 已逐条比对**：改动前后各抓一次 canonical 与全部 hreflang，9 个代表性页面
+（首页、产品三级路径、列表页、`/ru`、`/ar`）**完全一致**。改这类东西必须这样做对比，
+不能凭感觉说"没坏"。
+
+### 13.7 故障时返回 503（MAINTENANCE_MODE）
+
+`src/proxy.ts` 新增维护开关：把 Vercel 的 `MAINTENANCE_MODE` 设为 `true` 并重新部署，
+所有前台页面返回 **503 + `Retry-After: 300`**，六语种的独立维护页（不依赖任何样式表/JS），
+`/api/*` 与 `/admin` 保持可用。
+
+**为什么必须是 middleware**：App Router 的页面**无法自己选状态码** —— 页面抛错时
+`error.tsx` 渲染，状态码永远是 500，没有 `notFound()` 那样的 `maintenance()`。
+middleware 是这个项目里唯一能对页面路由发出任意状态码的地方。
+
+**什么时候不要用**：能出缓存页就别开。给访客上次构建好的页面（200）严格优于维护页。
+这个开关是给"什么都渲染不出来"的情况（比如正在改 schema）。
+
+**为什么不做成自动的**：middleware 每次请求都跑、且看不到数据库，要自动判断故障就得轮询
+健康检查 —— 而每次轮询都会唤醒 Neon 计算，**那正是耗尽额度的动作**。自动化的代价比它解决的问题大。
+
+### 13.8 监控（强烈建议）
 
 `/api/health` 已就绪：数据库正常返回 `200 {ok:true}`，异常返回
 `503 {ok:false, code:"53000"}`（只暴露 SQLSTATE，不泄露连接串）。
 
 用任意免费 uptime 服务监控 `https://www.agricon.cn/api/health`，
-**非 200 即告警**。轮询间隔别短于 5 分钟 —— 每次请求都会唤醒 Neon 计算，
-而"唤醒"正是这次耗尽额度的原因。
+**非 200 即告警**。轮询间隔别短于 5 分钟 —— 每次请求都会唤醒 Neon 计算。
+
+现在这条告警的**紧急程度已经下降**：页面是静态的，数据库挂掉不再影响访客；
+但如果数据库长时间不可达，内容就无法更新、联系表单会失败，仍然需要人来处理。
 
 另外：Neon 控制台（`console.neon.tech` → 项目 → Usage）能看到当月 CU-hrs 消耗，
 **建议每周看一眼**，别等 100 用完。
+
+### 13.9 一个已知的既有问题（本轮未引入、也未修）
+
+`notFound()` 产生的 404 页面**在 HTML 里没有内容** —— `<h1>` 和 `<a>` 都不存在，
+正文只存在于 RSC 数据里（实际渲染要等客户端 JS）。线上旧代码**行为完全相同**，
+所以不是本轮引入的。
+
+影响有限（404 本来就不该被收录，状态码是对的），但禁用 JS 的用户会看到空白页。
+真要修，需要让 404 在服务端渲染 —— 那要求 `not-found.tsx` 拿得到 locale 而不依赖
+动态 API，也就是本轮的同一个约束。

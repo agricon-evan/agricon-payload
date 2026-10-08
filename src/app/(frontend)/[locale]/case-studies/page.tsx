@@ -16,7 +16,6 @@ interface Props {
   params: Promise<{ locale: string }>
 }
 
-export const dynamic = 'force-dynamic'
 
 // 画册案例分级：按应用领域组织项目证据，而不是把所有项目混成一个网格。
 const CASE_GROUPS = [

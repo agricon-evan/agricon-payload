@@ -18,13 +18,23 @@ interface Props {
   params: Promise<{ locale: string; slug: string }>
 }
 
-export const dynamic = 'force-dynamic'
 
 function countryName(country: unknown, location?: string | null): string {
   if (country && typeof country === 'object' && 'name' in country) {
     return String(country.name || location || '—')
   }
   return String(country || location || '—')
+}
+
+/** Prerenders every case study at build time. See the `[category]` route. */
+export async function generateStaticParams({ params }: { params?: { locale?: string } }) {
+  try {
+    const cases = await getCaseStudies(params?.locale ?? 'en')
+    return cases.map((c) => ({ slug: c.slug })).filter((p) => Boolean(p.slug))
+  } catch (err) {
+    console.error('[case-studies/[slug]] generateStaticParams failed', err)
+    return []
+  }
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

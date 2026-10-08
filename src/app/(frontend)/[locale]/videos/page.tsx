@@ -14,7 +14,6 @@ interface Props {
   params: Promise<{ locale: string }>
 }
 
-export const dynamic = 'force-dynamic'
 
 /** Extract the YouTube video ID from common URL formats. */
 function getYouTubeId(url: string): string | null {
