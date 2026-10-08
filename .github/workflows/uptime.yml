@@ -1,0 +1,177 @@
+name: Uptime
+
+# WHY THIS LIVES IN GITHUB ACTIONS
+# --------------------------------
+# The repository is public, so Actions minutes are free and unmetered — no extra
+# account, no credit card, nothing to sign up for. An external uptime service
+# would be another third party holding credentials for a production site.
+#
+# WHY THERE ARE TWO CHECKS AT DIFFERENT FREQUENCIES
+# -------------------------------------------------
+# The storefront is statically generated (docs/MAINTENANCE.md §13.6), which
+# changes what "down" means:
+#
+#   * A DATABASE outage no longer affects visitors at all — Vercel keeps serving
+#     the prerendered pages from its CDN. It only stops content from being
+#     published and breaks the contact form.
+#   * A SITE outage (bad deploy, CDN or middleware failure) is what actually
+#     makes the site unreachable.
+#
+# So the two are checked separately:
+#
+#   * the site check runs every 15 minutes and touches NO database, because it
+#     reads a prerendered page;
+#   * the database check runs every 2 hours, because every call to /api/health
+#     wakes the Neon compute — and wake-ups are precisely the resource whose
+#     exhaustion caused the 2026-10-08 outage. Checking the database every
+#     15 minutes would spend a meaningful share of the plan's 100 CU-hours.
+#
+# Failures open a GitHub issue, which notifies the repository owner by email.
+# Recovery closes it automatically.
+#
+# ⚠️ GitHub disables scheduled workflows after 60 days without repository
+# activity. Any push (or a manual run) resets that timer. If the alerts ever
+# stop arriving, check the Actions tab.
+on:
+  schedule:
+    - cron: '*/15 * * * *' # site availability — no database access
+    - cron: '7 */2 * * *' # database health — wakes the Neon compute, so 2-hourly
+    - cron: '0 9 * * 1' # Monday reminder to review Neon usage
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  site:
+    name: Site availability
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      github.event.schedule == '*/15 * * * *' ||
+      github.event.schedule == '0 9 * * 1'
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      ALERT_TITLE: '🚨 Site is not serving pages'
+    steps:
+      - name: Fetch a prerendered page
+        run: |
+          set -uo pipefail
+          URL='https://www.agricon.cn/en'
+          for i in 1 2 3; do
+            code=$(curl -s -o /tmp/body -w '%{http_code}' --max-time 30 "$URL" || echo 000)
+            echo "attempt $i: HTTP $code"
+            if [ "$code" = "200" ] && grep -qi 'agricon' /tmp/body; then
+              echo "site is up"
+              exit 0
+            fi
+            sleep 20
+          done
+          echo "::error::$URL did not return a usable 200 after 3 attempts"
+          exit 1
+
+      - name: Open or comment on the alert issue
+        if: failure()
+        run: |
+          set -uo pipefail
+          existing=$(gh issue list --repo "$GITHUB_REPOSITORY" --state open \
+            --search "in:title \"$ALERT_TITLE\"" --json number --jq '.[0].number // empty')
+          body=$(printf 'The storefront did not return HTTP 200 within 3 attempts.\n\n- Time: %s\n- Run: %s/%s/actions/runs/%s\n\nA prerendered page needs no database, so a failure here means a deploy, CDN or middleware problem — not content.\n' \
+            "$(date -u +%Y-%m-%dT%H:%M:%SZ)" "https://github.com" "$GITHUB_REPOSITORY" "$GITHUB_RUN_ID")
+          if [ -n "$existing" ]; then
+            gh issue comment "$existing" --repo "$GITHUB_REPOSITORY" --body "$body"
+          else
+            gh issue create --repo "$GITHUB_REPOSITORY" --title "$ALERT_TITLE" --body "$body"
+          fi
+
+      - name: Close the alert issue when healthy again
+        if: success()
+        run: |
+          set -uo pipefail
+          existing=$(gh issue list --repo "$GITHUB_REPOSITORY" --state open \
+            --search "in:title \"$ALERT_TITLE\"" --json number --jq '.[0].number // empty')
+          if [ -n "$existing" ]; then
+            gh issue close "$existing" --repo "$GITHUB_REPOSITORY" \
+              --comment "Recovered — the site is serving again ($(date -u +%Y-%m-%dT%H:%M:%SZ))."
+          fi
+
+  database:
+    name: Database health
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      github.event.schedule == '7 */2 * * *'
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      ALERT_TITLE: '🚨 Production database is unreachable'
+    steps:
+      - name: Query /api/health
+        run: |
+          set -uo pipefail
+          URL='https://www.agricon.cn/api/health'
+          for i in 1 2 3; do
+            code=$(curl -s -o /tmp/health -w '%{http_code}' --max-time 30 "$URL" || echo 000)
+            echo "attempt $i: HTTP $code — $(cat /tmp/health 2>/dev/null)"
+            # The endpoint returns 200 {"ok":true} when the database answers, and
+            # 503 {"ok":false,"code":"53000"} when it does not.
+            if [ "$code" = "200" ] && grep -q '"ok":true' /tmp/health; then
+              echo "database is reachable"
+              exit 0
+            fi
+            sleep 20
+          done
+          echo "::error::$URL did not report a healthy database after 3 attempts"
+          exit 1
+
+      - name: Open or comment on the alert issue
+        if: failure()
+        run: |
+          set -uo pipefail
+          existing=$(gh issue list --repo "$GITHUB_REPOSITORY" --state open \
+            --search "in:title \"$ALERT_TITLE\"" --json number --jq '.[0].number // empty')
+          # SQLSTATE 53000 means the Neon plan quota (100 CU-hours/month per
+          # project) is exhausted — see docs/MAINTENANCE.md §13.2. That is the
+          # likeliest cause and the one with a specific remedy, so call it out.
+          code=$(sed -n 's/.*"code":"\([^"]*\)".*/\1/p' /tmp/health 2>/dev/null || true)
+          body=$(printf 'The production database did not answer.\n\n- Time: %s\n- Response: `%s`\n- Reported code: `%s`\n- Run: https://github.com/%s/actions/runs/%s\n\nVisitors are NOT affected — the storefront is prerendered and served from the CDN. Publishing in /admin and the contact form are affected.\n\nIf the code is `53000`, the Neon plan quota is exhausted: check https://console.neon.tech → the project → Usage (free plan: 100 CU-hours per project per month). See docs/MAINTENANCE.md §13.2.\n' \
+            "$(date -u +%Y-%m-%dT%H:%M:%SZ)" "$(cat /tmp/health 2>/dev/null | head -c 200)" "$code" "$GITHUB_REPOSITORY" "$GITHUB_RUN_ID")
+          if [ -n "$existing" ]; then
+            gh issue comment "$existing" --repo "$GITHUB_REPOSITORY" --body "$body"
+          else
+            gh issue create --repo "$GITHUB_REPOSITORY" --title "$ALERT_TITLE" --body "$body"
+          fi
+
+      - name: Close the alert issue when healthy again
+        if: success()
+        run: |
+          set -uo pipefail
+          existing=$(gh issue list --repo "$GITHUB_REPOSITORY" --state open \
+            --search "in:title \"$ALERT_TITLE\"" --json number --jq '.[0].number // empty')
+          if [ -n "$existing" ]; then
+            gh issue close "$existing" --repo "$GITHUB_REPOSITORY" \
+              --comment "Recovered — the database is answering again ($(date -u +%Y-%m-%dT%H:%M:%SZ))."
+          fi
+
+  usage-reminder:
+    name: Weekly Neon usage reminder
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      github.event.schedule == '0 9 * * 1'
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      REMINDER_TITLE: '📊 Weekly: check Neon usage'
+    steps:
+      - name: Open the reminder once a week
+        run: |
+          set -uo pipefail
+          # Only one reminder at a time: if last week's is still open, the
+          # operator has not looked yet and a second issue would just be noise.
+          existing=$(gh issue list --repo "$GITHUB_REPOSITORY" --state open \
+            --search "in:title \"$REMINDER_TITLE\"" --json number --jq '.[0].number // empty')
+          if [ -n "$existing" ]; then
+            echo "a reminder is already open (#$existing); nothing to do"
+            exit 0
+          fi
+          gh issue create --repo "$GITHUB_REPOSITORY" --title "$REMINDER_TITLE" --body "$(printf 'Open https://console.neon.tech → the project → **Usage** and check the current month.\n\nThe free plan allows **100 CU-hours per project per month**, and that is what ran out on 2026-10-08, taking the whole site down (docs/MAINTENANCE.md §13).\n\nContext: reads are now cached for six hours and the storefront is statically generated, so steady-state consumption is around 20-30 CU-hours. If the number is climbing, something is querying the database far more often than expected.\n\nClose this issue once you have looked.\n')"
