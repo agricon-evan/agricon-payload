@@ -63,13 +63,29 @@ type LocaleArg = 'en' | 'ru' | 'fr' | 'es' | 'sw' | 'ar' | 'all'
 // request, and (1) without (2) makes each of the homepage's ~8 sections perform
 // its own cache lookup.
 //
-// TTL rationale: content here is edited in the CMS, not by end users, so a
-// couple of minutes of staleness is invisible to visitors while cutting
-// database load to roughly one query per collection per window. Site settings
-// use a shorter window because an admin changing a phone number expects it to
-// appear promptly.
-const REVALIDATE_SECONDS = 300
-const SETTINGS_REVALIDATE_SECONDS = 60
+// TTL rationale: content here is edited in the CMS, not by end users, so
+// staleness is invisible to visitors while database load drops to roughly one
+// query per collection per window.
+//
+// WHY THE WINDOWS ARE THIS LONG (they used to be 300s / 60s)
+// ---------------------------------------------------------
+// The production database is a Neon free-plan project, whose binding limit is
+// **compute hours**, not bytes: 100 CU-hours per project per month. Neon
+// suspends an idle compute, but every query wakes it and holds it awake, so
+// what burns the quota is the number of WAKE-UPS per day, not the size of each
+// result.
+//
+// At the old 300s window the products query alone re-ran 288 times a day per
+// locale — about 1,700 wake-ups a day across the six locales, sustained by
+// crawlers walking the 1,068 sitemap URLs. That kept the compute permanently
+// awake and exhausted the month's compute hours, after which Neon refused every
+// connection (`SQLSTATE 53000`) and the whole site returned 500.
+//
+// Six hours, combined with the `revalidateTag` hooks wired up in
+// `payload.config.ts` (see src/lib/revalidate.ts), means at most a handful of
+// wake-ups a day while an admin's edit still appears immediately.
+const REVALIDATE_SECONDS = 21600
+const SETTINGS_REVALIDATE_SECONDS = 21600
 
 /**
  * Wraps a query in Next's server data cache, keyed by its arguments and tagged
@@ -99,6 +115,54 @@ const SETTINGS_REVALIDATE_SECONDS = 60
 let serverCacheAvailable = true
 const uncacheableNamespaces = new Set<string>()
 
+/**
+ * Last value successfully returned for each cache key, kept per server instance.
+ *
+ * WHY: on 2026-10-08 the Neon free plan's compute-hour quota ran out and the
+ * database started refusing EVERY connection with `SQLSTATE 53000`. Next's data
+ * cache had long since expired, so each request tried the database, failed, and
+ * the whole site answered 500 — including pages whose content had not changed in
+ * weeks. The content was not gone; the database was simply unreachable.
+ *
+ * Serving the last good value for the key turns that into a mostly-working site
+ * during an outage. It is deliberately modest: an in-process map, so it only
+ * helps instances that have already served a request (a cold instance falls
+ * through to `error.tsx`). That is the right trade — a slightly stale product
+ * grid beats "A server error occurred".
+ */
+const lastGood = new Map<string, unknown>()
+
+/**
+ * True when an error means "the database is not answering", as opposed to a bug
+ * in the query. Only these fall back to cached data; anything else still throws
+ * so real defects keep surfacing.
+ */
+function isDatabaseUnavailable(err: unknown): boolean {
+  const e = (err ?? {}) as { code?: string; message?: string }
+  switch (e.code) {
+    case '53000': // insufficient_resources — Neon: plan quota exhausted
+    case '53300': // too_many_connections
+    case '57P01': // admin_shutdown
+    case '08006': // connection_failure
+    case '08001': // sqlclient_unable_to_establish_sqlconnection
+    case '3D000': // invalid_catalog_name — database missing
+      return true
+    default:
+      break
+  }
+  const m = (e.message ?? '').toLowerCase()
+  return (
+    m.includes('exceeded the quota') ||
+    m.includes('connection terminated') ||
+    m.includes('connection closed') ||
+    m.includes('econnrefused') ||
+    m.includes('etimedout') ||
+    m.includes('timeout expired') ||
+    m.includes('getaddrinfo') ||
+    m.includes('server does not support ssl')
+  )
+}
+
 function cachedQuery<TArgs extends unknown[], TResult>(
   namespace: string,
   fn: (...args: TArgs) => Promise<TResult>,
@@ -114,7 +178,9 @@ function cachedQuery<TArgs extends unknown[], TResult>(
       })
       // NOTE: must be awaited. Both failure modes reject asynchronously, so a
       // synchronous try/catch would let them escape.
-      return await cached()
+      const value = await cached()
+      lastGood.set(`${namespace}:${key}`, value)
+      return value
     } catch (err) {
       const message = err instanceof Error ? err.message : String(err)
       if (message.includes('incrementalCache missing')) {
@@ -131,6 +197,19 @@ function cachedQuery<TArgs extends unknown[], TResult>(
           )
         }
         return fn(...args)
+      }
+      // The database is unreachable. Serve the last good value for this key
+      // rather than failing the page; a cold instance has none and falls through
+      // to the route's error boundary. See isDatabaseUnavailable.
+      if (isDatabaseUnavailable(err)) {
+        const fallback = lastGood.get(`${namespace}:${key}`)
+        if (fallback !== undefined) {
+          console.warn(
+            `[payload] database unavailable; serving cached "${namespace}" for this instance ` +
+              `(${message.split('\n')[0]})`,
+          )
+          return fallback as TResult
+        }
       }
       // Any other error is a real bug and must surface.
       throw err
@@ -166,8 +245,69 @@ export const getProducts = cachedList(
       depth: 1,
       sort: '-createdAt',
       limit: 100,
+      // `overviewHtml` is the long-form supplier article: ~673KB for English
+      // alone, ~4MB across the six locales. Only the product DETAIL page renders
+      // it, yet it used to ride along on every list query — homepage, product
+      // grids, category pages, the contact form's product picker and, worst of
+      // all, `generateMetadata` for every product URL. Payload's `select`
+      // accepts `false` for exclusion, so the other fields (images, specs,
+      // features, the expanded `subcategory`) are untouched. Measured: the
+      // serialized result drops from 1099KB to 409KB.
+      //
+      // The detail page fetches the article separately via getProductOverview,
+      // so a product page costs one small extra read instead of every page
+      // paying for every article.
+      select: { overviewHtml: false },
     })
     return docs as unknown as Product[]
+  },
+)
+
+export interface ProductOverviews {
+  [slug: string]: string
+}
+
+/**
+ * Every product's long-form `overviewHtml`, keyed by slug, for ONE locale.
+ *
+ * Kept out of `getProducts` deliberately — see the comment there: the article set
+ * is ~673KB for English alone and only the detail page renders it.
+ *
+ * WHY ONE MAP PER LOCALE, NOT ONE ENTRY PER PRODUCT
+ * -------------------------------------------------
+ * The obvious shape is `getProductOverview(locale, slug)`, but that creates up
+ * to 390 independent cache entries whose expiries are scattered across the day,
+ * because each is first filled whenever that particular page is crawled. Every
+ * scattered expiry is a separate wake-up of the Neon compute, and wake-ups are
+ * exactly what the plan's quota meters (see REVALIDATE_SECONDS). Six entries that
+ * expire together cost six wake-ups per window; 390 entries that expire
+ * independently cost far more, even though they carry identical bytes.
+ *
+ * Fetching the whole set per locale is therefore the cheaper shape on this
+ * hosting: bytes are not billed, wake-ups are.
+ *
+ * `fallbackLocale: false` so an untranslated article is absent from the map and
+ * the page renders its localized fallback paragraph, rather than silently
+ * dropping English copy onto an Arabic page. All 60 articles exist in all six
+ * locales, so in practice every viewed product is present.
+ */
+export const getProductOverviews = cachedList(
+  'productOverviews',
+  async (locale: string = 'en'): Promise<ProductOverviews> => {
+    const payload = await getPayloadClient()
+    const { docs } = await payload.find({
+      collection: 'products',
+      locale: locale as LocaleArg,
+      fallbackLocale: false,
+      depth: 0,
+      pagination: false,
+      select: { slug: true, overviewHtml: true },
+    })
+    const map: ProductOverviews = {}
+    for (const doc of docs as unknown as Array<{ slug?: string | null; overviewHtml?: string | null }>) {
+      if (doc.slug && doc.overviewHtml) map[doc.slug] = doc.overviewHtml
+    }
+    return map
   },
 )
 

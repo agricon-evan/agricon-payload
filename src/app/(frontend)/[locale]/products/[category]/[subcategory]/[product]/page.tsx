@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import type { Locale } from '@/i18n/config'
 import { getTranslations } from '@/i18n/config'
-import { getProducts, getProductSeoFields, resolveProductPath } from '@/lib/payload'
+import { getProducts, getProductOverviews, getProductSeoFields, resolveProductPath } from '@/lib/payload'
 import CtaSection from '@/components/CtaSection'
 import Reveal from '@/components/ui/Reveal'
 import Icon from '@/components/ui/Icon'
@@ -65,6 +65,12 @@ export default async function ProductDetailPage({ params }: Props) {
   if (!product) notFound()
 
   const p = product
+  // The long-form articles are excluded from `getProducts` (see the comment
+  // there) because the set is ~4MB across the six locales and only this page
+  // renders any of it. Fetched as one map per locale rather than one entry per
+  // product, to keep the number of independently-expiring cache entries — and
+  // therefore the number of database wake-ups — small.
+  const overviewHtml = (await getProductOverviews(locale))[productSlug] ?? null
   const cmsImages = (p.images || [])
     .filter((item) => item.image && typeof item.image === 'object' && item.image.url)
     .map((item) => ({
@@ -274,16 +280,15 @@ export default async function ProductDetailPage({ params }: Props) {
               <h2 className="mt-3 text-2xl md:text-3xl font-bold text-[var(--color-text)]">{t.builtAroundApplication || 'Built around the application'}</h2>
               <span className="orange-underline mt-4" aria-hidden="true" />
 
-              {p.overviewHtml ? (
-                // The long-form overview is supplier copy and only exists in
-                // English (translating 4 KB × 43 products × 5 locales was out of
-                // scope). `lang="en"` tells browsers and screen readers to switch
-                // reading language for this block instead of applying, say,
-                // Arabic letter shaping or Russian hyphenation to English text.
+              {overviewHtml ? (
+                // No `lang="en"` here any more. That attribute was correct while
+                // the overview was untranslated English supplier copy, but the
+                // article is now translated into all six locales, so tagging it
+                // as English made browsers and screen readers apply English
+                // shaping and hyphenation to Russian, Arabic and Swahili text.
                 <div
                   className="prose-agricon mt-7"
-                  lang={locale === 'en' ? undefined : 'en'}
-                  dangerouslySetInnerHTML={{ __html: p.overviewHtml }}
+                  dangerouslySetInnerHTML={{ __html: overviewHtml }}
                 />
               ) : (
                 <p className="mt-7 text-base text-[var(--color-text-secondary)] leading-relaxed">

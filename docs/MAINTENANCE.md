@@ -1314,3 +1314,141 @@ DELETE FROM payload_migrations WHERE batch = -1 AND name = 'dev';
 > 教训：**`index: true` 在配置里不代表库里真有索引。** 自查方法：
 > `SELECT indexdef FROM pg_indexes WHERE indexdef ILIKE '%(published)%'`，
 > 或对比 `src/collections/*.ts` 里 `index: true` 的字段清单与 `pg_indexes`。
+
+---
+
+## 13. 生产库额度耗尽导致全站 500（2026-10-08，第六轮）
+
+### 13.1 事故现象
+
+某天线上**全部内容页 500**，报错是前端那句
+"This page couldn't load / A server error occurred. Reload to try again."，
+`/api/products` 返回 `{"errors":[{"message":"Something went wrong."}]}`。
+
+但 `/admin` 和 `/sitemap.xml` **仍然 200** —— 因为前者是后台外壳、后者是构建期预渲染，
+都不查数据库。**这个组合（内容页全挂、静态文件正常）就是"数据库连不上"的指纹。**
+
+### 13.2 根因：Neon 免费计划的**计算时长**额度用尽
+
+直接用 `pg` 裸连生产库，在 `connect()` 阶段就失败：
+
+```
+code     = 53000          (PostgreSQL insufficient_resources)
+severity = ERROR
+message  = Your account or project has exceeded the quota. Upgrade your plan to increase limits.
+```
+
+`53000` 由**数据库服务器**在协议层返回，不是应用报的 —— 所以改代码不可能修好它。
+
+**关键认知（本节最值钱的部分）**：Neon 现行免费计划（`neon.com/pricing`）的限额是
+
+| 项 | 值 |
+|---|---|
+| 存储 | 1 GB / 项目 |
+| **计算时长** | **100 CU-hrs / 月 / 项目** |
+| 数据量/传输 | **没有这一项限制** |
+
+也就是说约束是**数据库"醒着"的时长**，不是字节数。Neon 空闲会自动挂起，
+但**任何一次查询都会唤醒它并让它保持醒着一段时间**。
+
+所以真正烧额度的是**唤醒次数**，而当时的配置正好把唤醒拉到最大：
+
+- 13 个前台页面全部 `export const dynamic = 'force-dynamic'`（每请求都服务端渲染）；
+- 数据缓存只有 **300 秒**（`siteSettings` 60 秒）；
+- `sitemap.xml` 里有 **1068 条 URL**，搜索引擎遍历时会把六个语种全部唤醒。
+
+```
+86400 ÷ 300 × 6 语种 ≈ 每天 1700 次唤醒  →  一个月 5 万次
+```
+
+数据库因此几乎没有睡眠窗口，100 CU-hrs 很快耗尽。
+
+### 13.3 本轮改了什么
+
+| 改动 | 位置 | 效果 |
+|---|---|---|
+| 缓存窗口 300s → **21600s（6 小时）** | `lib/payload.ts` | 唤醒次数降约 72 倍 |
+| `siteSettings` 60s → **21600s** | 同上 | 同上 |
+| `getProducts` 排除长文 `overviewHtml` | 同上 | 1099 KB → **409 KB** |
+| 长文改为按产品单独取 `getProductOverview` | 同上 + 产品详情页 | 列表页不再背 4 MB 文章 |
+| 写入即失效（`afterChange`/`afterDelete` → `revalidateTag`） | `lib/revalidate.ts` + `payload.config.ts` | 长窗口不影响"编辑后立刻可见" |
+| 数据库不可用时回退到上次成功的值 | `lib/payload.ts` 的 `lastGood` | 热实例不再 500 |
+| 友好的降级页面（六语种） | `app/(frontend)/[locale]/error.tsx` | 冷实例不再是 Next 裸报错 |
+| `/api/health` 探针 | `app/(payload)/api/health/route.ts` | 可接免费 uptime 监控 |
+
+`select: { overviewHtml: false }` 是 Payload 支持的**排除**写法（`false` = 不要这个字段），
+其它字段（images/specs/features/展开的 subcategory）完全不受影响 —— 已实测。
+
+### 13.4 为什么长缓存不会让内容变旧
+
+`payload.config.ts` 用 `withRevalidation` 包了**所有** collection：
+
+```ts
+const withRevalidation = <T extends CollectionConfig>(c: T): T => ({
+  ...c,
+  hooks: {
+    ...c.hooks,
+    afterChange: [...(c.hooks?.afterChange ?? []), () => revalidatePayloadCaches()],
+    afterDelete: [...(c.hooks?.afterDelete ?? []), () => revalidatePayloadCaches()],
+  },
+})
+// collections: [ ... ].map(withRevalidation)
+```
+
+管理员一保存，缓存立刻失效，下次请求重新查库。6 小时窗口**只对没人动过的内容生效** ——
+而那正是"新旧无差别"的情况。
+
+`revalidatePayloadCaches()` **绝不能抛错**：`scripts/*.ts` 里的批量脚本也会触发这些钩子，
+而它们在 Next 请求上下文之外运行，`revalidateTag` 会抛 `incrementalCache missing`。
+所以内部 `try/catch` 后直接 `return`。（注意 Next 16 的 `revalidateTag` **要两个参数**，
+第二个是 cache-life profile，用 `'max'`。）
+
+### 13.5 恢复 runbook（生产库彻底连不上时）
+
+**前提**：本地 `agricon-dev.db` 是一份完整副本（本轮已验证：65 产品 / 454 媒体 /
+10 分类 / 69 子分类 / 六语种长文，共 15476 行）。
+
+```powershell
+# 1) 新建一个免费 Neon 项目（免费版 100 个项目、不需要信用卡），拿【直连】串
+# 2) 建完整表结构（仓库原本没有"从零建库"的能力，本次补上了）
+$env:POSTGRES_URL='postgresql://...@ep-xxx.c-6.us-east-2.aws.neon.tech/neondb?sslmode=require'
+pnpm exec tsx scripts/setup-fresh-db.ts
+#    → 68 张表；并自动删掉 push 留下的 dev/batch=-1 标记（见 §12.8）
+
+# 3) 灌数据（按外键拓扑序插入，事务包裹，自动核对行数）
+pnpm exec tsx scripts/copy-sqlite-to-postgres.ts --apply --mark-migrations
+#    → 15475 行，0 处不一致，40 个序列已重置
+
+# 4) 把新连接串写进 Vercel 的 POSTGRES_URL，然后重新部署
+```
+
+**务必用直连端点建表**（`-pooler` 上的 DDL 不可靠）；**应用运行时用 `-pooler` 端点**。
+
+**不要删旧项目**：等它额度重置后，里面的询盘（表单提交）还能单独捞出来补回去 ——
+本地副本是同步那一刻的快照，之后的表单提交只存在于旧库。
+
+### 13.6 还没做、但建议做的两件事
+
+1. **页面改为静态/ISR**（最大的结构性改进）。
+   现在 13 个页面都是 `force-dynamic`，每次请求都服务端渲染。改成 ISR 后
+   Vercel 从 CDN 直接出静态 HTML：数据库只在构建和按需失效时被访问，
+   **而且数据库挂掉时访客照样能打开上一次构建好的页面** ——
+   一举同时解决额度和可用性两个问题。
+   变更点：`[locale]/layout.tsx` 的 `force-dynamic` 是为了迁就 `Header` 里的
+   `useSearchParams()`（Next 要求它包在 `Suspense` 里，否则整棵树退化为动态渲染）。
+   先把 Header 改造好，再逐个放开页面，别一次全改。
+2. **故障时返回 503 而不是 500**。错误边界无法改状态码，需要用 middleware 改写。
+   503 + `Retry-After` 才能让搜索引擎知道"暂时不可用，稍后再来"，
+   而持续 500 有掉收录风险。
+
+### 13.7 监控（强烈建议）
+
+`/api/health` 已就绪：数据库正常返回 `200 {ok:true}`，异常返回
+`503 {ok:false, code:"53000"}`（只暴露 SQLSTATE，不泄露连接串）。
+
+用任意免费 uptime 服务监控 `https://www.agricon.cn/api/health`，
+**非 200 即告警**。轮询间隔别短于 5 分钟 —— 每次请求都会唤醒 Neon 计算，
+而"唤醒"正是这次耗尽额度的原因。
+
+另外：Neon 控制台（`console.neon.tech` → 项目 → Usage）能看到当月 CU-hrs 消耗，
+**建议每周看一眼**，别等 100 用完。
